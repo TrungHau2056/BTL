@@ -10,7 +10,9 @@ module org.example.btl {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires java.sql;
 
     opens org.example.btl to javafx.fxml;
+    opens org.example.btl.controllers to javafx.fxml;
     exports org.example.btl;
 }

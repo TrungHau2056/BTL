@@ -10,5 +10,4 @@ public class Account {
     private String gender;
     private Date birthDate;
     private int id;
-
 }

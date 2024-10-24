@@ -1,5 +1,5 @@
 package org.example.btl.libraryManage;
 
-public class Admin extends Account{
+public class Admin extends Account {
 
 }

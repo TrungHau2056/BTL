@@ -1,5 +1,5 @@
 package org.example.btl.libraryManage;
 
-public class User extends Account {
-
+public enum AccountType {
+    USER, ADMIN
 }

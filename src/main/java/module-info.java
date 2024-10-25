@@ -12,5 +12,7 @@ module org.example.btl {
     requires com.almasb.fxgl.all;
 
     opens org.example.btl to javafx.fxml;
-    exports org.example.btl;
+    opens org.example.btl.libraryManage to javafx.fxml;
+    exports org.example.btl.libraryManage;
+    exports org.example.btl.controllers to javafx.fxml;
 }

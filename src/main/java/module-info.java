@@ -15,7 +15,10 @@ module org.example.btl {
     requires java.naming;
 
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
-    opens org.example.btl.controllers to javafx.fxml;
     opens org.example.btl.libraryManage to org.hibernate.orm.core;
+    opens org.example.btl.controllers to javafx.fxml, org.hibernate.orm.core;
+//    opens org.example.btl.fxmlFiles to javafx.fxml;
     exports org.example.btl;
+    exports org.example.btl.controllers;
+
 }

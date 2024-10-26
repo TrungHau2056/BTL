@@ -111,6 +111,9 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+<!--        Hibernate -->
+
     </dependencies>
 
     <build>

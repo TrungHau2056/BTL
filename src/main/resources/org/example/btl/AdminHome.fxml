@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="hbox" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 20px; -fx-background-color: #466bb0;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.AdminHomeController">
+   <children>
+      <AnchorPane prefHeight="720.0" prefWidth="416.0">
+         <children>
+            <TextField disable="true" layoutX="52.0" layoutY="232.0" opacity="0.42" prefHeight="47.0" prefWidth="311.0" promptText="Search faculti, student, books or member... " style="-fx-background-color: #fff; -fx-background-radius: 0 15px 15px 15px; -fx-font-size: 14px; -fx-font-weight: bold; -fx-font-style: #fff;">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="100.0" layoutY="65.0" prefHeight="86.0" prefWidth="216.0" text="Hi Tayyab" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font size="43.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane accessibleRole="TEXT" minHeight="-Infinity" minWidth="-Infinity" mouseTransparent="true" prefHeight="634.0" prefWidth="854.0" style="-fx-background-color: #fff; -fx-background-radius: 0 20 20 0;">
+         <HBox.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </HBox.margin>
+         <children>
+            <Text fill="#466bb0" layoutX="141.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-line-spacing: 20; -fx-text-alignment: center; -fx-font-size: 60px;" text="Welcome back to Library Management System" textAlignment="CENTER" wrappingWidth="602.4000244140625">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Text>
+         </children>
+         <effect>
+            <Reflection />
+         </effect>
+      </AnchorPane>
+   </children>
+</HBox>

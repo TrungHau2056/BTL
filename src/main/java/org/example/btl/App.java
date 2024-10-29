@@ -1,4 +1,4 @@
-package org.example.btl.libraryManage;
+package org.example.btl;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class userScene extends Application {
+public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);

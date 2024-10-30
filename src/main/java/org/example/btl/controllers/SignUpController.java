@@ -92,19 +92,17 @@ public class SignUpController {
             Query query = session.createQuery("FROM Admin WHERE username = :username");
             query.setParameter("username", username);
             List admins = query.getResultList();
-            session.close();
-            HibernateUtils.shutdown();
-            if (admins != null) {
+
+            if (!admins.isEmpty()) {
+                session.close();
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("This username already exists. Please choose another one.");
                 alert.show();
             } else {
-                session.beginTransaction();
                 Account admin = new Admin(name, email, username, password, birthday, gender);
                 session.persist(admin);
                 session.getTransaction().commit();
                 session.close();
-                HibernateUtils.shutdown();
             }
             //remember to change scene here
         }

@@ -48,8 +48,8 @@
         </AnchorPane>
         <AnchorPane focusTraversable="true" prefHeight="566.0" prefWidth="538.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
          <children>
-            <TextField layoutX="72.0" layoutY="248.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your username" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
-            <TextField layoutX="72.0" layoutY="127.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your name" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="257.6" />
+            <TextField fx:id="usernameText" layoutX="72.0" layoutY="248.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your username" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
+            <TextField fx:id="nameText" layoutX="72.0" layoutY="127.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your name" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="257.6" />
             <Label layoutX="165.0" layoutY="14.0" prefHeight="82.0" prefWidth="207.0" style="-fx-font-weight: 700;" text="Sign up" textFill="#466bb0" AnchorPane.leftAnchor="165.0" AnchorPane.rightAnchor="165.39999999999998">
                <font>
                   <Font size="55.0" />
@@ -62,9 +62,9 @@
                   </DropShadow>
                </effect>
             </Label>
-            <PasswordField layoutX="72.0" layoutY="310.0" prefHeight="36.0" prefWidth="267.0" promptText="Enter your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
-            <PasswordField layoutX="72.0" layoutY="373.0" prefHeight="36.0" prefWidth="267.0" promptText="Confirm your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
-            <Button layoutX="215.0" layoutY="510.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="128.0" styleClass="login-signup-Button" text="Sign up" textFill="WHITE" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="194.60000000000002">
+            <PasswordField fx:id="passwordText" layoutX="72.0" layoutY="310.0" prefHeight="36.0" prefWidth="267.0" promptText="Enter your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
+            <PasswordField fx:id="confirmedPasswordText" layoutX="72.0" layoutY="373.0" prefHeight="36.0" prefWidth="267.0" promptText="Confirm your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
+            <Button layoutX="215.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="51.0" prefWidth="128.0" styleClass="login-signup-Button" text="Sign up" textFill="WHITE" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="194.60000000000002">
                <font>
                   <Font size="24.0" />
                </font>
@@ -75,21 +75,21 @@
                   <Font size="14.0" />
                </font>
                <toggleGroup>
-                  <ToggleGroup fx:id="Gender" />
+                  <ToggleGroup fx:id="gender" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="154.0" layoutY="431.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" text="Female" textFill="#466bb0" toggleGroup="$Gender" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="305.0">
+            <RadioButton layoutX="154.0" layoutY="431.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="77.0" text="Female" textFill="#466bb0" toggleGroup="$gender" AnchorPane.leftAnchor="154.0" AnchorPane.rightAnchor="305.0">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="248.0" layoutY="431.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$Gender" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="227.2">
+            <RadioButton layoutX="248.0" layoutY="431.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender" AnchorPane.leftAnchor="248.0" AnchorPane.rightAnchor="227.2">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <TextField layoutX="72.0" layoutY="187.0" prefHeight="36.0" prefWidth="227.0" promptText="Enter your email" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
-            <DatePicker layoutX="310.0" layoutY="127.0" prefHeight="36.0" prefWidth="182.0" promptText="Choose your birthday" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="44.39999999999998" />
+            <TextField fx:id="emailText" layoutX="72.0" layoutY="187.0" prefHeight="36.0" prefWidth="227.0" promptText="Enter your email" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
+            <DatePicker fx:id="birthdayText" layoutX="310.0" layoutY="127.0" prefHeight="36.0" prefWidth="182.0" promptText="Choose your birthday" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="44.39999999999998" />
             <Label layoutX="193.0" layoutY="485.0" text="Already have an account?" textFill="#466bb0" />
             <Hyperlink layoutX="328.0" layoutY="482.0" onAction="#switchToLogin" text="Login" textFill="#d41ece" underline="true" />
          </children></AnchorPane>

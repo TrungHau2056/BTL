@@ -32,6 +32,12 @@ public abstract class Account {
         this.gender = gender;
     }
 
+    public Account(String name, String email, int id) {
+        this.name = name;
+        this.email = email;
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }

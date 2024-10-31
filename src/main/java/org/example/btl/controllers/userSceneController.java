@@ -1,20 +1,32 @@
 package org.example.btl.controllers;
 
 import jakarta.persistence.Query;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.btl.libraryManage.Document;
 import org.example.btl.libraryManage.HibernateUtils;
 import org.example.btl.libraryManage.User;
 import org.hibernate.Session;
 
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.sql.Date;
+import java.util.*;
 
 public class userSceneController implements Initializable {
     @FXML private Label userinfo;
-
+    @FXML private TableView<Document> tableview;
+    @FXML private TableColumn<Document, Integer> table_document_id;
+    @FXML private TableColumn<Document, String> table_document_title;
+    //@FXML private TableColumn<User, Date> table_user_duedate;
+    List<User> users;
+    Set<Document> documents  = new HashSet<>();
 
 
     @Override
@@ -23,12 +35,34 @@ public class userSceneController implements Initializable {
         session.beginTransaction();
         Query query = session.createQuery("FROM User WHERE id = :id");
         query.setParameter("id", 1);
-        List<User> users = query.getResultList();
+        users = query.getResultList();
+
+        User user = users.getFirst();
         if(users.isEmpty()) {
             System.out.println("users is empty");
         } else {
-            userinfo.setText(users.getFirst().getName());
+            userinfo.setText(user.getName());
+            // document
+            Query query2 = session.createQuery("FROM Document");
+            List<Document> list_document ;
+            list_document = query2.getResultList();
+            for(Document x : list_document) {
+                documents.add(x);
+            }
+            user.setBorrowedDocuments(documents);
+            session.save(user);
+
+            table_document_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+            table_document_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+            ObservableList<Document> documentlist = FXCollections.observableArrayList(
+                    new Document(user.getBorrowedDocuments().iterator().next().getId(), user.getBorrowedDocuments().iterator().next().getTitle())
+            );
+            tableview.setItems(documentlist);
+
+
+
         }
+
     }
 
 }

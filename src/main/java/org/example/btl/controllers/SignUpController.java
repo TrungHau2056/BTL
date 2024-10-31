@@ -101,8 +101,8 @@ public class SignUpController {
                 alert.show();
             } else {
 
-                Account user = new User(name, email, username, password, birthday, gender);
-                session.persist(user);
+                Account admin = new Admin(name, email, username, password, birthday, gender);
+                session.persist(admin);
                 session.getTransaction().commit();
                 session.close();
 

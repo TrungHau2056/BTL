@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.btl.controllers.LoginController;
 import org.example.btl.controllers.SignUpController;
+import org.example.btl.libraryManage.Admin;
+import org.example.btl.libraryManage.Document;
+import org.example.btl.libraryManage.HibernateUtils;
+import org.hibernate.Session;
 
 import java.io.IOException;
 
@@ -15,6 +19,7 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         int check = 0;
         FXMLLoader fxmlLoader = null;
+
         if(check == 1) {
              fxmlLoader = new FXMLLoader(App.class.getResource("signUpScene.fxml"));
         } else if(check == 0) {

@@ -29,6 +29,22 @@ public class Document {
 
     }
 
+    public Document(String description, String title, Admin admin) {
+        this.description = description;
+        this.title = title;
+
+        this.admin = admin;
+    }
+
+    public Document(String title) {
+        this.title = title;
+    }
+
+    public Document(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -59,5 +75,17 @@ public class Document {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
+    }
+
+    public Set<User> getBorrowers() {
+        return borrowers;
+    }
+
+    public void setBorrowers(Set<User> borrowers) {
+        this.borrowers = borrowers;
+    }
+
+    public int getId() {
+        return id;
     }
 }

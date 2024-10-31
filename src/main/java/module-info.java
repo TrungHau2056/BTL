@@ -15,6 +15,7 @@ module org.example.btl {
     requires java.naming;
     requires java.compiler;
     requires java.desktop;
+    requires java.persistence;
 
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
     opens org.example.btl.libraryManage to org.hibernate.orm.core;

@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class AdminHome extends Application {
-    public Stage primaryStage;
+public class AdminSearchBook extends Application {
+    private Stage primaryStage;
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(AdminHome.class.getResource("AdminHome.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AdminSearchBook.class.getResource("AdminSearchBook.fxml"));
         Parent root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
@@ -20,9 +20,5 @@ public class AdminHome extends Application {
         stage.setTitle("Admin Home");
         primaryStage = stage;
         primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

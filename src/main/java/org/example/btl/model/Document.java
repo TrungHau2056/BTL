@@ -1,9 +1,8 @@
-package org.example.btl.libraryManage;
+package org.example.btl.model;
 
 import jakarta.persistence.*;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +20,7 @@ public class Document {
     @ManyToMany
     private Set<User> borrowers = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "admin_id")
     private Admin admin;
 

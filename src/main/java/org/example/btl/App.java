@@ -5,18 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.controllers.LoginController;
-import org.example.btl.controllers.SignUpController;
+import org.example.btl.model.HibernateUtils;
 
 import java.io.IOException;
 
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("signUpScene.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/loginScene.fxml"));
         Parent root = fxmlLoader.load();
-
-//        SignUpController signUpController = fxmlLoader.getController();
 
         Scene scene = new Scene(root);
         stage.setTitle("Library");
@@ -27,5 +24,6 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        HibernateUtils.shutdown();
     }
 }

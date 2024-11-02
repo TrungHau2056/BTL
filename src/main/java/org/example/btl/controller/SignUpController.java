@@ -1,4 +1,4 @@
-package org.example.btl.controllers;
+package org.example.btl.controller;
 
 import jakarta.persistence.Query;
 import javafx.event.ActionEvent;
@@ -9,18 +9,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.btl.libraryManage.Account;
-import org.example.btl.libraryManage.Admin;
-import org.example.btl.libraryManage.HibernateUtils;
+import org.example.btl.model.Account;
+import org.example.btl.model.Admin;
+import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
-import javax.lang.model.element.AnnotationMirror;
 import java.io.IOException;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Queue;
 
 public class SignUpController {
     private Stage stage;
@@ -44,7 +41,7 @@ public class SignUpController {
 
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/loginScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/loginScene.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -103,9 +100,8 @@ public class SignUpController {
                 session.persist(admin);
                 session.getTransaction().commit();
                 session.close();
+                //remember to change scene here
             }
-            //remember to change scene here
         }
-
     }
 }

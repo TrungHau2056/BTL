@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controllers.LoginController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.LoginController">
    <children>
       <AnchorPane prefHeight="587.0" prefWidth="349.0" style="-fx-background-color: #bec4d0;" HBox.hgrow="ALWAYS">
          <children>
@@ -35,7 +35,7 @@
             </Label>
             <ImageView fitHeight="250.0" fitWidth="238.0" layoutX="55.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="54.400000000000006" AnchorPane.rightAnchor="55.80000000000001">
                <image>
-                  <Image url="@images/libraryIcon.png" />
+                  <Image url="@../images/libraryIcon.png" />
                </image>
             </ImageView>
          </children>
@@ -47,7 +47,7 @@
             </DropShadow>
          </effect>
       </AnchorPane>
-      <AnchorPane focusTraversable="true" prefHeight="566.0" prefWidth="538.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+      <AnchorPane focusTraversable="true" prefHeight="566.0" prefWidth="538.0" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
          <children>
             <Label layoutX="207.0" layoutY="25.0" prefHeight="81.0" prefWidth="147.0" style="-fx-font-weight: 700;" text="Login" textFill="#466bb0" AnchorPane.leftAnchor="207.0" AnchorPane.rightAnchor="183.39999999999998">
                <font>
@@ -61,11 +61,11 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TextField layoutX="134.0" layoutY="157.0" prefHeight="41.0" prefWidth="296.0" promptText="Username" styleClass="login-inputs" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="108.39999999999998">
+            <TextField fx:id="usernameText" layoutX="134.0" layoutY="157.0" prefHeight="41.0" prefWidth="296.0" promptText="Username" styleClass="login-inputs" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="108.39999999999998">
                <font>
                   <Font size="16.0" />
                </font></TextField>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="301.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="112.0" styleClass="login-signup-Button" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="200.39999999999998">
+            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="301.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="51.0" prefWidth="112.0" styleClass="login-signup-Button" text="Login" textAlignment="CENTER" textFill="WHITE" AnchorPane.leftAnchor="226.0" AnchorPane.rightAnchor="200.39999999999998">
                <font>
                   <Font size="24.0" />
                </font>
@@ -80,18 +80,18 @@
             <Label layoutX="168.0" layoutY="107.0" text="Please enter your username and password!" textFill="#466bb0" AnchorPane.leftAnchor="168.00000000000006" AnchorPane.rightAnchor="142.40000000000003" />
             <ImageView fitHeight="42.0" fitWidth="36.0" layoutX="80.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/userIcon.png" />
+                  <Image url="@../images/userIcon.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="36.0" fitWidth="32.0" layoutX="82.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/passwordIcon.png" />
+                  <Image url="@../images/passwordIcon.png" />
                </image>
             </ImageView>
             <Separator focusTraversable="false" layoutX="20.0" layoutY="414.0" prefHeight="0.0" prefWidth="497.0" style="-fx-background-color: #466bb0;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="181.0" layoutY="365.0" text="Sign up for an admin account" textFill="#466bb0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="199.8" />
             <Label layoutX="221.0" layoutY="430.0" text="Please select your role!" textFill="#466bb0" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="195.0" />
-            <PasswordField layoutX="133.0" layoutY="229.0" prefHeight="42.0" prefWidth="296.0" promptText="Pasword" styleClass="login-inputs" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="108.60000000000002">
+            <PasswordField fx:id="passwordText" layoutX="133.0" layoutY="229.0" prefHeight="42.0" prefWidth="296.0" promptText="Pasword" styleClass="login-inputs" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="108.60000000000002">
                <font>
                   <Font size="16.0" />
                </font>
@@ -102,10 +102,10 @@
                   <Font size="17.0" />
                </font>
                <toggleGroup>
-                  <ToggleGroup fx:id="Role" />
+                  <ToggleGroup fx:id="role" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="298.0" layoutY="468.0" mnemonicParsing="false" text="Admin" textFill="#466bb0" toggleGroup="$Role">
+            <RadioButton layoutX="298.0" layoutY="468.0" mnemonicParsing="false" text="Admin" textFill="#466bb0" toggleGroup="$role">
                <font>
                   <Font size="17.0" />
                </font>

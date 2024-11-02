@@ -1,4 +1,4 @@
-package org.example.btl.libraryManage;
+package org.example.btl.model;
 
 import jakarta.persistence.*;
 
@@ -15,6 +15,8 @@ public abstract class Account {
 
     protected String name;
     protected String email;
+
+    @Column(unique = true)
     protected String username;
     protected String password;
     protected String gender;

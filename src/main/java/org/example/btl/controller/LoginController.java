@@ -11,6 +11,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.btl.model.Admin;
 import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.User;
+import org.example.btl.service.AdminService;
+import org.example.btl.service.UserService;
 import org.hibernate.Session;
 
 import java.io.IOException;
@@ -18,6 +21,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class LoginController {
+    private AdminService adminService;
+    private UserService userService;
+    Alert alert = new Alert(Alert.AlertType.ERROR);
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -52,19 +59,26 @@ public class LoginController {
             alert.setContentText("Please enter all the information!");
             alert.show();
         } else {
-            Session session = HibernateUtils.getSessionFactory().openSession();
-            session.beginTransaction();
-            Query query = session.createQuery("FROM Admin WHERE username = :username and password = :password");
-            query.setParameter("username", username);
-            query.setParameter("password", password);
-            List<Admin> admins = query.getResultList();
-
-            if (admins.isEmpty()) {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Wrong login information! Please try again");
-                alert.show();
+            if (role.equals("User")) {
+                userService = new UserService();
+                User user = userService.findByPassAndUsername(username, password);
+                if (user == null) {
+                    alert.setContentText("Wrong login information! Please try again");
+                    alert.show();
+                }
+                else {
+                    //change to user scene
+                }
             } else {
-                //remember to change scene here
+                adminService = new AdminService();
+                Admin admin = adminService.findByPassAndUsername(username, password);
+                if (admin == null) {
+                    alert.setContentText("Wrong login information! Please try again");
+                    alert.show();
+                } else {
+                    //change to admin scene
+                    System.out.println("Success");
+                }
             }
         }
     }

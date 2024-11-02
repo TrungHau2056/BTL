@@ -8,10 +8,11 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class AdminDAO implements BaseDAO<Admin>{
-    private Session session = HibernateUtils.getSessionFactory().openSession();
+    private Session session;
 
     @Override
     public void save(Admin item) {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.persist(item);
         session.getTransaction().commit();
@@ -20,6 +21,7 @@ public class AdminDAO implements BaseDAO<Admin>{
 
     @Override
     public void update(Admin item) {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.merge(item);
         session.getTransaction().commit();
@@ -28,6 +30,7 @@ public class AdminDAO implements BaseDAO<Admin>{
 
     @Override
     public void delete(Admin item) {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         session.remove(item);
         session.getTransaction().commit();
@@ -36,6 +39,7 @@ public class AdminDAO implements BaseDAO<Admin>{
 
     @Override
     public List<Admin> findAll() {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createQuery("FROM Admin", Admin.class);
         List<Admin> admins = query.getResultList();
@@ -45,6 +49,7 @@ public class AdminDAO implements BaseDAO<Admin>{
 
     @Override
     public Admin findById(int id) {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         Admin admin = session.get(Admin.class, id);
         session.close();
@@ -52,12 +57,25 @@ public class AdminDAO implements BaseDAO<Admin>{
     }
 
     public Admin findByUsername(String username) {
+        session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
         Query query = session.createQuery("FROM Admin WHERE username = :username");
         query.setParameter("username", username);
         List<Admin> admins = query.getResultList();
         session.close();
         if (admins.isEmpty()) return null;
-        else return admins.get(0);
+        else return admins.getFirst();
+    }
+
+    public Admin findByPassAndUsername(String username, String password) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Admin WHERE username = :username and password = :password");
+        query.setParameter("username", username);
+        query.setParameter("password", password);
+        List<Admin> admins = query.getResultList();
+        session.close();
+        if (admins.isEmpty()) return null;
+        else return admins.getFirst();
     }
 }

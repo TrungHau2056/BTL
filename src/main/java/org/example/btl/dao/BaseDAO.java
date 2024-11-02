@@ -1,5 +1,8 @@
 package org.example.btl.dao;
 
+import org.example.btl.model.HibernateUtils;
+import org.hibernate.Session;
+
 import java.util.List;
 
 public interface BaseDAO<T> {

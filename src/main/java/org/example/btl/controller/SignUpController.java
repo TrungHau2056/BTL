@@ -1,6 +1,5 @@
 package org.example.btl.controller;
 
-import jakarta.persistence.Query;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,42 +60,21 @@ public class SignUpController {
 
         Date birthday = birthdayText.getValue() == null ? null : Date.valueOf(birthdayText.getValue());
 
-        if (Objects.equals(name, "")
-            || Objects.equals(email, "")
-            || Objects.equals(username, "")
-            || Objects.equals(password, "")
-            || Objects.equals(confirmedPassword, "")
-            || Objects.equals(gender, "")
-            || Objects.equals(birthday, null)) {
-            alert.setContentText("Please enter all the information!");
-            alert.show();
-        } else if (!Objects.equals(password, confirmedPassword)) {
-            alert.setContentText("Passwords do not match. Please try again.");
-            alert.show();
-        } else if (username.length() < 6) {
-            alert.setContentText("Your username must be at least 6 characters long.");
-            alert.show();
-        } else if (password.length() < 8) {
-            alert.setContentText("Your Password must be at least 8 characters long.");
+        String validationMess = adminService.validateRegistration(name, email, username, password, confirmedPassword, gender, birthday);
+        if (validationMess != null) {
+            alert.setContentText(validationMess);
             alert.show();
         } else {
-            Admin admin = adminService.findByUsername(username);
+            Admin newAdmin = new Admin(name, email, username, password, birthday, gender);
+            adminService.save(newAdmin);
 
-            if (admin != null) {
-                alert.setContentText("This username already exists. Please choose another one.");
-                alert.show();
-            } else {
-                Admin newAdmin = new Admin(name, email, username, password, birthday, gender);
-                adminService.save(newAdmin);
-
-                //change scene
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccessScene.fxml"));
-                root = loader.load();
-                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
-            }
+            //change scene
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccessScene.fxml"));
+            root = loader.load();
+            stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 }

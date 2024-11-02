@@ -77,7 +77,6 @@ public class LoginController {
                     alert.show();
                 } else {
                     //change to admin scene
-                    System.out.println("Success");
                 }
             }
         }

@@ -15,12 +15,14 @@ module org.example.btl {
     requires java.naming;
     requires java.compiler;
     requires java.desktop;
+    requires java.persistence;
 
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
     opens org.example.btl.libraryManage to org.hibernate.orm.core;
     opens org.example.btl.controllers to javafx.fxml, org.hibernate.orm.core;
 //    opens org.example.btl.fxmlFiles to javafx.fxml;
     exports org.example.btl;
+    exports org.example.btl.libraryManage; // Xuất để cho phép JavaFX truy cập
     exports org.example.btl.controllers;
 
 }

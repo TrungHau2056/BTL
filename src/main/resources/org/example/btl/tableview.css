@@ -1,0 +1,11 @@
+.table-view {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: #ffffff;
+     -fx-border-color: transparent transparent #454444 transparent;
+
+}
+

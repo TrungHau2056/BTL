@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import org.example.btl.libraryManage.Account;
 import org.example.btl.libraryManage.Admin;
 import org.example.btl.libraryManage.HibernateUtils;
+import org.example.btl.libraryManage.User;
 import org.hibernate.Session;
 
 import javax.lang.model.element.AnnotationMirror;
@@ -89,22 +90,22 @@ public class SignUpController {
         } else {
             Session session = HibernateUtils.getSessionFactory().openSession();
             session.beginTransaction();
-            Query query = session.createQuery("FROM Admin WHERE username = :username");
+            Query query = session.createQuery("FROM User WHERE username = :username");
             query.setParameter("username", username);
             List admins = query.getResultList();
-            session.close();
-            HibernateUtils.shutdown();
-            if (admins != null) {
+
+            if (!admins.isEmpty()) {
+                session.close();
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("This username already exists. Please choose another one.");
                 alert.show();
             } else {
-                session.beginTransaction();
+
                 Account admin = new Admin(name, email, username, password, birthday, gender);
                 session.persist(admin);
                 session.getTransaction().commit();
                 session.close();
-                HibernateUtils.shutdown();
+
             }
             //remember to change scene here
         }

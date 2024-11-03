@@ -12,13 +12,13 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        int check = 0;
+        int check = 1;
         FXMLLoader fxmlLoader = null;
 
         if(check == 1) {
-             fxmlLoader = new FXMLLoader(App.class.getResource("signUpScene.fxml"));
+             fxmlLoader = new FXMLLoader(App.class.getResource("view/signUpScene.fxml"));
         } else if(check == 0) {
-             fxmlLoader = new FXMLLoader(App.class.getResource("userScene.fxml"));
+             fxmlLoader = new FXMLLoader(App.class.getResource("view/userScene.fxml"));
         }
             Parent root = fxmlLoader.load();
 

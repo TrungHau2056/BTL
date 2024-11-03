@@ -89,6 +89,9 @@ public class LoginController {
                     alert.show();
                 } else {
                     //change to admin scene
+                    System.out.println("success");
+                    AdminHomeController adminHomeController = new AdminHomeController();
+                    adminHomeController.switchToAdminHome(event);
                 }
             }
         }

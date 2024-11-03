@@ -1,4 +1,4 @@
-package org.example.btl.controllers;
+package org.example.btl.controller;
 
 import jakarta.persistence.Query;
 import javafx.collections.FXCollections;
@@ -10,9 +10,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.btl.libraryManage.Document;
-import org.example.btl.libraryManage.HibernateUtils;
-import org.example.btl.libraryManage.User;
+import org.example.btl.model.Document;
+import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.User;
 import org.hibernate.Session;
 
 import java.net.URL;

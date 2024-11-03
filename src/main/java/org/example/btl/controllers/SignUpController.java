@@ -9,10 +9,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import org.example.btl.libraryManage.Account;
-import org.example.btl.libraryManage.Admin;
-import org.example.btl.libraryManage.HibernateUtils;
-import org.example.btl.libraryManage.User;
+import org.example.btl.model.Account;
+import org.example.btl.model.Admin;
+import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.User;
 import org.hibernate.Session;
 
 import javax.lang.model.element.AnnotationMirror;

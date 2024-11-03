@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controllers.SignUpController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.SignUpController">
     <children>
         <AnchorPane prefHeight="587.0" prefWidth="349.0" style="-fx-background-color: #bec4d0;" HBox.hgrow="ALWAYS">
             <children>
@@ -34,7 +34,7 @@
                 </Label>
                 <ImageView fitHeight="250.0" fitWidth="238.0" layoutX="55.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="55.60000000000002">
                     <image>
-                        <Image url="@images/libraryIcon.png" />
+                        <Image url="@../images/libraryIcon.png" />
                     </image>
                 </ImageView>
             </children>
@@ -46,7 +46,7 @@
             </DropShadow>
          </effect>
         </AnchorPane>
-        <AnchorPane focusTraversable="true" prefHeight="566.0" prefWidth="538.0" stylesheets="@style.css" HBox.hgrow="ALWAYS">
+        <AnchorPane focusTraversable="true" prefHeight="566.0" prefWidth="538.0" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
          <children>
             <TextField fx:id="usernameText" layoutX="72.0" layoutY="248.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your username" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
             <TextField fx:id="nameText" layoutX="72.0" layoutY="127.0" prefHeight="36.0" prefWidth="207.0" promptText="Enter your name" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="257.6" />
@@ -64,7 +64,7 @@
             </Label>
             <PasswordField fx:id="passwordText" layoutX="72.0" layoutY="310.0" prefHeight="36.0" prefWidth="267.0" promptText="Enter your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
             <PasswordField fx:id="confirmedPasswordText" layoutX="72.0" layoutY="373.0" prefHeight="36.0" prefWidth="267.0" promptText="Confirm your password" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="197.60000000000002" />
-            <Button layoutX="215.0" layoutY="510.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="51.0" prefWidth="128.0" styleClass="login-signup-Button" text="Sign up" textFill="WHITE" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="194.60000000000002">
+            <Button layoutX="215.0" layoutY="494.0" mnemonicParsing="false" onAction="#handleSignUp" prefHeight="51.0" prefWidth="128.0" styleClass="login-signup-Button" text="Sign up" textFill="WHITE" AnchorPane.leftAnchor="215.0" AnchorPane.rightAnchor="194.60000000000002">
                <font>
                   <Font size="24.0" />
                </font>
@@ -90,8 +90,8 @@
             </RadioButton>
             <TextField fx:id="emailText" layoutX="72.0" layoutY="187.0" prefHeight="36.0" prefWidth="227.0" promptText="Enter your email" styleClass="login-inputs" AnchorPane.leftAnchor="72.0" AnchorPane.rightAnchor="237.60000000000002" />
             <DatePicker fx:id="birthdayText" layoutX="310.0" layoutY="127.0" prefHeight="36.0" prefWidth="182.0" promptText="Choose your birthday" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="44.39999999999998" />
-            <Label layoutX="193.0" layoutY="485.0" text="Already have an account?" textFill="#466bb0" />
-            <Hyperlink layoutX="328.0" layoutY="482.0" onAction="#switchToLogin" text="Login" textFill="#d41ece" underline="true" />
+            <Label layoutX="193.0" layoutY="473.0" text="Already have an account?" textFill="#466bb0" />
+            <Hyperlink layoutX="328.0" layoutY="470.0" onAction="#switchToLogin" text="Login" textFill="#d41ece" underline="true" />
          </children></AnchorPane>
     </children>
 </HBox>

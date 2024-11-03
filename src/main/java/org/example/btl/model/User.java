@@ -1,4 +1,4 @@
-package org.example.btl.libraryManage;
+package org.example.btl.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;

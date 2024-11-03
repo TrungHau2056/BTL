@@ -38,6 +38,20 @@ public class AdminHomeController {
         stage.show();
     }
 
+
+
+    @FXML
+    public void switchToAdminSearchBook(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/AdminSearchBook.fxml"));
+        root = fxmlLoader.load();
+
+        Scene scene = new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
     public void switchToAddMemberScene(ActionEvent event) throws  IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/AddMember.fxml"));
         root = fxmlLoader.load();

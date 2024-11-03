@@ -1,0 +1,40 @@
+.login-inputs {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color:  #466bb0;
+    -fx-background-color: #fff
+}
+
+.login-signup-Button {
+    -fx-font-size: 24;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-background-color: #466bb0;
+    -fx-font-weight: 700
+
+}
+
+.login-signup-Button:hover {
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-background-color: #6991db;
+    -fx-font-weight: 700
+}
+
+.date-picker {
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-border-color:  #466bb0;
+    -fx-background-color: #fff
+}
+
+.date-picker .text-field {
+    -fx-background-radius: 12 0 0 12;
+    -fx-border-radius: 12 0 0 12;
+}
+
+.date-picker .arrow-button {
+    -fx-background-radius: 0 12 12 0;
+    -fx-border-radius: 0 12 12 0;
+}
+

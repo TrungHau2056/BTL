@@ -1,12 +1,10 @@
 package org.example.btl.controller;
 
-import jakarta.persistence.Query;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -17,10 +15,9 @@ import org.example.btl.service.UserService;
 import org.hibernate.Session;
 
 import java.net.URL;
-import java.sql.Date;
 import java.util.*;
 
-public class userSceneController implements Initializable {
+public class userHomeController implements Initializable {
     private String userName;
     private String passWord;
     private String name;
@@ -33,7 +30,7 @@ public class userSceneController implements Initializable {
     Set<Document> documents  = new HashSet<>();
 
 
-    public userSceneController() {
+    public userHomeController() {
     }
 
     public void setPassWord(String passWord) {

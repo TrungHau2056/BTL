@@ -130,9 +130,9 @@
                 </TableView>
             </children>
             <effect>
-                <DropShadow height="38.59" radius="18.0625" spread="0.57" width="35.66">
+                <DropShadow height="13.98" spread="0.57" width="28.02">
                     <color>
-                        <Color red="0.3684210479259491" green="0.334307998418808" blue="0.334307998418808" />
+                        <Color red="0.4287280738353729" green="0.39144736528396606" blue="0.44736841320991516" />
                     </color>
                 </DropShadow>
             </effect>

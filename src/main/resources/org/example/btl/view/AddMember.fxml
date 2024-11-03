@@ -14,10 +14,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
-
 <?import javafx.scene.control.ToggleGroup?>
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
          <effect>
@@ -160,16 +158,16 @@
                <font>
                   <Font size="14.0" />
                </font>
-                <toggleGroup>
-                    <ToggleGroup fx:id="gender" />
-                </toggleGroup>
+               <toggleGroup>
+                  <ToggleGroup fx:id="gender" />
+               </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="393.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="gender">
+            <RadioButton layoutX="393.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="$gender">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <RadioButton layoutX="525.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="gender">
+            <RadioButton layoutX="525.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender">
                <font>
                   <Font size="14.0" />
                </font>

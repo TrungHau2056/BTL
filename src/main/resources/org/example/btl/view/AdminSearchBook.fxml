@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.image.Image?>
@@ -29,7 +31,7 @@
                 </Label>
                 <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="52.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../../../search_15657559.png" />
+                        <Image url="@../images/searchIcon.png" />
                     </image>
                 </ImageView>
                 <Pane layoutX="45.0" layoutY="399.0" prefHeight="230.0" prefWidth="283.0">
@@ -38,7 +40,7 @@
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../book.png" />
+                                        <Image url="@../images/borrowBookIcon.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -65,7 +67,7 @@
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../manual_5107976.png" />
+                                        <Image url="@../images/fix.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -74,7 +76,7 @@
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../book_4797697.png" />
+                                        <Image url="@../images/removeBookIcon.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -83,7 +85,7 @@
                             <graphic>
                                 <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../../../../search.png" />
+                                        <Image url="@../images/searchBookIcon.png" />
                                     </image>
                                 </ImageView>
                             </graphic>
@@ -105,17 +107,29 @@
                 <Reflection />
             </effect>
          <children>
-            <Label layoutX="228.0" layoutY="116.0" text="Search Book">
+            <Label layoutX="228.0" layoutY="21.0" text="Search Book">
                <font>
                   <Font size="73.0" />
                </font>
             </Label>
-            <TextField layoutX="116.0" layoutY="259.0" prefHeight="42.0" prefWidth="622.0" promptText="Search for something you need..." style="-fx-background-radius: 12px;">
+            <TextField layoutX="95.0" layoutY="147.0" prefHeight="42.0" prefWidth="663.0" promptText="Search for something you need..." style="-fx-background-radius: 12px;">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </TextField>
-            <ChoiceBox fx:id="Type" layoutX="116.0" layoutY="328.0" prefHeight="26.0" prefWidth="114.0" />
+            <ChoiceBox fx:id="TypeBook" layoutX="95.0" layoutY="216.0" prefHeight="26.0" prefWidth="114.0" />
+            <TableView layoutX="95.0" layoutY="276.0" prefHeight="419.0" prefWidth="663.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="95.19998779296873" text="C1" />
+              </columns>
+            </TableView>
          </children>
         </AnchorPane>
     </children>

@@ -11,9 +11,9 @@
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="show_sql">true</property>
-        <mapping class="org.example.btl.libraryManage.Admin"/>
-        <mapping class="org.example.btl.libraryManage.User"/>
-        <mapping class="org.example.btl.libraryManage.Document"/>
-        <mapping class="org.example.btl.libraryManage.Author"/>
+        <mapping class="org.example.btl.model.Admin"/>
+        <mapping class="org.example.btl.model.User"/>
+        <mapping class="org.example.btl.model.Document"/>
+        <mapping class="org.example.btl.model.Author"/>
     </session-factory>
 </hibernate-configuration>

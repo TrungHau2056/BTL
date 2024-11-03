@@ -1,4 +1,4 @@
-package org.example.btl.controllers;
+package org.example.btl.controller;
 
 import jakarta.persistence.Query;
 import javafx.collections.FXCollections;
@@ -10,9 +10,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.btl.libraryManage.Document;
-import org.example.btl.libraryManage.HibernateUtils;
-import org.example.btl.libraryManage.User;
+import org.example.btl.model.Document;
+import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.User;
 import org.hibernate.Session;
 
 import java.net.URL;
@@ -33,7 +33,7 @@ public class userSceneController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("FROM User WHERE id = :id");
+        Query query = session.createQuery("FROM User WHERE id = :id", User.class);
         query.setParameter("id", 1);
         users = query.getResultList();
 
@@ -43,13 +43,13 @@ public class userSceneController implements Initializable {
         } else {
             userinfo.setText(user.getName());
             // document
-            Query query2 = session.createQuery("FROM Document");
+            Query query2 = session.createQuery("FROM Document", Document.class);
             List<Document> list_document ;
             list_document = query2.getResultList();
             for(Document x : list_document) {
                 documents.add(x);
             }
-            user.setBorrowedDocuments(documents);
+            user.setBorrowedDocuments(new HashSet<>(list_document));
             session.save(user);
 
             table_document_id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -58,8 +58,6 @@ public class userSceneController implements Initializable {
                     new Document(user.getBorrowedDocuments().iterator().next().getId(), user.getBorrowedDocuments().iterator().next().getTitle())
             );
             tableview.setItems(documentlist);
-
-
 
         }
 

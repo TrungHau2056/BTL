@@ -17,7 +17,7 @@ import org.hibernate.Session;
 import java.net.URL;
 import java.util.*;
 
-public class userHomeController implements Initializable {
+public class UserHomeController implements Initializable {
     private String userName;
     private String passWord;
     private String name;
@@ -30,7 +30,7 @@ public class userHomeController implements Initializable {
     Set<Document> documents  = new HashSet<>();
 
 
-    public userHomeController() {
+    public UserHomeController() {
     }
 
     public void setPassWord(String passWord) {

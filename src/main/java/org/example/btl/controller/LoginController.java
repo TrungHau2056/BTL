@@ -66,7 +66,7 @@ public class LoginController {
                     //change to user scene
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
                     root = loader.load();
-                    userHomeController controller = loader.getController();
+                    UserHomeController controller = loader.getController();
                     controller.setUserName(username);
                     controller.setPassWord(password);
                     controller.setUserInfo();

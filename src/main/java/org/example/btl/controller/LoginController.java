@@ -45,7 +45,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void handleLogin(ActionEvent event) {
+    public void handleLogin(ActionEvent event) throws IOException {
         String username = usernameText.getText();
         String password = passwordText.getText();
 
@@ -77,6 +77,9 @@ public class LoginController {
                     alert.show();
                 } else {
                     //change to admin scene
+                    System.out.println("success");
+                    AdminHomeController adminHomeController = new AdminHomeController();
+                    adminHomeController.switchToAdminHome(event);
                 }
             }
         }

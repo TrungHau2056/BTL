@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 20px; -fx-background-color: #466bb0;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.AdminHomeController">
+<HBox fx:id="hbox" alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 20px; -fx-background-color: #466bb0;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AdminHomeController">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="416.0">
          <children>
@@ -29,7 +29,7 @@
             </Label>
             <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="52.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../search_15657559.png" />
+                  <Image url="@../../../../search_15657559.png" />
                </image>
             </ImageView>
             <Pane layoutX="45.0" layoutY="399.0" prefHeight="230.0" prefWidth="283.0">
@@ -38,7 +38,7 @@
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../book.png" />
+                              <Image url="@../images/borrowBookIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -47,7 +47,7 @@
                      <graphic>
                         <ImageView fitHeight="73.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../add-user_9073042.png" />
+                              <Image url="@../images/AddUser.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -56,7 +56,7 @@
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../book_12766630.png" />
+                              <Image url="@../../../../book_12766630.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -65,7 +65,7 @@
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../manual_5107976.png" />
+                              <Image url="@../images/fix.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -74,7 +74,7 @@
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../book_4797697.png" />
+                              <Image url="@../images/removeBookIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -83,7 +83,7 @@
                      <graphic>
                         <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../search.png" />
+                              <Image url="@../images/searchBookIcon.png" />
                            </image>
                         </ImageView>
                      </graphic>

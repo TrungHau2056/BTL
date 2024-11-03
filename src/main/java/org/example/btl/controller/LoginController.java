@@ -45,7 +45,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void handleLogin(ActionEvent event) {
+    public void handleLogin(ActionEvent event) throws IOException {
         String username = usernameText.getText();
         String password = passwordText.getText();
 
@@ -68,6 +68,18 @@ public class LoginController {
                 }
                 else {
                     //change to user scene
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userScene.fxml"));
+                    root = loader.load();
+                    userSceneController controller = loader.getController();
+                    controller.setUserName(username);
+                    controller.setPassWord(password);
+                    controller.setUserInfo();
+
+                    //System.out.println(username + " " + password);
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             } else {
                 adminService = new AdminService();

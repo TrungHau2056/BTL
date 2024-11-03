@@ -17,6 +17,10 @@ public class AdminHomeController {
     private HBox hbox;
 
     @FXML
+    private Button SearchButton;
+
+
+    @FXML
     public void initialize() {
     }
 
@@ -34,8 +38,7 @@ public class AdminHomeController {
         stage.show();
     }
 
-    @FXML
-    private Button SearchButton;
+
 
     @FXML
     public void switchToAdminSearchBook(ActionEvent event) throws IOException {
@@ -43,6 +46,16 @@ public class AdminHomeController {
         root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void switchToAddMemberScene(ActionEvent event) throws  IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/AddMember.fxml"));
+        root = fxmlLoader.load();
+        scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.setResizable(false);

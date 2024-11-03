@@ -7,6 +7,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.control.ToggleGroup?>
+
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
@@ -144,11 +145,11 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <TextField layoutX="56.0" layoutY="133.0" prefHeight="36.0" prefWidth="303.0" promptText="Enter user's name" styleClass="login-inputs" />
-            <TextField layoutX="56.0" layoutY="201.0" prefHeight="36.0" prefWidth="249.0" promptText="Enter user's email" styleClass="login-inputs" />
-            <TextField layoutX="56.0" layoutY="269.0" prefHeight="36.0" prefWidth="218.0" promptText="Enter user's username" styleClass="login-inputs" />
-            <PasswordField layoutX="55.0" layoutY="337.0" prefHeight="36.0" prefWidth="240.0" promptText="Enter user's password" styleClass="login-inputs" />
-            <DatePicker layoutX="56.0" layoutY="405.0" prefHeight="36.0" prefWidth="180.0" promptText="Choose user's birthday" styleClass="date-picker" />
+            <TextField fx:id="nameText" layoutX="56.0" layoutY="133.0" prefHeight="36.0" prefWidth="303.0" promptText="Enter user's name" styleClass="login-inputs" />
+            <TextField fx:id="emailText" layoutX="56.0" layoutY="201.0" prefHeight="36.0" prefWidth="249.0" promptText="Enter user's email" styleClass="login-inputs" />
+            <TextField fx:id="usernameText" layoutX="56.0" layoutY="269.0" prefHeight="36.0" prefWidth="218.0" promptText="Enter user's username" styleClass="login-inputs" />
+            <PasswordField fx:id="passwordText" layoutX="55.0" layoutY="337.0" prefHeight="36.0" prefWidth="240.0" promptText="Enter user's password" styleClass="login-inputs" />
+            <DatePicker fx:id="birthdayText" layoutX="56.0" layoutY="405.0" prefHeight="36.0" prefWidth="180.0" promptText="Choose user's birthday" styleClass="date-picker" />
             <Label layoutX="55.0" layoutY="481.0" style="-fx-font-weight: 700;" text="Choose user's gender:" textFill="#466bb0">
                <font>
                   <Font size="17.0" />
@@ -172,7 +173,7 @@
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <Button layoutX="401.0" layoutY="573.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="111.0" styleClass="login-signup-Button" text="Add" textFill="WHITE" />
+            <Button fx:id="addButton" layoutX="401.0" layoutY="573.0" mnemonicParsing="false" onAction="#handleAddMember" prefHeight="58.0" prefWidth="111.0" styleClass="login-signup-Button" text="Add" textFill="WHITE" />
             <ImageView fitHeight="274.0" fitWidth="369.0" layoutX="481.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/memberShip.png" />

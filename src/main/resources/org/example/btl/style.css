@@ -14,6 +14,26 @@
 
 }
 
+.admin-button-functions {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+}
+.admin-button-functions: hover{
+    -fx-background-color: #BDA0E4;
+}
+
+.homescreen-button{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+}
+
+.homescreen-button:hover{
+    -fx-background-color:#D3D3D3;
+}
+
+
+
 .login-signup-Button:hover {
     -fx-border-radius: 12;
     -fx-background-radius: 12;

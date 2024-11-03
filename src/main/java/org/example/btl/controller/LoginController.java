@@ -1,6 +1,5 @@
 package org.example.btl.controller;
 
-import jakarta.persistence.Query;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,14 +9,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import org.example.btl.model.Admin;
-import org.example.btl.model.HibernateUtils;
 import org.example.btl.model.User;
 import org.example.btl.service.AdminService;
 import org.example.btl.service.UserService;
-import org.hibernate.Session;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 public class LoginController {
@@ -68,6 +64,18 @@ public class LoginController {
                 }
                 else {
                     //change to user scene
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
+                    root = loader.load();
+                    UserHomeController controller = loader.getController();
+                    controller.setUserName(username);
+                    controller.setPassWord(password);
+                    controller.setUserInfo();
+
+                    //System.out.println(username + " " + password);
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             } else {
                 adminService = new AdminService();

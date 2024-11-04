@@ -9,36 +9,24 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import org.example.btl.model.Admin;
 
 import java.io.IOException;
 
 public class AdminHomeController {
-    @FXML
-    private HBox hbox;
-
-    @FXML
-    private Button SearchButton;
-
-
-    @FXML
-    public void initialize() {
-    }
+    private Admin admin;
 
     private Stage stage;
     private Parent root;
     private Scene scene;
 
-    public void switchToAdminHome(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/AdminHome.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    public Admin getAdmin() {
+        return admin;
     }
 
-
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
 
     @FXML
     public void switchToAdminSearchBook(ActionEvent event) throws IOException {
@@ -46,16 +34,6 @@ public class AdminHomeController {
         root = fxmlLoader.load();
 
         Scene scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
-    }
-
-    public void switchToAddMemberScene(ActionEvent event) throws  IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/AddMember.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.setResizable(false);

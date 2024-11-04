@@ -114,7 +114,7 @@
                 </ImageView>
                 <StackPane layoutX="11.0" layoutY="295.0" prefHeight="45.0" prefWidth="842.0">
                     <children>
-                        <Label fx:id="userinfo" text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">
+                        <Label fx:id="userinfo" text="aaaaaaaaaaaaa">
                             <font>
                                 <Font size="24.0" />
                             </font>

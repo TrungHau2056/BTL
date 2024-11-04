@@ -13,7 +13,6 @@ import org.example.btl.service.AdminService;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.Objects;
 
 public class SignUpController {
     private AdminService adminService = new AdminService();
@@ -54,11 +53,10 @@ public class SignUpController {
         String username = usernameText.getText();
         String password = passwordText.getText();
         String confirmedPassword = confirmedPasswordText.getText();
-
+        Date birthday = birthdayText.getValue() == null ? null : Date.valueOf(birthdayText.getValue());
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
         String gender = selectedGender == null ? "" : selectedGender.getText();
 
-        Date birthday = birthdayText.getValue() == null ? null : Date.valueOf(birthdayText.getValue());
 
         String validationMess = adminService.validateRegistration(name, email, username, password, confirmedPassword, gender, birthday);
         if (validationMess != null) {

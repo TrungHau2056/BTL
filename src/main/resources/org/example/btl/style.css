@@ -1,3 +1,9 @@
+.anchor-pane {
+    -fx-background-image: url("images/library.png");
+    -fx-background-size: 100% 100%;
+
+}
+
 .login-inputs {
     -fx-background-radius: 12;
     -fx-border-radius: 12;

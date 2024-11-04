@@ -1,4 +1,4 @@
 package org.example.btl.controller;
 
-public class AddMemberController    {
+public class AddMemberController {
 }

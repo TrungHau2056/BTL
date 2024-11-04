@@ -67,11 +67,9 @@ public class LoginController {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
                     root = loader.load();
                     UserHomeController controller = loader.getController();
-                    controller.setUserName(username);
-                    controller.setPassWord(password);
+                    controller.setUser(user);
                     controller.setUserInfo();
 
-                    //System.out.println(username + " " + password);
                     stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
                     stage.setScene(scene);
@@ -85,9 +83,15 @@ public class LoginController {
                     alert.show();
                 } else {
                     //change to admin scene
-                    System.out.println("success");
-                    AdminHomeController adminHomeController = new AdminHomeController();
-                    adminHomeController.switchToAdminHome(event);
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
+                    root = loader.load();
+                    AdminHomeController controller = loader.getController();
+                    controller.setAdmin(admin);
+
+                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
                 }
             }
         }

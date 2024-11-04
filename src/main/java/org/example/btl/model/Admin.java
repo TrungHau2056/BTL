@@ -1,7 +1,6 @@
 package org.example.btl.model;
 
 import jakarta.persistence.*;
-
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;

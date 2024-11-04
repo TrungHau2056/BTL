@@ -12,19 +12,13 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = null;
-
-
-             fxmlLoader = new FXMLLoader(App.class.getResource("view/signUpScene.fxml"));
-            Parent root = fxmlLoader.load();
-
-//        SignUpController signUpController = fxmlLoader.getController();
-
-            Scene scene = new Scene(root);
-            stage.setTitle("Library");
-            stage.setScene(scene);
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/addMember.fxml"));
+        Parent root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        stage.setTitle("Library");
+        stage.setScene(scene);
 //        stage.setResizable(false);
-            stage.show();
+        stage.show();
     }
 
     public static void main(String[] args) {

@@ -12,6 +12,7 @@ import org.example.btl.model.Admin;
 import java.io.IOException;
 
 public class AdminHomeController {
+
     private Admin admin;
 
     private Stage stage;
@@ -29,6 +30,16 @@ public class AdminHomeController {
     @FXML
     public void switchToAdminSearchBook(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminSearchBook.fxml"));
+        root = fxmlLoader.load();
+        scene = new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
+
+    public void switchToAddMemberScene(ActionEvent event) throws  IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/addMember.fxml"));
         root = fxmlLoader.load();
         scene = new Scene(root);
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

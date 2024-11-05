@@ -83,7 +83,7 @@ public class LoginController {
                     alert.show();
                 } else {
                     //change to admin scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminHome.fxml"));
                     root = loader.load();
                     AdminHomeController controller = loader.getController();
                     controller.setAdmin(admin);

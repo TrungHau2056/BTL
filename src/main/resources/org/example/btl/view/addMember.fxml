@@ -18,7 +18,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@../style.css">
          <effect>
             <DropShadow height="13.98" width="28.02">
                <color>
@@ -96,7 +96,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="152.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+            <Button layoutX="152.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: #fff98c;" styleClass="admin-button-functions" textFill="#fff98c">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -24,6 +24,8 @@
     -fx-background-color: #ffffff;
     -fx-background-radius: 20;
     -fx-cursor: hand;
+     -fx-pref-width: 73px;
+     -fx-pref-height: 67px;
 }
 .admin-button-functions: hover{
     -fx-background-color: #BDA0E4;

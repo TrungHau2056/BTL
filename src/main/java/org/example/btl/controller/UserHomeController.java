@@ -49,7 +49,8 @@ public class UserHomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-            userinfo.setText(user.getName());
+//            userinfo.setText(user.getName());
+            userinfo.setText("gfhfrfd");
 
 //            Query query2 = session.createQuery("FROM Document", Document.class);
 //            List<Document> list_document ;

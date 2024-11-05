@@ -1,6 +1,6 @@
 .anchor-pane {
-    -fx-background-image: url("images/library.png");
-    -fx-background-size: 100% 100%;
+    -fx-background-image: url("images/background.jpg");
+    -fx-background-size: cover;
 
 }
 

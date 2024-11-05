@@ -87,7 +87,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="35.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+            <Button layoutX="35.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,7 +96,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="152.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: #fff98c;" styleClass="admin-button-functions" textFill="#fff98c">
+            <Button layoutX="152.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: #fff98c;" styleClass="admin-button-functions" textFill="#fff98c">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -105,7 +105,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="267.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+            <Button layoutX="267.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,6 +114,36 @@
                   </ImageView>
                </graphic>
             </Button>
+            <Label layoutX="36.0" layoutY="527.0" text="Search Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="158.0" layoutY="527.0" text="Add Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="262.0" layoutY="527.0" text="Remove Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="34.0" layoutY="641.0" text="Update Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="151.0" layoutY="641.0" text="Add Member" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="286.0" layoutY="641.0" text="Books" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../style.css">

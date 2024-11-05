@@ -1,6 +1,8 @@
 package org.example.btl.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 
 import javax.persistence.OneToMany;
@@ -10,9 +12,7 @@ import java.util.Set;
 
 @Entity
 public class User extends Account {
-
-
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Document> borrowedDocuments = new HashSet<>();
 
     public User() {}

@@ -18,7 +18,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="400.0" styleClass="anchor-pane" stylesheets="@../style.css">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
          <effect>
             <DropShadow height="13.98" width="28.02">
                <color>
@@ -87,7 +87,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="35.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+            <Button layoutX="35.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -96,7 +96,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="152.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: #fff98c;" styleClass="admin-button-functions" textFill="#fff98c">
+            <Button layoutX="152.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -105,7 +105,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button layoutX="267.0" layoutY="563.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+            <Button layoutX="267.0" layoutY="546.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -114,36 +114,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label layoutX="36.0" layoutY="527.0" text="Search Books" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="158.0" layoutY="527.0" text="Add Books" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="262.0" layoutY="527.0" text="Remove Books" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="34.0" layoutY="641.0" text="Update Books" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="641.0" text="Add Member" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="286.0" layoutY="641.0" text="Books" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../style.css">
@@ -203,7 +173,7 @@
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <Button fx:id="addButton" layoutX="401.0" layoutY="573.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="111.0" styleClass="login-signup-Button" text="Add" textFill="WHITE" />
+            <Button fx:id="addButton" layoutX="401.0" layoutY="573.0" mnemonicParsing="false" onAction="#handleAddMember" prefHeight="58.0" prefWidth="111.0" styleClass="login-signup-Button" text="Add" textFill="WHITE" />
             <ImageView fitHeight="274.0" fitWidth="369.0" layoutX="481.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/memberShip.png" />

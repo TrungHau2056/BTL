@@ -1,3 +1,7 @@
+.anchor-pane {
+    -fx-background-color: #466bb0;
+}
+
 .login-inputs {
     -fx-background-radius: 12;
     -fx-border-radius: 12;
@@ -18,6 +22,8 @@
     -fx-background-color: #ffffff;
     -fx-background-radius: 20;
     -fx-cursor: hand;
+     -fx-pref-width: 73px;
+     -fx-pref-height: 67px;
 }
 .admin-button-functions: hover{
     -fx-background-color: #BDA0E4;

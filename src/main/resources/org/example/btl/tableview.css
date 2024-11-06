@@ -1,11 +1,14 @@
 .table-view {
-    -fx-border-color: transparent;
+    -fx-border-color: transparent transparent #FFE0B2 transparent;
     -fx-background-color: transparent;
 }
 
 .table-view .column-header {
-    -fx-background-color: #ffffff;
-     -fx-border-color: transparent transparent #454444 transparent;
+       -fx-background-color: #FFE0B2; /* Light Orange */
 
 }
+
+
+
+
 

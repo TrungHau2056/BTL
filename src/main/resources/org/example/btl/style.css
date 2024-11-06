@@ -1,7 +1,5 @@
 .anchor-pane {
-    -fx-background-image: url("images/background.jpg");
-    -fx-background-size: cover;
-
+    -fx-background-color: #466bb0;
 }
 
 .login-inputs {

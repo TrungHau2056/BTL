@@ -44,6 +44,12 @@ public class Document {
         this.title = title;
     }
 
+    public Document(int id, String title, String description) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }

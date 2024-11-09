@@ -7,11 +7,10 @@ import java.util.Set;
 
 @Entity
 public class Admin extends Account {
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Document> addedDocuments = new HashSet<>();
 
     public Admin() {
-
     }
 
     public Admin(String name, String email, String username, String password, Date birthday, String gender) {

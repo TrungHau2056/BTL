@@ -34,16 +34,16 @@ public class UserHomeController implements Initializable {
     }
 
     public void setUserInfo() {
-        try(Session session = HibernateUtils.getSessionFactory().openSession()) {
-            session.refresh(user);
-            Set<Document> borrowedDocs = user.getBorrowedDocuments();
-
-            table_document_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-            table_document_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-
-            ObservableList<Document> documentlist = FXCollections.observableArrayList(borrowedDocs);
-            tableview.setItems(documentlist);
-        }
+//        try(Session session = HibernateUtils.getSessionFactory().openSession()) {
+//            session.refresh(user);
+////            Set<Document> borrowedDocs = user.getBorrowedDocuments();
+//
+//            table_document_id.setCellValueFactory(new PropertyValueFactory<>("id"));
+//            table_document_title.setCellValueFactory(new PropertyValueFactory<>("title"));
+//
+//            ObservableList<Document> documentlist = FXCollections.observableArrayList(borrowedDocs);
+//            tableview.setItems(documentlist);
+//        }
 
     }
 

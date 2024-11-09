@@ -6,28 +6,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author {
+public class Publisher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
 
-    @ManyToMany(mappedBy = "authors", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
     private Set<Document> documents = new HashSet<>();
 
-    public Author() {
+    private String name;
+
+    public Publisher() {
     }
 
-    public Author(String name) {
+    public Publisher(String name) {
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -38,12 +31,8 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Document> getDocuments() {
-        return documents;
-    }
-
     public void addDocument(Document document) {
         documents.add(document);
-        document.getAuthors().add(this);
+        document.setPublisher(this);
     }
 }

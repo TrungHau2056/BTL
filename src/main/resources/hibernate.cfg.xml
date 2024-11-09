@@ -15,5 +15,8 @@
         <mapping class="org.example.btl.model.User"/>
         <mapping class="org.example.btl.model.Document"/>
         <mapping class="org.example.btl.model.Author"/>
+        <mapping class="org.example.btl.model.Borrow"/>
+        <mapping class="org.example.btl.model.Publisher"/>
+        <mapping class="org.example.btl.model.Genre"/>
     </session-factory>
 </hibernate-configuration>

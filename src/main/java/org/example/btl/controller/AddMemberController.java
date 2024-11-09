@@ -65,4 +65,26 @@ public class AddMemberController  {
         }
 
     }
+
+    @FXML
+    public void switchToAdminHome(ActionEvent event) throws IOException {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminHome.fxml"));
+            root = fxmlLoader.load();
+            scene = new Scene(root);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.setResizable(false);
+            stage.show();
+    }
+
+    @FXML
+    public void switchToAdminSearchBook(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminSearchBook.fxml"));
+        root = fxmlLoader.load();
+        scene = new Scene(root);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.setResizable(false);
+        stage.show();
+    }
 }

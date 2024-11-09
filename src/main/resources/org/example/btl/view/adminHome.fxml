@@ -1,119 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<HBox alignment="TOP_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-radius: 20px; -fx-background-color: #466bb0;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AdminHomeController">
-
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AdminHomeController">
    <children>
-      <AnchorPane prefHeight="720.0" prefWidth="416.0">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
+         <effect>
+            <DropShadow height="13.98" width="28.02">
+               <color>
+                  <Color red="0.27450981736183167" green="0.2549019753932953" blue="0.2549019753932953" />
+               </color>
+            </DropShadow>
+         </effect>
          <children>
-            <TextField layoutX="45.0" layoutY="231.0" opacity="0.42" prefHeight="50.0" prefWidth="326.0" promptText="Search faculti, student, books or member... " style="-fx-background-color: #fff; -fx-background-radius: 0 15px 15px 15px; -fx-font-size: 14px; -fx-font-weight: bold; -fx-padding: 0px 0px 0px 45px;">
-               <font>
-                  <Font name="Book Antiqua" size="13.0" />
-               </font>
-            </TextField>
-            <Label layoutX="100.0" layoutY="62.0" prefHeight="86.0" prefWidth="216.0" text="Hi Tayyab" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="43.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="34.0" fitWidth="41.0" layoutX="52.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/searchIcon.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="45.0" layoutY="399.0" prefHeight="230.0" prefWidth="283.0">
+            <AnchorPane layoutX="41.0" layoutY="110.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-                     <graphic>
-                        <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/borrowBookIcon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-
-                  <Button layoutX="207.0" layoutY="130.0" mnemonicParsing="false" onAction="#switchToAddMemberScene" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-
-                     <graphic>
-                        <ImageView fitHeight="73.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/AddUser.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="104.0" layoutY="130.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-                     <graphic>
-                        <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../../book_12766630.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutY="130.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-                     <graphic>
-                        <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/fix.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button layoutX="104.0" mnemonicParsing="false" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-                     <graphic>
-                        <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/removeBookIcon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-
-                  <Button fx:id="SearchButton" layoutX="207.0" mnemonicParsing="false" onAction="#switchToAdminSearchBook" prefHeight="86.0" prefWidth="76.0" style="-fx-background-radius: 10px;">
-
-                     <graphic>
-                        <ImageView fitHeight="72.0" fitWidth="71.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/searchBookIcon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
+                  <Label style="-fx-text-fill: #fff;" text="Hi Tayyab" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="49.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="86.0" style="-fx-text-fill: #fff;" text="Use the right form " textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutY="107.0" style="-fx-text-fill: #fff;" text="to enter new user's informations!" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                </children>
-            </Pane>
-            <Label layoutX="52.0" layoutY="335.0" prefHeight="50.0" prefWidth="145.0" style="-fx-font-weight: bold 500; -fx-font-size: 23px;" text="Function(+)" textFill="WHITE">
-               <font>
-                  <Font size="23.0" />
-               </font>
-            </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="41.0" layoutY="267.0" prefHeight="36.0" prefWidth="318.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;">
+               <children>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/searchIcon.png" />
+                     </image>
+                  </ImageView>
+                  <TextField layoutX="35.0" prefHeight="36.0" prefWidth="269.0" promptText="Search books" style="-fx-background-color: transparent;" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="41.0" layoutY="375.0" prefHeight="277.0" prefWidth="318.0">
+               <children>
+                  <Label style="-fx-text-fill: #fff;" text="Functions (6)" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutY="46.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAdminSearchBook" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/searchBookIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Search book" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="120.0" layoutY="46.0" prefHeight="98.0" prefWidth="78.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/borrowBookIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="4.0" layoutY="78.0" prefHeight="20.0" prefWidth="70.0" style="-fx-text-fill: #fff;" text="Add book" textFill="WHITE" AnchorPane.leftAnchor="6.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="238.0" layoutY="46.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/removeBookIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Delete book" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="116.0" layoutY="160.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddMemberScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/AddUser.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Add member" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="238.0" layoutY="160.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/Book.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutX="21.0" layoutY="78.0" style="-fx-text-fill: #fff;" text="Book" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="160.0">
+                     <children>
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                           <graphic>
+                              <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/fix.png" />
+                                 </image>
+                                 <viewport>
+                                    <Rectangle2D />
+                                 </viewport>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Update book" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane accessibleRole="TEXT" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="854.0" style="-fx-background-color: #fff; -fx-background-radius: 0 20 20 0;">
-         <HBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </HBox.margin>
+      <AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-view-order: -1;">
          <children>
-            <Text fill="#466bb0" layoutX="141.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-line-spacing: 20; -fx-text-alignment: center; -fx-font-size: 60px;" text="Welcome back to Library Management System" textAlignment="CENTER" wrappingWidth="602.4000244140625">
-               <font>
-                  <Font size="31.0" />
-               </font>
-            </Text>
-         </children>
-
-      </AnchorPane>
+            <StackPane prefHeight="700.0" prefWidth="800.0">
+               <children>
+                  <ImageView fitHeight="700.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/AdminHome.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label style="-fx-text-fill: #fff;" text="Library" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="80.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="1.43" specularConstant="0.18" specularExponent="16.33">
+                           <bumpInput>
+                              <Bloom threshold="1.0" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <StackPane.margin>
+                        <Insets bottom="386.0" left="163.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="139.0" prefWidth="465.0" style="-fx-text-fill: #fff;" text="Management" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="73.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="1.43" specularConstant="0.18" specularExponent="16.33">
+                           <bumpInput>
+                              <Bloom threshold="1.0" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant azimuth="196.93" elevation="134.17" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <StackPane.margin>
+                        <Insets bottom="220.0" left="342.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label style="-fx-text-fill: #fff;" text="System" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="80.0" />
+                     </font>
+                     <effect>
+                        <Lighting diffuseConstant="1.3" specularConstant="0.18" specularExponent="16.33">
+                           <bumpInput>
+                              <Bloom threshold="1.0" />
+                           </bumpInput>
+                           <light>
+                              <Light.Distant azimuth="196.93" elevation="134.17" />
+                           </light>
+                        </Lighting>
+                     </effect>
+                     <StackPane.margin>
+                        <Insets bottom="53.0" left="155.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="27.0" prefWidth="242.0" style="-fx-text-fill: #fff;" text="Product by Trương Văn Hải" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="500.0" top="508.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="27.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Trần Quang Đỉnh" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="600.0" top="552.0" />
+                     </StackPane.margin>
+                  </Label>
+                  <Label prefHeight="27.0" prefWidth="150.0" style="-fx-text-fill: #fff;" text="Trần Trung Hậu" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                     <StackPane.margin>
+                        <Insets left="600.0" top="598.0" />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+            </StackPane>
+         </children></AnchorPane>
    </children>
 </HBox>

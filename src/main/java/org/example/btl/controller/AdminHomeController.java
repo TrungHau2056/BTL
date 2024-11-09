@@ -38,6 +38,7 @@ public class AdminHomeController {
         stage.show();
     }
 
+    @FXML
     public void switchToAddMemberScene(ActionEvent event) throws  IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/addMember.fxml"));
         root = fxmlLoader.load();

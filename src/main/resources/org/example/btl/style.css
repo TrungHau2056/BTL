@@ -1,6 +1,4 @@
-.anchor-pane {
-    -fx-background-color: #466bb0;
-}
+
 
 .login-inputs {
     -fx-background-radius: 12;
@@ -62,5 +60,14 @@
 .date-picker .arrow-button {
     -fx-background-radius: 0 12 12 0;
     -fx-border-radius: 0 12 12 0;
+}
+
+.change-user-info {
+    -fx-pref-width: 20px;
+        -fx-pref-height: 20px;
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-background-image: url("images/UpdateUserInfo_icon.png");
+    -fx-background-size: 100% 100%;
 }
 

@@ -135,7 +135,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="357.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="357.0" AnchorPane.rightAnchor="374.0">
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="373.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="358.0">
                     <image>
                         <Image url="@../images/userIcon.png" />
                     </image>
@@ -147,7 +147,7 @@
                         <TableColumn fx:id="table_user_duedate" minWidth="0.0" prefWidth="301.0" text="Due Date" />
                     </columns>
                 </TableView>
-                  <Label fx:id="userinfo" layoutX="349.0" layoutY="255.0" text="aaaaaaaaaaaaa">
+                  <Label fx:id="userinfo" layoutX="369.0" layoutY="255.0" text="aaaaaaaaaaaaa">
                       <font>
                           <Font size="24.0" />
                       </font>

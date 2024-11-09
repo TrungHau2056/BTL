@@ -16,11 +16,18 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AddMemberController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
+         <effect>
+            <DropShadow height="13.98" width="28.02">
+               <color>
+                  <Color red="0.27450981736183167" green="0.2549019753932953" blue="0.2549019753932953" />
+               </color>
+            </DropShadow>
+         </effect>
          <children>
-            <AnchorPane layoutX="40.0" layoutY="110.0">
+            <AnchorPane layoutX="41.0" layoutY="110.0">
                <children>
                   <Label style="-fx-text-fill: #fff;" text="Hi Tayyab" textFill="WHITE">
                      <font>
@@ -39,17 +46,17 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="40.0" layoutY="267.0" prefHeight="40.0" prefWidth="318.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;">
+            <AnchorPane layoutX="41.0" layoutY="267.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;">
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/searchIcon.png" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="43.0" prefHeight="40.0" prefWidth="250.0" promptText="Search books" style="-fx-background-color: transparent;" />
+                  <TextField layoutX="35.0" prefHeight="40.0" prefWidth="282.0" promptText="Search books" style="-fx-background-color: transparent;" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="40.0" layoutY="375.0" prefHeight="274.0" prefWidth="318.0">
+            <AnchorPane layoutX="41.0" layoutY="384.0" prefHeight="274.0" prefWidth="318.0">
                <children>
                   <Label style="-fx-text-fill: #fff;" text="Functions (6)" textFill="WHITE">
                      <font>
@@ -76,7 +83,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="120.0" layoutY="46.0" prefHeight="98.0" prefWidth="78.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -94,7 +101,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="46.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToDeleteBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -171,7 +178,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../style.css">
+      <AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../style.css">
          <children>
             <Label layoutX="286.0" layoutY="27.0" style="-fx-font-weight: 700;" text="Add Member" textFill="#466bb0">
                <font>

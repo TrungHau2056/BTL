@@ -6,19 +6,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Author {
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "authors", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genres", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Document> documents = new HashSet<>();
 
-    public Author() {
+    public Genre() {
     }
 
-    public Author(String name) {
+    public Genre(String name) {
         this.name = name;
     }
 
@@ -38,12 +38,8 @@ public class Author {
         this.name = name;
     }
 
-    public Set<Document> getDocuments() {
-        return documents;
-    }
-
     public void addDocument(Document document) {
         documents.add(document);
-        document.getAuthors().add(this);
+        document.getGenres().add(this);
     }
 }

@@ -2,6 +2,7 @@ package org.example.btl.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import org.example.btl.model.HibernateUtils;
 import org.example.btl.model.User;
 import org.hibernate.Session;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
@@ -68,5 +70,33 @@ public class UserHomeController implements Initializable {
 //            );
 //            tableview.setItems(documentlist);
     }
+
+
+    // button to switch to user home
+    public void switchToUserHomeScreen(ActionEvent event) throws IOException {
+
+    }
+
+    // button to switch to searchbook scene
+    public void switchToUserSearchBook(ActionEvent event) throws IOException {
+
+    }
+
+    // button to switch to borrowbook scene
+    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
+
+    }
+
+    // button to switch to returnbook scene
+    public void switchToUserReturnBook(ActionEvent event) throws IOException {
+
+    }
+
+    // button to switch to returnbook scene
+    public void switchToUserInfo(ActionEvent event) throws IOException {
+
+    }
+
+
 
 }

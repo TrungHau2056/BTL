@@ -41,7 +41,7 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <Button layoutX="36.0" layoutY="455.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
+                <Button layoutX="36.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchToUserSearchBook" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -50,7 +50,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="152.0" layoutY="455.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
+                <Button layoutX="152.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchToUserBorrowBook" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -58,7 +58,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button layoutX="267.0" layoutY="455.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
+                <Button layoutX="267.0" layoutY="455.0" mnemonicParsing="false" onAction="#switchToUserReturnBook" prefHeight="45.0" prefWidth="54.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -94,7 +94,7 @@
                             </font></TextField>
                     </children>
                 </HBox>
-            <Button layoutX="35.0" layoutY="563.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+            <Button layoutX="35.0" layoutY="563.0" mnemonicParsing="false" onAction="#switchToUserInfo" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -121,7 +121,7 @@
                 <Insets />
             </HBox.margin>
             <children>
-                <Button layoutX="29.0" layoutY="23.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="59.0" styleClass="homescreen-button">
+                <Button layoutX="29.0" layoutY="23.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#switchToUserHomeScreen" prefHeight="45.0" prefWidth="59.0" styleClass="homescreen-button">
                     <graphic>
                         <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>

@@ -1,14 +1,18 @@
+
 .table-view {
-    -fx-border-color: transparent transparent #FFE0B2 transparent;
+    -fx-border-color: #466bb0 ;
+    /*-fx-background-color: transparent;*/
+    /*-fx-border-color: #466bb0;*/
+    /*-fx-border-radius: 20px;*/
+}
+
+.table-view .column-header .label{
+       /*-fx-background-color: #FFE0B2; !* Light Orange *!*/
+    /*-fx-background-color: #466bb0;*/
+    -fx-text-fill: #466bb0;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
     -fx-background-color: transparent;
 }
-
-.table-view .column-header {
-       -fx-background-color: #FFE0B2; /* Light Orange */
-
-}
-
-
-
 
 

@@ -1,0 +1,8 @@
+.choice-box .label {
+    -fx-text-fill: #466bb0;
+    -fx-font-weight: bold;
+}
+
+.choice-box {
+    -fx-border-color: #466bb0;
+}

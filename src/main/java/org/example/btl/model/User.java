@@ -1,19 +1,13 @@
 package org.example.btl.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
-import javax.persistence.OneToMany;
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class User extends Account {
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Document> borrowedDocuments = new HashSet<>();
 
     public User() {}
 
@@ -21,19 +15,6 @@ public class User extends Account {
         super(name, email, username, password, birthday, gender);
     }
 
-    public User(String name, String email, int id) {
-        super(name, email, id);
-    }
-
-    public User(int id) {
-        this.id = id;
-    }
-
-    public Set<Document> getBorrowedDocuments() {
-        return borrowedDocuments;
-    }
-
-    public void setBorrowedDocuments(Set<Document> borrowedDocuments) {
-        this.borrowedDocuments = borrowedDocuments;
-    }
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Set<Borrow> borrows = new HashSet<>();
 }

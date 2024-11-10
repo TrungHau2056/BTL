@@ -56,7 +56,6 @@ public class UserInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     public void setUserInfo() {
@@ -145,7 +144,10 @@ public class UserInfoController implements Initializable {
 
     // to change gender
     public void handleUpdateGender (ActionEvent event) throws IOException {
-
+        maleRadioButton.setDisable(false);
+        femaleRadioButton.setDisable(false);
+        otherRadioButton.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     // button to switch to user home

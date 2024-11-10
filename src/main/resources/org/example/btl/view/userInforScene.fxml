@@ -151,12 +151,12 @@
                 <TextField fx:id="usernameText" disable="true" layoutX="56.0" layoutY="269.0" prefHeight="36.0" prefWidth="218.0" promptText="User's username" styleClass="login-inputs" />
                 <PasswordField fx:id="passwordText" disable="true" layoutX="55.0" layoutY="337.0" prefHeight="36.0" prefWidth="240.0" promptText="User's password" styleClass="login-inputs" />
                 <DatePicker fx:id="birthdayText" disable="true" layoutX="56.0" layoutY="405.0" prefHeight="36.0" prefWidth="180.0" promptText="User's birthday" styleClass="date-picker" />
-                <Label layoutX="55.0" layoutY="481.0" style="-fx-font-weight: 700;" text="Gender:" textFill="#466bb0">
+                <Label layoutX="56.0" layoutY="482.0" style="-fx-font-weight: 700;" text="Gender:" textFill="#466bb0">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <RadioButton fx:id="maleRadioButton" layoutX="158.0" layoutY="486.0" mnemonicParsing="false" text="Male" textFill="#466bb0">
+                <RadioButton fx:id="maleRadioButton" disable="true" layoutX="158.0" layoutY="486.0" mnemonicParsing="false" text="Male" textFill="#466bb0">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -164,12 +164,12 @@
                         <ToggleGroup fx:id="gender" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="femaleRadioButton" layoutX="295.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="$gender">
+                <RadioButton fx:id="femaleRadioButton" disable="true" layoutX="295.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="$gender">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="otherRadioButton" layoutX="429.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender">
+                <RadioButton fx:id="otherRadioButton" disable="true" layoutX="429.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -180,11 +180,11 @@
                         <Image url="@../images/memberShip.png" />
                     </image>
                 </ImageView>
-            <Button fx:id="updateName" layoutX="29.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleUpdateName" styleClass="change-user-info" />
-            <Button fx:id="updateEmail" layoutX="29.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleUpdateEmail" styleClass="change-user-info" />
-            <Button fx:id="updateUsername" layoutX="29.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleUpdateUsername" styleClass="change-user-info" />
-            <Button fx:id="updatePassword" layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleUpdatePassWord" styleClass="change-user-info" />
-            <Button fx:id="updateBirthday" layoutX="29.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleUpdateBirthday" styleClass="change-user-info" />
+            <Button layoutX="29.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleUpdateName" styleClass="change-user-info" />
+            <Button layoutX="29.0" layoutY="207.0" mnemonicParsing="false" onAction="#handleUpdateEmail" styleClass="change-user-info" />
+            <Button layoutX="29.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleUpdateUsername" styleClass="change-user-info" />
+            <Button layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleUpdatePassWord" styleClass="change-user-info" />
+            <Button layoutX="29.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleUpdateBirthday" styleClass="change-user-info" />
             <Button fx:id="logOut" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                <effect>
                   <DropShadow>
@@ -194,6 +194,7 @@
                   </DropShadow>
                </effect>
             </Button>
+            <Button layoutX="29.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleUpdateGender" styleClass="change-user-info" />
             </children>
         </AnchorPane>
     </children>

@@ -4,11 +4,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
 import org.example.btl.model.User;
@@ -20,6 +25,10 @@ import java.util.*;
 
 public class UserHomeController implements Initializable {
     private User user;
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML private Label userinfo;
     @FXML private TableView<Document> tableview;
@@ -46,13 +55,12 @@ public class UserHomeController implements Initializable {
 //            ObservableList<Document> documentlist = FXCollections.observableArrayList(borrowedDocs);
 //            tableview.setItems(documentlist);
 //        }
-
+        userinfo.setText(user.getName());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 //            userinfo.setText(user.getName());
-            userinfo.setText("gfhfrfd");
 
 //            Query query2 = session.createQuery("FROM Document", Document.class);
 //            List<Document> list_document ;
@@ -92,11 +100,17 @@ public class UserHomeController implements Initializable {
 
     }
 
-    // button to switch to returnbook scene
+    // button to switch to userInfo scene
     public void switchToUserInfo(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userInforScene.fxml"));
+        root = loader.load();
+        UserInfoController controller = loader.getController();
+        controller.setUser(user);
+        controller.setUserInfo();
 
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
-
-
-
 }

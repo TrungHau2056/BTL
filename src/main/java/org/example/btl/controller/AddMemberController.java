@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.sql.Date;
 
 public class AddMemberController  {
+    private Admin admin;
+
     private UserService userService = new UserService();
     private Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -36,6 +38,14 @@ public class AddMemberController  {
     private DatePicker birthdayText;
     @FXML
     private ToggleGroup gender;
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
 
     public void handleAddMember (ActionEvent event) throws IOException {
         String name = nameText.getText();

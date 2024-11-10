@@ -82,7 +82,7 @@ public class LoginController {
                     alert.setContentText("Wrong login information! Please try again");
                     alert.show();
                 } else {
-                    //change to admin scene
+                    //switch to admin scene
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminHome.fxml"));
                     root = loader.load();
                     AdminHomeController controller = loader.getController();

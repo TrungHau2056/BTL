@@ -146,17 +146,17 @@
                         <Font name="System Bold" size="18.0" />
                     </font>
                 </Label>
-                <TextField fx:id="nameText" editable="false" layoutX="56.0" layoutY="133.0" prefHeight="36.0" prefWidth="303.0" promptText="User's name" styleClass="login-inputs" />
-                <TextField fx:id="emailText" editable="false" layoutX="56.0" layoutY="201.0" prefHeight="36.0" prefWidth="249.0" promptText="User's email" styleClass="login-inputs" />
-                <TextField fx:id="usernameText" editable="false" layoutX="56.0" layoutY="269.0" prefHeight="36.0" prefWidth="218.0" promptText="User's username" styleClass="login-inputs" />
-                <PasswordField fx:id="passwordText" editable="false" layoutX="55.0" layoutY="337.0" prefHeight="36.0" prefWidth="240.0" promptText="User's password" styleClass="login-inputs" />
-                <DatePicker fx:id="birthdayText" editable="false" layoutX="56.0" layoutY="405.0" prefHeight="36.0" prefWidth="180.0" promptText="User's birthday" styleClass="date-picker" />
+                <TextField fx:id="nameText" disable="true" layoutX="56.0" layoutY="133.0" prefHeight="36.0" prefWidth="303.0" promptText="User's name" styleClass="login-inputs" />
+                <TextField fx:id="emailText" disable="true" layoutX="56.0" layoutY="201.0" prefHeight="36.0" prefWidth="249.0" promptText="User's email" styleClass="login-inputs" />
+                <TextField fx:id="usernameText" disable="true" layoutX="56.0" layoutY="269.0" prefHeight="36.0" prefWidth="218.0" promptText="User's username" styleClass="login-inputs" />
+                <PasswordField fx:id="passwordText" disable="true" layoutX="55.0" layoutY="337.0" prefHeight="36.0" prefWidth="240.0" promptText="User's password" styleClass="login-inputs" />
+                <DatePicker fx:id="birthdayText" disable="true" layoutX="56.0" layoutY="405.0" prefHeight="36.0" prefWidth="180.0" promptText="User's birthday" styleClass="date-picker" />
                 <Label layoutX="55.0" layoutY="481.0" style="-fx-font-weight: 700;" text="Gender:" textFill="#466bb0">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <RadioButton layoutX="158.0" layoutY="486.0" mnemonicParsing="false" text="Male" textFill="#466bb0">
+                <RadioButton fx:id="maleRadioButton" layoutX="158.0" layoutY="486.0" mnemonicParsing="false" text="Male" textFill="#466bb0">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -164,12 +164,12 @@
                         <ToggleGroup fx:id="gender" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton layoutX="295.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="$gender">
+                <RadioButton fx:id="femaleRadioButton" layoutX="295.0" layoutY="486.0" mnemonicParsing="false" text="Female" textFill="#466bb0" toggleGroup="$gender">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton layoutX="429.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender">
+                <RadioButton fx:id="otherRadioButton" layoutX="429.0" layoutY="486.0" mnemonicParsing="false" text="Other" textFill="#466bb0" toggleGroup="$gender">
                     <font>
                         <Font size="14.0" />
                     </font>

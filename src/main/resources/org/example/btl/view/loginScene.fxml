@@ -91,7 +91,7 @@
             <Separator focusTraversable="false" layoutX="20.0" layoutY="414.0" prefHeight="0.0" prefWidth="497.0" style="-fx-background-color: #466bb0;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="181.0" layoutY="365.0" text="Sign up for an admin account" textFill="#466bb0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="199.8" />
             <Label layoutX="221.0" layoutY="430.0" text="Please select your role!" textFill="#466bb0" AnchorPane.leftAnchor="221.0" AnchorPane.rightAnchor="195.0" />
-            <PasswordField fx:id="passwordText" layoutX="133.0" layoutY="229.0" prefHeight="42.0" prefWidth="296.0" promptText="Pasword" styleClass="login-inputs" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="108.60000000000002">
+            <PasswordField fx:id="passwordText" layoutX="133.0" layoutY="229.0" prefHeight="42.0" prefWidth="296.0" promptText="Password" styleClass="login-inputs" AnchorPane.leftAnchor="133.0" AnchorPane.rightAnchor="108.60000000000002">
                <font>
                   <Font size="16.0" />
                </font>

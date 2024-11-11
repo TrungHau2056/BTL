@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class UserSearchBookController implements Initializable {
+public class UserSearchBookController extends UserBaseController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -38,6 +38,11 @@ public class UserSearchBookController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    }
+
+    @Override
+    public void setUserInfo() {
 
     }
 

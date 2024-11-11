@@ -11,63 +11,29 @@ import org.example.btl.model.Admin;
 
 import java.io.IOException;
 
-public class AdminHomeController {
+public class AdminHomeController extends AdminBaseController {
+    @Override
+    public void setAdminInfo() {
 
-    private Admin admin;
-
-    private Stage stage;
-    private Parent root;
-    private Scene scene;
-
-    public Admin getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Admin admin) {
-        this.admin = admin;
     }
 
     @FXML
     public void switchToAdminSearchBook(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminSearchBook.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        switchScene(event, "/org/example/btl/view/adminSearchBook.fxml");
     }
 
     @FXML
-    public void switchToAddMemberScene(ActionEvent event) throws  IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/addMember.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+    public void switchToAddMemberScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/addMember.fxml");
     }
 
     @FXML
     public void switchToAddBookScene(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminAddBook.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        switchScene(event, "/org/example/btl/view/adminAddBook.fxml");
     }
 
     @FXML
     public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminDeleteBook.fxml"));
-        root = fxmlLoader.load();
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.setResizable(false);
-        stage.show();
+        switchScene(event, "/org/example/btl/view/adminDeleteBook.fxml");
     }
 }

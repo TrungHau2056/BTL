@@ -2,7 +2,9 @@ package org.example.btl.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -15,16 +17,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.util.ResourceBundle;
 
-public class UserInfoController implements Initializable {
-    private User user;
-
-    private UserService userService = new UserService();
-    private Alert alert = new Alert(Alert.AlertType.ERROR);
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
+public class UserInfoController extends UserBaseController {
     @FXML
     private TextField nameText;
     @FXML
@@ -55,9 +48,6 @@ public class UserInfoController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-    }
-
     public void setUserInfo() {
         nameText.setText(user.getName());
         emailText.setText(user.getEmail());
@@ -89,8 +79,8 @@ public class UserInfoController implements Initializable {
 
         String validationMess = userService.validateUpdate(name, email, username, user.getUsername(), password,  gender, birthday);
         if(validationMess != null) {
-            alert.setContentText(validationMess);
-            alert.show();
+            alertErr.setContentText(validationMess);
+            alertErr.show();
         } else {
             user.setName(name);
             user.setEmail(email);
@@ -109,6 +99,8 @@ public class UserInfoController implements Initializable {
             updateButton.setDisable(true);
 
             //update successful notification
+            alertInfo.setContentText("Your information is successfully updated");
+            alertInfo.show();
         }
     }
 
@@ -152,12 +144,12 @@ public class UserInfoController implements Initializable {
 
     // button to switch to user home
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-
+        switchScene(event, "/org/example/btl/view/userHomeScene.fxml");
     }
 
     // button to switch to searchbook scene
     public void switchToUserSearchBook(ActionEvent event) throws IOException {
-
+        switchScene(event, "/org/example/btl/view/userSearchBook.fxml");
     }
 
     // button to switch to borrowbook scene
@@ -174,7 +166,4 @@ public class UserInfoController implements Initializable {
     public void handleLogOut(ActionEvent event) throws IOException {
 
     }
-
-
-
 }

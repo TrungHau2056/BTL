@@ -17,4 +17,9 @@ public class User extends Account {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<Borrow> borrows = new HashSet<>();
+
+    public void addBorrow(Borrow borrow) {
+        borrows.add(borrow);
+        borrow.setUser(this);
+    }
 }

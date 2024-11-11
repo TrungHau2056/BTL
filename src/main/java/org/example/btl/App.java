@@ -5,14 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.model.Admin;
 import org.example.btl.model.HibernateUtils;
-import org.example.btl.model.User;
-import org.example.btl.service.AdminService;
-import org.example.btl.service.UserService;
 
 import java.io.IOException;
-import java.sql.Date;
 
 public class App extends Application {
     @Override

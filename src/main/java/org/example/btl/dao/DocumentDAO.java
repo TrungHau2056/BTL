@@ -69,4 +69,18 @@ public class DocumentDAO implements BaseDAO<Document>{
         if (documents.isEmpty()) return null;
         else return documents.getFirst();
     }
+
+    public List<Document> searchByTitleKeyword(String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Document WHERE title LIKE :keyword");
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
+
+
 }

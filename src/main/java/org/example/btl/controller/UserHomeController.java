@@ -23,17 +23,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-public class UserHomeController implements Initializable {
-    private User user;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    @FXML private Label userinfo;
-    @FXML private TableView<Document> tableview;
-    @FXML private TableColumn<Document, Integer> table_document_id;
-    @FXML private TableColumn<Document, String> table_document_title;
+public class UserHomeController extends UserBaseController implements Initializable {
+    @FXML
+    private Label userinfo;
+    @FXML
+    private TableView<Document> tableview;
+    @FXML
+    private TableColumn<Document, Integer> table_document_id;
+    @FXML
+    private TableColumn<Document, String> table_document_title;
     //@FXML private TableColumn<User, Date> table_user_duedate;
 
     public User getUser() {
@@ -44,8 +42,9 @@ public class UserHomeController implements Initializable {
         this.user = user;
     }
 
+    @Override
     public void setUserInfo() {
-//        try(Session session = HibernateUtils.getSessionFactory().openSession()) {
+        //        try(Session session = HibernateUtils.getSessionFactory().openSession()) {
 //            session.refresh(user);
 ////            Set<Document> borrowedDocs = user.getBorrowedDocuments();
 //
@@ -102,15 +101,6 @@ public class UserHomeController implements Initializable {
 
     // button to switch to userInfo scene
     public void switchToUserInfo(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userInforScene.fxml"));
-        root = loader.load();
-        UserInfoController controller = loader.getController();
-        controller.setUser(user);
-        controller.setUserInfo();
-
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        switchScene(event, "/org/example/btl/view/userInforScene.fxml");
     }
 }

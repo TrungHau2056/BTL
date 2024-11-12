@@ -1,25 +1,25 @@
 package org.example.btl.dao;
 
 import jakarta.persistence.Query;
-import org.example.btl.model.Author;
 import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.Publisher;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class AuthorDAO {
+public class PublisherDAO {
     private Session session;
 
-    public Author findByName(String name) {
+    public Publisher findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Author WHERE name = :name");
+        Query query = session.createQuery("FROM Publisher WHERE name = :name");
         query.setParameter("name", name);
-        List<Author> authors = query.getResultList();
+        List<Publisher> publishers = query.getResultList();
 
         session.close();
-        if (authors.isEmpty()) return null;
-        else return authors.getFirst();
+        if (publishers.isEmpty()) return null;
+        else return publishers.getFirst();
     }
 }

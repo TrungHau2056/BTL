@@ -16,6 +16,13 @@
 
 }
 
+.login-signup-Button:hover {
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+    -fx-background-color: #6991db;
+    -fx-font-weight: 700
+}
+
 .admin-button-functions {
     -fx-background-color: #ffffff;
     -fx-background-radius: 20;
@@ -38,12 +45,7 @@
 
 
 
-.login-signup-Button:hover {
-    -fx-border-radius: 12;
-    -fx-background-radius: 12;
-    -fx-background-color: #6991db;
-    -fx-font-weight: 700
-}
+
 
 .date-picker {
     -fx-background-radius: 12;
@@ -71,3 +73,12 @@
     -fx-background-size: 100% 100%;
 }
 
+.search-button {
+    -fx-background-color: #466bb0;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.search-button:hover {
+    -fx-background-color: #6991db;
+}

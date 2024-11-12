@@ -81,6 +81,4 @@ public class DocumentDAO implements BaseDAO<Document>{
         session.close();
         return documents;
     }
-
-
 }

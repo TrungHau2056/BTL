@@ -156,7 +156,7 @@
                     <font>
                         <Font size="16.0" />
                     </font></Label>
-                <TableView fx:id="tableView" layoutX="124.0" layoutY="337.0" prefHeight="329.0" prefWidth="670.0" stylesheets="@../tableview.css">
+                <TableView fx:id="tableView" layoutX="124.0" layoutY="322.0" prefHeight="344.0" prefWidth="670.0" stylesheets="@../tableview.css">
                     <columns>
                         <TableColumn fx:id="idCol" editable="false" prefWidth="53.600006103515625" text="Id" />
                         <TableColumn prefWidth="78.0" text="Cover" />
@@ -181,7 +181,7 @@
                     </font>
                 </Label>
                 <TextField layoutX="217.0" layoutY="175.0" prefHeight="27.0" prefWidth="211.0" promptText="Search by author" styleClass="login-inputs" />
-                <Button layoutX="419.0" layoutY="237.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" styleClass="search-button" text="Search" textFill="WHITE">
+                <Button layoutX="419.0" layoutY="254.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="80.0" styleClass="search-button" text="Search" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="DEFAULT" />
                </cursor>

@@ -185,7 +185,7 @@
             <Button layoutX="29.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleUpdateUsername" styleClass="change-user-info" />
             <Button layoutX="29.0" layoutY="343.0" mnemonicParsing="false" onAction="#handleUpdatePassWord" styleClass="change-user-info" />
             <Button layoutX="29.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleUpdateBirthday" styleClass="change-user-info" />
-            <Button fx:id="logOut" layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
+            <Button layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                <effect>
                   <DropShadow>
                      <color>

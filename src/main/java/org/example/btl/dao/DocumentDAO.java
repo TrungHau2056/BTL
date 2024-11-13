@@ -8,7 +8,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class DocumentDAO implements BaseDAO<Document>{
+public class DocumentDAO implements BaseDAO<Document> {
     private Session session;
 
     @Override
@@ -79,6 +79,7 @@ public class DocumentDAO implements BaseDAO<Document>{
         List<Document> documents = query.getResultList();
 
         session.close();
+        if (documents.isEmpty()) return null;
         return documents;
     }
 }

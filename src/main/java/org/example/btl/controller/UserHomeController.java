@@ -77,30 +77,4 @@ public class UserHomeController extends UserBaseController implements Initializa
 //            );
 //            tableview.setItems(documentlist);
     }
-
-
-    // button to switch to user home
-    public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to searchbook scene
-    public void switchToUserSearchBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to borrowbook scene
-    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to returnbook scene
-    public void switchToUserReturnBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to userInfo scene
-    public void switchToUserInfo(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userInforScene.fxml");
-    }
 }

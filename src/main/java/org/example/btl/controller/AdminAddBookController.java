@@ -10,24 +10,4 @@ public class AdminAddBookController extends AdminBaseController {
     public void setAdminInfo() {
 
     }
-
-    @FXML
-    public void switchToAdminHome(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminHome.fxml");
-    }
-
-    @FXML
-    public void switchToAdminSearchBook(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminSearchBook.fxml");
-    }
-
-    @FXML
-    public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminDeleteBook.fxml");
-    }
-
-    @FXML
-    public void switchToAddMemberScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/addMember.fxml");
-    }
 }

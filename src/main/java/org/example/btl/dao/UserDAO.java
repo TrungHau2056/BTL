@@ -8,7 +8,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class UserDAO implements BaseDAO<User>{
+public class UserDAO implements BaseDAO<User> {
     private Session session;
 
     @Override

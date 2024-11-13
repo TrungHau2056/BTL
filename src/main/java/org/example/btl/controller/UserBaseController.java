@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.example.btl.model.User;
 import org.example.btl.service.UserService;
@@ -45,5 +46,45 @@ public abstract class UserBaseController {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void switchToUserHomeScreen(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userHomeScene.fxml");
+    }
+
+    public void switchToUserSearchBook(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userSearchBook.fxml");
+    }
+
+    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
+
+    }
+
+    public void switchToUserReturnBook(ActionEvent event) throws IOException {
+
+    }
+
+    public void switchToUserInfo(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userInforScene.fxml");
+    }
+
+    public void handleLogOut(ActionEvent event) {
+        alertComfirm.setTitle("Log out comfirmation");
+        alertComfirm.setHeaderText("Log out comfirmation");
+        alertComfirm.setContentText("Are you sure?");
+        alertComfirm.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/loginScene.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
     }
 }

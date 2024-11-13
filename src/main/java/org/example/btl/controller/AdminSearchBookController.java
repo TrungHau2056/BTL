@@ -57,23 +57,23 @@ public class AdminSearchBookController extends AdminBaseController {
         tableView.setItems(observableList);
     }
 
-    @FXML
     public void switchToAddMemberScene(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/addMember.fxml");
     }
 
-    @FXML
     public void switchToAdminHome(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/adminHome.fxml");
     }
 
-    @FXML
     public void switchToAddBookScene(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/adminAddBook.fxml");
     }
 
-    @FXML
     public void switchToDeleteBookScene(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/adminDeleteBook.fxml");
+    }
+
+    public void handleSearch(ActionEvent event) {
+        
     }
 }

@@ -141,29 +141,4 @@ public class UserInfoController extends UserBaseController {
         otherRadioButton.setDisable(false);
         updateButton.setDisable(false);
     }
-
-    // button to switch to user home
-    public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userHomeScene.fxml");
-    }
-
-    // button to switch to searchbook scene
-    public void switchToUserSearchBook(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userSearchBook.fxml");
-    }
-
-    // button to switch to borrowbook scene
-    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to returnbook scene
-    public void switchToUserReturnBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button logout
-    public void handleLogOut(ActionEvent event) throws IOException {
-
-    }
 }

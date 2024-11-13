@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class AdminDAO implements BaseDAO<Admin>{
+public class AdminDAO implements BaseDAO<Admin> {
     private Session session;
 
     @Override

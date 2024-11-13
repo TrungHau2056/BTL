@@ -1,14 +1,9 @@
 package org.example.btl.service;
 
-import jakarta.persistence.Query;
 import org.example.btl.dao.BorrowDAO;
 import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.User;
-
-import java.sql.Date;
-import java.time.LocalDate;
-import java.util.List;
 
 public class BorrowService {
     private final BorrowDAO borrowDAO = new BorrowDAO();

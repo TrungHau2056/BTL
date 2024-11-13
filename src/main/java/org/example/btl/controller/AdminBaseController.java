@@ -48,4 +48,24 @@ public abstract class AdminBaseController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void switchToAdminHome(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminHome.fxml");
+    }
+
+    public void switchToAdminSearchBook(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminSearchBook.fxml");
+    }
+
+    public void switchToAddMemberScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/addMember.fxml");
+    }
+
+    public void switchToAddBookScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminAddBook.fxml");
+    }
+
+    public void switchToDeleteBookScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminDeleteBook.fxml");
+    }
 }

@@ -18,10 +18,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 
 public class UserSearchBookController extends UserBaseController implements Initializable {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
     @FXML
     private ChoiceBox<String> TypeBook;
 
@@ -43,26 +39,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
-
-    }
-
-    // button to switch to user home
-    public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to borrowbook scene
-    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to returnbook scene
-    public void switchToUserReturnBook(ActionEvent event) throws IOException {
-
-    }
-
-    // button to switch to returnbook scene
-    public void switchToUserInfo(ActionEvent event) throws IOException {
 
     }
 }

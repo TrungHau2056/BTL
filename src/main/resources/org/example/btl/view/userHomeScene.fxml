@@ -37,7 +37,7 @@
                         <Font size="15.0" />
                     </font>
                 </Label>
-                <Label layoutX="37.0" layoutY="404.0" text="Functions (4)" textFill="WHITE">
+                <Label layoutX="37.0" layoutY="404.0" text="Functions (3)" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -55,7 +55,7 @@
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/BorowBooks.png" />
+                                <Image url="@../images/ReturnBooks.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
@@ -63,7 +63,7 @@
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/ReturnBooks.png" />
+                                <Image url="@../images/UserInfo.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
@@ -71,11 +71,11 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-                <Label layoutX="149.0" layoutY="531.0" text="Borrow Books" textFill="WHITE">
+                <Label layoutX="151.0" layoutY="531.0" text="Return Books" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-                <Label layoutX="266.0" layoutY="531.0" text="Return Books" textFill="WHITE">
+                <Label layoutX="278.0" layoutY="531.0" text="User Info" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
@@ -95,19 +95,6 @@
                             </font></TextField>
                     </children>
                 </HBox>
-            <Button layoutX="35.0" layoutY="563.0" mnemonicParsing="false" onAction="#switchToUserInfo" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
-               <graphic>
-                  <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/UserInfo.png" />
-                     </image></ImageView>
-               </graphic>
-            </Button>
-            <Label layoutX="46.0" layoutY="636.0" text="User Info" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
             </children>
          <effect>
             <DropShadow height="13.98" width="28.02">
@@ -122,41 +109,54 @@
                 <Insets />
             </HBox.margin>
             <children>
-                <Button layoutX="29.0" layoutY="23.0" minHeight="0.0" minWidth="0.0" mnemonicParsing="false" onAction="#switchToUserHomeScreen" prefHeight="45.0" prefWidth="59.0" styleClass="homescreen-button">
+                <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToUserHomeScreen" prefHeight="30.0" prefWidth="30.0" styleClass="homescreen-button">
                     <graphic>
-                        <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="45.0" preserveRatio="true">
                             <image>
                                 <Image url="@../images/homescreen.png" />
                             </image>
                         </ImageView>
                     </graphic>
                 </Button>
-                <Label layoutX="82.0" layoutY="32.0" text="Home Screen" textFill="#466bb0">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="373.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="358.0">
+                <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="373.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="358.0">
                     <image>
                         <Image url="@../images/userIcon.png" />
                     </image>
                 </ImageView>
-                <TableView fx:id="tableview" layoutX="97.0" layoutY="353.0" prefHeight="200.0" prefWidth="674.0" stylesheets="@../tableview.css" AnchorPane.rightAnchor="96.0">
-                    <columns>
-                        <TableColumn fx:id="table_document_id" prefWidth="89.0" text="ID" />
-                        <TableColumn fx:id="table_document_title" prefWidth="280.0" text="Book Name" />
-                        <TableColumn fx:id="table_user_duedate" minWidth="0.0" prefWidth="301.0" text="Due Date" />
-                    </columns>
-                </TableView>
-            <StackPane layoutX="94.0" layoutY="255.0" prefHeight="36.0" prefWidth="708.0">
-               <children>
-                        <Label fx:id="userinfo" text="aaaaaaaaaaaaa" textAlignment="CENTER">
-                            <font>
-                                <Font size="24.0" />
-                            </font>
-                        </Label>
-               </children>
-            </StackPane>
+            <StackPane layoutX="94.0" layoutY="255.0" prefHeight="36.0" prefWidth="708.0" />
+            <Label layoutX="75.0" layoutY="27.0" text="Home screen" textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="596.0" text="Total:" textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="118.0" layoutY="596.0" text="123" textFill="#ae2094">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Label>
+                  <Label fx:id="userinfo" layoutX="366.0" layoutY="183.0" text="aaaaaaaaaaaaa" textAlignment="CENTER">
+                      <font>
+                          <Font size="24.0" />
+                      </font>
+                  </Label>
+            <TableView fx:id="tableView" layoutX="68.0" layoutY="255.0" prefHeight="333.0" prefWidth="761.0" stylesheets="@../tableview.css">
+               <columns>
+                  <TableColumn fx:id="idCol" editable="false" prefWidth="74.0" text="Id Book" />
+                  <TableColumn prefWidth="89.0" text="Cover" />
+                  <TableColumn fx:id="titleCol" editable="false" prefWidth="359.0" text="Title" />
+                  <TableColumn editable="false" minWidth="9.0" prefWidth="70.0" text="Genre" />
+                  <TableColumn fx:id="authorsCol" editable="false" text="Author" />
+                  <TableColumn editable="false" prefWidth="83.0" text="Status" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
             </children>
         </AnchorPane>
     </children>

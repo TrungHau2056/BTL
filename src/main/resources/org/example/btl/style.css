@@ -40,7 +40,7 @@
 }
 
 .homescreen-button:hover{
-    -fx-background-color:#D3D3D3;
+    -fx-background-color: #D3D3D3;
 }
 
 
@@ -82,3 +82,4 @@
 .search-button:hover {
     -fx-background-color: #6991db;
 }
+

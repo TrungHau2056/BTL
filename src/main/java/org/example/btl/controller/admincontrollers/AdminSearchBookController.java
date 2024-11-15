@@ -1,4 +1,4 @@
-package org.example.btl.controller;
+package org.example.btl.controller.admincontrollers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

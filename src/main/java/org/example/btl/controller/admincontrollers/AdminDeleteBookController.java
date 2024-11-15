@@ -1,9 +1,4 @@
-package org.example.btl.controller;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-
-import java.io.IOException;
+package org.example.btl.controller.admincontrollers;
 
 public class AdminDeleteBookController extends AdminBaseController {
     @Override

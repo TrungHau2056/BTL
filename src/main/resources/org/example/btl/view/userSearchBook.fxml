@@ -23,16 +23,6 @@
                 <Insets />
             </HBox.margin>
             <children>
-                <Label layoutX="37.0" layoutY="203.0" text="Welcome back to the Library System" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
-                <Label layoutX="37.0" layoutY="224.0" text="We missed you!" textFill="WHITE">
-                    <font>
-                        <Font size="15.0" />
-                    </font>
-                </Label>
                 <Label layoutX="37.0" layoutY="404.0" text="Functions (3)" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
@@ -75,27 +65,37 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <HBox layoutX="37.0" layoutY="265.0" prefHeight="36.0" prefWidth="331.0" style="-fx-background-color: #ffffff; -fx-background-radius: 0 12 12 12;">
-                    <children>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../images/SearchIcon_user.png" />
-                            </image>
-                            <HBox.margin>
-                                <Insets left="5.0" top="3.0" />
-                            </HBox.margin>
-                        </ImageView>
-                        <TextField prefHeight="36.0" prefWidth="286.0" promptText="Search books" style="-fx-background-color: #ffffff;">
-                            <font>
-                                <Font size="14.0" />
-                            </font></TextField>
-                    </children>
-                </HBox>
                 <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../images/userIcon - Copy.png" />
                     </image>
                 </ImageView>
+            <Label layoutX="37.0" layoutY="203.0" text="Welcome back to the Library System" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="224.0" text="We missed you!" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="37.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="227.0" layoutY="330.0" text="– George R.R. Martin" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="584.0" maxWidth="300.0" text="Search Document: Cho phép bạn tìm kiếm tài liệu một cách nhanh chóng và hiệu quả trong cơ sở dữ liệu thư viện." textFill="#e4d868" wrapText="true">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="651.0" text="Version: 12.10.2005" textFill="#e4d868" />
             </children>
             <effect>
                 <DropShadow height="13.98" width="28.02">

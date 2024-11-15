@@ -1,4 +1,4 @@
-package org.example.btl.controller;
+package org.example.btl.controller.usercontrollers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;

@@ -12,12 +12,11 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #E0F7FA;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" style="-fx-background-color: #E0F7FA;" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.BookInfoSceneController">
    <children>
       <StackPane layoutX="54.0" layoutY="24.0" prefHeight="50.0" prefWidth="593.0">
          <children>
-            <Label text="adasdasdasdsadsadadasd" textAlignment="CENTER" textFill="#0e3f80">
+            <Label fx:id="titleText" text="adasdasdasdsadsadadasd" textAlignment="CENTER" textFill="#0e3f80">
                <font>
                   <Font name="System Bold" size="45.0" />
                </font>
@@ -31,7 +30,7 @@
             </Label>
          </children>
       </StackPane>
-      <ImageView fitHeight="214.0" fitWidth="207.0" layoutX="54.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="thumbnail" fitHeight="214.0" fitWidth="207.0" layoutX="54.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/libraryIcon.png" />
          </image>
@@ -49,12 +48,12 @@
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label layoutX="92.0" layoutY="42.0" text="Anna Bell" />
-            <Label layoutX="92.0" layoutY="73.0" maxWidth="200.0" text="Tiểu thuyết, kỳ ảo, Văn học thiếu nhi, Hư cấu" wrapText="true" />
-            <Label layoutX="92.0" layoutY="106.0" text="2010" />
-            <Label layoutX="92.0" layoutY="137.0" text="Nam Dinh" />
-            <Label layoutX="120.0" layoutY="172.0" text="456" />
-            <Label layoutX="92.0" layoutY="208.0" text="English" />
+            <Label fx:id="authorText" layoutX="92.0" layoutY="42.0" text="Anna Bell" />
+            <Label fx:id="genreText" layoutX="92.0" layoutY="73.0" maxWidth="200.0" text="Tiểu thuyết, kỳ ảo, Văn học thiếu nhi, Hư cấu" wrapText="true" />
+            <Label fx:id="yearText" layoutX="92.0" layoutY="106.0" text="2010" />
+            <Label fx:id="publisherText" layoutX="92.0" layoutY="137.0" text="Nam Dinh" />
+            <Label fx:id="pageNumText" layoutX="120.0" layoutY="172.0" text="456" />
+            <Label fx:id="languageText" layoutX="92.0" layoutY="208.0" text="English" />
             <Label layoutX="17.0" layoutY="239.0" styleClass="book-title" text="Award:" />
             <Label layoutX="92.0" layoutY="241.0" maxWidth="200.0" text="Nestlé Smarties Book Prize for 9 to 11 years" wrapText="true" />
          </children>
@@ -82,8 +81,8 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="146.0" layoutY="429.0" maxWidth="500.0" styleClass="book-description" stylesheets="@../bookInfo.css" text="Harry Potter và Hòn đá Phù thủy là ấn phẩm đầu tay và là phần đầu tiên của bộ tiểu thuyết Harry Potter của nhà văn người Anh J. K. Rowling, được Bloomsbury xuất bản lần đầu tại Anh vào năm 1997. " wrapText="true" />
-      <Button layoutX="305.0" layoutY="521.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="95.0" styleClass="borrow-button" stylesheets="@../bookInfo.css" text="Borrow" textFill="WHITE">
+      <Label fx:id="descriptionText" layoutX="146.0" layoutY="429.0" maxWidth="500.0" styleClass="book-description" stylesheets="@../bookInfo.css" text="Harry Potter và Hòn đá Phù thủy là ấn phẩm đầu tay và là phần đầu tiên của bộ tiểu thuyết Harry Potter của nhà văn người Anh J. K. Rowling, được Bloomsbury xuất bản lần đầu tại Anh vào năm 1997. " wrapText="true" />
+      <Button layoutX="305.0" layoutY="521.0" mnemonicParsing="false" onAction="#handleBorrow" prefHeight="50.0" prefWidth="95.0" styleClass="borrow-button" stylesheets="@../bookInfo.css" text="Borrow" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

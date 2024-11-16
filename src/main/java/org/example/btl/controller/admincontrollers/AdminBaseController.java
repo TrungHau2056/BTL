@@ -18,6 +18,7 @@ public abstract class AdminBaseController {
 
     protected AdminService adminService = new AdminService();
     protected UserService userService = new UserService();
+
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     protected Alert alertComfirm = new Alert(Alert.AlertType.CONFIRMATION);
@@ -50,22 +51,22 @@ public abstract class AdminBaseController {
     }
 
     public void switchToAdminHome(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminHome.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminHome-view.fxml");
     }
 
     public void switchToAdminSearchBook(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminSearchBook.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminSearchBook-view.fxml");
     }
 
     public void switchToAddMemberScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/addMember.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/addMember-view.fxml");
     }
 
     public void switchToAddBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminAddBook.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminAddBook-view.fxml");
     }
 
     public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminDeleteBook.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminDeleteBook-view.fxml");
     }
 }

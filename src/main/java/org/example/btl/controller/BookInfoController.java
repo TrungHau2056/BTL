@@ -14,7 +14,7 @@ import org.example.btl.service.BorrowService;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class BookInfoSceneController implements Initializable {
+public class BookInfoController implements Initializable {
     private Document document;
 
     private BorrowService borrowService = new BorrowService();

@@ -136,6 +136,10 @@ public class Document {
         return publisher;
     }
 
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
     public void decreaseQuantity() {
         --quantity;
     }

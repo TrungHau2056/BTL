@@ -46,6 +46,8 @@ public class UserSearchBookController extends UserBaseController implements Init
     @FXML
     private TableColumn<Document, String> genresCol;
     @FXML
+    private TableColumn<Document, String> publisherCol;
+    @FXML
     private TableColumn<Document, String> descriptionCol;
     @FXML
     private TableColumn<Document, String> statusCol;
@@ -77,6 +79,15 @@ public class UserSearchBookController extends UserBaseController implements Init
             return new SimpleStringProperty(genresString);
         });
 
+        publisherCol.setCellValueFactory(data -> {
+            return new SimpleStringProperty(data.getValue().getPublisher().getName());
+        });
+
+
+    }
+
+    @Override
+    public void setUserInfo() {
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
             Borrow borrow = borrowService.findByUserAndDocument(user, document);
@@ -119,14 +130,9 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     }
 
-    @Override
-    public void setUserInfo() {
-
-    }
-
     public void handleUserSearch(ActionEvent event) {
         String titleKeyword = titleSearchText.getText();
-        String validateMessage = documentService.validateSearchByTitle(titleKeyword);
+        String validateMessage = documentService.validateSearchByKeyword(titleKeyword);
         if (validateMessage != null) {
             alertErr.setContentText(titleKeyword);
             alertErr.show();

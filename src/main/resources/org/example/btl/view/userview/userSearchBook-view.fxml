@@ -147,9 +147,10 @@
                         <TableColumn fx:id="idCol" editable="false" prefWidth="56.000030517578125" text="Id" />
                         <TableColumn fx:id="titleCol" editable="false" prefWidth="117.5999755859375" text="Title" />
                         <TableColumn fx:id="authorsCol" editable="false" prefWidth="122.4000244140625" text="Author" />
-                        <TableColumn fx:id="genresCol" editable="false" prefWidth="108.0" text="Genre" />
-                        <TableColumn fx:id="descriptionCol" editable="false" prefWidth="252.800048828125" text="Description" />
-                  <TableColumn fx:id="statusCol" prefWidth="91.2000732421875" text="Status" />
+                        <TableColumn fx:id="genresCol" editable="false" prefWidth="102.40008544921875" text="Genre" />
+                        <TableColumn fx:id="publisherCol" prefWidth="78.39990234375" text="Publisher" />
+                        <TableColumn fx:id="descriptionCol" editable="false" prefWidth="209.5999755859375" text="Description" />
+                        <TableColumn fx:id="statusCol" prefWidth="91.2000732421875" text="Status" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

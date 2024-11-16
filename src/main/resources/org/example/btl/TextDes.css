@@ -1,0 +1,13 @@
+.text-area {
+    -fx-background-color: transparent;
+    -fx-border-color: #466bb0;
+    -fx-border-radius: 20px;
+    -fx-padding: 1px 10px 10px 10px;
+    -fx-background-radius: 20px;
+}
+
+.text-area:focused {
+    -fx-border-color: #466bb0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

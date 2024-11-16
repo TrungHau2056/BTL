@@ -16,6 +16,7 @@ public class Document {
     private String description;
     private String imageLink;
     private int quantity;
+    private String language;
 
     @Temporal(TemporalType.DATE)
     private Date addedDate;
@@ -48,11 +49,12 @@ public class Document {
     public Document() {
     }
 
-    public Document(String title, String description, int quantity, String imageLink) {
+    public Document(String title, String description, int quantity, String imageLink, String language) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.imageLink = imageLink;
+        this.language = language;
         addedDate = Date.valueOf(LocalDate.now());
     }
 
@@ -92,6 +94,14 @@ public class Document {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public Set<Author> getAuthors() {

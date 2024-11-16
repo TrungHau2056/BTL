@@ -66,7 +66,7 @@ public class LoginController {
                 }
                 else {
                     //change to user scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userHomeScene.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHomeScene.fxml"));
                     root = loader.load();
                     UserHomeController controller = loader.getController();
                     controller.setUser(user);
@@ -85,7 +85,7 @@ public class LoginController {
                     alert.show();
                 } else {
                     //switch to admin scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminHome.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome.fxml"));
                     root = loader.load();
                     AdminHomeController controller = loader.getController();
                     controller.setAdmin(admin);

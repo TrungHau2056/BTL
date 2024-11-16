@@ -58,22 +58,22 @@ public class AdminSearchBookController extends AdminBaseController {
     }
 
     public void switchToAddMemberScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/addMember.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/addMember.fxml");
     }
 
     public void switchToAdminHome(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminHome.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminHome.fxml");
     }
 
     public void switchToAddBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminAddBook.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminAddBook.fxml");
     }
 
     public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminDeleteBook.fxml");
+        switchScene(event, "/org/example/btl/view/adminview/adminDeleteBook.fxml");
     }
 
-    public void handleSearch(ActionEvent event) {
-        
+    public void handleAdminSearch(ActionEvent event) {
+
     }
 }

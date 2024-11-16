@@ -38,6 +38,10 @@ public class Genre {
         this.name = name;
     }
 
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
     public void addDocument(Document document) {
         documents.add(document);
         document.getGenres().add(this);

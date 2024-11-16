@@ -2,6 +2,7 @@ package org.example.btl.dao;
 
 import jakarta.persistence.Query;
 import org.example.btl.model.Author;
+import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
@@ -21,5 +22,17 @@ public class AuthorDAO {
         session.close();
         if (authors.isEmpty()) return null;
         else return authors.getFirst();
+    }
+
+    public List<Author> findByKeyword(String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Author WHERE name LIKE :keyword");
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Author> authors = query.getResultList();
+
+        session.close();
+        return authors;
     }
 }

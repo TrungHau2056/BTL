@@ -15,15 +15,17 @@ import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class AdminSearchBookController extends AdminBaseController {
     @FXML
-    private TextField titleSearchText;
+    private TextField searchText;
 
     @FXML
-    private ChoiceBox<String> TypeBook;
+    private ChoiceBox<String> criteria;
     @FXML
     private TableView<Document> tableView;
     @FXML
@@ -35,9 +37,13 @@ public class AdminSearchBookController extends AdminBaseController {
     @FXML
     private TableColumn<Document, String> genresCol;
     @FXML
+    private TableColumn<Document, String> publisherCol;
+    @FXML
     private TableColumn<Document, String> descriptionCol;
     @FXML
     private TableColumn<Document, Integer> quantityCol;
+
+    private ObservableList<Document> documentObservableList;
 
     @Override
     public void setAdminInfo() {
@@ -47,9 +53,9 @@ public class AdminSearchBookController extends AdminBaseController {
     @FXML
     public void initialize() {
         // Choice Box
-        TypeBook.getItems().addAll("Title", "Author", "Genre", "Id", "ISBN code");
-        TypeBook.setValue("Title");
-        TypeBook.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+        criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
+        criteria.setValue("Title");
+        criteria.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("Selected item: " + newValue);
         });
 
@@ -75,11 +81,47 @@ public class AdminSearchBookController extends AdminBaseController {
             return new SimpleStringProperty(genresString);
         });
 
+        publisherCol.setCellValueFactory(data -> {
+            return new SimpleStringProperty(data.getValue().getPublisher().getName());
+        });
+
+
         ObservableList<Document> observableList = FXCollections.observableArrayList();
         tableView.setItems(observableList);
     }
 
     public void handleAdminSearch(ActionEvent event) {
+        String keyword = searchText.getText();
+        String criterion = criteria.getValue();
 
+        String validateMessage = documentService.validateSearchByKeyword(keyword);
+        if (validateMessage != null) {
+            alertErr.setContentText(keyword);
+            alertErr.show();
+        } else {
+            List<Document> documents = null;
+            switch (criterion) {
+                case "Title":
+                    documents = documentService.searchByTitleKeyword(keyword);
+                    break;
+                case "Author":
+                    documents = documentService.searchByAuthorKeyword(keyword);
+                    break;
+                case "Genre":
+                    documents = documentService.searchByGenreKeyword(keyword);
+                    break;
+                case "Publisher":
+                    documents = documentService.searchByPublisherKeyword(keyword);
+                    break;
+            }
+
+            if(documents.isEmpty()) {
+                alertErr.setContentText("No search results match the keyword.");
+                alertErr.show();
+            } else {
+                documentObservableList = FXCollections.observableArrayList(documents);
+                tableView.setItems(documentObservableList);
+            }
+        }
     }
 }

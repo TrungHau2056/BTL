@@ -5,17 +5,23 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,6 +53,9 @@ public class UserSearchBookController extends UserBaseController implements Init
     private TableColumn<Document, String> statusCol;
 
     private ObservableList<Document> documentObservableList;
+
+    private Stage stage;
+    private Scene scene;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -85,6 +94,40 @@ public class UserSearchBookController extends UserBaseController implements Init
             String status = borrow == null ? "Borrowed" : "Not Borrowed";
             return new SimpleStringProperty(status);
         });
+
+    }
+
+    // quay lại scene truoc do
+    public void handleBackButton(ActionEvent event) {
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void handleTableClick() {
+        Document selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if(selectedItem != null) {
+            try {
+                showBookInfoView(selectedItem);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void showBookInfoView(Document selectedItem) throws  Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
+        Parent root = loader.load();
+
+        BookInfoController controller = loader.getController();
+        controller.setDocument(selectedItem);
+        controller.setUserSearch(this);
+        controller.setBookInfo();
+
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+
     }
 
     public void handleUserSearch(ActionEvent event) {
@@ -104,5 +147,9 @@ public class UserSearchBookController extends UserBaseController implements Init
                 tableView.setItems(documentObservableList);
             }
         }
+
+        // luu lai scene khi search
+        stage = (Stage) tableView.getScene().getWindow();
+        scene = tableView.getScene();
     }
 }

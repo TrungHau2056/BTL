@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
@@ -59,14 +60,26 @@ public class BookInfoSceneController implements Initializable {
             genres += ", ";
         }
 
+        String imageLink = document.getImageLink();
+
+        if (imageLink != null) {
+            thumbnail.setImage(new Image(document.getImageLink()));
+        } else {
+
+        }
         titleText.setText(document.getTitle());
         authorText.setText(authors);
         genreText.setText(genres);
         publisherText.setText(document.getPublisher().getName());
         descriptionText.setText(document.getDescription());
+        languageText.setText(document.getLanguage());
     }
 
     public void handleBorrow(ActionEvent event) {
+
+    }
+
+    public void exit(ActionEvent event) {
 
     }
 }

@@ -15,7 +15,7 @@
 
 <HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminDeleteBookController">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css">
+      <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
             <DropShadow height="13.98" width="28.02">
                <color>
@@ -47,7 +47,7 @@
                <children>
                   <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/searchIcon.png" />
+                        <Image url="@../../images/searchIcon.png" />
                      </image>
                   </ImageView>
                   <TextField layoutX="35.0" prefHeight="40.0" prefWidth="282.0" promptText="Search books" style="-fx-background-color: transparent;" />
@@ -66,7 +66,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/searchBookIcon.png" />
+                                    <Image url="@../../images/searchBookIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -84,7 +84,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/borrowBookIcon.png" />
+                                    <Image url="@../../images/borrowBookIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -102,7 +102,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/removeBookIcon.png" />
+                                    <Image url="@../../images/removeBookIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -120,7 +120,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/AddUser.png" />
+                                    <Image url="@../../images/AddUser.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -138,7 +138,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/Book.png" />
+                                    <Image url="@../../images/Book.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -156,7 +156,7 @@
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../images/fix.png" />
+                                    <Image url="@../../images/fix.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -175,7 +175,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0;" stylesheets="@../tableview.css">
+      <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0;" stylesheets="@../../tableview.css">
          <HBox.margin>
             <Insets />
          </HBox.margin>
@@ -184,7 +184,7 @@
                <graphic>
                   <ImageView fitHeight="32.0" fitWidth="45.0" preserveRatio="true">
                      <image>
-                        <Image url="@../images/homescreen.png" />
+                        <Image url="@../../images/homescreen.png" />
                      </image>
                   </ImageView>
                </graphic>

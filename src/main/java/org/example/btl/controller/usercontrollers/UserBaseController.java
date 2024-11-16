@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.example.btl.model.User;
+import org.example.btl.service.DocumentService;
 import org.example.btl.service.UserService;
 
 import java.io.IOException;
@@ -17,6 +18,8 @@ public abstract class UserBaseController {
     protected User user;
 
     protected UserService userService = new UserService();
+    protected DocumentService documentService = new DocumentService();
+
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     protected Alert alertComfirm = new Alert(Alert.AlertType.CONFIRMATION);
@@ -49,11 +52,11 @@ public abstract class UserBaseController {
     }
 
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userHomeScene.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userHomeScene.fxml");
     }
 
     public void switchToUserSearchBook(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userSearchBook.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userSearchBook.fxml");
     }
 
     public void switchToUserBorrowBook(ActionEvent event) throws IOException {
@@ -65,7 +68,7 @@ public abstract class UserBaseController {
     }
 
     public void switchToUserInfo(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userInforScene.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userInforScene.fxml");
     }
 
     public void handleLogOut(ActionEvent event) {

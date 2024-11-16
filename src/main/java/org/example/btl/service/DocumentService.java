@@ -21,6 +21,13 @@ public class DocumentService {
         return documentDAO.searchByTitleKeyword(keyword);
     }
 
+    public String validateSearchByTitle(String title) {
+        if (Objects.equals(title, "")) {
+            return "Please enter your search keyword";
+        }
+        return null;
+    }
+
     public boolean checkIfExist(List<String> authorNames, String title) {
         Document document = findByTitle(title);
         if (document == null) {

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 
 public class AdminService {
-    private final AdminDAO adminDAO = new AdminDAO();
+    private AdminDAO adminDAO = new AdminDAO();
 
     public Admin findByUsername(String username) {
         return adminDAO.findByUsername(username);

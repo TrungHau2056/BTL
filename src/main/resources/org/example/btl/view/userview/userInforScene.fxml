@@ -18,7 +18,7 @@
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.usercontrollers.UserInfoController">
     <children>
-        <AnchorPane prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../style.css" HBox.hgrow="ALWAYS">
+        <AnchorPane prefHeight="700.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css" HBox.hgrow="ALWAYS">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -42,7 +42,7 @@
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/SearchBooks.png" />
+                                <Image url="@../../images/SearchBooks.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -51,7 +51,7 @@
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/ReturnBooks.png" />
+                                <Image url="@../../images/ReturnBooks.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
@@ -59,7 +59,7 @@
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/UserInfo.png" />
+                                <Image url="@../../images/UserInfo.png" />
                             </image>
                         </ImageView>
                     </graphic></Button>
@@ -77,7 +77,7 @@
                     </font></Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/userIcon - Copy.png" />
+                  <Image url="@../../images/userIcon - Copy.png" />
                </image>
             </ImageView>
             <Label layoutX="34.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
@@ -105,7 +105,7 @@
                 </DropShadow>
             </effect>
         </AnchorPane>
-        <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../style.css">
+        <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../../style.css">
             <children>
                 <Label layoutX="220.0" layoutY="27.0" style="-fx-font-weight: 700;" text="User Information" textFill="#466bb0">
                     <font>
@@ -123,7 +123,7 @@
                     <graphic>
                         <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@../images/homescreen.png" />
+                                <Image url="@../../images/homescreen.png" />
                             </image>
                         </ImageView>
                     </graphic>
@@ -164,7 +164,7 @@
                 <Button fx:id="updateButton" disable="true" layoutX="376.0" layoutY="570.0" mnemonicParsing="false" onAction="#handleUpdateUser" prefHeight="67.0" prefWidth="130.0" styleClass="login-signup-Button" text="Update" textFill="WHITE" />
                 <ImageView fitHeight="274.0" fitWidth="369.0" layoutX="481.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/memberShip.png" />
+                        <Image url="@../../images/memberShip.png" />
                     </image>
                 </ImageView>
             <Button layoutX="29.0" layoutY="139.0" mnemonicParsing="false" onAction="#handleUpdateName" styleClass="change-user-info" />

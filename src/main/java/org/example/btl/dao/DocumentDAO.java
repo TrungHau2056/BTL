@@ -79,7 +79,6 @@ public class DocumentDAO implements BaseDAO<Document> {
         List<Document> documents = query.getResultList();
 
         session.close();
-        if (documents.isEmpty()) return null;
         return documents;
     }
 }

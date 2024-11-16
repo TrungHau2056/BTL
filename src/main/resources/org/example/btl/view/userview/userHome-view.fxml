@@ -52,7 +52,7 @@
                         </ImageView>
                     </graphic>
                 </Button>
-                <Button layoutX="153.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchToUserBorrowBook" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
+                <Button layoutX="153.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchToUserReturnBook" prefHeight="67.0" prefWidth="73.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -60,7 +60,7 @@
                             </image>
                         </ImageView>
                     </graphic></Button>
-                <Button layoutX="268.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchToUserReturnBook" prefHeight="45.0" prefWidth="54.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
+                <Button layoutX="268.0" layoutY="427.0" mnemonicParsing="false" onAction="#switchToUserInfo" prefHeight="45.0" prefWidth="54.0" style="-fx-cursor: hand; -fx-background-radius: 20;" styleClass="admin-button-functions">
                     <graphic>
                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -103,7 +103,7 @@
             </Label>
             <Label layoutX="119.0" layoutY="602.0" text="Chọn &quot;Return Books&quot; để trả sách đã mượn." textFill="#e4d868" />
             <Label layoutX="119.0" layoutY="630.0" maxWidth="250.0" text="Nhấp vào &quot;User Info&quot; để xem và cập nhật thông tin cá nhân của bạn." textFill="#e4d868" wrapText="true" />
-                  <Label fx:id="userinfo" layoutX="88.0" layoutY="95.0" text="aaaaaaaaaaaaa" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="userinfo" layoutX="93.0" layoutY="88.0" textAlignment="CENTER" textFill="WHITE">
                       <font>
                           <Font name="System Bold" size="30.0" />
                       </font>

@@ -6,10 +6,10 @@ import org.example.btl.model.Document;
 import org.example.btl.model.User;
 
 public class BorrowService {
-    private final BorrowDAO borrowDAO = new BorrowDAO();
+    private BorrowDAO borrowDAO = new BorrowDAO();
 
     public boolean isReturned(Borrow borrow) {
-        return borrow.getReturnDate() == null;
+        return borrow.getReturnDate() != null;
     }
 
     public boolean isCurrentlyBorrowing(User user, Document document) {

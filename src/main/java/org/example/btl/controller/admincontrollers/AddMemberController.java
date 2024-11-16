@@ -50,7 +50,7 @@ public class AddMemberController extends AdminBaseController {
             User newUser = new User(name, email, username, password, birthday, gender);
             userService.save(newUser);
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccessScene.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccess-view.fxml"));
             root = loader.load();
             stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             scene = new Scene(root);

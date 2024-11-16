@@ -35,7 +35,7 @@ public class LoginController {
     private ToggleGroup role;
 
     public void switchToSignUp(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpScene.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUp-view.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -66,7 +66,7 @@ public class LoginController {
                 }
                 else {
                     //change to user scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHomeScene.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
                     root = loader.load();
                     UserHomeController controller = loader.getController();
                     controller.setUser(user);
@@ -85,7 +85,7 @@ public class LoginController {
                     alert.show();
                 } else {
                     //switch to admin scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
                     root = loader.load();
                     AdminHomeController controller = loader.getController();
                     controller.setAdmin(admin);

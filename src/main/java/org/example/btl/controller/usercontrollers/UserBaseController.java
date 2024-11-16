@@ -52,11 +52,11 @@ public abstract class UserBaseController {
     }
 
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userview/userHomeScene.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userHome-view.fxml");
     }
 
     public void switchToUserSearchBook(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userview/userSearchBook.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userSearchBook-view.fxml");
     }
 
     public void switchToUserBorrowBook(ActionEvent event) throws IOException {
@@ -68,7 +68,7 @@ public abstract class UserBaseController {
     }
 
     public void switchToUserInfo(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/userview/userInforScene.fxml");
+        switchScene(event, "/org/example/btl/view/userview/userInfor-view.fxml");
     }
 
     public void handleLogOut(ActionEvent event) {
@@ -77,7 +77,7 @@ public abstract class UserBaseController {
         alertComfirm.setContentText("Are you sure?");
         alertComfirm.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/loginScene.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
                 try {
                     root = loader.load();
                 } catch (IOException e) {

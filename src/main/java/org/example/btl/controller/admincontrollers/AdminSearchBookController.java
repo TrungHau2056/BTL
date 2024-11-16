@@ -1,5 +1,6 @@
 package org.example.btl.controller.admincontrollers;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,26 +8,36 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
+import org.example.btl.model.Genre;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class AdminSearchBookController extends AdminBaseController {
     @FXML
+    private TextField titleSearchText;
+
+    @FXML
     private ChoiceBox<String> TypeBook;
     @FXML
-    private TableView<Document> tableView = new TableView();
+    private TableView<Document> tableView;
     @FXML
     private TableColumn<Document, Integer> idCol;
     @FXML
     private TableColumn<Document, String> titleCol;
     @FXML
+    private TableColumn<Document, String> authorsCol;
+    @FXML
+    private TableColumn<Document, String> genresCol;
+    @FXML
     private TableColumn<Document, String> descriptionCol;
     @FXML
-    private TableColumn<Document, Set<Author>> authorsCol;
+    private TableColumn<Document, Integer> quantityCol;
 
     @Override
     public void setAdminInfo() {
@@ -46,31 +57,26 @@ public class AdminSearchBookController extends AdminBaseController {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
-        authorsCol.setCellValueFactory(new PropertyValueFactory<>("authors"));
+        quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 
-        ObservableList<Document> observableList = FXCollections.observableArrayList(
-                new Document(1, "Sach 1", "Mieu ta ve sach1"),
-                new Document(2, "Sach 2", "Mieu ta sach 2"),
-                new Document(3, "Sach 3", "Mieu ta sach 3")
-        );
+        authorsCol.setCellValueFactory(data -> {
+            Set<Author> authors = data.getValue().getAuthors();
+            String authorsString = authors.stream()
+                    .map(Author::getName)
+                    .collect(Collectors.joining(", "));
+            return new SimpleStringProperty(authorsString);
+        });
 
+        genresCol.setCellValueFactory(data -> {
+            Set<Genre> genres = data.getValue().getGenres();
+            String genresString = genres.stream()
+                    .map(Genre::getName)
+                    .collect(Collectors.joining(", "));
+            return new SimpleStringProperty(genresString);
+        });
+
+        ObservableList<Document> observableList = FXCollections.observableArrayList();
         tableView.setItems(observableList);
-    }
-
-    public void switchToAddMemberScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/addMember-view.fxml");
-    }
-
-    public void switchToAdminHome(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminHome-view.fxml");
-    }
-
-    public void switchToAddBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminAddBook-view.fxml");
-    }
-
-    public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminDeleteBook-view.fxml");
     }
 
     public void handleAdminSearch(ActionEvent event) {

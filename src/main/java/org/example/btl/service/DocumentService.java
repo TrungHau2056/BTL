@@ -11,7 +11,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class DocumentService {
-    private final DocumentDAO documentDAO = new DocumentDAO();
+    private DocumentDAO documentDAO = new DocumentDAO();
 
     public Document findByTitle(String title) {
         return documentDAO.findByTitle(title);

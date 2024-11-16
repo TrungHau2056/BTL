@@ -1,14 +1,17 @@
 package org.example.btl.controller.usercontrollers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.example.btl.model.User;
+import org.example.btl.service.BorrowService;
 import org.example.btl.service.DocumentService;
 import org.example.btl.service.UserService;
 
@@ -19,6 +22,7 @@ public abstract class UserBaseController {
 
     protected UserService userService = new UserService();
     protected DocumentService documentService = new DocumentService();
+    protected BorrowService borrowService = new BorrowService();
 
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
@@ -27,6 +31,9 @@ public abstract class UserBaseController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    protected ImageView avatar;
 
     public User getUser() {
         return user;

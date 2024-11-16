@@ -21,12 +21,12 @@ module org.example.btl {
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
     opens org.example.btl.model to org.hibernate.orm.core, javafx.base;
     opens org.example.btl.controller to javafx.fxml, org.hibernate.orm.core;
-//    opens org.example.btl.fxmlFiles to javafx.fxml;
     exports org.example.btl;
     exports org.example.btl.controller;
     exports org.example.btl.controller.admincontrollers;
     opens org.example.btl.controller.admincontrollers to javafx.fxml, org.hibernate.orm.core;
     exports org.example.btl.controller.usercontrollers;
     opens org.example.btl.controller.usercontrollers to javafx.fxml, org.hibernate.orm.core;
-
+    exports org.example.btl.model;
+    exports org.example.btl.dao;
 }

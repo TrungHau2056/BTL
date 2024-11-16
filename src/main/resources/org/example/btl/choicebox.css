@@ -5,6 +5,6 @@
 
 .choice-box {
     -fx-border-color: #466bb0;
-    -fx-background-color: #ffffff;
+    -fx-background-color: transparent;
     -fx-border-radius: 30px;
 }

@@ -31,6 +31,10 @@ public class Publisher {
         this.name = name;
     }
 
+    public Set<Document> getDocuments() {
+        return documents;
+    }
+
     public void addDocument(Document document) {
         documents.add(document);
         document.setPublisher(this);

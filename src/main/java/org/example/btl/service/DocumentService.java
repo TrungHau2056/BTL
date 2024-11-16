@@ -1,8 +1,13 @@
 package org.example.btl.service;
 
+import org.example.btl.dao.AuthorDAO;
 import org.example.btl.dao.DocumentDAO;
+import org.example.btl.dao.GenreDAO;
+import org.example.btl.dao.PublisherDAO;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
+import org.example.btl.model.Genre;
+import org.example.btl.model.Publisher;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +17,9 @@ import java.util.stream.Collectors;
 
 public class DocumentService {
     private DocumentDAO documentDAO = new DocumentDAO();
+    private AuthorDAO authorDAO = new AuthorDAO();
+    private GenreDAO genreDAO = new GenreDAO();
+    private PublisherDAO publisherDAO = new PublisherDAO();
 
     public Document findByTitle(String title) {
         return documentDAO.findByTitle(title);
@@ -21,8 +29,41 @@ public class DocumentService {
         return documentDAO.searchByTitleKeyword(keyword);
     }
 
-    public String validateSearchByTitle(String title) {
-        if (Objects.equals(title, "")) {
+    public List<Document> searchByAuthorKeyword(String keyword) {
+        List<Author> authors = authorDAO.findByKeyword(keyword);
+        List<Document> documentList = new ArrayList<>();
+        for (Author author : authors) {
+            for (Document document : author.getDocuments()) {
+                documentList.add(document);
+            }
+        }
+        return documentList;
+    }
+
+    public List<Document> searchByGenreKeyword(String keyword) {
+        List<Genre> genres = genreDAO.findByKeyword(keyword);
+        List<Document> documentList = new ArrayList<>();
+        for (Genre genre : genres) {
+            for (Document document : genre.getDocuments()) {
+                documentList.add(document);
+            }
+        }
+        return documentList;
+    }
+
+    public List<Document> searchByPublisherKeyword(String keyword) {
+        List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
+        List<Document> documentList = new ArrayList<>();
+        for (Publisher publisher : publishers) {
+            for (Document document : publisher.getDocuments()) {
+                documentList.add(document);
+            }
+        }
+        return documentList;
+    }
+
+    public String validateSearchByKeyword(String keyword) {
+        if (Objects.equals(keyword, "")) {
             return "Please enter your search keyword";
         }
         return null;

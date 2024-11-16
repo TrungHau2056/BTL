@@ -9,6 +9,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import org.example.btl.model.Admin;
 import org.example.btl.service.AdminService;
+import org.example.btl.service.DocumentService;
 import org.example.btl.service.UserService;
 
 import java.io.IOException;
@@ -18,6 +19,7 @@ public abstract class AdminBaseController {
 
     protected AdminService adminService = new AdminService();
     protected UserService userService = new UserService();
+    protected DocumentService documentService = new DocumentService();
 
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);

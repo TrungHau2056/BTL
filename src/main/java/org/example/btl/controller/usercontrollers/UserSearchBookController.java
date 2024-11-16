@@ -84,8 +84,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             return new SimpleStringProperty(status);
         });
 
-        stage = (Stage) tableView.getScene().getWindow();
-        scene = tableView.getScene();
     }
 
     // quay lại scene truoc do
@@ -143,5 +141,9 @@ public class UserSearchBookController extends UserBaseController implements Init
                 tableView.setItems(documentObservableList);
             }
         }
+
+        // luu lai scene khi search
+        stage = (Stage) tableView.getScene().getWindow();
+        scene = tableView.getScene();
     }
 }

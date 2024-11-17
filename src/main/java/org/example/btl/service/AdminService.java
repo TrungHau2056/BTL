@@ -38,7 +38,7 @@ public class AdminService {
         } else if (username.length() < 6) {
             return "Your username must be at least 6 characters long.";
         } else if (password.length() < 8) {
-            return "Your Password must be at least 8 characters long.";
+            return "Your password must be at least 8 characters long.";
         } else {
             Admin admin = findByUsername(username);
             if (admin != null) {

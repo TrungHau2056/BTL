@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.Objects;
 
 public class UserService {
-    private final UserDAO userDAO = new UserDAO();
+    private UserDAO userDAO = new UserDAO();
 
     public void save(User item) {
         userDAO.save(item);

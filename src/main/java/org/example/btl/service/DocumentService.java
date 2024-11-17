@@ -4,10 +4,7 @@ import org.example.btl.dao.AuthorDAO;
 import org.example.btl.dao.DocumentDAO;
 import org.example.btl.dao.GenreDAO;
 import org.example.btl.dao.PublisherDAO;
-import org.example.btl.model.Author;
-import org.example.btl.model.Document;
-import org.example.btl.model.Genre;
-import org.example.btl.model.Publisher;
+import org.example.btl.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +77,12 @@ public class DocumentService {
         return docAuthorNames.containsAll(authorNames);
     }
 
+    public void saveWithAdminAuthorsPublisherGenre(Document document, Admin admin,
+                                                   List<String> authorNames, String publisherName,
+                                                   List<String> genreNames) {
+        documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
+    }
+
     public String validateAdd(String title, String author, String publisher, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(author, "")
@@ -88,6 +91,41 @@ public class DocumentService {
                 || Objects.equals(description, "")) {
             return "Please enter all the information!";
         }
+        try {
+            int quantity = Integer.parseInt(quantityStr);
+        } catch (NumberFormatException e) {
+            return "Quantity field must be a number!";
+        }
+        if (checkIfExist(new ArrayList<>(), title)) {
+            return "This document has already been added";
+        }
+        return null;
+    }
+
+    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String publisher, String quantityStr, String description) {
+        if (Objects.equals(title, "")
+                || Objects.equals(publisher, "")
+                || Objects.equals(quantityStr, "")
+                || Objects.equals(description, "")) {
+            return "Please enter all the information!";
+        }
+
+        if (authorNames.isEmpty() || genreNames.isEmpty()) {
+            return "Please enter all the information!";
+        }
+
+        for (String authorName : authorNames) {
+            if (Objects.equals(authorName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
+        for (String genreName : genreNames) {
+            if (Objects.equals(genreName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
         try {
             int quantity = Integer.parseInt(quantityStr);
         } catch (NumberFormatException e) {

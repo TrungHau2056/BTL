@@ -30,10 +30,10 @@ import java.util.stream.Collectors;
 
 public class UserSearchBookController extends UserBaseController implements Initializable {
     @FXML
-    private TextField titleSearchText;
+    private TextField searchText;
 
     @FXML
-    private ChoiceBox<String> TypeBook;
+    private ChoiceBox<String> criteria;
 
     @FXML
     private TableView<Document> tableView;
@@ -59,6 +59,9 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
+        criteria.setValue("Title");
+
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -131,15 +134,31 @@ public class UserSearchBookController extends UserBaseController implements Init
     }
 
     public void handleUserSearch(ActionEvent event) {
-        String titleKeyword = titleSearchText.getText();
-        String validateMessage = documentService.validateSearchByKeyword(titleKeyword);
+        String keyword = searchText.getText();
+        String criterion = criteria.getValue();
+
+        String validateMessage = documentService.validateSearchByKeyword(keyword);
         if (validateMessage != null) {
-            alertErr.setContentText(titleKeyword);
+            alertErr.setContentText(keyword);
             alertErr.show();
         } else {
-            List<Document> documents = documentService.searchByTitleKeyword(titleKeyword);
-            //
-            if(documents.isEmpty()) {
+            List<Document> documents = null;
+            switch (criterion) {
+                case "Title":
+                    documents = documentService.searchByTitleKeyword(keyword);
+                    break;
+                case "Author":
+                    documents = documentService.searchByAuthorKeyword(keyword);
+                    break;
+                case "Genre":
+                    documents = documentService.searchByGenreKeyword(keyword);
+                    break;
+                case "Publisher":
+                    documents = documentService.searchByPublisherKeyword(keyword);
+                    break;
+            }
+
+            if (documents.isEmpty()) {
                 alertErr.setContentText("No search results match the keyword.");
                 alertErr.show();
             } else {
@@ -147,7 +166,6 @@ public class UserSearchBookController extends UserBaseController implements Init
                 tableView.setItems(documentObservableList);
             }
         }
-
         // luu lai scene khi search
         stage = (Stage) tableView.getScene().getWindow();
         scene = tableView.getScene();

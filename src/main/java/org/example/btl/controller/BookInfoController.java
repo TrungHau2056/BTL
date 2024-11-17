@@ -86,10 +86,6 @@ public class BookInfoController implements Initializable {
 
     }
 
-    public void exit(ActionEvent event) {
-
-    }
-
     @FXML
     public void handleReturnButton(ActionEvent event) throws IOException {
         userSearch.handleBackButton(event);

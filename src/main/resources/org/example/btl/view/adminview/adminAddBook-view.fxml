@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.AdminAddBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminAddBookController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -247,7 +247,7 @@
             <Button layoutX="473.0" layoutY="232.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
             <Button layoutX="340.0" layoutY="503.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add" />
             <Button layoutX="405.0" layoutY="504.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
-            <Button layoutX="331.0" layoutY="593.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px; -fx-border-color: transparent;" stylesheets="@../../ButtonAdd-view.css" text="Add document" textFill="WHITE">
+            <Button layoutX="331.0" layoutY="593.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px; -fx-border-color: transparent;" stylesheets="@../../ButtonAdd-view.css" text="Add document" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>

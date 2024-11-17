@@ -25,6 +25,9 @@ class DocumentServiceTest {
     @InjectMocks
     DocumentService documentService;
 
+    private List<String> authorNames = new ArrayList<>();
+    private List<String> genreNames = new ArrayList<>();
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -75,13 +78,17 @@ class DocumentServiceTest {
 
     @Test
     void validateAdd_quantity() {
-        String result = documentService.validateAdd("title", "author", "publisher", "one-hundred", "description");
+        authorNames.add("Boichi");
+        genreNames.add("Action");
+        genreNames.add("Fantasy");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "publisher", "one-hundred", "description");
         assertEquals("Quantity field must be a number!", result);
     }
 
     @Test
     void validateAdd_emptyField() {
-        String result = documentService.validateAdd("title", "author", "", "105", "description");
+        authorNames.add("Boichi");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "", "105", "description");
         assertEquals("Please enter all the information!", result);
     }
 }

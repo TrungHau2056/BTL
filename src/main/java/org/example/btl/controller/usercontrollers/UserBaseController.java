@@ -71,7 +71,7 @@ public abstract class UserBaseController {
     }
 
     public void switchToUserReturnBook(ActionEvent event) throws IOException {
-
+        switchScene(event, "/org/example/btl/view/userview/userReturnBook-view.fxml");
     }
 
     public void switchToUserInfo(ActionEvent event) throws IOException {

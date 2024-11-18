@@ -25,7 +25,7 @@ public class AdminSearchBookController extends AdminBaseController {
     private TextField searchText;
 
     @FXML
-    private ChoiceBox<String> criteria;
+    private ChoiceBox<String> criteria = new ChoiceBox<>();
     @FXML
     private TableView<Document> tableView;
     @FXML

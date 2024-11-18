@@ -1,6 +1,8 @@
 package org.example.btl.controller.admincontrollers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.ToggleButton;
 import org.example.btl.model.Document;
 
 import java.util.ArrayList;
@@ -8,6 +10,13 @@ import java.util.List;
 
 public class AdminAddBookController extends AdminBaseController {
 
+    @FXML
+    ToggleButton NormalButton;
+
+    @FXML
+    public void initialize() {
+        NormalButton.setSelected(true);
+    }
 
     @Override
     public void setAdminInfo() {
@@ -35,4 +44,5 @@ public class AdminAddBookController extends AdminBaseController {
             alertInfo.show();
         }
     }
+
 }

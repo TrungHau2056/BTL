@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminAddBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddByISBNController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -308,16 +308,16 @@
             </Label>
             <ToggleButtonGroup layoutX="670.0" layoutY="41.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
-                    <ToggleButton fx:id="NormalButton" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Normal">
+                  <ToggleButton prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Normal">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
-                    </ToggleButton>
-                    <ToggleButton prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="ISBN">
+                  </ToggleButton>
+                  <ToggleButton prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="ISBN">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
-                    </ToggleButton>
+                  </ToggleButton>
                </toggles>
             </ToggleButtonGroup>
          </children>

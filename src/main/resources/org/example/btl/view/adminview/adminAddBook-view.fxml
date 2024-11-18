@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
@@ -68,7 +67,7 @@
                   </Label>
                   <AnchorPane layoutY="46.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAdminSearchBook" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -256,14 +255,10 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <TextArea layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" wrapText="true">
+            <TextArea layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <stylesheets>
-                  <URL value="@../TextArea.css" />
-                  <URL value="@../../TextDes.css" />
-               </stylesheets>
             </TextArea>
             <TextField layoutX="597.0" layoutY="463.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
@@ -313,7 +308,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                     </ToggleButton>
-                    <ToggleButton prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="ISBN">
+                    <ToggleButton onAction="#switchToISBNScene" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="ISBN">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>

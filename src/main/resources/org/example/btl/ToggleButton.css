@@ -10,3 +10,7 @@
     -fx-background-radius: 20px;
     -fx-opacity: 1;
 }
+
+.toggle-button:hover {
+    -fx-cursor: hand;
+}

@@ -291,12 +291,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField fx:id="imageLinkText" layoutX="186.0" layoutY="548.0" prefHeight="30.0" prefWidth="438.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="imageLinkText" layoutX="186.0" layoutY="548.0" prefHeight="30.0" prefWidth="438.0" promptText="Optional" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Label layoutX="83.0" layoutY="550.0" prefHeight="26.0" prefWidth="102.0" text="Link Image:">
+            <Label layoutX="83.0" layoutY="550.0" prefHeight="26.0" prefWidth="102.0" text="Image Link:">
                <font>
                   <Font size="17.0" />
                </font>

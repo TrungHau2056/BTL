@@ -210,7 +210,7 @@
                         </DropShadow>
                     </effect>
                 </Label>
-                <TextField fx:id="titleText" disable="true" editable="false" layoutX="159.0" layoutY="173.0" prefHeight="30.0" prefWidth="230.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="titleText" editable="false" layoutX="159.0" layoutY="173.0" prefHeight="30.0" prefWidth="230.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -220,7 +220,7 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <TextField disable="true" editable="false" layoutX="159.0" layoutY="282.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="genreText" editable="false" layoutX="159.0" layoutY="282.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -235,7 +235,7 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <TextField disable="true" editable="false" layoutX="159.0" layoutY="538.0" prefHeight="30.0" prefWidth="175.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="authorText" editable="false" layoutX="167.0" layoutY="538.0" prefHeight="30.0" prefWidth="175.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -245,17 +245,17 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <Button layoutX="337.0" layoutY="620.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px; -fx-border-color: transparent;" stylesheets="@../../ButtonAdd-view.css" text="Add document" textFill="WHITE">
+                <Button layoutX="337.0" layoutY="620.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px; -fx-border-color: transparent;" stylesheets="@../../ButtonAdd-view.css" text="Add document" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="18.0" />
                     </font>
                 </Button>
-                <TextArea fx:id="descriptionText" disable="true" editable="false" layoutX="159.0" layoutY="350.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
+                <TextArea fx:id="descriptionText" editable="false" layoutX="159.0" layoutY="350.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
                 </TextArea>
-                <TextField fx:id="publisherText" disable="true" editable="false" layoutX="485.0" layoutY="537.0" prefHeight="30.0" prefWidth="166.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="publisherText" editable="false" layoutX="485.0" layoutY="537.0" prefHeight="30.0" prefWidth="166.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -266,7 +266,7 @@
                     </font>
                 </Label>
                 <Separator layoutX="355.0" layoutY="535.0" orientation="VERTICAL" prefHeight="33.0" prefWidth="23.0" />
-                <TextField fx:id="quantityText" editable="false" layoutX="159.0" layoutY="225.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="quantityText" layoutX="159.0" layoutY="225.0" prefHeight="27.0" prefWidth="119.0" promptText="Enter quantity" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>
@@ -300,12 +300,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <ImageView fitHeight="188.0" fitWidth="264.0" layoutX="485.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="thumbnail" fitHeight="188.0" fitWidth="264.0" layoutX="485.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/ImageNotAvailable.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="362.0" layoutY="117.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="65.0" stylesheets="@../../ButtonAdd-view.css" text="Check" />
+            <Button layoutX="362.0" layoutY="117.0" mnemonicParsing="false" onAction="#handleCheck" prefHeight="30.0" prefWidth="65.0" stylesheets="@../../ButtonAdd-view.css" text="Check" />
             </children>
         </AnchorPane>
     </children>

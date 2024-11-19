@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminAddBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminAddBookController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -211,7 +211,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TextField layoutX="186.0" layoutY="109.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="titleText" layoutX="186.0" layoutY="109.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -221,12 +221,12 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="172.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="genresText" layoutX="186.0" layoutY="172.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Label layoutX="84.0" layoutY="174.0" prefHeight="26.0" prefWidth="101.0" text="Genre book:">
+            <Label layoutX="84.0" layoutY="174.0" prefHeight="26.0" prefWidth="101.0" text="Genre:">
                <font>
                   <Font size="17.0" />
                </font>
@@ -236,7 +236,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="465.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="authorsText" layoutX="186.0" layoutY="465.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -246,21 +246,21 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="395.0" layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add" />
-            <Button layoutX="460.0" layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
-            <Button layoutX="326.0" layoutY="467.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add" />
-            <Button layoutX="395.0" layoutY="467.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
+            <Button layoutX="395.0" layoutY="173.0" mnemonicParsing="false" onAction="#genreAdd" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add" />
+            <Button layoutX="460.0" layoutY="173.0" mnemonicParsing="false" onAction="#genreDelete" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
+            <Button layoutX="326.0" layoutY="467.0" mnemonicParsing="false" onAction="#authorAdd" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add" />
+            <Button layoutX="395.0" layoutY="467.0" mnemonicParsing="false" onAction="#authorDelete" prefHeight="26.0" prefWidth="62.0" stylesheets="@../../ButtonAdd-view.css" text="Delete" />
             <Button layoutX="337.0" layoutY="620.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="48.0" prefWidth="165.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px; -fx-border-color: transparent;" stylesheets="@../../ButtonAdd-view.css" text="Add document" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <TextArea layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
+            <TextArea fx:id="descriptionText" layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </TextArea>
-            <TextField layoutX="597.0" layoutY="463.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="publisherText" layoutX="597.0" layoutY="463.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -271,17 +271,17 @@
                </font>
             </Label>
             <Separator layoutX="468.0" layoutY="462.0" orientation="VERTICAL" prefHeight="33.0" prefWidth="23.0" />
-            <Text fill="#466bb0" layoutX="186.0" layoutY="230.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The genre you enter will be displayed here..." wrappingWidth="438.4000000000001">
+            <Text fill="#466bb0" layoutX="184.0" layoutY="229.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The genre you enter will be displayed here:" wrappingWidth="282.4">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="#466bb0" layoutX="186.0" layoutY="521.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The author you enter will be displayed here..." wrappingWidth="438.4000000000001">
+            <Text fill="#466bb0" layoutX="184.0" layoutY="520.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The author you enter will be displayed here:" wrappingWidth="282.39999999999986">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField layoutX="592.0" layoutY="109.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="quantityText" layoutX="592.0" layoutY="109.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -291,7 +291,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <TextField layoutX="186.0" layoutY="548.0" prefHeight="30.0" prefWidth="438.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="imageLinkText" layoutX="186.0" layoutY="548.0" prefHeight="30.0" prefWidth="438.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
@@ -315,6 +315,8 @@
                     </ToggleButton>
                </toggles>
             </ToggleButtonGroup>
+            <Label fx:id="genreLabel" layoutX="466.0" layoutY="215.0" prefHeight="19.0" prefWidth="218.0" />
+            <Label fx:id="authorLabel" layoutX="467.0" layoutY="504.0" prefHeight="19.0" prefWidth="218.0" />
          </children>
       </AnchorPane>
    </children>

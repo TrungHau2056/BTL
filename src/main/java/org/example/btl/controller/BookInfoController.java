@@ -79,7 +79,6 @@ public class BookInfoController implements Initializable {
         publisherText.setText(document.getPublisher().getName());
         quantityText.setText(String.valueOf(document.getQuantity()));
         descriptionText.setText(document.getDescription());
-        languageText.setText(document.getLanguage());
     }
 
     public void handleBorrow(ActionEvent event) {
@@ -106,7 +105,7 @@ public class BookInfoController implements Initializable {
 
         String imageLink = document.getImageLink();
 
-        if (imageLink != null) {
+        if (imageLink != "") {
             thumbnail.setImage(new Image(document.getImageLink()));
         } else {
 
@@ -117,6 +116,5 @@ public class BookInfoController implements Initializable {
         publisherText.setText(document.getPublisher().getName());
         quantityText.setText(String.valueOf(document.getQuantity()));
         descriptionText.setText(document.getDescription());
-        languageText.setText(document.getLanguage());
     }
 }

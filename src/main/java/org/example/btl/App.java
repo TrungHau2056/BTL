@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.example.btl.dao.DocumentDAO;
 import org.example.btl.model.*;
+import org.example.btl.service.BorrowService;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -30,32 +31,26 @@ public class App extends Application {
 
 //        Session session = HibernateUtils.getSessionFactory().openSession();
 //        Transaction transaction = null;
-//        Set<Author> authors = new HashSet<>();
 //
 //        try {
 //            // Bắt đầu giao dịch
 //            transaction = session.beginTransaction();
+//            User user = session.get(User.class, 1);
 //
-//            int documentId = 1; // Thay bằng ID của document cần cập nhật
-//            Document document = session.get(Document.class, documentId);
+//            if (user != null) {
 //
-//            if (document != null) {
-//                // Lấy đối tượng Admin từ cơ sở dữ liệu
-//                Author author = session.get(Author.class, 1);
-//                authors.add(author);
-//
-//                if (author != null) {
-//                    document.setAuthors(authors);
-//
-//                    // Lưu các thay đổi
-//                    session.update(document);
+//                Borrow borrow = session.get(Borrow.class, 2);
+//                borrow.setUser(user);
+//                if (borrow != null) {
+//                    session.update(borrow);
 //                    transaction.commit();
 //                    System.out.println("Document đã được cập nhật thành công.");
 //                } else {
-//                    System.out.println("Không tìm thấy Admin với ID = 1.");
+//                    System.out.println("borrow");
 //                }
+//
 //            } else {
-//                System.out.println("Không tìm thấy document với ID: " + documentId);
+//                System.out.println("Không tìm thấy user với ID: ");
 //            }
 //        } catch (Exception e) {
 //            if (transaction != null) {

@@ -31,6 +31,8 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @FXML
     private ChoiceBox<String> criteria;
+    @FXML
+    private ChoiceBox<String> status;
 
     @FXML
     private TableView<Document> tableView;
@@ -87,7 +89,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             return new SimpleStringProperty(data.getValue().getPublisher().getName());
         });
 
-
     }
 
     @Override
@@ -95,7 +96,7 @@ public class UserSearchBookController extends UserBaseController implements Init
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
             Borrow borrow = borrowService.findByUserAndDocument(user, document);
-            String status = borrow == null ? "Borrowed" : "Not Borrowed";
+            String status = (borrow == null ? "Not Borrowed" : "Borrowed");
             return new SimpleStringProperty(status);
         });
 
@@ -104,7 +105,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
-        System.out.println("Selected item: " + selectedItem);
         if (selectedItem != null) {
             try {
                 showBookInfoView(selectedItem);
@@ -124,10 +124,12 @@ public class UserSearchBookController extends UserBaseController implements Init
         BookInfoController controller = loader.getController();
         controller.setDocument(selectedItem);
         controller.setUser(user);
+        controller.setUserSearchBookController(this);
         controller.setBookInfo();
 
 
         Stage stage = new Stage();
+        stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
 

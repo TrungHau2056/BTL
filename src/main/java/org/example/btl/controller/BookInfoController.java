@@ -10,6 +10,7 @@ import org.example.btl.controller.usercontrollers.UserSearchBookController;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
+import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
 
 import java.io.IOException;
@@ -46,50 +47,48 @@ public class BookInfoController implements Initializable {
         this.document = document;
     }
 
-    private UserSearchBookController userSearch;
+    private User user;
 
-    public void setUserSearch(UserSearchBookController userSearch) {
-        this.userSearch = userSearch;
-    }
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String authors = "";
-        String genres = "";
-        for (Author author : document.getAuthors()) {
-            authors += author.getName();
-            authors += ", ";
-        }
-
-        for (Genre genre : document.getGenres()) {
-            genres += genre.getName();
-            genres += ", ";
-        }
-
-        String imageLink = document.getImageLink();
-
-        if (imageLink != null) {
-            thumbnail.setImage(new Image(document.getImageLink()));
-        } else {
-
-        }
-        titleText.setText(document.getTitle());
-        authorText.setText(authors);
-        genreText.setText(genres);
-        publisherText.setText(document.getPublisher().getName());
-        quantityText.setText(String.valueOf(document.getQuantity()));
-        descriptionText.setText(document.getDescription());
-        languageText.setText(document.getLanguage());
+//        String authors = "";
+//        String genres = "";
+//        for (Author author : document.getAuthors()) {
+//            authors += author.getName();
+//            authors += ", ";
+//        }
+//
+//        for (Genre genre : document.getGenres()) {
+//            genres += genre.getName();
+//            genres += ", ";
+//        }
+//
+//        String imageLink = document.getImageLink();
+//
+//        if (imageLink != null) {
+//            thumbnail.setImage(new Image(document.getImageLink()));
+//        } else {
+//
+//        }
+//        titleText.setText(document.getTitle());
+//        authorText.setText(authors);
+//        genreText.setText(genres);
+//        publisherText.setText(document.getPublisher().getName());
+//        quantityText.setText(String.valueOf(document.getQuantity()));
+//        descriptionText.setText(document.getDescription());
+//        languageText.setText(document.getLanguage());
     }
 
     public void handleBorrow(ActionEvent event) {
 
     }
 
-    @FXML
-    public void handleReturnButton(ActionEvent event) throws IOException {
-        userSearch.handleBackButton(event);
-    }
+
 
     public void setBookInfo() {
         String authors = "";
@@ -104,13 +103,13 @@ public class BookInfoController implements Initializable {
             genres += ", ";
         }
 
-        String imageLink = document.getImageLink();
-
-        if (imageLink != null) {
-            thumbnail.setImage(new Image(document.getImageLink()));
-        } else {
-
-        }
+//        String imageLink = document.getImageLink();
+//
+//        if (imageLink != null) {
+//            thumbnail.setImage(new Image(document.getImageLink()));
+//        } else {
+//
+//        }
         titleText.setText(document.getTitle());
         authorText.setText(authors);
         genreText.setText(genres);
@@ -118,5 +117,6 @@ public class BookInfoController implements Initializable {
         quantityText.setText(String.valueOf(document.getQuantity()));
         descriptionText.setText(document.getDescription());
         languageText.setText(document.getLanguage());
+        System.out.println(user.getName());
     }
 }

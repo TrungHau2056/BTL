@@ -83,25 +83,6 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public String validateAdd(String title, String author, String publisher, String quantityStr, String description) {
-        if (Objects.equals(title, "")
-                || Objects.equals(author, "")
-                || Objects.equals(publisher, "")
-                || Objects.equals(quantityStr, "")
-                || Objects.equals(description, "")) {
-            return "Please enter all the information!";
-        }
-        try {
-            int quantity = Integer.parseInt(quantityStr);
-        } catch (NumberFormatException e) {
-            return "Quantity field must be a number!";
-        }
-        if (checkIfExist(new ArrayList<>(), title)) {
-            return "This document has already been added";
-        }
-        return null;
-    }
-
     public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String publisher, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(publisher, "")

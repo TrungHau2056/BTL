@@ -17,6 +17,10 @@ module org.example.btl {
     requires java.desktop;
     requires java.persistence;
     requires com.fasterxml.jackson.annotation;
+    requires com.google.api.services.books;
+    requires com.google.api.client;
+    requires com.google.api.client.json.jackson2;
+    requires google.api.client;
 
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
     opens org.example.btl.model to org.hibernate.orm.core, javafx.base;

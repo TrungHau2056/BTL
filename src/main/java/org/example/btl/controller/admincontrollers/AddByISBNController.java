@@ -61,22 +61,22 @@ public class AddByISBNController extends AdminBaseController {
                 alertErr.setContentText("Not found document matching ISBN!");
                 alertErr.show();
             } else {
-                    titleText.setText(volumeInfo.getTitle());
-                    descriptionText.setText(volumeInfo.getDescription());
-                    publisherText.setText(volumeInfo.getPublisher());
+                titleText.setText(volumeInfo.getTitle());
+                descriptionText.setText(volumeInfo.getDescription());
+                publisherText.setText(volumeInfo.getPublisher());
 
-                    List<String> authors = volumeInfo.getAuthors();
-                    String authorsStr = String.join(", ", authors);
+                List<String> authors = volumeInfo.getAuthors();
+                String authorsStr = String.join(", ", authors);
 
-                    List<String> genres = volumeInfo.getCategories();
-                    String genresStr = String.join(", ", genres);
+                List<String> genres = volumeInfo.getCategories();
+                String genresStr = String.join(", ", genres);
 
-                    authorText.setText(authorsStr);
-                    genreText.setText(genresStr);
+                authorText.setText(authorsStr);
+                genreText.setText(genresStr);
 
-                    if (volumeInfo.getImageLinks() != null) {
-                        thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
-                    }
+                if (volumeInfo.getImageLinks() != null) {
+                    thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
+                }
             }
         });
 

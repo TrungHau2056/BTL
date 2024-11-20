@@ -5,17 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.dao.DocumentDAO;
-import org.example.btl.model.*;
-import org.example.btl.service.BorrowService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.example.btl.model.HibernateUtils;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class App extends Application {
     @Override
@@ -60,7 +52,6 @@ public class App extends Application {
 //        } finally {
 //            session.close();
 //        }
-
 
     }
 

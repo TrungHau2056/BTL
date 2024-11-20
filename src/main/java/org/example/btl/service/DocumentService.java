@@ -85,7 +85,6 @@ public class DocumentService {
 
     public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String publisher, String quantityStr, String description) {
         if (Objects.equals(title, "")
-                || Objects.equals(publisher, "")
                 || Objects.equals(quantityStr, "")
                 || Objects.equals(description, "")) {
             return "Please enter all the information!";

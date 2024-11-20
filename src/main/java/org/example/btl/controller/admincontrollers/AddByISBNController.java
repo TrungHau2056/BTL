@@ -73,9 +73,12 @@ public class AddByISBNController extends AdminBaseController {
 
                 authorText.setText(authorsStr);
                 genreText.setText(genresStr);
-
-                if (volumeInfo.getImageLinks() != null) {
+                if (volumeInfo.getImageLinks() != null &&
+                        volumeInfo.getImageLinks().getThumbnail() != null) {
                     thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
+                } else {
+//                    add default image :
+//                    thumbnail.setImage(new Image());
                 }
             }
         });
@@ -96,7 +99,11 @@ public class AddByISBNController extends AdminBaseController {
             String title = titleText.getText();
             String publisherName = publisherText.getText();
             String description = descriptionText.getText();
-            String imageLink = volumeInfo.getImageLinks().getThumbnail();
+            String imageLink = null;
+            if (volumeInfo.getImageLinks() != null &&
+                    volumeInfo.getImageLinks().getThumbnail() != null) {
+                imageLink = volumeInfo.getImageLinks().getThumbnail();
+            }
             String quantityStr = quantityText.getText();
             List<String> authorNames = volumeInfo.getAuthors();
             List<String> genreNames = volumeInfo.getCategories();

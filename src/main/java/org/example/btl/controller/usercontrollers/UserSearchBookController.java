@@ -16,10 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
-import org.example.btl.model.Author;
-import org.example.btl.model.Borrow;
-import org.example.btl.model.Document;
-import org.example.btl.model.Genre;
+import org.example.btl.model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +31,8 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @FXML
     private ChoiceBox<String> criteria;
+    @FXML
+    private ChoiceBox<String> status;
 
     @FXML
     private TableView<Document> tableView;
@@ -56,6 +55,10 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private Stage stage;
     private Scene scene;
+
+    public User getUser() {
+        return super.getUser();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -86,7 +89,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             return new SimpleStringProperty(data.getValue().getPublisher().getName());
         });
 
-
     }
 
     @Override
@@ -94,28 +96,26 @@ public class UserSearchBookController extends UserBaseController implements Init
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
             Borrow borrow = borrowService.findByUserAndDocument(user, document);
-            String status = borrow == null ? "Borrowed" : "Not Borrowed";
+            String status = (borrow == null ? "Not Borrowed" : "Borrowed");
             return new SimpleStringProperty(status);
         });
 
     }
 
-    // quay lại scene truoc do
-    public void handleBackButton(ActionEvent event) {
-        stage.setScene(scene);
-        stage.show();
-    }
 
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
-        if(selectedItem != null) {
+        if (selectedItem != null) {
             try {
                 showBookInfoView(selectedItem);
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        } else {
+            System.out.println("No item selected.");
         }
     }
+
 
     private void showBookInfoView(Document selectedItem) throws  Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
@@ -123,11 +123,13 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         BookInfoController controller = loader.getController();
         controller.setDocument(selectedItem);
-        controller.setUserSearch(this);
+        controller.setUser(user);
+        controller.setUserSearchBookController(this);
         controller.setBookInfo();
 
 
         Stage stage = new Stage();
+        stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
 
@@ -166,8 +168,6 @@ public class UserSearchBookController extends UserBaseController implements Init
                 tableView.setItems(documentObservableList);
             }
         }
-        // luu lai scene khi search
-        stage = (Stage) tableView.getScene().getWindow();
-        scene = tableView.getScene();
+
     }
 }

@@ -162,6 +162,12 @@
                   <Font name="System Bold" size="17.0" />
                </font>
             </Button>
+            <Label layoutX="558.0" layoutY="214.0" text="Status:" textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="status" layoutX="622.0" layoutY="211.0" prefHeight="27.0" prefWidth="103.0" stylesheets="@../../choicebox.css" />
             </children>
          <stylesheets>
             <URL value="@../../tableview.css" />

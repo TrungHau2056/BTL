@@ -81,14 +81,14 @@ class DocumentServiceTest {
         authorNames.add("Boichi");
         genreNames.add("Action");
         genreNames.add("Fantasy");
-        String result = documentService.validateAdd("title", authorNames, genreNames, "publisher", "one-hundred", "description");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "one-hundred");
         assertEquals("Quantity field must be a number!", result);
     }
 
     @Test
     void validateAdd_emptyField() {
         authorNames.add("Boichi");
-        String result = documentService.validateAdd("title", authorNames, genreNames, "", "105", "description");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "105");
         assertEquals("Please enter all the information!", result);
     }
 }

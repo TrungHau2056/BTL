@@ -97,7 +97,7 @@ public class AddByISBNController extends AdminBaseController {
             alertErr.show();
         } else {
             String title = titleText.getText();
-            String publisherName = publisherText.getText();
+            String publisherName = publisherText.getText() == null ? "" : publisherText.getText();
             String description = descriptionText.getText();
             String imageLink = null;
             if (volumeInfo.getImageLinks() != null &&
@@ -108,7 +108,7 @@ public class AddByISBNController extends AdminBaseController {
             List<String> authorNames = volumeInfo.getAuthors();
             List<String> genreNames = volumeInfo.getCategories();
 
-            String validateMess = documentService.validateAdd(title, authorNames, genreNames, publisherName, quantityStr, description);
+            String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr);
             if (validateMess != null) {
                 alertErr.setContentText(validateMess);
                 alertErr.show();

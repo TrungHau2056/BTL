@@ -24,6 +24,8 @@ public class LoginController {
     private UserService userService;
     Alert alertErr = new Alert(Alert.AlertType.ERROR);
 
+    private boolean isProcessing = false;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -36,6 +38,11 @@ public class LoginController {
     private ToggleGroup role;
 
     public void switchToSignUp(ActionEvent event) throws IOException {
+        if (isProcessing) {
+            alertErr.setContentText("Please wait");
+            alertErr.show();
+            return;
+        }
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUp-view.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -45,6 +52,7 @@ public class LoginController {
     }
 
     public void handleLogin(ActionEvent event) throws IOException {
+        isProcessing = true;
         String username = usernameText.getText();
         String password = passwordText.getText();
 
@@ -60,7 +68,7 @@ public class LoginController {
         } else {
             if (role.equals("User")) {
                 userService = new UserService();
-                Task<User> userLoginTask = new Task<User>() {
+                Task<User> userLoginTask = new Task<>() {
                     @Override
                     protected User call() throws Exception {
                         return userService.findByPassAndUsername(username, password);
@@ -100,7 +108,7 @@ public class LoginController {
                 new Thread(userLoginTask).start();
             } else {
                 adminService = new AdminService();
-                Task<Admin> adminLoginTask = new Task<Admin>() {
+                Task<Admin> adminLoginTask = new Task<>() {
                     @Override
                     protected Admin call() throws Exception {
                         return adminService.findByPassAndUsername(username, password);

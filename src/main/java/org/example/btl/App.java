@@ -5,21 +5,65 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.model.HibernateUtils;
+import org.example.btl.dao.DocumentDAO;
+import org.example.btl.model.*;
+import org.example.btl.service.BorrowService;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/adminview/addByISBN-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("view/login-view.fxml"));
         Parent root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Library");
         stage.setScene(scene);
 //        stage.setResizable(false);
         stage.show();
+
+
+//        Session session = HibernateUtils.getSessionFactory().openSession();
+//        Transaction transaction = null;
+//
+//        try {
+//            // Bắt đầu giao dịch
+//            transaction = session.beginTransaction();
+//            User user = session.get(User.class, 1);
+//
+//            if (user != null) {
+//
+//                Borrow borrow = session.get(Borrow.class, 2);
+//                borrow.setUser(user);
+//                if (borrow != null) {
+//                    session.update(borrow);
+//                    transaction.commit();
+//                    System.out.println("Document đã được cập nhật thành công.");
+//                } else {
+//                    System.out.println("borrow");
+//                }
+//
+//            } else {
+//                System.out.println("Không tìm thấy user với ID: ");
+//            }
+//        } catch (Exception e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+
+
     }
+
 
     public static void main(String[] args) {
         launch(args);

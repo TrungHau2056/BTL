@@ -80,7 +80,7 @@
                   <Image url="@../../images/userIcon - Copy.png" />
                </image>
             </ImageView>
-            <Label layoutX="34.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
+            <Label layoutX="37.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Italic" size="14.0" />
                </font>

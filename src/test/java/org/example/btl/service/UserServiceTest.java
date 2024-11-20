@@ -81,10 +81,6 @@ class UserServiceTest {
     }
 
     @Test
-    void validateUpdate() {
-    }
-
-    @Test
     void validateUpdate_emptyField() {
         String validateMess = userService.validateUpdate("testName", "@fddd",
                 "", "",

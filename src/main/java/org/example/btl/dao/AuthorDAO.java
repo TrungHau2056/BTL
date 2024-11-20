@@ -11,6 +11,16 @@ import java.util.List;
 public class AuthorDAO {
     private Session session;
 
+    public void save(Author item) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        session.persist(item);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public Author findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

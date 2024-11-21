@@ -156,7 +156,7 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         String validateMessage = documentService.validateSearchByKeyword(keyword);
         if (validateMessage != null) {
-            alertErr.setContentText(keyword);
+            alertErr.setContentText(validateMessage);
             alertErr.show();
         } else {
             List<Document> documents = null;

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -50,8 +51,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
-    private Stage stage;
-    private Scene scene;
 
     public User getUser() {
         return super.getUser();
@@ -145,7 +144,10 @@ public class UserSearchBookController extends UserBaseController implements Init
         stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
+    }
 
+    public void refresh() {
+        tableView.refresh();
     }
 
     public void handleUserSearch(ActionEvent event) {

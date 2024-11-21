@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
@@ -67,6 +64,22 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        titleCol.setCellFactory(column -> new TableCell<Document, String>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setTooltip(null);
+                } else {
+                    setText(item);
+
+                    // Thêm Tooltip để hiển thị nội dung đầy đủ
+                    Tooltip tooltip = new Tooltip(item);
+                    setTooltip(tooltip);
+                }
+            }
+        });
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         authorsCol.setCellValueFactory(data -> {

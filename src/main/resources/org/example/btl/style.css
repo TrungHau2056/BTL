@@ -82,3 +82,26 @@
 .search-button:hover {
     -fx-background-color: #6991db;
 }
+
+.search-button-inUserReturnBook {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-background-radius: 30px;
+}
+
+.search-button-inUserReturnBook: hover {
+    -fx-background-color:  #D3D3D3;
+}
+
+.infoBook-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #cccccc;
+    -fx-text-fill: #466bb0;
+    -fx-border-radius: 10px;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.infoBook-button:hover {
+    -fx-border-color: #999999; /* Viền tối hơn khi hover */
+}

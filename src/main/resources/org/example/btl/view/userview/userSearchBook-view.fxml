@@ -105,7 +105,7 @@
                 </DropShadow>
             </effect>
         </AnchorPane>
-        <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="880.0" style="-fx-background-radius: 0 20 20 0;">
+        <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="880.0" HBox.hgrow="ALWAYS">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
@@ -142,7 +142,7 @@
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font></Label>
-                <TableView fx:id="tableView" layoutX="72.0" layoutY="350.0" onMouseClicked="#handleTableClick" prefHeight="333.0" prefWidth="761.0" stylesheets="@../../tableview.css">
+                <TableView fx:id="tableView" layoutX="72.0" layoutY="350.0" onMouseClicked="#handleTableClick" prefHeight="333.0" prefWidth="761.0" stylesheets="@../../tableview.css" AnchorPane.bottomAnchor="17.0">
                     <columns>
                         <TableColumn fx:id="idCol" editable="false" prefWidth="56.000030517578125" text="Id" />
                         <TableColumn fx:id="titleCol" editable="false" prefWidth="117.5999755859375" text="Title" />

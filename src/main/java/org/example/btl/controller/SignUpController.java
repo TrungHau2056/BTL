@@ -58,7 +58,7 @@ public class SignUpController {
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
         String gender = selectedGender == null ? "" : selectedGender.getText();
 
-        Task<String> signUpTask = new Task<String>() {
+        Task<String> signUpTask = new Task<>() {
             @Override
             protected String call() throws Exception {
                 String validationMess = adminService.validateRegistration(name, email, username, password, confirmedPassword, gender, birthday);
@@ -77,9 +77,6 @@ public class SignUpController {
                 alertErr.setContentText(validationMess);
                 alertErr.show();
             } else {
-                Admin newAdmin = new Admin(name, email, username, password, birthday, gender);
-                adminService.save(newAdmin);
-
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccess-view.fxml"));
                     try {
                         root = loader.load();

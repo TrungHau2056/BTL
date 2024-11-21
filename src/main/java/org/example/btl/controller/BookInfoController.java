@@ -67,8 +67,9 @@ public class BookInfoController implements Initializable {
 
 
     public void handleBorrow(ActionEvent event) {
-        if (borrowService.findByUserAndDocument(user, document) != null) {
-            alert.setContentText("Document were borrowed before! Thank you for using our library.");
+        String validateMess = borrowService.validateBorrow(user, document);
+        if (validateMess != null) {
+            alert.setContentText(validateMess);
             alert.show();
         } else {
             borrowService.borrowDocument(user, document);
@@ -78,7 +79,6 @@ public class BookInfoController implements Initializable {
             alert.setContentText("Document borrowed successfully! Thank you for using our library.");
             alert.show();
         }
-        // remember to set borrowedDate
     }
 
     public void setBookInfo() {

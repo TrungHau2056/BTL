@@ -5,17 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.dao.DocumentDAO;
-import org.example.btl.model.*;
-import org.example.btl.service.BorrowService;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+import org.example.btl.dao.AdminDAO;
+import org.example.btl.dao.UserDAO;
+import org.example.btl.model.Admin;
+import org.example.btl.model.HibernateUtils;
+import org.example.btl.model.User;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.Date;
 
 public class App extends Application {
     @Override
@@ -61,12 +58,14 @@ public class App extends Application {
 //            session.close();
 //        }
 
-
     }
 
 
     public static void main(String[] args) {
         launch(args);
+
+        new AdminDAO().save(new Admin("vegeta", "vegeta01@fg", "vegeta12020", "0123456789", Date.valueOf("2005-01-05"), "Male"));
+        new UserDAO().save(new User("Son Goku", "goku4554/@0dw", "goku01251ssj1000", "0123456789", Date.valueOf("2005-02-02"), "Male"));
         HibernateUtils.shutdown();
     }
 }

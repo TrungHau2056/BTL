@@ -11,6 +11,16 @@ import java.util.List;
 public class GenreDAO {
     private Session session;
 
+    public void save(Genre item) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        session.persist(item);
+
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public Genre findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

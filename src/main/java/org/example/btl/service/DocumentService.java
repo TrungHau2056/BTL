@@ -83,11 +83,9 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String publisher, String quantityStr, String description) {
+    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr) {
         if (Objects.equals(title, "")
-                || Objects.equals(publisher, "")
-                || Objects.equals(quantityStr, "")
-                || Objects.equals(description, "")) {
+                || Objects.equals(quantityStr, "")) {
             return "Please enter all the information!";
         }
 

@@ -1,5 +1,6 @@
 package org.example.btl.controller;
 
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +22,7 @@ import java.util.Objects;
 public class LoginController {
     private AdminService adminService;
     private UserService userService;
-    Alert alert = new Alert(Alert.AlertType.ERROR);
+    Alert alertErr = new Alert(Alert.AlertType.ERROR);
 
     private Stage stage;
     private Scene scene;
@@ -59,42 +60,82 @@ public class LoginController {
         } else {
             if (role.equals("User")) {
                 userService = new UserService();
-                User user = userService.findByPassAndUsername(username, password);
-                if (user == null) {
-                    alert.setContentText("Wrong login information! Please try again");
-                    alert.show();
+                Task<User> userLoginTask = new Task<User>() {
+                    @Override
+                    protected User call() throws Exception {
+                        return userService.findByPassAndUsername(username, password);
+                    }
+                };
+
+                userLoginTask.setOnSucceeded(e -> {
+                    User user = userLoginTask.getValue();
+                    if (user == null) {
+                    alertErr.setContentText("Wrong login information! Please try again");
+                    alertErr.show();
                 }
                 else {
-                    //change to user scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
-                    root = loader.load();
-                    UserHomeController controller = loader.getController();
-                    controller.setUser(user);
-                    controller.setUserInfo();
+                        //change to user scene
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
+                        try {
+                            root = loader.load();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        UserHomeController controller = loader.getController();
+                        controller.setUser(user);
+                        controller.setUserInfo();
 
-                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                });
+
+                userLoginTask.setOnFailed(e -> {
+                    alertErr.setContentText("Error: " + userLoginTask.getException().getMessage());
+                    alertErr.show();
+                });
+
+                new Thread(userLoginTask).start();
             } else {
                 adminService = new AdminService();
-                Admin admin = adminService.findByPassAndUsername(username, password);
-                if (admin == null) {
-                    alert.setContentText("Wrong login information! Please try again");
-                    alert.show();
-                } else {
-                    //switch to admin scene
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
-                    root = loader.load();
-                    AdminHomeController controller = loader.getController();
-                    controller.setAdmin(admin);
+                Task<Admin> adminLoginTask = new Task<Admin>() {
+                    @Override
+                    protected Admin call() throws Exception {
+                        return adminService.findByPassAndUsername(username, password);
+                    }
+                };
 
-                    stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    scene = new Scene(root);
-                    stage.setScene(scene);
-                    stage.show();
-                }
+                adminLoginTask.setOnSucceeded(e -> {
+                    Admin admin = adminLoginTask.getValue();
+                    if (admin == null) {
+                        alertErr.setContentText("Wrong login information! Please try again");
+                        alertErr.show();
+                    } else {
+                        //switch to admin scene
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
+                        try {
+                            root = loader.load();
+                        } catch (IOException ex) {
+                            throw new RuntimeException(ex);
+                        }
+                        AdminHomeController controller = loader.getController();
+                        controller.setAdmin(admin);
+
+                        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                        scene = new Scene(root);
+                        stage.setScene(scene);
+                        stage.show();
+                    }
+                });
+
+                adminLoginTask.setOnFailed(e -> {
+                    alertErr.setContentText("Error: " + adminLoginTask.getException().getMessage());
+                    alertErr.show();
+                });
+
+                new Thread(adminLoginTask).start();
             }
         }
     }

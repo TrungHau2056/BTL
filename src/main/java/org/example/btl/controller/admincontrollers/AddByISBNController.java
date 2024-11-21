@@ -1,6 +1,8 @@
 package org.example.btl.controller.admincontrollers;
 
 import com.google.api.services.books.v1.model.Volume;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
@@ -45,36 +47,48 @@ public class AddByISBNController extends AdminBaseController {
 
     public void handleCheck() throws IOException {
         String isbn = isbnText.getText();
-        volumeInfo = googleBooksService.searchByISBN(isbn);
-        if (volumeInfo == null) {
-            alertErr.setContentText("Not found document matching ISBN!");
+
+        Task<Volume.VolumeInfo> callAPITask = new Task<>() {
+            @Override
+            protected Volume.VolumeInfo call() throws Exception {
+                return googleBooksService.searchByISBN(isbn);
+            }
+        };
+
+        callAPITask.setOnSucceeded(e -> {
+            volumeInfo = callAPITask.getValue();
+            if (volumeInfo == null) {
+                alertErr.setContentText("Not found document matching ISBN!");
+                alertErr.show();
+            } else {
+                titleText.setText(volumeInfo.getTitle());
+                descriptionText.setText(volumeInfo.getDescription());
+                publisherText.setText(volumeInfo.getPublisher());
+
+                List<String> authors = volumeInfo.getAuthors();
+                String authorsStr = String.join(", ", authors);
+
+                List<String> genres = volumeInfo.getCategories();
+                String genresStr = String.join(", ", genres);
+
+                authorText.setText(authorsStr);
+                genreText.setText(genresStr);
+                if (volumeInfo.getImageLinks() != null &&
+                        volumeInfo.getImageLinks().getThumbnail() != null) {
+                    thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
+                } else {
+//                    add default image :
+//                    thumbnail.setImage(new Image());
+                }
+            }
+        });
+
+        callAPITask.setOnFailed(e -> {
+            alertErr.setContentText("Error: " + callAPITask.getException().getMessage());
             alertErr.show();
-        } else {
-            titleText.setText(volumeInfo.getTitle());
-            descriptionText.setText(volumeInfo.getDescription());
-            publisherText.setText(volumeInfo.getPublisher());
+        });
 
-            List<String> authors = volumeInfo.getAuthors();
-            String authorsStr = "";
-            for (int i = 0; i < authors.size() - 1; i++) {
-                authorsStr += authors.get(i);
-                authorsStr += ", ";
-            }
-            authorsStr += authors.getLast();
-
-            List<String> genres = volumeInfo.getCategories();
-            String genresStr = "";
-            for (int i = 0; i < genres.size() - 1; i++) {
-                genresStr += genres.get(i);
-                genresStr += ", ";
-            }
-            genresStr += genres.getLast();
-
-            authorText.setText(authorsStr);
-            genreText.setText(genresStr);
-
-            thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
-        }
+        new Thread(callAPITask).start();
     }
 
     public void handleAdd() {
@@ -83,14 +97,18 @@ public class AddByISBNController extends AdminBaseController {
             alertErr.show();
         } else {
             String title = titleText.getText();
-            String publisherName = publisherText.getText();
+            String publisherName = publisherText.getText() == null ? "" : publisherText.getText();
             String description = descriptionText.getText();
-            String imageLink = volumeInfo.getImageLinks().getThumbnail();
+            String imageLink = null;
+            if (volumeInfo.getImageLinks() != null &&
+                    volumeInfo.getImageLinks().getThumbnail() != null) {
+                imageLink = volumeInfo.getImageLinks().getThumbnail();
+            }
             String quantityStr = quantityText.getText();
             List<String> authorNames = volumeInfo.getAuthors();
             List<String> genreNames = volumeInfo.getCategories();
 
-            String validateMess = documentService.validateAdd(title, authorNames, genreNames, publisherName, quantityStr, description);
+            String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr);
             if (validateMess != null) {
                 alertErr.setContentText(validateMess);
                 alertErr.show();

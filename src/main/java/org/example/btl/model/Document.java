@@ -29,8 +29,8 @@ public class Document {
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "document-genre",
-            joinColumns = {@JoinColumn(name = "genre_id")},
-            inverseJoinColumns = {@JoinColumn(name = "author_id")}
+            joinColumns = {@JoinColumn(name = "document_id")},
+            inverseJoinColumns = {@JoinColumn(name = "genre_id")}
     )
     private Set<Genre> genres  = new HashSet<>();
 

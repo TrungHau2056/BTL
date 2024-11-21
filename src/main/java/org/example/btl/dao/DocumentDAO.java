@@ -5,6 +5,7 @@ import org.example.btl.model.*;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Objects;
 
 public class DocumentDAO implements BaseDAO<Document> {
     private Session session;
@@ -92,11 +93,13 @@ public class DocumentDAO implements BaseDAO<Document> {
         admin = session.merge(admin);
         admin.addDocument(document);
 
-        Publisher publisher = publisherDAO.findByName(publisherName);
-        if (publisher == null) {
-            publisher = new Publisher(publisherName);
-        } else publisher = session.merge(publisher);
-        publisher.addDocument(document);
+        if (!Objects.equals(publisherName, "")) {
+            Publisher publisher = publisherDAO.findByName(publisherName);
+            if (publisher == null) {
+                publisher = new Publisher(publisherName);
+            } else publisher = session.merge(publisher);
+            publisher.addDocument(document);
+        }
 
         for (String authorName : authorNames) {
             Author author = authorDAO.findByName(authorName);

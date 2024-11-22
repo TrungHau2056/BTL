@@ -93,7 +93,13 @@ public class UserReturnBookController extends UserBaseController implements Init
     }
 
     public void handleReturnBook(ActionEvent event) {
-
+        Document selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            borrowService.returnDocument(user, selectedItem);
+        } else {
+            alertErr.setContentText("Please choose an item");
+            alertErr.show();
+        }
     }
 
     public void handleShowBookInfo(ActionEvent event) {

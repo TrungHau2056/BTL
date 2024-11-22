@@ -1,6 +1,9 @@
 package org.example.btl.controller.usercontrollers;
 
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,12 +12,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.btl.dao.AdminDAO;
 import org.example.btl.model.Author;
+import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,6 +46,8 @@ public class UserReturnBookController extends UserBaseController implements Init
     @FXML
     private TableColumn<Document, Date> borrowDateCol;
 
+    private ObservableList<Document> documentObservableList;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
@@ -62,11 +71,19 @@ public class UserReturnBookController extends UserBaseController implements Init
                     .collect(Collectors.joining(", "));
             return new SimpleStringProperty(genresString);
         });
+
+        borrowDateCol.setCellValueFactory(data -> {
+            Borrow borrow = borrowService.findByUserAndDocument(user, data.getValue());
+            return new SimpleObjectProperty<>(borrow.getBorrowDate());
+        });
     }
 
     @Override
     public void setUserInfo() {
 
+        List<Document> documents = documentService.findCurrentBorrow(user);
+        documentObservableList = FXCollections.observableArrayList(documents);
+        tableView.setItems(documentObservableList);
     }
 
     @FXML

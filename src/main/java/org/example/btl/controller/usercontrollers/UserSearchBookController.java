@@ -51,11 +51,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
-
-    public User getUser() {
-        return super.getUser();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
@@ -115,8 +110,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
-
-
         documentObservableList = FXCollections.observableArrayList(documentService.findAll());
         tableView.setItems(documentObservableList);
     }

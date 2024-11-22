@@ -68,8 +68,9 @@ public class BookInfoController implements Initializable {
 
 
     public void handleBorrow(ActionEvent event) {
-        if (borrowService.findByUserAndDocument(user, document) != null) {
-            alert.setContentText("Document were borrowed before! Thank you for using our library.");
+        String validateMess = borrowService.validateBorrow(user, document);
+        if (validateMess != null) {
+            alert.setContentText(validateMess);
             alert.show();
         } else {
             borrowService.borrowDocument(user, document);
@@ -79,7 +80,6 @@ public class BookInfoController implements Initializable {
             alert.setContentText("Document borrowed successfully! Thank you for using our library.");
             alert.show();
         }
-        // remember to set borrowedDate
     }
 
     public void setBookInfo() {
@@ -99,17 +99,20 @@ public class BookInfoController implements Initializable {
 
         if (imageLink != null) {
             thumbnail.setImage(new Image(document.getImageLink()));
-            // remember to change imagelink
         } else {
 
         }
+
         titleText.setText(document.getTitle());
         authorText.setText(authors);
         genreText.setText(genres);
+        descriptionText.setText(document.getDescription());
+        quantityText.setText(String.valueOf(document.getQuantity()));
+
         if (document.getPublisher() != null) {
             publisherText.setText(document.getPublisher().getName());
+        } else {
+            publisherText.setText("Not available");
         }
-        quantityText.setText(String.valueOf(document.getQuantity()));
-        descriptionText.setText(document.getDescription());
     }
 }

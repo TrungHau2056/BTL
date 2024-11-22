@@ -138,11 +138,11 @@ public class AdminAddBookController extends AdminBaseController {
     public void handleAdd(ActionEvent event) {
         String title = titleText.getText();
         String publisherName = publisherText.getText();
-        String description = descriptionText.getText();
+        String description = Objects.equals(descriptionText.getText(), "") ? "Not available" : descriptionText.getText();
         String imageLink = Objects.equals(imageLinkText.getText(), "") ? null : imageLinkText.getText();
         String quantityStr = quantityText.getText();
 
-        String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr);
+        String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr, description);
         if (validateMess != null) {
             alertErr.setContentText(validateMess);
             alertErr.show();

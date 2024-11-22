@@ -1,9 +1,6 @@
 package org.example.btl.service;
 
-import org.example.btl.dao.AuthorDAO;
-import org.example.btl.dao.DocumentDAO;
-import org.example.btl.dao.GenreDAO;
-import org.example.btl.dao.PublisherDAO;
+import org.example.btl.dao.*;
 import org.example.btl.model.*;
 
 import java.util.ArrayList;
@@ -17,43 +14,116 @@ public class DocumentService {
     private AuthorDAO authorDAO = new AuthorDAO();
     private GenreDAO genreDAO = new GenreDAO();
     private PublisherDAO publisherDAO = new PublisherDAO();
+    private BorrowDAO borrowDAO = new BorrowDAO();
+
+    public List<Document> findAll() {
+        return documentDAO.findAll();
+    }
 
     public Document findByTitle(String title) {
         return documentDAO.findByTitle(title);
     }
 
-    public List<Document> searchByTitleKeyword(String keyword) {
-        return documentDAO.searchByTitleKeyword(keyword);
+    public List<Document> findCurrentBorrow(User user) {
+        List<Borrow> borrows = borrowDAO.findCurrentBorrowsByUser(user);
+        List<Document> documents = new ArrayList<>();
+        for (Borrow borrow : borrows) documents.add(borrow.getDocument());
+        return documents;
     }
 
-    public List<Document> searchByAuthorKeyword(String keyword) {
-        List<Author> authors = authorDAO.findByKeyword(keyword);
+    public List<Document> searchByTitle(String keyword, User user, String status) {
+        switch (status) {
+            case "All":
+                return documentDAO.searchByTitleKeyword(keyword);
+            case "Borrowed":
+                return documentDAO.searchByTitleBorrowed(user, keyword);
+            case "Not Borrowed":
+                return documentDAO.searchByTitleNotBorrowed(user, keyword);
+            default:
+                throw new IllegalArgumentException();
+        }
+    }
+
+    public List<Document> searchByAuthor(String keyword, User user, String status) {
+        List<Author> authors= authorDAO.findByKeyword(keyword);;
+
         List<Document> documentList = new ArrayList<>();
         for (Author author : authors) {
             for (Document document : author.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;
     }
 
-    public List<Document> searchByGenreKeyword(String keyword) {
+    public List<Document> searchByGenre(String keyword, User user, String status) {
         List<Genre> genres = genreDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
         for (Genre genre : genres) {
             for (Document document : genre.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;
     }
 
-    public List<Document> searchByPublisherKeyword(String keyword) {
+    public List<Document> searchByPublisher(String keyword, User user, String status) {
         List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
         for (Publisher publisher : publishers) {
             for (Document document : publisher.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;
@@ -66,9 +136,12 @@ public class DocumentService {
         return null;
     }
 
-    public boolean checkIfExist(List<String> authorNames, String title) {
+    public boolean checkIfExist(List<String> authorNames, String title, String description) {
         Document document = findByTitle(title);
         if (document == null) {
+            return false;
+        }
+        if (!Objects.equals(description, document.getDescription())) {
             return false;
         }
         Set<String> docAuthorNames = document.getAuthors().stream()
@@ -83,7 +156,7 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr) {
+    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {
             return "Please enter all the information!";
@@ -110,7 +183,7 @@ public class DocumentService {
         } catch (NumberFormatException e) {
             return "Quantity field must be a number!";
         }
-        if (checkIfExist(new ArrayList<>(), title)) {
+        if (checkIfExist(authorNames, title, description)) {
             return "This document has already been added";
         }
         return null;

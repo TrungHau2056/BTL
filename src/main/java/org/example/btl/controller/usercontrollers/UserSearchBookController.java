@@ -3,11 +3,11 @@ package org.example.btl.controller.usercontrollers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,7 +16,6 @@ import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -30,7 +29,7 @@ public class UserSearchBookController extends UserBaseController implements Init
     @FXML
     private ChoiceBox<String> criteria;
     @FXML
-    private ChoiceBox<String> status;
+    private ChoiceBox<String> statuses;
 
     @FXML
     private TableView<Document> tableView;
@@ -51,15 +50,12 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
-
-    public User getUser() {
-        return super.getUser();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
+        statuses.getItems().addAll("All", "Borrowed", "Not Borrowed");
+        statuses.setValue("All");
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -98,20 +94,38 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         publisherCol.setCellValueFactory(data -> {
-            return new SimpleStringProperty(data.getValue().getPublisher().getName());
+            return new SimpleStringProperty(
+                    data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"
+            );
         });
 
+        statusCol.setCellValueFactory(data -> {
+            Document document = data.getValue();
+            String status = borrowService.isCurrentlyBorrowing(user, document) ? "Borrowed" : "Not Borrowed";
+            return new SimpleStringProperty(status);
+        });
     }
 
     @Override
     public void setUserInfo() {
-        statusCol.setCellValueFactory(data -> {
-            Document document = data.getValue();
-            Borrow borrow = borrowService.findByUserAndDocument(user, document);
-            String status = (borrow == null ? "Not Borrowed" : "Borrowed");
-            return new SimpleStringProperty(status);
+        Task<List<Document>> loadDocTask = new Task<>() {
+            @Override
+            protected List<Document> call() throws Exception {
+                return documentService.findAll();
+            }
+        };
+
+        loadDocTask.setOnSucceeded(e -> {
+            documentObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
+            tableView.setItems(documentObservableList);
         });
 
+        loadDocTask.setOnFailed(e -> {
+            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(loadDocTask).start();
     }
 
 
@@ -129,7 +143,7 @@ public class UserSearchBookController extends UserBaseController implements Init
     }
 
 
-    private void showBookInfoView(Document selectedItem) throws  Exception {
+    private void showBookInfoView(Document selectedItem) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
         Parent root = loader.load();
 
@@ -153,36 +167,72 @@ public class UserSearchBookController extends UserBaseController implements Init
     public void handleUserSearch(ActionEvent event) {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
+        String status = statuses.getValue();
 
         String validateMessage = documentService.validateSearchByKeyword(keyword);
         if (validateMessage != null) {
-            alertErr.setContentText(keyword);
+            alertErr.setContentText(validateMessage);
             alertErr.show();
         } else {
-            List<Document> documents = null;
-            switch (criterion) {
-                case "Title":
-                    documents = documentService.searchByTitleKeyword(keyword);
-                    break;
-                case "Author":
-                    documents = documentService.searchByAuthorKeyword(keyword);
-                    break;
-                case "Genre":
-                    documents = documentService.searchByGenreKeyword(keyword);
-                    break;
-                case "Publisher":
-                    documents = documentService.searchByPublisherKeyword(keyword);
-                    break;
-            }
+            Task<List<Document>> searchDocTask = new Task<>() {
+                @Override
+                protected List<Document> call() throws Exception {
+                    switch (criterion) {
+                        case "Title":
+                            return documentService.searchByTitle(keyword, user, status);
+                        case "Author":
+                            return documentService.searchByAuthor(keyword, user, status);
+                        case "Genre":
+                            return documentService.searchByGenre(keyword, user, status);
+                        case "Publisher":
+                            return documentService.searchByPublisher(keyword, user, status);
+                    }
+                    return null;
+                }
+            };
 
-            if (documents.isEmpty()) {
-                alertErr.setContentText("No search results match the keyword.");
+            searchDocTask.setOnSucceeded(e -> {
+                List<Document> documents = searchDocTask.getValue();
+
+                if (documents.isEmpty()) {
+                    alertErr.setContentText("No search results match the keyword.");
+                    alertErr.show();
+                } else {
+                    documentObservableList = FXCollections.observableArrayList(documents);
+                    tableView.setItems(documentObservableList);
+                }
+            });
+
+            searchDocTask.setOnFailed(e -> {
+                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
                 alertErr.show();
-            } else {
-                documentObservableList = FXCollections.observableArrayList(documents);
-                tableView.setItems(documentObservableList);
-            }
-        }
+            });
 
+            new Thread(searchDocTask).start();
+
+//            List<Document> documents = null;
+//            switch (criterion) {
+//                case "Title":
+//                    documents = documentService.searchByTitle(keyword, user, status);
+//                    break;
+//                case "Author":
+//                    documents = documentService.searchByAuthor(keyword, user, status);
+//                    break;
+//                case "Genre":
+//                    documents = documentService.searchByGenre(keyword, user, status);
+//                    break;
+//                case "Publisher":
+//                    documents = documentService.searchByPublisher(keyword, user, status);
+//                    break;
+//            }
+//
+//            if (documents.isEmpty()) {
+//                alertErr.setContentText("No search results match the keyword.");
+//                alertErr.show();
+//            } else {
+//                documentObservableList = FXCollections.observableArrayList(documents);
+//                tableView.setItems(documentObservableList);
+//            }
+        }
     }
 }

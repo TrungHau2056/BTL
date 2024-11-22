@@ -8,14 +8,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
 import org.example.btl.service.DocumentService;
 import org.example.btl.service.UserService;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public abstract class UserBaseController {
     protected User user;
@@ -76,6 +80,22 @@ public abstract class UserBaseController {
 
     public void switchToUserInfo(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userInfor-view.fxml");
+    }
+
+    public void handleChangeAvatar(ActionEvent event) throws IOException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.bmp"));
+
+        File selectedFile = fileChooser.showOpenDialog(((Node)event.getSource()).getScene().getWindow());
+
+        if (selectedFile != null) {
+            Image selectedImage = new Image(selectedFile.toURI().toString());
+            avatar.setImage(selectedImage);
+
+            byte[] avatarData = Files.readAllBytes(selectedFile.toPath());
+            user.setAvatar(avatarData);
+            userService.update(user);
+        }
     }
 
     public void handleLogOut(ActionEvent event) {

@@ -44,7 +44,7 @@ public class DocumentDAO implements BaseDAO<Document> {
     public List<Document> findAll() {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("FROM Document", Admin.class);
+        Query query = session.createQuery("FROM Document", Document.class);
         List<Document> documents = query.getResultList();
         session.close();
         return documents;
@@ -77,6 +77,46 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.beginTransaction();
 
         Query query = session.createQuery("FROM Document WHERE title LIKE :keyword");
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
+
+    public List<Document> searchByTitleBorrowed(User user, String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("SELECT document FROM Borrow " +
+                "WHERE user = :user " +
+                "AND returnDate IS NULL " +
+                "AND document.title LIKE :keyword");
+        query.setParameter("user", user);
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
+
+    public List<Document> searchByTitleNotBorrowed(User user, String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Document d WHERE d.title LIKE :keyword" +
+                " AND (" +
+                " d NOT IN (" +
+                "        SELECT document FROM Borrow " +
+                "        WHERE user = :user AND returnDate IS NULL" +
+                "          )" +
+                "  OR d IN (" +
+                "        SELECT document FROM Borrow " +
+                "        WHERE user = :user AND returnDate IS NOT NULL" +
+                "          )" +
+                ")");
+
+        query.setParameter("user", user);
         query.setParameter("keyword", "%" + keyword + "%");
         List<Document> documents = query.getResultList();
 

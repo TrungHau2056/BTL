@@ -24,6 +24,8 @@ public class LoginController {
     private UserService userService;
     Alert alertErr = new Alert(Alert.AlertType.ERROR);
 
+    private boolean isProcessing = false;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -36,6 +38,12 @@ public class LoginController {
     private ToggleGroup role;
 
     public void switchToSignUp(ActionEvent event) throws IOException {
+        if (isProcessing) {
+            alertErr.setContentText("Please wait");
+            alertErr.show();
+            return;
+        }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUp-view.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -45,6 +53,13 @@ public class LoginController {
     }
 
     public void handleLogin(ActionEvent event) throws IOException {
+        if (isProcessing) {
+            alertErr.setContentText("Please wait");
+            alertErr.show();
+            return;
+        }
+
+        isProcessing = true;
         String username = usernameText.getText();
         String password = passwordText.getText();
 
@@ -57,10 +72,11 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter all the information!");
             alert.show();
+            isProcessing = false;
         } else {
             if (role.equals("User")) {
                 userService = new UserService();
-                Task<User> userLoginTask = new Task<User>() {
+                Task<User> userLoginTask = new Task<>() {
                     @Override
                     protected User call() throws Exception {
                         return userService.findByPassAndUsername(username, password);
@@ -70,10 +86,10 @@ public class LoginController {
                 userLoginTask.setOnSucceeded(e -> {
                     User user = userLoginTask.getValue();
                     if (user == null) {
-                    alertErr.setContentText("Wrong login information! Please try again");
-                    alertErr.show();
-                }
-                else {
+                        alertErr.setContentText("Wrong login information! Please try again");
+                        alertErr.show();
+                        isProcessing = false;
+                    } else {
                         //change to user scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
                         try {
@@ -95,12 +111,13 @@ public class LoginController {
                 userLoginTask.setOnFailed(e -> {
                     alertErr.setContentText("Error: " + userLoginTask.getException().getMessage());
                     alertErr.show();
+                    isProcessing = false;
                 });
 
                 new Thread(userLoginTask).start();
             } else {
                 adminService = new AdminService();
-                Task<Admin> adminLoginTask = new Task<Admin>() {
+                Task<Admin> adminLoginTask = new Task<>() {
                     @Override
                     protected Admin call() throws Exception {
                         return adminService.findByPassAndUsername(username, password);
@@ -112,6 +129,7 @@ public class LoginController {
                     if (admin == null) {
                         alertErr.setContentText("Wrong login information! Please try again");
                         alertErr.show();
+                        isProcessing = false;
                     } else {
                         //switch to admin scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
@@ -133,6 +151,7 @@ public class LoginController {
                 adminLoginTask.setOnFailed(e -> {
                     alertErr.setContentText("Error: " + adminLoginTask.getException().getMessage());
                     alertErr.show();
+                    isProcessing = false;
                 });
 
                 new Thread(adminLoginTask).start();

@@ -255,12 +255,15 @@
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </Button>
-            <TextArea fx:id="descriptionText" layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" stylesheets="@../../TextDes.css" wrapText="true">
+            <TextArea fx:id="descriptionText" layoutX="186.0" layoutY="270.0" prefHeight="160.0" prefWidth="438.0" promptText="Optional" stylesheets="@../../TextDes.css" wrapText="true">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </TextArea>
-            <TextField fx:id="publisherText" layoutX="597.0" layoutY="463.0" prefHeight="27.0" prefWidth="119.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="publisherText" layoutX="597.0" layoutY="463.0" prefHeight="27.0" prefWidth="119.0" promptText="Optional" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>

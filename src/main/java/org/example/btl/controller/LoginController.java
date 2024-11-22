@@ -43,6 +43,7 @@ public class LoginController {
             alertErr.show();
             return;
         }
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUp-view.fxml"));
         root = loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -71,6 +72,7 @@ public class LoginController {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Please enter all the information!");
             alert.show();
+            isProcessing = false;
         } else {
             if (role.equals("User")) {
                 userService = new UserService();
@@ -84,11 +86,10 @@ public class LoginController {
                 userLoginTask.setOnSucceeded(e -> {
                     User user = userLoginTask.getValue();
                     if (user == null) {
-                    alertErr.setContentText("Wrong login information! Please try again");
-                    alertErr.show();
-                    isProcessing = false;
-                }
-                else {
+                        alertErr.setContentText("Wrong login information! Please try again");
+                        alertErr.show();
+                        isProcessing = false;
+                    } else {
                         //change to user scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
                         try {

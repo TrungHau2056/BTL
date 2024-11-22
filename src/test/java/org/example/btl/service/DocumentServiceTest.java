@@ -50,9 +50,10 @@ class DocumentServiceTest {
 
         Document document = mock(Document.class);
         when(document.getAuthors()).thenReturn(authors);
+        when(document.getDescription()).thenReturn("Test description");
         when(documentDAO.findByTitle(title)).thenReturn(document);
 
-        assertTrue(documentService.checkIfExist(authorNames, title));
+        assertTrue(documentService.checkIfExist(authorNames, title, "Test description"));
         verify(documentDAO, times(1)).findByTitle(title);
     }
 
@@ -72,7 +73,7 @@ class DocumentServiceTest {
         when(document.getAuthors()).thenReturn(authors);
         when(documentDAO.findByTitle(title)).thenReturn(document);
 
-        assertFalse(documentService.checkIfExist(authorNames, title));
+        assertFalse(documentService.checkIfExist(authorNames, title, "Test description"));
         verify(documentDAO, times(1)).findByTitle(title);
     }
 
@@ -81,14 +82,14 @@ class DocumentServiceTest {
         authorNames.add("Boichi");
         genreNames.add("Action");
         genreNames.add("Fantasy");
-        String result = documentService.validateAdd("title", authorNames, genreNames, "one-hundred");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "one-hundred", "");
         assertEquals("Quantity field must be a number!", result);
     }
 
     @Test
     void validateAdd_emptyField() {
         authorNames.add("Boichi");
-        String result = documentService.validateAdd("title", authorNames, genreNames, "105");
+        String result = documentService.validateAdd("title", authorNames, genreNames, "", "");
         assertEquals("Please enter all the information!", result);
     }
 }

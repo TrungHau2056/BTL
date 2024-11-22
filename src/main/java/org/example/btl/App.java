@@ -22,7 +22,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        HibernateUtils.getSessionFactory();
+//        HibernateUtils.getSessionFactory();
         launch(args);
         HibernateUtils.shutdown();
     }

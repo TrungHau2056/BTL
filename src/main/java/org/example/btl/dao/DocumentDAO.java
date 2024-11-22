@@ -104,10 +104,18 @@ public class DocumentDAO implements BaseDAO<Document> {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("SELECT document FROM Borrow " +
-                "WHERE user = :user " +
-                "AND returnDate IS NOT NULL " +
-                "AND document.title LIKE :keyword");
+        Query query = session.createQuery("FROM Document d WHERE d.title LIKE :keyword" +
+                " AND (" +
+                " d NOT IN (" +
+                "        SELECT document FROM Borrow " +
+                "        WHERE user = :user AND returnDate IS NULL" +
+                "          )" +
+                "  OR d IN (" +
+                "        SELECT document FROM Borrow " +
+                "        WHERE user = :user AND returnDate IS NOT NULL" +
+                "          )" +
+                ")");
+
         query.setParameter("user", user);
         query.setParameter("keyword", "%" + keyword + "%");
         List<Document> documents = query.getResultList();

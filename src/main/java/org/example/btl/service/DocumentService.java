@@ -39,8 +39,9 @@ public class DocumentService {
                 return documentDAO.searchByTitleBorrowed(user, keyword);
             case "Not Borrowed":
                 return documentDAO.searchByTitleNotBorrowed(user, keyword);
+            default:
+                throw new IllegalArgumentException();
         }
-        return null;
     }
 
     public List<Document> searchByAuthor(String keyword, User user, String status) {
@@ -135,9 +136,12 @@ public class DocumentService {
         return null;
     }
 
-    public boolean checkIfExist(List<String> authorNames, String title) {
+    public boolean checkIfExist(List<String> authorNames, String title, String description) {
         Document document = findByTitle(title);
         if (document == null) {
+            return false;
+        }
+        if (!Objects.equals(description, document.getDescription())) {
             return false;
         }
         Set<String> docAuthorNames = document.getAuthors().stream()
@@ -152,7 +156,7 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr) {
+    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {
             return "Please enter all the information!";
@@ -179,7 +183,7 @@ public class DocumentService {
         } catch (NumberFormatException e) {
             return "Quantity field must be a number!";
         }
-        if (checkIfExist(new ArrayList<>(), title)) {
+        if (checkIfExist(authorNames, title, description)) {
             return "This document has already been added";
         }
         return null;

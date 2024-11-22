@@ -108,7 +108,7 @@ public class AddByISBNController extends AdminBaseController {
             List<String> authorNames = volumeInfo.getAuthors();
             List<String> genreNames = volumeInfo.getCategories();
 
-            String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr);
+            String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr, description);
             if (validateMess != null) {
                 alertErr.setContentText(validateMess);
                 alertErr.show();

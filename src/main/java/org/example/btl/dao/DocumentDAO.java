@@ -84,6 +84,38 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
+    public List<Document> searchByTitleBorrowed(User user, String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("SELECT document FROM Borrow " +
+                "WHERE user = :user " +
+                "AND returnDate IS NULL " +
+                "AND document.title LIKE :keyword");
+        query.setParameter("user", user);
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
+
+    public List<Document> searchByTitleNotBorrowed(User user, String keyword) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("SELECT document FROM Borrow " +
+                "WHERE user = :user " +
+                "AND returnDate IS NOT NULL " +
+                "AND document.title LIKE :keyword");
+        query.setParameter("user", user);
+        query.setParameter("keyword", "%" + keyword + "%");
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
+
     public void saveWithAdminAuthorsPublisherGenre(Document document, Admin admin,
                                                    List<String> authorNames, String publisherName,
                                                    List<String> genreNames) {

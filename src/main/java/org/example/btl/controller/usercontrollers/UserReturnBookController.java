@@ -80,7 +80,6 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
-
         List<Document> documents = documentService.findCurrentBorrow(user);
         documentObservableList = FXCollections.observableArrayList(documents);
         tableView.setItems(documentObservableList);
@@ -88,7 +87,9 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     @FXML
     public void handleSearchBook(ActionEvent event) {
-
+        String keyword = searchText.getText();
+        List<Document> documents = documentService.searchByTitle(keyword, user, "Borrowed");
+        documentObservableList = FXCollections.observableArrayList(documents);
     }
 
     public void handleReturnBook(ActionEvent event) {

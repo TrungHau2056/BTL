@@ -101,13 +101,17 @@ public class BookInfoController implements Initializable {
         } else {
 
         }
+
         titleText.setText(document.getTitle());
         authorText.setText(authors);
         genreText.setText(genres);
+        descriptionText.setText(document.getDescription());
+        quantityText.setText(String.valueOf(document.getQuantity()));
+
         if (document.getPublisher() != null) {
             publisherText.setText(document.getPublisher().getName());
+        } else {
+            publisherText.setText("Not available");
         }
-        quantityText.setText(String.valueOf(document.getQuantity()));
-        descriptionText.setText(document.getDescription());
     }
 }

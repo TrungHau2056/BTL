@@ -86,6 +86,7 @@ public class LoginController {
                     if (user == null) {
                     alertErr.setContentText("Wrong login information! Please try again");
                     alertErr.show();
+                    isProcessing = false;
                 }
                 else {
                         //change to user scene
@@ -109,6 +110,7 @@ public class LoginController {
                 userLoginTask.setOnFailed(e -> {
                     alertErr.setContentText("Error: " + userLoginTask.getException().getMessage());
                     alertErr.show();
+                    isProcessing = false;
                 });
 
                 new Thread(userLoginTask).start();
@@ -126,6 +128,7 @@ public class LoginController {
                     if (admin == null) {
                         alertErr.setContentText("Wrong login information! Please try again");
                         alertErr.show();
+                        isProcessing = false;
                     } else {
                         //switch to admin scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
@@ -147,6 +150,7 @@ public class LoginController {
                 adminLoginTask.setOnFailed(e -> {
                     alertErr.setContentText("Error: " + adminLoginTask.getException().getMessage());
                     alertErr.show();
+                    isProcessing = false;
                 });
 
                 new Thread(adminLoginTask).start();

@@ -98,7 +98,6 @@ public class BookInfoController implements Initializable {
 
         if (imageLink != null) {
             thumbnail.setImage(new Image(document.getImageLink()));
-            // remember to change imagelink
         } else {
 
         }

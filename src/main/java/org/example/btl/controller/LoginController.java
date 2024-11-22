@@ -52,6 +52,12 @@ public class LoginController {
     }
 
     public void handleLogin(ActionEvent event) throws IOException {
+        if (isProcessing) {
+            alertErr.setContentText("Please wait");
+            alertErr.show();
+            return;
+        }
+
         isProcessing = true;
         String username = usernameText.getText();
         String password = passwordText.getText();

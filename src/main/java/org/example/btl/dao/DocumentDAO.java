@@ -44,7 +44,7 @@ public class DocumentDAO implements BaseDAO<Document> {
     public List<Document> findAll() {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query = session.createQuery("FROM Document", Admin.class);
+        Query query = session.createQuery("FROM Document", Document.class);
         List<Document> documents = query.getResultList();
         session.close();
         return documents;

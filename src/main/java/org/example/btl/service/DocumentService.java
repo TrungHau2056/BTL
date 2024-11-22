@@ -18,6 +18,10 @@ public class DocumentService {
     private GenreDAO genreDAO = new GenreDAO();
     private PublisherDAO publisherDAO = new PublisherDAO();
 
+    public List<Document> findAll() {
+        return documentDAO.findAll();
+    }
+
     public Document findByTitle(String title) {
         return documentDAO.findByTitle(title);
     }

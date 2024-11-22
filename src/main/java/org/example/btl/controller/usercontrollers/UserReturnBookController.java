@@ -73,7 +73,7 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
 
         borrowDateCol.setCellValueFactory(data -> {
-            Borrow borrow = borrowService.findByUserAndDocument(user, data.getValue());
+            Borrow borrow = borrowService.findByUserCurrentlyBorrowsDocument(user, data.getValue());
             return new SimpleObjectProperty<>(borrow.getBorrowDate());
         });
     }

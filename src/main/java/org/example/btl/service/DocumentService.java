@@ -50,18 +50,18 @@ public class DocumentService {
         List<Document> documentList = new ArrayList<>();
         for (Author author : authors) {
             for (Document document : author.getDocuments()) {
-                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":
                         documentList.add(document);
                         break;
                     case "Borrowed":
-                        if (borrow != null && borrow.getReturnDate() == null) {
+                        if (borrow != null) {
                             documentList.add(document);
                         }
                         break;
                     case "Not Borrowed":
-                        if (borrow == null || borrow.getReturnDate() != null) {
+                        if (borrow == null) {
                             documentList.add(document);
                         }
                         break;
@@ -78,18 +78,18 @@ public class DocumentService {
         List<Document> documentList = new ArrayList<>();
         for (Genre genre : genres) {
             for (Document document : genre.getDocuments()) {
-                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":
                         documentList.add(document);
                         break;
                     case "Borrowed":
-                        if (borrow != null && borrow.getReturnDate() == null) {
+                        if (borrow != null) {
                             documentList.add(document);
                         }
                         break;
                     case "Not Borrowed":
-                        if (borrow == null || borrow.getReturnDate() != null) {
+                        if (borrow == null) {
                             documentList.add(document);
                         }
                         break;
@@ -106,18 +106,18 @@ public class DocumentService {
         List<Document> documentList = new ArrayList<>();
         for (Publisher publisher : publishers) {
             for (Document document : publisher.getDocuments()) {
-                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":
                         documentList.add(document);
                         break;
                     case "Borrowed":
-                        if (borrow != null && borrow.getReturnDate() == null) {
+                        if (borrow != null) {
                             documentList.add(document);
                         }
                         break;
                     case "Not Borrowed":
-                        if (borrow == null || borrow.getReturnDate() != null) {
+                        if (borrow == null) {
                             documentList.add(document);
                         }
                         break;

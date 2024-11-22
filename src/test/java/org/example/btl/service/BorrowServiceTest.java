@@ -37,10 +37,9 @@ class BorrowServiceTest {
 
     @Test
     void isCurrentlyBorrowing() {
-        when(borrowDAO.findByUserAndDocument(user, document)).thenReturn(borrow);
-        when(borrow.getReturnDate()).thenReturn(Date.valueOf("2002-1-2"));
+        when(borrowDAO.findByUserCurrentlyBorrowsDocument(user, document)).thenReturn(borrow);
 
-        assertFalse(borrowService.isCurrentlyBorrowing(user, document));
-        verify(borrowDAO, times(1)).findByUserAndDocument(user, document);
+        assertTrue(borrowService.isCurrentlyBorrowing(user, document));
+        verify(borrowDAO, times(1)).findByUserCurrentlyBorrowsDocument(user, document);
     }
 }

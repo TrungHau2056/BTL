@@ -8,22 +8,17 @@ import org.example.btl.model.User;
 public class BorrowService {
     private BorrowDAO borrowDAO = new BorrowDAO();
 
-    public boolean isReturned(Borrow borrow) {
-        return borrow.getReturnDate() != null;
-    }
-
     public boolean isCurrentlyBorrowing(User user, Document document) {
-        Borrow borrow = findByUserAndDocument(user, document);
-        return borrow != null && !isReturned(borrow);
+        Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
+        return borrow != null;
     }
 
-    public Borrow findByUserAndDocument(User user, Document document) {
-        return borrowDAO.findByUserAndDocument(user, document);
+    public Borrow findByUserCurrentlyBorrowsDocument(User user, Document document) {
+        return borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
     }
 
     public String validateBorrow(User user, Document document) {
-        Borrow borrow = findByUserAndDocument(user, document);
-        if (borrow != null && !isReturned(borrow)) {
+        if (isCurrentlyBorrowing(user, document)) {
             return "You are currently borrowing this document.";
         }
         if (document.getQuantity() == 0) {

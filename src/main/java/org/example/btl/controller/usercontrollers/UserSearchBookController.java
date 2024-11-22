@@ -19,6 +19,7 @@ import org.example.btl.model.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -163,16 +164,16 @@ public class UserSearchBookController extends UserBaseController implements Init
             List<Document> documents = null;
             switch (criterion) {
                 case "Title":
-                    documents = documentService.searchByTitleKeyword(keyword);
+                    documents = documentService.searchByTitle(keyword, user, status);
                     break;
                 case "Author":
-                    documents = documentService.searchByAuthorKeyword(keyword);
+                    documents = documentService.searchByAuthor(keyword, user, status);
                     break;
                 case "Genre":
-                    documents = documentService.searchByGenreKeyword(keyword);
+                    documents = documentService.searchByGenre(keyword, user, status);
                     break;
                 case "Publisher":
-                    documents = documentService.searchByPublisherKeyword(keyword);
+                    documents = documentService.searchByPublisher(keyword, user, status);
                     break;
             }
 
@@ -184,6 +185,5 @@ public class UserSearchBookController extends UserBaseController implements Init
                 tableView.setItems(documentObservableList);
             }
         }
-
     }
 }

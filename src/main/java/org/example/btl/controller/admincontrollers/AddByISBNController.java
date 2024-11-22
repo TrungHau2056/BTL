@@ -77,7 +77,7 @@ public class AddByISBNController extends AdminBaseController {
                         volumeInfo.getImageLinks().getThumbnail() != null) {
                     thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
                 } else {
-//                    add default image :
+//                    add default image:
 //                    thumbnail.setImage(new Image());
                 }
             }
@@ -98,7 +98,7 @@ public class AddByISBNController extends AdminBaseController {
         } else {
             String title = titleText.getText();
             String publisherName = publisherText.getText() == null ? "" : publisherText.getText();
-            String description = descriptionText.getText();
+            String description = descriptionText.getText() == null ? "Not available" : descriptionText.getText();
             String imageLink = null;
             if (volumeInfo.getImageLinks() != null &&
                     volumeInfo.getImageLinks().getThumbnail() != null) {

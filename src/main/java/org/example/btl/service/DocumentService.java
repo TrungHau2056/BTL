@@ -31,38 +31,98 @@ public class DocumentService {
         return documents;
     }
 
-    public List<Document> searchByTitleKeyword(String keyword) {
-        return documentDAO.searchByTitleKeyword(keyword);
+    public List<Document> searchByTitle(String keyword, User user, String status) {
+        switch (status) {
+            case "All":
+                return documentDAO.searchByTitleKeyword(keyword);
+            case "Borrowed":
+                return documentDAO.searchByTitleBorrowed(user, keyword);
+            case "Not Borrowed":
+                return documentDAO.searchByTitleNotBorrowed(user, keyword);
+        }
+        return null;
     }
 
-    public List<Document> searchByAuthorKeyword(String keyword) {
-        List<Author> authors = authorDAO.findByKeyword(keyword);
+    public List<Document> searchByAuthor(String keyword, User user, String status) {
+        List<Author> authors= authorDAO.findByKeyword(keyword);;
+
         List<Document> documentList = new ArrayList<>();
         for (Author author : authors) {
             for (Document document : author.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null && borrow.getReturnDate() == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null || borrow.getReturnDate() != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;
     }
 
-    public List<Document> searchByGenreKeyword(String keyword) {
+    public List<Document> searchByGenre(String keyword, User user, String status) {
         List<Genre> genres = genreDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
         for (Genre genre : genres) {
             for (Document document : genre.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null && borrow.getReturnDate() == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null || borrow.getReturnDate() != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;
     }
 
-    public List<Document> searchByPublisherKeyword(String keyword) {
+    public List<Document> searchByPublisher(String keyword, User user, String status) {
         List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
         for (Publisher publisher : publishers) {
             for (Document document : publisher.getDocuments()) {
-                documentList.add(document);
+                Borrow borrow = borrowDAO.findByUserAndDocument(user, document);
+                switch (status) {
+                    case "All":
+                        documentList.add(document);
+                        break;
+                    case "Borrowed":
+                        if (borrow != null && borrow.getReturnDate() == null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    case "Not Borrowed":
+                        if (borrow == null || borrow.getReturnDate() != null) {
+                            documentList.add(document);
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException();
+                }
             }
         }
         return documentList;

@@ -97,17 +97,19 @@ public class AdminSearchBookController extends AdminBaseController {
             List<Document> documents = null;
             switch (criterion) {
                 case "Title":
-                    documents = documentService.searchByTitleKeyword(keyword);
+                    documents = documentService.searchByTitle(keyword, null, "All");
                     break;
                 case "Author":
-                    documents = documentService.searchByAuthorKeyword(keyword);
+                    documents = documentService.searchByAuthor(keyword, null, "All");
                     break;
                 case "Genre":
-                    documents = documentService.searchByGenreKeyword(keyword);
+                    documents = documentService.searchByGenre(keyword, null, "All");
                     break;
                 case "Publisher":
-                    documents = documentService.searchByPublisherKeyword(keyword);
+                    documents = documentService.searchByPublisher(keyword, null, "All");
                     break;
+                default:
+                    throw new IllegalArgumentException();
             }
 
             if(documents.isEmpty()) {

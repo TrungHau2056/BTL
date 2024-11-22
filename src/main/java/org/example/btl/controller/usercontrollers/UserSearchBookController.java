@@ -130,7 +130,7 @@ public class UserSearchBookController extends UserBaseController implements Init
     }
 
 
-    private void showBookInfoView(Document selectedItem) throws  Exception {
+    private void showBookInfoView(Document selectedItem) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
         Parent root = loader.load();
 

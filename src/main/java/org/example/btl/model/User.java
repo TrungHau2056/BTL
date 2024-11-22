@@ -18,8 +18,16 @@ public class User extends Account {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Set<Borrow> borrows = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private Set<Notification> notifications = new HashSet<>();
+
     public void addBorrow(Borrow borrow) {
         borrows.add(borrow);
         borrow.setUser(this);
+    }
+
+    public void addNotification(Notification notification) {
+        notifications.add(notification);
+        notification.setUser(this);
     }
 }

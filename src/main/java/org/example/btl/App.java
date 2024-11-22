@@ -1,19 +1,13 @@
 package org.example.btl;
 
-import jakarta.persistence.Query;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import org.example.btl.model.Admin;
-import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
-import org.example.btl.service.DocumentService;
-import org.hibernate.Session;
 
 import java.io.IOException;
-import java.util.List;
 
 public class App extends Application {
     @Override
@@ -27,8 +21,8 @@ public class App extends Application {
         stage.show();
     }
 
-
     public static void main(String[] args) {
+        HibernateUtils.getSessionFactory();
         launch(args);
         HibernateUtils.shutdown();
     }

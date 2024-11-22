@@ -93,8 +93,8 @@ public abstract class UserBaseController {
             avatar.setImage(selectedImage);
 
             byte[] avatarData = Files.readAllBytes(selectedFile.toPath());
-//            user.setAvatar(avatarData);
-//            userService.update(user);
+            user.setAvatar(avatarData);
+            userService.update(user);
         }
     }
 

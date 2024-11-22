@@ -85,11 +85,40 @@ public class UserReturnBookController extends UserBaseController implements Init
         tableView.setItems(documentObservableList);
     }
 
-    @FXML
     public void handleSearchBook(ActionEvent event) {
         String keyword = searchText.getText();
-        List<Document> documents = documentService.searchByTitle(keyword, user, "Borrowed");
-        documentObservableList = FXCollections.observableArrayList(documents);
+        String criterion = criteria.getValue();
+        String status = "Borrowed";
+
+        String validateMessage = documentService.validateSearchByKeyword(keyword);
+        if (validateMessage != null) {
+            alertErr.setContentText(validateMessage);
+            alertErr.show();
+        } else {
+            List<Document> documents = null;
+            switch (criterion) {
+                case "Title":
+                    documents = documentService.searchByTitle(keyword, user, status);
+                    break;
+                case "Author":
+                    documents = documentService.searchByAuthor(keyword, user, status);
+                    break;
+                case "Genre":
+                    documents = documentService.searchByGenre(keyword, user, status);
+                    break;
+                case "Publisher":
+                    documents = documentService.searchByPublisher(keyword, user, status);
+                    break;
+            }
+
+            if (documents.isEmpty()) {
+                alertErr.setContentText("No search results match the keyword.");
+                alertErr.show();
+            } else {
+                documentObservableList = FXCollections.observableArrayList(documents);
+                tableView.setItems(documentObservableList);
+            }
+        }
     }
 
     public void handleReturnBook(ActionEvent event) {

@@ -21,6 +21,9 @@ public abstract class Account {
     protected String password;
     protected String gender;
 
+    @Column(columnDefinition = "BLOB")
+    private byte[] avatar;
+
     public Account() {
 
     }
@@ -94,5 +97,13 @@ public abstract class Account {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
     }
 }

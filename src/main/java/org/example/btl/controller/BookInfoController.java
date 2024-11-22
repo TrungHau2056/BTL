@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
@@ -38,7 +39,7 @@ public class BookInfoController implements Initializable {
     @FXML
     private Label quantityText;
     @FXML
-    private Label descriptionText;
+    private TextArea descriptionText;
 
     public Document getDocument() {
         return document;

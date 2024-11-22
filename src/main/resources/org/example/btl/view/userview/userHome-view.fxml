@@ -191,6 +191,15 @@
                         <Image url="@../../images/userIcon.png" />
                     </image>
                 </ImageView>
+            <Button layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
+               <effect>
+                  <DropShadow>
+                     <color>
+                        <Color red="0.5" green="0.38425925374031067" blue="0.38425925374031067" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Button>
             </children>
         </AnchorPane>
     </children>

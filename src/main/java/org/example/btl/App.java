@@ -31,8 +31,8 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
 
-        new AdminDAO().save(new Admin("vegeta", "vegeta01@fg", "vegeta12020", "0123456789", Date.valueOf("2005-01-05"), "Male"));
-        new UserDAO().save(new User("Son Goku", "goku4554/@0dw", "goku01251ssj1000", "0123456789", Date.valueOf("2005-02-02"), "Male"));
-        HibernateUtils.shutdown();
+//        new AdminDAO().save(new Admin("vegeta", "vegeta01@fg", "vegeta12020", "0123456789", Date.valueOf("2005-01-05"), "Male"));
+//        new UserDAO().save(new User("Son Goku", "goku4554/@0dw", "goku01251ssj1000", "0123456789", Date.valueOf("2005-02-02"), "Male"));
+//        HibernateUtils.shutdown();
     }
 }

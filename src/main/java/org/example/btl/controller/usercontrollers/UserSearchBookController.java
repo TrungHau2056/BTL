@@ -3,11 +3,11 @@ package org.example.btl.controller.usercontrollers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,10 +16,8 @@ import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.*;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -103,16 +101,31 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
-            Borrow borrow = borrowService.findByUserAndDocument(user, document);
-            String status = (borrow == null ? "Not Borrowed" : "Borrowed");
+            String status = borrowService.isCurrentlyBorrowing(user, document) ? "Borrowed" : "Not Borrowed";
             return new SimpleStringProperty(status);
         });
     }
 
     @Override
     public void setUserInfo() {
-        documentObservableList = FXCollections.observableArrayList(documentService.findAll());
-        tableView.setItems(documentObservableList);
+        Task<List<Document>> loadDocTask = new Task<>() {
+            @Override
+            protected List<Document> call() throws Exception {
+                return documentService.findAll();
+            }
+        };
+
+        loadDocTask.setOnSucceeded(e -> {
+            documentObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
+            tableView.setItems(documentObservableList);
+        });
+
+        loadDocTask.setOnFailed(e -> {
+            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(loadDocTask).start();
     }
 
 
@@ -161,29 +174,65 @@ public class UserSearchBookController extends UserBaseController implements Init
             alertErr.setContentText(validateMessage);
             alertErr.show();
         } else {
-            List<Document> documents = null;
-            switch (criterion) {
-                case "Title":
-                    documents = documentService.searchByTitle(keyword, user, status);
-                    break;
-                case "Author":
-                    documents = documentService.searchByAuthor(keyword, user, status);
-                    break;
-                case "Genre":
-                    documents = documentService.searchByGenre(keyword, user, status);
-                    break;
-                case "Publisher":
-                    documents = documentService.searchByPublisher(keyword, user, status);
-                    break;
-            }
+            Task<List<Document>> searchDocTask = new Task<>() {
+                @Override
+                protected List<Document> call() throws Exception {
+                    switch (criterion) {
+                        case "Title":
+                            return documentService.searchByTitle(keyword, user, status);
+                        case "Author":
+                            return documentService.searchByAuthor(keyword, user, status);
+                        case "Genre":
+                            return documentService.searchByGenre(keyword, user, status);
+                        case "Publisher":
+                            return documentService.searchByPublisher(keyword, user, status);
+                    }
+                    return null;
+                }
+            };
 
-            if (documents.isEmpty()) {
-                alertErr.setContentText("No search results match the keyword.");
+            searchDocTask.setOnSucceeded(e -> {
+                List<Document> documents = searchDocTask.getValue();
+
+                if (documents.isEmpty()) {
+                    alertErr.setContentText("No search results match the keyword.");
+                    alertErr.show();
+                } else {
+                    documentObservableList = FXCollections.observableArrayList(documents);
+                    tableView.setItems(documentObservableList);
+                }
+            });
+
+            searchDocTask.setOnFailed(e -> {
+                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
                 alertErr.show();
-            } else {
-                documentObservableList = FXCollections.observableArrayList(documents);
-                tableView.setItems(documentObservableList);
-            }
+            });
+
+            new Thread(searchDocTask).start();
+
+//            List<Document> documents = null;
+//            switch (criterion) {
+//                case "Title":
+//                    documents = documentService.searchByTitle(keyword, user, status);
+//                    break;
+//                case "Author":
+//                    documents = documentService.searchByAuthor(keyword, user, status);
+//                    break;
+//                case "Genre":
+//                    documents = documentService.searchByGenre(keyword, user, status);
+//                    break;
+//                case "Publisher":
+//                    documents = documentService.searchByPublisher(keyword, user, status);
+//                    break;
+//            }
+//
+//            if (documents.isEmpty()) {
+//                alertErr.setContentText("No search results match the keyword.");
+//                alertErr.show();
+//            } else {
+//                documentObservableList = FXCollections.observableArrayList(documents);
+//                tableView.setItems(documentObservableList);
+//            }
         }
     }
 }

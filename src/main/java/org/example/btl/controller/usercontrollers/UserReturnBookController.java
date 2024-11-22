@@ -125,6 +125,8 @@ public class UserReturnBookController extends UserBaseController implements Init
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             borrowService.returnDocument(user, selectedItem);
+            alertInfo.setContentText("Return Successfully!");
+            alertInfo.show();
         } else {
             alertErr.setContentText("Please choose an item");
             alertErr.show();

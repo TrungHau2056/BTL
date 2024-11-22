@@ -142,7 +142,7 @@ public class AdminAddBookController extends AdminBaseController {
         String imageLink = Objects.equals(imageLinkText.getText(), "") ? null : imageLinkText.getText();
         String quantityStr = quantityText.getText();
 
-        String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr);
+        String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr, description);
         if (validateMess != null) {
             alertErr.setContentText(validateMess);
             alertErr.show();

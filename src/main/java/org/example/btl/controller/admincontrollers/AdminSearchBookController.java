@@ -94,7 +94,7 @@ public class AdminSearchBookController extends AdminBaseController {
             alertErr.setContentText(keyword);
             alertErr.show();
         } else {
-            List<Document> documents = null;
+            List<Document> documents;
             switch (criterion) {
                 case "Title":
                     documents = documentService.searchByTitle(keyword, null, "All");

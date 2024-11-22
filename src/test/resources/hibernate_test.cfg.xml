@@ -14,5 +14,6 @@
         <mapping class="org.example.btl.model.Borrow"/>
         <mapping class="org.example.btl.model.Publisher"/>
         <mapping class="org.example.btl.model.Genre"/>
+        <mapping class="org.example.btl.model.Notification"/>
     </session-factory>
 </hibernate-configuration>

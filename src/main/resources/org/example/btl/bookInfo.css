@@ -10,30 +10,7 @@
     -fx-font-weight: 700;
 }
 
-.book-description {
-    -fx-font-size: 12px;  /* Kích thước font chữ nhỏ hơn */
-    -fx-text-fill: #555555;  /* Màu chữ xám tối */
-    -fx-font-weight: normal;  /* Không đậm như tên sách */
-    -fx-line-spacing: 1.5;  /* Khoảng cách dòng */
 
-    -fx-font-family: "Arial";  /* Font chữ dễ đọc */
-    -fx-max-width: 500px;  /* Chiều rộng tối đa */
-}
-
-.back-button {
-    -fx-background-color: transparent;
-    -fx-cursor: hand;
-    -fx-effect: dropshadow(gaussian, #466bb0, 10, 0, 0, 5);
-}
-
-.back-button:hover {
-    -fx-background-color: #e0f7fa;
-    -fx-background-radius: 10px;
-        -fx-effect: dropshadow(gaussian, #466bb0, 10, 0, 0, 5);
-        -fx-scale-x: 1.1;
-        -fx-scale-y: 1.1;
-
-}
 
 .borrow-button {
     -fx-background-color: #3e7f6a;
@@ -43,4 +20,16 @@
 
 .borrow-button:hover {
     -fx-background-color: #4d9c84;
+}
+.text-area {
+    -fx-control-inner-background:  #fff;
+    -fx-border-color:  #E0F7FA;
+
+}
+.text-area .scroll-bar:vertical {
+    -fx-background-color:  #E0F7FA;
+    -fx-border-color: #ddd;
+
+    -fx-background-insets: 0;
+
 }

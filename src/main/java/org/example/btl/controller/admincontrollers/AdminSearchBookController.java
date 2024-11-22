@@ -25,7 +25,7 @@ public class AdminSearchBookController extends AdminBaseController {
     private TextField searchText;
 
     @FXML
-    private ChoiceBox<String> criteria = new ChoiceBox<>();
+    private ChoiceBox<String> criteria;
     @FXML
     private TableView<Document> tableView;
     @FXML
@@ -47,7 +47,8 @@ public class AdminSearchBookController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
-
+        ObservableList<Document> observableList = FXCollections.observableArrayList(documentService.findAll());
+        tableView.setItems(observableList);
     }
 
     @FXML
@@ -55,9 +56,6 @@ public class AdminSearchBookController extends AdminBaseController {
         // Choice Box
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
-        criteria.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            System.out.println("Selected item: " + newValue);
-        });
 
         // Table view
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -82,12 +80,9 @@ public class AdminSearchBookController extends AdminBaseController {
         });
 
         publisherCol.setCellValueFactory(data -> {
-            return new SimpleStringProperty(data.getValue().getPublisher().getName());
+            return new SimpleStringProperty(
+                    data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available");
         });
-
-
-        ObservableList<Document> observableList = FXCollections.observableArrayList();
-        tableView.setItems(observableList);
     }
 
     public void handleAdminSearch(ActionEvent event) {

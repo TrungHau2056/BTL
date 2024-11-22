@@ -30,7 +30,7 @@ public class UserSearchBookController extends UserBaseController implements Init
     @FXML
     private ChoiceBox<String> criteria;
     @FXML
-    private ChoiceBox<String> status;
+    private ChoiceBox<String> statuses;
 
     @FXML
     private TableView<Document> tableView;
@@ -51,15 +51,12 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
-
-    public User getUser() {
-        return super.getUser();
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
+        statuses.getItems().addAll("All", "Borrowed", "Not Borrowed");
+        statuses.setValue("All");
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -98,20 +95,23 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         publisherCol.setCellValueFactory(data -> {
-            return new SimpleStringProperty(data.getValue().getPublisher().getName());
+            return new SimpleStringProperty(
+                    data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"
+            );
         });
 
-    }
-
-    @Override
-    public void setUserInfo() {
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
             Borrow borrow = borrowService.findByUserAndDocument(user, document);
             String status = (borrow == null ? "Not Borrowed" : "Borrowed");
             return new SimpleStringProperty(status);
         });
+    }
 
+    @Override
+    public void setUserInfo() {
+        documentObservableList = FXCollections.observableArrayList(documentService.findAll());
+        tableView.setItems(documentObservableList);
     }
 
 
@@ -153,6 +153,7 @@ public class UserSearchBookController extends UserBaseController implements Init
     public void handleUserSearch(ActionEvent event) {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
+        String status = statuses.getValue();
 
         String validateMessage = documentService.validateSearchByKeyword(keyword);
         if (validateMessage != null) {

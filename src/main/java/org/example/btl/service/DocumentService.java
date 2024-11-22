@@ -1,9 +1,6 @@
 package org.example.btl.service;
 
-import org.example.btl.dao.AuthorDAO;
-import org.example.btl.dao.DocumentDAO;
-import org.example.btl.dao.GenreDAO;
-import org.example.btl.dao.PublisherDAO;
+import org.example.btl.dao.*;
 import org.example.btl.model.*;
 
 import java.util.ArrayList;
@@ -17,9 +14,21 @@ public class DocumentService {
     private AuthorDAO authorDAO = new AuthorDAO();
     private GenreDAO genreDAO = new GenreDAO();
     private PublisherDAO publisherDAO = new PublisherDAO();
+    private BorrowDAO borrowDAO = new BorrowDAO();
+
+    public List<Document> findAll() {
+        return documentDAO.findAll();
+    }
 
     public Document findByTitle(String title) {
         return documentDAO.findByTitle(title);
+    }
+
+    public List<Document> findCurrentBorrow(User user) {
+        List<Borrow> borrows = borrowDAO.findCurrentBorrowsByUser(user);
+        List<Document> documents = new ArrayList<>();
+        for (Borrow borrow : borrows) documents.add(borrow.getDocument());
+        return documents;
     }
 
     public List<Document> searchByTitleKeyword(String keyword) {

@@ -12,10 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -108,6 +111,13 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
+        nameLabel.setText(user.getName());
+        byte[] avatarData = user.getAvatar();
+        if (avatarData != null) {
+            InputStream inputStream = new ByteArrayInputStream(avatarData);
+            avatar.setImage(new Image(inputStream));
+        }
+
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
             protected List<Document> call() throws Exception {
@@ -209,30 +219,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             });
 
             new Thread(searchDocTask).start();
-
-//            List<Document> documents = null;
-//            switch (criterion) {
-//                case "Title":
-//                    documents = documentService.searchByTitle(keyword, user, status);
-//                    break;
-//                case "Author":
-//                    documents = documentService.searchByAuthor(keyword, user, status);
-//                    break;
-//                case "Genre":
-//                    documents = documentService.searchByGenre(keyword, user, status);
-//                    break;
-//                case "Publisher":
-//                    documents = documentService.searchByPublisher(keyword, user, status);
-//                    break;
-//            }
-//
-//            if (documents.isEmpty()) {
-//                alertErr.setContentText("No search results match the keyword.");
-//                alertErr.show();
-//            } else {
-//                documentObservableList = FXCollections.observableArrayList(documents);
-//                tableView.setItems(documentObservableList);
-//            }
         }
     }
 }

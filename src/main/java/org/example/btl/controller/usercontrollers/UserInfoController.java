@@ -3,9 +3,12 @@ package org.example.btl.controller.usercontrollers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import org.example.btl.model.User;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 
 public class UserInfoController extends UserBaseController {
@@ -40,6 +43,13 @@ public class UserInfoController extends UserBaseController {
 
     @Override
     public void setUserInfo() {
+        nameLabel.setText(user.getName());
+        byte[] avatarData = user.getAvatar();
+        if (avatarData != null) {
+            InputStream inputStream = new ByteArrayInputStream(avatarData);
+            avatar.setImage(new Image(inputStream));
+        }
+
         nameText.setText(user.getName());
         emailText.setText(user.getEmail());
         usernameText.setText(user.getUsername());
@@ -79,6 +89,8 @@ public class UserInfoController extends UserBaseController {
             user.setPassword(password);
             user.setBirthday(birthday);
             user.setGender(gender);
+
+            nameLabel.setText(name);
 
             userService.update(user);
 

@@ -32,30 +32,28 @@ public class BorrowDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user");
+        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user  AND returnDate IS NULL");
         query.setParameter("user", user);
         query.setParameter("document", document);
         List<Borrow> borrows = query.getResultList();
 
         session.close();
-        for (Borrow borrow : borrows) {
-            if (borrow.getReturnDate() == null) {
-                return borrow;
-            }
+        if (borrows.isEmpty()) {
+            return null;
         }
-        return null;
+        return borrows.getFirst();
     }
 
-    public List<Borrow> findCurrentBorrowsByUser(User user) {
+    public List<Document> findDocCurrentBorrow(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Borrow WHERE user = :user AND returnDate IS NULL");
+        Query query = session.createQuery("SELECT document FROM Borrow WHERE user = :user AND returnDate IS NULL");
         query.setParameter("user", user);
-        List<Borrow> borrows = query.getResultList();
+        List<Document> documents = query.getResultList();
 
         session.close();
-        return borrows;
+        return documents;
     }
 
     public void borrowDocument(User user, Document document) {

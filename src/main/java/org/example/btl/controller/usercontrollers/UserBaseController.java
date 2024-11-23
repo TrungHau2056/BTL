@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -38,6 +39,10 @@ public abstract class UserBaseController {
 
     @FXML
     protected ImageView avatar;
+    @FXML
+    protected ImageView avatarInfo;
+    @FXML
+    protected Label nameLabel;
 
     public User getUser() {
         return user;
@@ -91,6 +96,7 @@ public abstract class UserBaseController {
         if (selectedFile != null) {
             Image selectedImage = new Image(selectedFile.toURI().toString());
             avatar.setImage(selectedImage);
+            avatarInfo.setImage(selectedImage);
 
             byte[] avatarData = Files.readAllBytes(selectedFile.toPath());
             user.setAvatar(avatarData);

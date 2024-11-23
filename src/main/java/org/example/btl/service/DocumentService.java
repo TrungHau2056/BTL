@@ -24,11 +24,8 @@ public class DocumentService {
         return documentDAO.findByTitle(title);
     }
 
-    public List<Document> findCurrentBorrow(User user) {
-        List<Borrow> borrows = borrowDAO.findCurrentBorrowsByUser(user);
-        List<Document> documents = new ArrayList<>();
-        for (Borrow borrow : borrows) documents.add(borrow.getDocument());
-        return documents;
+    public List<Document> findDocCurrentBorrow(User user) {
+        return borrowDAO.findDocCurrentBorrow(user);
     }
 
     public List<Document> searchByTitle(String keyword, User user, String status) {

@@ -100,7 +100,7 @@
             <Label layoutX="34.0" layoutY="669.0" text="Version: 12.10.2005" textFill="#e4d868" />
             <StackPane layoutX="31.0" layoutY="175.0" prefHeight="28.0" prefWidth="339.0">
                <children>
-                  <Label text="Son GoKu" textFill="WHITE">
+                  <Label fx:id="nameUser" text="Son GoKu" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

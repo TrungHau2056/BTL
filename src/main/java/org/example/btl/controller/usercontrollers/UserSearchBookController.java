@@ -25,6 +25,8 @@ import java.util.stream.Collectors;
 public class UserSearchBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
+    @FXML
+    private Label nameUser;
 
     @FXML
     private ChoiceBox<String> criteria;
@@ -108,6 +110,8 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
+        nameUser.setText(user.getName());
+
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
             protected List<Document> call() throws Exception {

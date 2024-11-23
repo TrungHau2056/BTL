@@ -5,9 +5,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import org.example.btl.model.Document;
 import org.example.btl.model.User;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
 
@@ -32,17 +35,12 @@ public class UserHomeController extends UserBaseController implements Initializa
 
     @Override
     public void setUserInfo() {
-        //        try(Session session = HibernateUtils.getSessionFactory().openSession()) {
-//            session.refresh(user);
-////            Set<Document> borrowedDocs = user.getBorrowedDocuments();
-//
-//            table_document_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-//            table_document_title.setCellValueFactory(new PropertyValueFactory<>("title"));
-//
-//            ObservableList<Document> documentlist = FXCollections.observableArrayList(borrowedDocs);
-//            tableview.setItems(documentlist);
-//        }
         userinfo.setText(user.getName());
+        byte[] avatarData = user.getAvatar();
+        if (avatarData != null) {
+            InputStream inputStream = new ByteArrayInputStream(avatarData);
+            avatar.setImage(new Image(inputStream));
+        }
     }
 
     @Override

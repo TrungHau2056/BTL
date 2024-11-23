@@ -186,7 +186,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-                <ImageView fx:id="avatar" fitHeight="157.0" fitWidth="323.0" layoutX="370.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="370.0" AnchorPane.rightAnchor="355.4">
+                <ImageView fx:id="avatar" fitHeight="157.0" fitWidth="323.0" layoutX="369.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="369.0" AnchorPane.rightAnchor="358.0">
                     <image>
                         <Image url="@../../images/userIcon.png" />
                     </image>

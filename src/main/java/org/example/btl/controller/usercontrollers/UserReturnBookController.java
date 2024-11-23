@@ -4,6 +4,7 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -87,9 +88,25 @@ public class UserReturnBookController extends UserBaseController implements Init
             avatar.setImage(new Image(inputStream));
         }
 
-        List<Document> documents = documentService.findCurrentBorrow(user);
-        documentObservableList = FXCollections.observableArrayList(documents);
-        tableView.setItems(documentObservableList);
+        Task<List<Document>> loadDocTask = new Task<>() {
+            @Override
+            protected List<Document> call() throws Exception {
+                return documentService.findDocCurrentBorrow(user);
+            }
+        };
+
+        loadDocTask.setOnSucceeded(e -> {
+            documentObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
+            tableView.setItems(documentObservableList);
+        });
+
+        loadDocTask.setOnFailed(e -> {
+            System.out.println("Failed");
+            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(loadDocTask).start();
     }
 
     public void handleSearchBook(ActionEvent event) {
@@ -102,29 +119,41 @@ public class UserReturnBookController extends UserBaseController implements Init
             alertErr.setContentText(validateMessage);
             alertErr.show();
         } else {
-            List<Document> documents = null;
-            switch (criterion) {
-                case "Title":
-                    documents = documentService.searchByTitle(keyword, user, status);
-                    break;
-                case "Author":
-                    documents = documentService.searchByAuthor(keyword, user, status);
-                    break;
-                case "Genre":
-                    documents = documentService.searchByGenre(keyword, user, status);
-                    break;
-                case "Publisher":
-                    documents = documentService.searchByPublisher(keyword, user, status);
-                    break;
-            }
+            Task<List<Document>> searchDocTask = new Task<>() {
+                @Override
+                protected List<Document> call() throws Exception {
+                    switch (criterion) {
+                        case "Title":
+                            return documentService.searchByTitle(keyword, user, status);
+                        case "Author":
+                            return documentService.searchByAuthor(keyword, user, status);
+                        case "Genre":
+                            return documentService.searchByGenre(keyword, user, status);
+                        case "Publisher":
+                            return documentService.searchByPublisher(keyword, user, status);
+                    }
+                    return null;
+                }
+            };
 
-            if (documents.isEmpty()) {
-                alertErr.setContentText("No search results match the keyword.");
+            searchDocTask.setOnSucceeded(e -> {
+                List<Document> documents = searchDocTask.getValue();
+
+                if (documents.isEmpty()) {
+                    alertErr.setContentText("No search results match the keyword.");
+                    alertErr.show();
+                } else {
+                    documentObservableList = FXCollections.observableArrayList(documents);
+                    tableView.setItems(documentObservableList);
+                }
+            });
+
+            searchDocTask.setOnFailed(e -> {
+                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
                 alertErr.show();
-            } else {
-                documentObservableList = FXCollections.observableArrayList(documents);
-                tableView.setItems(documentObservableList);
-            }
+            });
+
+            new Thread(searchDocTask).start();
         }
     }
 

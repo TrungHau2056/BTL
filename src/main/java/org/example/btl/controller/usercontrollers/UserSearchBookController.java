@@ -219,30 +219,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             });
 
             new Thread(searchDocTask).start();
-
-//            List<Document> documents = null;
-//            switch (criterion) {
-//                case "Title":
-//                    documents = documentService.searchByTitle(keyword, user, status);
-//                    break;
-//                case "Author":
-//                    documents = documentService.searchByAuthor(keyword, user, status);
-//                    break;
-//                case "Genre":
-//                    documents = documentService.searchByGenre(keyword, user, status);
-//                    break;
-//                case "Publisher":
-//                    documents = documentService.searchByPublisher(keyword, user, status);
-//                    break;
-//            }
-//
-//            if (documents.isEmpty()) {
-//                alertErr.setContentText("No search results match the keyword.");
-//                alertErr.show();
-//            } else {
-//                documentObservableList = FXCollections.observableArrayList(documents);
-//                tableView.setItems(documentObservableList);
-//            }
         }
     }
 }

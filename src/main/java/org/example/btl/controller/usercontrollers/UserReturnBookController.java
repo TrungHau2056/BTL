@@ -7,10 +7,15 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import org.example.btl.controller.BookInfoController;
 import org.example.btl.dao.AdminDAO;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
@@ -31,6 +36,8 @@ import java.util.stream.Collectors;
 public class UserReturnBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
+    @FXML
+    private ToggleButton returnButton;
 
     @FXML
     private ChoiceBox<String> criteria;
@@ -51,6 +58,8 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        returnButton.setSelected(true);
+
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
 
@@ -75,7 +84,7 @@ public class UserReturnBookController extends UserBaseController implements Init
 
         borrowDateCol.setCellValueFactory(data -> {
             Borrow borrow = borrowService.findByUserCurrentlyBorrowsDocument(user, data.getValue());
-            return new SimpleObjectProperty<>(borrow.getBorrowDate());
+            return new SimpleObjectProperty<>(borrow != null ? borrow.getBorrowDate() : null);
         });
     }
 
@@ -107,6 +116,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
 
         new Thread(loadDocTask).start();
+    }
+
+    public void refresh() {
+        tableView.refresh();
     }
 
     public void handleSearchBook(ActionEvent event) {
@@ -161,6 +174,8 @@ public class UserReturnBookController extends UserBaseController implements Init
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             borrowService.returnDocument(user, selectedItem);
+            setUserInfo();
+            refresh();
             alertInfo.setContentText("Return Successfully!");
             alertInfo.show();
         } else {
@@ -170,6 +185,37 @@ public class UserReturnBookController extends UserBaseController implements Init
     }
 
     public void handleShowBookInfo(ActionEvent event) {
+        Document selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            try {
+                showBookInfoView(selectedItem);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No item selected.");
+        }
+    }
+
+    private void showBookInfoView(Document selectedItem) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
+        Parent root = loader.load();
+
+        BookInfoController controller = loader.getController();
+        controller.setDocument(selectedItem);
+        controller.setUser(user);
+        controller.setUserReturnBookController(this);
+        controller.setBookInfo();
+
+
+        Stage stage = new Stage();
+        stage.setTitle("Document");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void switchToHistoryScene(ActionEvent event) {
 
     }
+
 }

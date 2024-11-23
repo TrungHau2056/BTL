@@ -13,6 +13,8 @@ import java.sql.Date;
 
 public class UserInfoController extends UserBaseController {
     @FXML
+    private Label nameUser;
+    @FXML
     private TextField nameText;
     @FXML
     private TextField emailText;
@@ -89,8 +91,6 @@ public class UserInfoController extends UserBaseController {
             user.setPassword(password);
             user.setBirthday(birthday);
             user.setGender(gender);
-
-            nameLabel.setText(name);
 
             userService.update(user);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -66,7 +68,7 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="126.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="535.6" AnchorPane.leftAnchor="126.0" AnchorPane.rightAnchor="114.0" AnchorPane.topAnchor="14.0">
+                <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../images/userIcon - Copy.png" />
                     </image>
@@ -152,7 +154,7 @@
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font></Label>
-                <TableView fx:id="tableView" layoutX="75.0" layoutY="320.0" onMouseClicked="#handleTableClick" prefHeight="333.0" prefWidth="761.0" stylesheets="@../../tableview.css" AnchorPane.bottomAnchor="46.39999999999998">
+                <TableView fx:id="tableView" layoutX="72.0" layoutY="350.0" onMouseClicked="#handleTableClick" prefHeight="333.0" prefWidth="761.0" stylesheets="@../../tableview.css" AnchorPane.bottomAnchor="17.0">
                     <columns>
                         <TableColumn fx:id="idCol" editable="false" prefWidth="56.000030517578125" text="Id" />
                         <TableColumn fx:id="titleCol" editable="false" prefWidth="117.5999755859375" text="Title" />
@@ -167,7 +169,7 @@
                     </columnResizePolicy>
                 </TableView>
             <TextField fx:id="searchText" layoutX="109.0" layoutY="153.0" prefHeight="38.0" prefWidth="694.0" promptText="Search for something you need" styleClass="login-inputs" />
-            <Button layoutX="409.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleUserSearch" prefHeight="44.0" prefWidth="93.0" styleClass="search-button" text="Search" textFill="WHITE">
+            <Button layoutX="408.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleUserSearch" prefHeight="44.0" prefWidth="93.0" styleClass="search-button" text="Search" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="17.0" />
                </font>
@@ -187,6 +189,20 @@
                   </DropShadow>
                </effect>
             </Button>
+            <ToggleButtonGroup layoutX="715.0" layoutY="319.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+               <toggles>
+                  <ToggleButton fx:id="searchButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Search">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </toggles>
+            </ToggleButtonGroup>
             </children>
          <stylesheets>
             <URL value="@../../tableview.css" />

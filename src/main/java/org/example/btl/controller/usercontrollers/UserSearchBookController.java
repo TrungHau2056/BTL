@@ -27,6 +27,8 @@ public class UserSearchBookController extends UserBaseController implements Init
     private TextField searchText;
     @FXML
     private Label nameUser;
+    @FXML
+    private ToggleButton searchButton;
 
     @FXML
     private ChoiceBox<String> criteria;
@@ -54,6 +56,8 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        searchButton.setSelected(true);
+
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
         statuses.getItems().addAll("All", "Borrowed", "Not Borrowed");
@@ -239,4 +243,9 @@ public class UserSearchBookController extends UserBaseController implements Init
 //            }
         }
     }
+
+    public void switchToHistoryScene(ActionEvent event) {
+
+    }
+
 }

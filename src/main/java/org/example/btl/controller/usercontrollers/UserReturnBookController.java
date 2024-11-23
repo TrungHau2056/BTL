@@ -34,6 +34,8 @@ public class UserReturnBookController extends UserBaseController implements Init
     private TextField searchText;
     @FXML
     private Label nameUser;
+    @FXML
+    private ToggleButton returnButton;
 
     @FXML
     private ChoiceBox<String> criteria;
@@ -54,6 +56,7 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        returnButton.setSelected(true);
 
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
@@ -173,6 +176,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void switchToHistoryScene(ActionEvent event) {
+
     }
 
 }

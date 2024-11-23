@@ -28,6 +28,10 @@ public class DocumentService {
         return borrowDAO.findDocCurrentBorrow(user);
     }
 
+    public List<Document> findDocHasReturned(User user) {
+        return null;
+    }
+
     public List<Document> searchByTitle(String keyword, User user, String status) {
         switch (status) {
             case "All":

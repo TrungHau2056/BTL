@@ -77,8 +77,7 @@ public class AddByISBNController extends AdminBaseController {
                         volumeInfo.getImageLinks().getThumbnail() != null) {
                     thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
                 } else {
-//                    add default image:
-//                    thumbnail.setImage(new Image());
+                    thumbnail.setImage(new Image(getClass().getResource("/org/example/btl/images/no-photo.png").toExternalForm()));
                 }
             }
         });
@@ -113,7 +112,7 @@ public class AddByISBNController extends AdminBaseController {
                 alertErr.setContentText(validateMess);
                 alertErr.show();
             } else {
-                Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink);
+                Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink, true);
                 documentService.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
 
                 alertInfo.setContentText("Document successfully saved!");

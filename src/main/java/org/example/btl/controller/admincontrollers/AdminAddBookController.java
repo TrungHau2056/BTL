@@ -147,7 +147,7 @@ public class AdminAddBookController extends AdminBaseController {
             alertErr.setContentText(validateMess);
             alertErr.show();
         } else {
-            Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink);
+            Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink, false);
             documentService.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
 
             alertInfo.setContentText("Document successfully saved!");

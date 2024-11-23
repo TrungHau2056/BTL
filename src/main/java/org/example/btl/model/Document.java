@@ -16,6 +16,7 @@ public class Document {
     private String description;
     private String imageLink;
     private int quantity;
+    private boolean isAddedByISBN;
 
     @Temporal(TemporalType.DATE)
     private Date addedDate;
@@ -48,18 +49,13 @@ public class Document {
     public Document() {
     }
 
-    public Document(String title, String description, int quantity, String imageLink) {
+    public Document(String title, String description, int quantity, String imageLink, boolean isAddedByISBN) {
         this.title = title;
         this.description = description;
         this.quantity = quantity;
         this.imageLink = imageLink;
+        this.isAddedByISBN = isAddedByISBN;
         addedDate = Date.valueOf(LocalDate.now());
-    }
-
-    public Document(int id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
     }
 
     public String getTitle() {

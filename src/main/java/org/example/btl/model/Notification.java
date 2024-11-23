@@ -20,6 +20,9 @@ public class Notification {
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime createdAt;
 
+    public Notification() {
+    }
+
     public Notification(String message) {
         this.message = message;
         isRead = false;

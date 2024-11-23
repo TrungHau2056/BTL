@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -9,6 +10,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -189,13 +191,6 @@
                     </columnResizePolicy>
                 </TableView>
             <Button layoutX="794.0" layoutY="602.0" mnemonicParsing="false" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="68.0" AnchorPane.rightAnchor="48.0">
-               <graphic>
-                  <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/ReturnBookHistory.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -209,6 +204,20 @@
                   </DropShadow>
                </effect>
             </Button>
+            <ToggleButtonGroup layoutX="718.0" layoutY="613.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+               <toggles>
+                  <ToggleButton fx:id="returnButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Return">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </toggles>
+            </ToggleButtonGroup>
             </children>
             <stylesheets>
                 <URL value="@../../tableview.css" />

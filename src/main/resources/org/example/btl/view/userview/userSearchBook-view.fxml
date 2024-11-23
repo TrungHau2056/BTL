@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ToggleButtonGroup?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -177,7 +179,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="status" layoutX="622.0" layoutY="211.0" prefHeight="27.0" prefWidth="103.0" stylesheets="@../../choicebox.css" />
+            <ChoiceBox fx:id="statuses" layoutX="622.0" layoutY="211.0" prefHeight="27.0" prefWidth="103.0" stylesheets="@../../choicebox.css" />
             <Button layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                <effect>
                   <DropShadow>
@@ -187,6 +189,20 @@
                   </DropShadow>
                </effect>
             </Button>
+            <ToggleButtonGroup layoutX="715.0" layoutY="319.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+               <toggles>
+                  <ToggleButton fx:id="searchButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Search">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </toggles>
+            </ToggleButtonGroup>
             </children>
          <stylesheets>
             <URL value="@../../tableview.css" />

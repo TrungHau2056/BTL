@@ -84,7 +84,7 @@ public class UserReturnBookController extends UserBaseController implements Init
 
         borrowDateCol.setCellValueFactory(data -> {
             Borrow borrow = borrowService.findByUserCurrentlyBorrowsDocument(user, data.getValue());
-            return new SimpleObjectProperty<>(borrow.getBorrowDate());
+            return new SimpleObjectProperty<>(borrow != null ? borrow.getBorrowDate() : null);
         });
     }
 
@@ -196,6 +196,7 @@ public class UserReturnBookController extends UserBaseController implements Init
             System.out.println("No item selected.");
         }
     }
+
     private void showBookInfoView(Document selectedItem) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
         Parent root = loader.load();

@@ -12,10 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -25,8 +28,6 @@ import java.util.stream.Collectors;
 public class UserSearchBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
-    @FXML
-    private Label nameUser;
     @FXML
     private ToggleButton searchButton;
 
@@ -56,8 +57,6 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        searchButton.setSelected(true);
-
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
         criteria.setValue("Title");
         statuses.getItems().addAll("All", "Borrowed", "Not Borrowed");
@@ -114,7 +113,12 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     @Override
     public void setUserInfo() {
-        nameUser.setText(user.getName());
+        nameLabel.setText(user.getName());
+        byte[] avatarData = user.getAvatar();
+        if (avatarData != null) {
+            InputStream inputStream = new ByteArrayInputStream(avatarData);
+            avatar.setImage(new Image(inputStream));
+        }
 
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override

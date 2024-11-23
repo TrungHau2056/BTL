@@ -9,8 +9,7 @@ public class BorrowService {
     private BorrowDAO borrowDAO = new BorrowDAO();
 
     public boolean isCurrentlyBorrowing(User user, Document document) {
-        Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
-        return borrow != null;
+        return borrowDAO.findByUserCurrentlyBorrowsDocument(user, document) != null;
     }
 
     public Borrow findByUserCurrentlyBorrowsDocument(User user, Document document) {

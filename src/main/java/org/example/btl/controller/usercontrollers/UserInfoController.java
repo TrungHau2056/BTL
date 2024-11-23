@@ -1,13 +1,14 @@
 package org.example.btl.controller.usercontrollers;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import org.example.btl.model.User;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 
 public class UserInfoController extends UserBaseController {
@@ -44,15 +45,18 @@ public class UserInfoController extends UserBaseController {
 
     @Override
     public void setUserInfo() {
+        nameLabel.setText(user.getName());
+        byte[] avatarData = user.getAvatar();
+        if (avatarData != null) {
+            InputStream inputStream = new ByteArrayInputStream(avatarData);
+            avatar.setImage(new Image(inputStream));
+        }
 
         nameText.setText(user.getName());
         emailText.setText(user.getEmail());
         usernameText.setText(user.getUsername());
         passwordText.setText(user.getPassword());
         birthdayText.setValue(user.getBirthday().toLocalDate());
-
-        nameUser.setText(user.getName());
-
         switch(user.getGender()) {
             case "Male":
                 gender.selectToggle(maleRadioButton);
@@ -89,8 +93,6 @@ public class UserInfoController extends UserBaseController {
             user.setGender(gender);
 
             userService.update(user);
-
-            nameUser.setText(user.getName());
 
             nameText.setDisable(true);
             emailText.setDisable(true);

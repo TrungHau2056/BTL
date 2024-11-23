@@ -70,7 +70,7 @@ public class BookInfoController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//
+
     }
 
 
@@ -107,7 +107,7 @@ public class BookInfoController implements Initializable {
         if (imageLink != null) {
             thumbnail.setImage(new Image(document.getImageLink()));
         } else {
-
+            thumbnail.setImage(new Image(getClass().getResource("/org/example/btl/images/no-photo.png").toExternalForm()));
         }
 
         titleText.setText(document.getTitle());

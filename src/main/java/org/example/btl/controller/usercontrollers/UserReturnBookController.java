@@ -6,12 +6,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import org.example.btl.controller.BookInfoController;
 import org.example.btl.dao.AdminDAO;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
@@ -85,6 +90,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         tableView.setItems(documentObservableList);
     }
 
+    public void refresh() {
+        tableView.refresh();
+    }
+
     public void handleSearchBook(ActionEvent event) {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
@@ -125,6 +134,8 @@ public class UserReturnBookController extends UserBaseController implements Init
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             borrowService.returnDocument(user, selectedItem);
+            setUserInfo();
+            refresh();
             alertInfo.setContentText("Return Successfully!");
             alertInfo.show();
         } else {
@@ -134,6 +145,32 @@ public class UserReturnBookController extends UserBaseController implements Init
     }
 
     public void handleShowBookInfo(ActionEvent event) {
-
+        Document selectedItem = tableView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            try {
+                showBookInfoView(selectedItem);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No item selected.");
+        }
     }
+    private void showBookInfoView(Document selectedItem) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
+        Parent root = loader.load();
+
+        BookInfoController controller = loader.getController();
+        controller.setDocument(selectedItem);
+        controller.setUser(user);
+        controller.setUserReturnBookController(this);
+        controller.setBookInfo();
+
+
+        Stage stage = new Stage();
+        stage.setTitle("Document");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
 import org.example.btl.dao.BorrowDAO;
 import org.example.btl.model.Author;
@@ -57,8 +58,14 @@ public class BookInfoController implements Initializable {
 
     private UserSearchBookController userSearchBookController;
 
+    private UserReturnBookController userReturnBookController;
+
     public void setUserSearchBookController(UserSearchBookController userSearchBookController) {
         this.userSearchBookController = userSearchBookController;
+    }
+
+    public void setUserReturnBookController(UserReturnBookController userReturnBookController) {
+        this.userReturnBookController = userReturnBookController;
     }
 
     @Override
@@ -114,5 +121,11 @@ public class BookInfoController implements Initializable {
         } else {
             publisherText.setText("Not available");
         }
+    }
+
+    public void handleReturn(ActionEvent event) {
+        userReturnBookController.handleReturnBook(event);
+        userReturnBookController.setUserInfo();
+        userReturnBookController.refresh();
     }
 }

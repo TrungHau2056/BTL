@@ -147,20 +147,6 @@
                         </DropShadow>
                     </effect>
                 </Label>
-                <TableView fx:id="tableView" layoutX="66.0" layoutY="227.0" prefHeight="408.0" prefWidth="761.0" stylesheets="@../../tableview.css" AnchorPane.bottomAnchor="65.0">
-                    <columns>
-                        <TableColumn fx:id="idCol" editable="false" prefWidth="56.000030517578125" text="Id" />
-                        <TableColumn fx:id="titleCol" editable="false" prefWidth="117.5999755859375" text="Title" />
-                        <TableColumn fx:id="authorsCol" editable="false" prefWidth="122.4000244140625" text="Author" />
-                        <TableColumn fx:id="genresCol" editable="false" prefWidth="102.40008544921875" text="Genre" />
-                        <TableColumn fx:id="publisherCol" prefWidth="78.39990234375" text="Publisher" />
-                        <TableColumn fx:id="descriptionCol" editable="false" prefWidth="209.5999755859375" text="Description" />
-                        <TableColumn fx:id="statusCol" prefWidth="91.2000732421875" text="Status" />
-                    </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
-                </TableView>
                 <Button layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                     <effect>
                         <DropShadow>
@@ -170,7 +156,7 @@
                         </DropShadow>
                     </effect>
                 </Button>
-                <ToggleButtonGroup layoutX="708.0" layoutY="182.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+                <ToggleButtonGroup layoutX="32.0" layoutY="65.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                     <toggles>
                         <ToggleButton onAction="#switchToSearchScene" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Search">
                             <font>
@@ -184,6 +170,18 @@
                         </ToggleButton>
                     </toggles>
                 </ToggleButtonGroup>
+            <TableView fx:id="tableView" layoutX="66.0" layoutY="175.0" prefHeight="434.0" prefWidth="761.0" stylesheets="@../../tableview.css">
+               <columns>
+                  <TableColumn fx:id="idCol" editable="false" prefWidth="71.0" text="Id" />
+                  <TableColumn fx:id="titleCol" editable="false" prefWidth="338.0" text="Title" />
+                  <TableColumn fx:id="authorsCol" prefWidth="104.0" text="Author" />
+                  <TableColumn fx:id="genresCol" prefWidth="107.0" text="Borrow Date" />
+                  <TableColumn fx:id="borrowDateCol" prefWidth="99.0" text="Return Date" />
+               </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+            </TableView>
             </children>
             <stylesheets>
                 <URL value="@../../tableview.css" />

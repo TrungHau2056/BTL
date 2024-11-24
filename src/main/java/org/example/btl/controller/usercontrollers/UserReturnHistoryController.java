@@ -51,7 +51,6 @@ public class UserReturnHistoryController extends UserBaseController implements I
         historyButton.setSelected(true);
 
         idCol.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getDocument().getId()).asObject());
-
         titleCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDocument().getTitle()));
 
         authorsCol.setCellValueFactory(data -> {
@@ -63,7 +62,6 @@ public class UserReturnHistoryController extends UserBaseController implements I
         });
 
         borrowDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
-
         returnDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
 
@@ -76,7 +74,6 @@ public class UserReturnHistoryController extends UserBaseController implements I
             InputStream inputStream = new ByteArrayInputStream(avatarData);
             avatar.setImage(new Image(inputStream));
         }
-
 
         Task<List<Borrow>> loadDocTask = new Task<>() {
             @Override

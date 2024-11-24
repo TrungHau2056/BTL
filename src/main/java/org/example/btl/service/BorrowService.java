@@ -5,6 +5,8 @@ import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.User;
 
+import java.util.List;
+
 public class BorrowService {
     private BorrowDAO borrowDAO = new BorrowDAO();
 
@@ -14,6 +16,10 @@ public class BorrowService {
 
     public Borrow findByUserCurrentlyBorrowsDocument(User user, Document document) {
         return borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
+    }
+
+    public List<Borrow> findDocHasReturned(User user) {
+        return borrowDAO.findDocHasReturned(user);
     }
 
     public String validateBorrow(User user, Document document) {

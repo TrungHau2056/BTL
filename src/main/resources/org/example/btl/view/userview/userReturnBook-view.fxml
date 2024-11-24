@@ -211,7 +211,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
+                  <ToggleButton onAction="#switchToUserReturnHistory" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>

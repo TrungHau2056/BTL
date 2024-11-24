@@ -50,10 +50,6 @@ public class Borrow {
         return borrowDate;
     }
 
-    public void setBorrowDate(Date borrowDate) {
-        this.borrowDate = borrowDate;
-    }
-
     public Date getReturnDate() {
         return returnDate;
     }

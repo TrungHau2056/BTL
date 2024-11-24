@@ -170,7 +170,7 @@
             </Button>
             <ToggleButtonGroup layoutX="718.0" layoutY="613.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
-                  <ToggleButton onAction="#switchToReturnScene" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Return">
+                  <ToggleButton onAction="#switchToUserReturnBook" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Return">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>

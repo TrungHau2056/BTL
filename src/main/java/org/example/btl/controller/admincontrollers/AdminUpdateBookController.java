@@ -1,8 +1,10 @@
 package org.example.btl.controller.admincontrollers;
 
-public class AdminDeleteBookController extends AdminBaseController {
+public class AdminUpdateBookController extends AdminBaseController {
     @Override
     public void setAdminInfo() {
 
     }
+
+
 }

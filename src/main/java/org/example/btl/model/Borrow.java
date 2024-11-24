@@ -11,7 +11,7 @@ public class Borrow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -48,10 +48,6 @@ public class Borrow {
 
     public Date getBorrowDate() {
         return borrowDate;
-    }
-
-    public void setBorrowDate(Date borrowDate) {
-        this.borrowDate = borrowDate;
     }
 
     public Date getReturnDate() {

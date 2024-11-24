@@ -68,8 +68,8 @@ public abstract class AdminBaseController {
         switchScene(event, "/org/example/btl/view/adminview/adminAddBook-view.fxml");
     }
 
-    public void switchToDeleteBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminDeleteBook-view.fxml");
+    public void switchToUpdateBookScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminview/adminUpdateBook-view.fxml");
     }
 
     public void switchToISBNScene(ActionEvent event) throws IOException {

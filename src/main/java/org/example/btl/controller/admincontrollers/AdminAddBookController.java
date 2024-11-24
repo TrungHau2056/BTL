@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import org.example.btl.model.Document;
 
 import java.util.ArrayList;
@@ -139,15 +140,27 @@ public class AdminAddBookController extends AdminBaseController {
         String title = titleText.getText();
         String publisherName = publisherText.getText();
         String description = Objects.equals(descriptionText.getText(), "") ? "Not available" : descriptionText.getText();
-        String imageLink = Objects.equals(imageLinkText.getText(), "") ? null : imageLinkText.getText();
+        String imageLink = imageLinkText.getText();
         String quantityStr = quantityText.getText();
+
+        if (!Objects.equals(imageLink, "")) {
+            try {
+                Image image = new Image(imageLink);
+            } catch (Exception e) {
+                alertErr.setContentText("Invalid link! Please try again");
+                alertErr.show();
+                return;
+            }
+        } else {
+            imageLink = null;
+        }
 
         String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr, description);
         if (validateMess != null) {
             alertErr.setContentText(validateMess);
             alertErr.show();
         } else {
-            Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink);
+            Document document = new Document(title, description, Integer.parseInt(quantityStr), imageLink, false);
             documentService.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
 
             alertInfo.setContentText("Document successfully saved!");

@@ -173,7 +173,8 @@ public class UserReturnBookController extends UserBaseController implements Init
     public void handleReturnBook(ActionEvent event) {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            borrowService.returnDocument(user, selectedItem);
+            user = borrowService.returnDocument(user, selectedItem);
+
             setUserInfo();
             refresh();
             alertInfo.setContentText("Return Successfully!");
@@ -213,9 +214,4 @@ public class UserReturnBookController extends UserBaseController implements Init
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void switchToHistoryScene(ActionEvent event) {
-
-    }
-
 }

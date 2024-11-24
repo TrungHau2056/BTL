@@ -103,7 +103,7 @@
                   </Label>
                </children>
             </StackPane>
-            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" onAction="#switchToNotificationView" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -205,7 +205,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
+                  <ToggleButton onAction="#switchToBorrowHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="History">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>

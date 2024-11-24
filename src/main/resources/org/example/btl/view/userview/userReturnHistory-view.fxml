@@ -94,14 +94,14 @@
             <Label layoutX="34.0" layoutY="669.0" text="Version: 12.10.2005" textFill="#e4d868" />
             <StackPane layoutX="31.0" layoutY="175.0" prefHeight="28.0" prefWidth="339.0">
                <children>
-                  <Label fx:id="nameUser" text="Son GoKu" textFill="WHITE">
+                  <Label fx:id="nameLabel" text="Son GoKu" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
                </children>
             </StackPane>
-            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" onAction="#switchToNotificationView" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -161,8 +161,8 @@
                   <TableColumn fx:id="idCol" editable="false" prefWidth="71.0" text="Id" />
                   <TableColumn fx:id="titleCol" editable="false" prefWidth="338.0" text="Title" />
                   <TableColumn fx:id="authorsCol" prefWidth="104.0" text="Author" />
-                  <TableColumn fx:id="genresCol" prefWidth="107.0" text="Borrow Date" />
-                  <TableColumn fx:id="borrowDateCol" prefWidth="99.0" text="Return Date" />
+                  <TableColumn fx:id="borrowDateCol" prefWidth="107.0" text="Borrow Date" />
+                  <TableColumn fx:id="returnDateCol" prefWidth="99.0" text="Return Date" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -179,7 +179,7 @@
             </Button>
             <ToggleButtonGroup layoutX="718.0" layoutY="613.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
-                  <ToggleButton onAction="#switchToReturnScene" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Return">
+                  <ToggleButton onAction="#switchToUserReturnBook" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Return">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>

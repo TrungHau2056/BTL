@@ -4,6 +4,8 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -13,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminDeleteBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminShowUserController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -152,7 +154,7 @@
                   </AnchorPane>
                   <AnchorPane layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToUpdateBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -175,7 +177,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0;" stylesheets="@../../tableview.css">
+      <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #fff;" stylesheets="@../../tableview.css">
          <HBox.margin>
             <Insets />
          </HBox.margin>
@@ -194,7 +196,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="193.0" layoutY="59.0" style="-fx-font-weight: 700;" text="Delete Document" textFill="#466bb0">
+            <Label layoutX="349.0" layoutY="40.0" style="-fx-font-weight: 700;" text="User" textFill="#466bb0">
                <font>
                   <Font size="55.0" />
                </font>
@@ -206,6 +208,33 @@
                   </DropShadow>
                </effect>
             </Label>
+            <TableView layoutX="86.0" layoutY="122.0" prefHeight="292.0" prefWidth="642.0">
+              <columns>
+                <TableColumn prefWidth="112.79995727539062" text="Name" />
+                <TableColumn prefWidth="72.0" text="UserName" />
+                  <TableColumn prefWidth="72.800048828125" text="Password" />
+                  <TableColumn prefWidth="79.199951171875" text="DateOfBirth" />
+                  <TableColumn prefWidth="99.199951171875" text="Ngày đăng kí" />
+                  <TableColumn prefWidth="132.800048828125" text="Ngày đăng kí" />
+              </columns>
+            </TableView>
+            <Button layoutX="534.0" layoutY="435.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-text-fill: #466bb0;" text="Add User">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Button>
+            <Button layoutX="641.0" layoutY="435.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-text-fill: #466bb0;" text="Delete User">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Button>
+            <Label layoutX="85.0" layoutY="480.0" prefHeight="22.0" prefWidth="126.0" text="Message for user: ">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+            <TextField layoutX="86.0" layoutY="512.0" prefHeight="67.0" prefWidth="642.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 10px;" />
+            <Button layoutX="378.0" layoutY="605.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-text-fill: #466bb0;" text="Send">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>

@@ -44,7 +44,7 @@ public class UserBorrowHistoryController extends UserBaseController implements I
     @FXML
     private TableColumn<Borrow, Date> returnDateCol;
 
-    private ObservableList<Borrow> ObservableList;
+    private ObservableList<Borrow> borrowObservableList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,7 +74,7 @@ public class UserBorrowHistoryController extends UserBaseController implements I
             avatar.setImage(new Image(inputStream));
         }
 
-        ObservableList = FXCollections.observableArrayList(user.getBorrows());
-        tableView.setItems(ObservableList);
+        borrowObservableList = FXCollections.observableArrayList(user.getBorrows());
+        tableView.setItems(borrowObservableList);
     }
 }

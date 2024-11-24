@@ -7,7 +7,11 @@ import org.example.btl.model.User;
 public class NotificationService {
     private NotificationDAO notificationDAO = new NotificationDAO();
 
-    public void addNotification(User user, String message) {
-        notificationDAO.saveWithUser(new Notification(message), user);
+    public void addNotification(User user, String title, String message) {
+        notificationDAO.saveWithUser(new Notification(title, message), user);
+    }
+
+    public User deleteNotification(Notification notification) {
+        return notificationDAO.deleteNotification(notification);
     }
 }

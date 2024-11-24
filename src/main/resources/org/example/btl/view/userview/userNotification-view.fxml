@@ -158,20 +158,20 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <TableView layoutX="60.0" layoutY="177.0" prefHeight="348.0" prefWidth="771.0" stylesheets="@../../tableview.css">
+            <TableView fx:id="tableView" layoutX="53.0" layoutY="176.0" prefHeight="348.0" prefWidth="771.0" stylesheets="@../../tableview.css">
               <columns>
-                <TableColumn prefWidth="75.0" text="STT" />
-                <TableColumn prefWidth="161.0" text="Date" />
-                  <TableColumn prefWidth="456.0" text="Message" />
-                  <TableColumn prefWidth="77.0" text="Read" />
+                <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="sendDateCol" prefWidth="161.0" text="Date" />
+                  <TableColumn fx:id="titleCol" prefWidth="456.0" text="Notification Title" />
+                  <TableColumn fx:id="statusCol" prefWidth="77.0" text="Status" />
               </columns>
             </TableView>
-            <Button layoutX="60.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleReturnBook" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
+            <Button layoutX="60.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="150.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleShowBookInfo" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Note" textFill="WHITE">
+            <Button layoutX="150.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleNote" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Note" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

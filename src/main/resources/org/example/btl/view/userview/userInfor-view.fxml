@@ -35,7 +35,7 @@
                         <Font name="System Bold" size="19.0" />
                     </font>
                 </Label>
-                <Label layoutX="37.0" layoutY="404.0" text="Functions (3)" textFill="WHITE">
+                <Label layoutX="37.0" layoutY="404.0" text="Functions (4)" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="18.0" />
                     </font>
@@ -92,11 +92,6 @@
                   <Font name="System Italic" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="34.0" layoutY="573.0" maxWidth="300.0" text="Library Management System giúp bạn dễ dàng quản lý và tra cứu thông tin về sách, theo dõi sách đã mượn và trả, cũng như cập nhật thông tin cá nhân. Với giao diện thân thiện, ứng dụng hỗ trợ việc quản lý thư viện nhanh chóng và hiệu quả." textFill="#e4d868" wrapText="true">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </Label>
             <Label layoutX="34.0" layoutY="669.0" text="Version: 12.10.2005" textFill="#e4d868" />
             <StackPane layoutX="31.0" layoutY="175.0" prefHeight="28.0" prefWidth="339.0">
                <children>
@@ -107,6 +102,20 @@
                   </Label>
                </children>
             </StackPane>
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+               <graphic>
+                  <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/bell.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="35.0" layoutY="633.0" text="Notifications" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
             </children>
             <effect>
                 <DropShadow height="13.98" width="28.02">

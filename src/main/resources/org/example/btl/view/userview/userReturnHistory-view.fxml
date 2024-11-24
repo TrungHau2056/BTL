@@ -24,7 +24,7 @@
             <Insets />
          </HBox.margin>
          <children>
-            <Label layoutX="37.0" layoutY="404.0" text="Functions (3)" textFill="WHITE">
+            <Label layoutX="37.0" layoutY="404.0" text="Functions (4)" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -58,7 +58,7 @@
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
-            <Label layoutX="149.0" layoutY="531.0" text="Return Books" textFill="WHITE">
+            <Label layoutX="151.0" layoutY="531.0" text="Return Books" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font></Label>
@@ -91,12 +91,7 @@
                   <Font name="System Italic" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="36.0" layoutY="584.0" maxWidth="300.0" text="Return Document: Quản lý các sách bạn đã mượn và thực hiện trả sách nhanh chóng tại đây." textFill="#e4d868" wrapText="true">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="36.0" layoutY="651.0" text="Version: 12.10.2005" textFill="#e4d868" />
+            <Label layoutX="34.0" layoutY="669.0" text="Version: 12.10.2005" textFill="#e4d868" />
             <StackPane layoutX="31.0" layoutY="175.0" prefHeight="28.0" prefWidth="339.0">
                <children>
                   <Label fx:id="nameUser" text="Son GoKu" textFill="WHITE">
@@ -106,6 +101,20 @@
                   </Label>
                </children>
             </StackPane>
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+               <graphic>
+                  <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/bell.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="35.0" layoutY="633.0" text="Notifications" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
          </children>
          <effect>
             <DropShadow height="13.98" width="28.02">

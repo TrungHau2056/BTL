@@ -32,12 +32,12 @@ public class BorrowService {
         return null;
     }
 
-    public void borrowDocument(User user, Document document) {
-        borrowDAO.borrowDocument(user, document);
+    public User borrowDocument(User user, Document document) {
+        return borrowDAO.borrowDocument(user, document);
     }
 
 
-    public void returnDocument(User user, Document document) {
-        borrowDAO.returnDocument(user, document);
+    public User returnDocument(User user, Document document) {
+        return borrowDAO.returnDocument(user, document);
     }
 }

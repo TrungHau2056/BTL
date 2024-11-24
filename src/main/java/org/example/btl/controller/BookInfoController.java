@@ -80,7 +80,8 @@ public class BookInfoController implements Initializable {
             alert.setContentText(validateMess);
             alert.show();
         } else {
-            borrowService.borrowDocument(user, document);
+            user = borrowService.borrowDocument(user, document);
+            userSearchBookController.setUser(user);
             userSearchBookController.setUserInfo();
             userSearchBookController.refresh();
 

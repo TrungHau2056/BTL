@@ -172,7 +172,7 @@
                 </Button>
                 <ToggleButtonGroup layoutX="708.0" layoutY="182.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                     <toggles>
-                        <ToggleButton onAction="#switchToSearchScene" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Search">
+                        <ToggleButton onAction="#switchToUserSearchBook" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="Search">
                             <font>
                                 <Font name="System Bold Italic" size="12.0" />
                             </font>

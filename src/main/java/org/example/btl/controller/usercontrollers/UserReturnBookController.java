@@ -213,9 +213,4 @@ public class UserReturnBookController extends UserBaseController implements Init
         stage.setScene(new Scene(root));
         stage.show();
     }
-
-    public void switchToHistoryScene(ActionEvent event) {
-
-    }
-
 }

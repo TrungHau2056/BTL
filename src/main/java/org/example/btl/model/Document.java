@@ -90,6 +90,14 @@ public class Document {
         this.quantity = quantity;
     }
 
+    public boolean isAddedByISBN() {
+        return isAddedByISBN;
+    }
+
+    public void setAddedByISBN(boolean addedByISBN) {
+        isAddedByISBN = addedByISBN;
+    }
+
     public Set<Author> getAuthors() {
         return authors;
     }

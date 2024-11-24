@@ -75,12 +75,16 @@ public abstract class UserBaseController {
         switchScene(event, "/org/example/btl/view/userview/userSearchBook-view.fxml");
     }
 
-    public void switchToUserBorrowBook(ActionEvent event) throws IOException {
-
+    public void switchToBorrowHistoryScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userview/userBorrowHistory-view.fxml");
     }
 
     public void switchToUserReturnBook(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userReturnBook-view.fxml");
+    }
+
+    public void switchToUserReturnHistory(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userview/userReturnHistory-view.fxml");
     }
 
     public void switchToUserInfo(ActionEvent event) throws IOException {

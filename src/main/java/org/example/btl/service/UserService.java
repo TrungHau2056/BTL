@@ -4,6 +4,7 @@ import org.example.btl.dao.UserDAO;
 import org.example.btl.model.User;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class UserService {
@@ -15,6 +16,10 @@ public class UserService {
 
     public void update(User item) {
         userDAO.update(item);
+    }
+
+    public List<User> findAll() {
+        return userDAO.findAll();
     }
 
     public User findByUsername(String username) {

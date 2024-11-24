@@ -20,6 +20,7 @@ import org.example.btl.service.BorrowService;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class BookInfoController implements Initializable {
     private Document document;
@@ -91,17 +92,13 @@ public class BookInfoController implements Initializable {
     }
 
     public void setBookInfo() {
-        String authors = "";
-        String genres = "";
-        for (Author author : document.getAuthors()) {
-            authors += author.getName();
-            authors += ", ";
-        }
+        String authors = document.getAuthors().stream()
+                .map(Author::getName)
+                .collect(Collectors.joining(", "));
 
-        for (Genre genre : document.getGenres()) {
-            genres += genre.getName();
-            genres += ", ";
-        }
+        String genres = document.getGenres().stream()
+                .map(Genre::getName)
+                .collect(Collectors.joining(", "));
 
         String imageLink = document.getImageLink();
 

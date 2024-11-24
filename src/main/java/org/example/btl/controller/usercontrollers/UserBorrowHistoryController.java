@@ -75,7 +75,6 @@ public class UserBorrowHistoryController extends UserBaseController implements I
         }
 
         ObservableList = FXCollections.observableArrayList(user.getBorrows());
-        System.out.println(user.getBorrows().size());
         tableView.setItems(ObservableList);
     }
 }

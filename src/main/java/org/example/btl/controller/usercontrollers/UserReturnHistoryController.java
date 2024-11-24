@@ -44,7 +44,7 @@ public class UserReturnHistoryController extends UserBaseController implements I
     @FXML
     private TableColumn<Borrow, Date> returnDateCol;
 
-    private ObservableList<Borrow> ObservableList;
+    private ObservableList<Borrow> borrowObservableList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,8 +83,8 @@ public class UserReturnHistoryController extends UserBaseController implements I
         };
 
         loadDocTask.setOnSucceeded(e -> {
-            ObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
-            tableView.setItems(ObservableList);
+            borrowObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
+            tableView.setItems(borrowObservableList);
         });
 
         loadDocTask.setOnFailed(e -> {

@@ -102,7 +102,7 @@
                   </Label>
                </children>
             </StackPane>
-            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" onAction="#switchToNotificationView" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -197,7 +197,7 @@
                </effect>
             </Button>
             <Button layoutX="29.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleUpdateGender" styleClass="change-user-info" />
-            <Button layoutX="474.0" layoutY="139.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+            <Button layoutX="474.0" layoutY="139.0" mnemonicParsing="false" prefHeight="282.0" prefWidth="357.0" style="-fx-background-color: transparent;">
                <graphic>
                       <ImageView fx:id="avatarInfo" fitHeight="274.0" fitWidth="369.0" pickOnBounds="true" preserveRatio="true">
                           <image>
@@ -209,7 +209,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="776.0" layoutY="408.0" mnemonicParsing="false" onAction="#handleChangeAvatar" styleClass="change-user-info" />
+            <Button layoutX="807.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleChangeAvatar" styleClass="change-user-info" />
             </children>
         </AnchorPane>
     </children>

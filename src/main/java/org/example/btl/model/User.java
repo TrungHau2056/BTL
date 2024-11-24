@@ -21,11 +21,15 @@ public class User extends Account {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Borrow> borrows = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Notification> notifications = new HashSet<>();
 
     public Set<Borrow> getBorrows() {
         return borrows;
+    }
+
+    public Set<Notification> getNotifications() {
+        return notifications;
     }
 
     public void addBorrow(Borrow borrow) {

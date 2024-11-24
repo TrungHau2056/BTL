@@ -100,7 +100,7 @@
                         </Label>
                     </children>
                 </StackPane>
-            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
+            <Button layoutX="36.0" layoutY="559.0" mnemonicParsing="false" onAction="#switchToNotificationView" prefHeight="45.0" prefWidth="54.0" styleClass="admin-button-functions">
                <graphic>
                   <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                      <image>

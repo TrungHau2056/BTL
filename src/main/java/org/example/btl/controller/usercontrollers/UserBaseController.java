@@ -13,9 +13,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.example.btl.model.Notification;
 import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
 import org.example.btl.service.DocumentService;
+import org.example.btl.service.NotificationService;
 import org.example.btl.service.UserService;
 
 import java.io.File;
@@ -28,6 +30,7 @@ public abstract class UserBaseController {
     protected UserService userService = new UserService();
     protected DocumentService documentService = new DocumentService();
     protected BorrowService borrowService = new BorrowService();
+    protected NotificationService notificationService = new NotificationService();
 
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
@@ -89,6 +92,10 @@ public abstract class UserBaseController {
 
     public void switchToUserInfo(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userInfor-view.fxml");
+    }
+
+    public void switchToNotificationView(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userview/userNotification-view.fxml");
     }
 
     public void handleChangeAvatar(ActionEvent event) throws IOException {

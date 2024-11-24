@@ -14,6 +14,7 @@ public class Notification {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String title;
     private String message;
     private boolean isRead;
 
@@ -23,7 +24,8 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(String message) {
+    public Notification(String title, String message) {
+        this.title = title;
         this.message = message;
         isRead = false;
         createdAt = LocalDateTime.now();

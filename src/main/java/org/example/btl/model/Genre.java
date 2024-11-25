@@ -12,7 +12,7 @@ public class Genre {
     private int id;
     private String name;
 
-    @ManyToMany(mappedBy = "genres", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "genres", fetch = FetchType.EAGER)
     private Set<Document> documents = new HashSet<>();
 
     public Genre() {

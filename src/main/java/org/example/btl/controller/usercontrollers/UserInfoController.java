@@ -13,8 +13,6 @@ import java.sql.Date;
 
 public class UserInfoController extends UserBaseController {
     @FXML
-    private Label nameUser;
-    @FXML
     private TextField nameText;
     @FXML
     private TextField emailText;

@@ -100,7 +100,7 @@ public class UserReturnBookController extends UserBaseController implements Init
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
             protected List<Document> call() throws Exception {
-                return documentService.findDocCurrentBorrow(user);
+                return documentService.findDocCurrentlyBorrow(user);
             }
         };
 

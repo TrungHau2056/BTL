@@ -31,6 +31,10 @@ public class Notification {
         createdAt = LocalDateTime.now();
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setUser(User user) {
         this.user = user;
     }
@@ -39,12 +43,12 @@ public class Notification {
         return user;
     }
 
-    public String getMessage() {
-        return message;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getMessage() {
+        return message;
     }
 
     public boolean isRead() {

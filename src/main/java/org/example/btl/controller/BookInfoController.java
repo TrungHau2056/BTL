@@ -16,6 +16,7 @@ import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
+import org.example.btl.service.NotificationService;
 
 import java.io.IOException;
 import java.net.URL;
@@ -24,8 +25,10 @@ import java.util.stream.Collectors;
 
 public class BookInfoController implements Initializable {
     private Document document;
+    private User user;
 
     private BorrowService borrowService = new BorrowService();
+    private NotificationService notificationService = new NotificationService();
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
@@ -50,8 +53,6 @@ public class BookInfoController implements Initializable {
     public void setDocument(Document document) {
         this.document = document;
     }
-
-    private User user;
 
     public User getUser() { return user; }
 
@@ -82,6 +83,10 @@ public class BookInfoController implements Initializable {
             alert.show();
         } else {
             user = borrowService.borrowDocument(user, document);
+
+            user = notificationService.addNotification(user, "Document Borrowed Successfully",
+                    "You have successfully borrowed the document titled '" + document.getTitle() + "'.");
+
             userSearchBookController.setUser(user);
             userSearchBookController.setUserInfo();
             userSearchBookController.refresh();

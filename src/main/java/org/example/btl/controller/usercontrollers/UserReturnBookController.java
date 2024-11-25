@@ -175,6 +175,9 @@ public class UserReturnBookController extends UserBaseController implements Init
         if (selectedItem != null) {
             user = borrowService.returnDocument(user, selectedItem);
 
+            user = notificationService.addNotification(user, "Document Returned Successfully",
+                    "You have successfully returned the document titled '" + selectedItem.getTitle() + "'.");
+
             setUserInfo();
             refresh();
             alertInfo.setContentText("Return Successfully!");

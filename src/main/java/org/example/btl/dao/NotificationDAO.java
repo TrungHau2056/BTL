@@ -7,7 +7,7 @@ import org.hibernate.Session;
 
 public class NotificationDAO {
     private Session session;
-    public void saveWithUser(Notification notification, User user) {
+    public User saveWithUser(Notification notification, User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -17,11 +17,15 @@ public class NotificationDAO {
         session.persist(notification);
         session.getTransaction().commit();
         session.close();
+
+        return notification.getUser();
     }
 
     public User deleteNotification(Notification notification) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
+        notification = session.get(Notification.class, notification.getId());
 
         User user = notification.getUser();
         user.getNotifications().remove(notification);

@@ -32,7 +32,7 @@
             </Label>
          </children>
       </StackPane>
-      <TextArea layoutX="34.0" layoutY="115.0" prefHeight="102.0" prefWidth="532.0" text="You have successfully borrowed the document titled 'Harry Potter and the Sorcerer's Stone'." wrapText="true" />
+      <TextArea editable="false" layoutX="34.0" layoutY="115.0" prefHeight="102.0" prefWidth="532.0" text="You have successfully borrowed the document titled 'Harry Potter and the Sorcerer's Stone'." wrapText="true" />
       <Button layoutX="36.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" styleClass="remove-button" />
       <Button layoutX="74.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" styleClass="note-button" />
       <Button layoutX="511.0" layoutY="227.0" mnemonicParsing="false" text="Unread" />

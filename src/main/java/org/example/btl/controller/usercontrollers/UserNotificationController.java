@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -12,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import org.example.btl.model.Borrow;
+import org.example.btl.model.Document;
 import org.example.btl.model.Notification;
 
 import java.io.ByteArrayInputStream;
@@ -86,5 +88,21 @@ public class UserNotificationController extends UserBaseController implements In
 
     public void handleNote() {
 
+    }
+
+    public void switchToHistoryScene(ActionEvent event) {
+
+    }
+
+    public void handleTableClick() {
+        tableView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                Notification selectedNotification = tableView.getSelectionModel().getSelectedItem();
+                if (selectedNotification != null) {
+                    System.out.println("okay");
+                    //showNotificationDetails(selectedNotification);
+                }
+            }
+        });
     }
 }

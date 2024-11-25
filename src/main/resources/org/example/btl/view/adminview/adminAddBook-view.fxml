@@ -32,17 +32,17 @@
             <Button layoutX="313.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-border-color: #fff; -fx-text-fill: #fff;" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
             <AnchorPane layoutX="41.0" layoutY="110.0">
                <children>
-                  <Label style="-fx-text-fill: #fff;" text="Hi Tayyab" textFill="WHITE">
+                  <Label style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="49.0" />
                      </font>
                   </Label>
-                  <Label layoutY="86.0" style="-fx-text-fill: #fff;" text="Use the right form " textFill="WHITE">
+                  <Label layoutY="86.0" style="-fx-text-fill: #fff;" text="Welcome to" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutY="107.0" style="-fx-text-fill: #fff;" text="to enter new user's informations!" textFill="WHITE">
+                  <Label layoutY="107.0" style="-fx-text-fill: #fff;" text="Library Management System" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>

@@ -43,10 +43,6 @@
     -fx-background-color: #D3D3D3;
 }
 
-
-
-
-
 .date-picker {
     -fx-background-radius: 12;
     -fx-border-radius: 12;
@@ -105,3 +101,35 @@
 .infoBook-button:hover {
     -fx-border-color: #999999; /* Viền tối hơn khi hover */
 }
+
+.unread-button{
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/unread.png");
+    -fx-background-size: 100% 100%;
+    -fx-cursor: hand;
+}
+
+.remove-button {
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/remove.png");
+    -fx-background-size: 100% 100%;
+    -fx-cursor: hand;
+
+}
+
+.remove-button: hover {
+    -fx-background-color: f20808;
+}
+
+.note-button {
+    -fx-background-color: transparent;
+        -fx-background-image: url("images/tick.png");
+        -fx-background-size: 100% 100%;
+        -fx-cursor: hand;
+}
+
+.note-button: hover {
+    -fx-background-color: #D3D3D3;
+}
+
+

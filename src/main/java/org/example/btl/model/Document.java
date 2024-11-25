@@ -58,6 +58,10 @@ public class Document {
         addedDate = Date.valueOf(LocalDate.now());
     }
 
+    public int getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -120,10 +124,6 @@ public class Document {
 
     public void setAdmin(Admin admin) {
         this.admin = admin;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public Publisher getPublisher() {

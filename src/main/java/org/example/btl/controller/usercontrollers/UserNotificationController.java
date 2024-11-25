@@ -28,7 +28,7 @@ public class UserNotificationController extends UserBaseController implements In
     @FXML
     private TableColumn<Notification, Integer> idCol;
     @FXML
-    private TableColumn<Notification, LocalDateTime> sendDateCol;
+    private TableColumn<Notification, String> durationCol;
     @FXML
     private TableColumn<Notification, String> titleCol;
     @FXML
@@ -39,9 +39,19 @@ public class UserNotificationController extends UserBaseController implements In
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        sendDateCol.setCellValueFactory(new PropertyValueFactory<>("createdAt"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-        statusCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().isRead() == true ? "Read" : "Unread"));
+
+        statusCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        data.getValue().isRead() == true ? "Read" : "Unread"
+                )
+        );
+
+        durationCol.setCellValueFactory(
+                data -> new SimpleStringProperty(
+                        notificationService.getDuration(data.getValue().getCreatedAt())
+                )
+        );
     }
 
     @Override

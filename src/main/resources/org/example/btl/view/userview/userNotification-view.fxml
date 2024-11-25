@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -160,7 +161,7 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <TableView fx:id="tableView" layoutX="53.0" layoutY="176.0" prefHeight="348.0" prefWidth="771.0" stylesheets="@../../tableview.css">
+            <TableView fx:id="tableView" layoutX="60.0" layoutY="254.0" prefHeight="348.0" prefWidth="771.0" stylesheets="@../../tableview.css">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="sendDateCol" prefWidth="161.0" text="Date" />
@@ -168,17 +169,17 @@
                   <TableColumn fx:id="statusCol" prefWidth="77.0" text="Status" />
               </columns>
             </TableView>
-            <Button layoutX="60.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
+            <Button layoutX="60.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="150.0" layoutY="535.0" mnemonicParsing="false" onAction="#handleNote" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Note" textFill="WHITE">
+            <Button layoutX="150.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleNote" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Note" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <ToggleButtonGroup layoutX="713.0" layoutY="143.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+            <ToggleButtonGroup layoutX="699.0" layoutY="217.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
                   <ToggleButton fx:id="returnButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="All">
                      <font>
@@ -192,6 +193,23 @@
                   </ToggleButton>
                </toggles>
             </ToggleButtonGroup>
+            <Label layoutX="61.0" layoutY="157.0" text="Search By Date: " textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField layoutX="187.0" layoutY="155.0" promptText="Date" styleClass="login-inputs" />
+            <Button layoutX="360.0" layoutY="154.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="57.0" styleClass="search-button" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="670.0" layoutY="618.0" text="Mark all notifications is unread" textFill="#f20707">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+            <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
             </children>
         </AnchorPane>
     </children>

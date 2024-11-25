@@ -9,3 +9,8 @@
     -fx-cursor: hand;
     -fx-opacity: 0.65;
 }
+
+.button-logOut:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #063684;
+}

@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddByISBNController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddByISBNController">
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
             <effect>
@@ -102,16 +102,16 @@
                         </AnchorPane>
                         <AnchorPane layoutX="238.0" layoutY="46.0">
                             <children>
-                                <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToDeleteBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                                <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToUpdateBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                                     <graphic>
                                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/removeBookIcon.png" />
+                                                <Image url="@../../images/UpdateBook.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Delete book" textFill="WHITE">
+                                <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Update book" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -156,11 +156,11 @@
                         </AnchorPane>
                         <AnchorPane layoutY="160.0">
                             <children>
-                                <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                                <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToManageUserScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
                                     <graphic>
                                         <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@../../images/fix.png" />
+                                                <Image url="@../../images/users.png" />
                                             </image>
                                             <viewport>
                                                 <Rectangle2D />
@@ -168,7 +168,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Update book" textFill="WHITE">
+                                <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Manage user" textFill="WHITE">
                                     <font>
                                         <Font name="System Bold" size="14.0" />
                                     </font>
@@ -177,6 +177,7 @@
                         </AnchorPane>
                     </children>
                 </AnchorPane>
+            <Button layoutX="313.0" layoutY="22.0" mnemonicParsing="false" style="-fx-border-color: #fff; -fx-text-fill: #fff;" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
             </children>
         </AnchorPane>
         <AnchorPane accessibleRole="TEXT" blendMode="MULTIPLY" cache="true" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff; -fx-background-radius: 0 20 20 0;">

@@ -76,4 +76,7 @@ public abstract class AdminBaseController {
         switchScene(event, "/org/example/btl/view/adminview/addByISBN-view.fxml");
     }
 
+    public void switchToManageUserScene(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminview/adminShowUser-view.fxml");
+    }
 }

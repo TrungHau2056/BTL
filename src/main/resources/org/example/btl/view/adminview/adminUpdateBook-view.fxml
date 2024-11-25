@@ -110,7 +110,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Update Book" textFill="WHITE">
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Update book" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -155,7 +155,7 @@
                   </AnchorPane>
                   <AnchorPane layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToManageUserScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -167,7 +167,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Manage User" textFill="WHITE">
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Manage book" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -176,7 +176,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button layoutX="306.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #fff; -fx-text-fill: #466bb0; -fx-background-radius: 20px;" styleClass="button-logOut" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
+            <Button layoutX="313.0" layoutY="22.0" mnemonicParsing="false" style="-fx-border-color: #fff; -fx-text-fill: #fff;" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
          </children>
       </AnchorPane>
       <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #fff;" stylesheets="@../../tableview.css">

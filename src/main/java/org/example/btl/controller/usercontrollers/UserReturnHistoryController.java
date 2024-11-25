@@ -1,7 +1,7 @@
 package org.example.btl.controller.usercontrollers;
 
 
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,13 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
-import org.example.btl.model.Document;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -33,49 +31,38 @@ public class UserReturnHistoryController extends UserBaseController implements I
     private ToggleButton historyButton;
 
     @FXML
-    private TableView<Document> tableView;
+    private TableView<Borrow> tableView;
 
     @FXML
-    private TableColumn<Document, Integer> idCol;
+    private TableColumn<Borrow, Integer> idCol;
     @FXML
-    private TableColumn<Document, String> titleCol;
+    private TableColumn<Borrow, String> titleCol;
     @FXML
-    private TableColumn<Document, String> authorsCol;
+    private TableColumn<Borrow, String> authorsCol;
     @FXML
-    private TableColumn<Document, Date> borrowDateCol;
+    private TableColumn<Borrow, Date> borrowDateCol;
     @FXML
-    private TableColumn<Document, Date> returnDateCol;
+    private TableColumn<Borrow, Date> returnDateCol;
 
-    private ObservableList<Document> documentObservableList;
+    private ObservableList<Borrow> borrowObservableList;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         historyButton.setSelected(true);
 
-        idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        idCol.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getDocument().getId()).asObject());
+        titleCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDocument().getTitle()));
 
         authorsCol.setCellValueFactory(data -> {
-            Set<Author> authors = data.getValue().getAuthors();
+            Set<Author> authors = data.getValue().getDocument().getAuthors();
             String authorsString = authors.stream()
                     .map(Author::getName)
                     .collect(Collectors.joining(", "));
             return new SimpleStringProperty(authorsString);
         });
 
-        borrowDateCol.setCellValueFactory(data -> {
-            Borrow borrow = borrowService.findByUserCurrentlyBorrowsDocument(user, data.getValue());
-            return new SimpleObjectProperty<>(borrow != null ? borrow.getBorrowDate() : null);
-        });
-
-        returnDateCol.setCellValueFactory(data -> {
-            Borrow borrow = borrowService.findByUserCurrentlyBorrowsDocument(user, data.getValue());
-            return new SimpleObjectProperty<>(borrow != null ? borrow.getReturnDate() : null);
-        });
-    }
-
-    public void switchToReturnScene(ActionEvent event) {
-
+        borrowDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
+        returnDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
 
 
@@ -88,21 +75,19 @@ public class UserReturnHistoryController extends UserBaseController implements I
             avatar.setImage(new Image(inputStream));
         }
 
-
-        Task<List<Document>> loadDocTask = new Task<>() {
+        Task<List<Borrow>> loadDocTask = new Task<>() {
             @Override
-            protected List<Document> call() throws Exception {
-                return documentService.findDocHasReturned(user);
+            protected List<Borrow> call() throws Exception {
+                return borrowService.findDocHasReturned(user);
             }
         };
 
         loadDocTask.setOnSucceeded(e -> {
-            documentObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
-            tableView.setItems(documentObservableList);
+            borrowObservableList = FXCollections.observableArrayList(loadDocTask.getValue());
+            tableView.setItems(borrowObservableList);
         });
 
         loadDocTask.setOnFailed(e -> {
-            System.out.println("Failed");
             alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
             alertErr.show();
         });

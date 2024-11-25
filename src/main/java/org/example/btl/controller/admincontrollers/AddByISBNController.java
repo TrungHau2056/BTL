@@ -73,11 +73,11 @@ public class AddByISBNController extends AdminBaseController {
 
                 authorText.setText(authorsStr);
                 genreText.setText(genresStr);
-                if (volumeInfo.getImageLinks() != null &&
+                if (volumeInfo.getImageLinks() != null ||
                         volumeInfo.getImageLinks().getThumbnail() != null) {
                     thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
                 } else {
-                    thumbnail.setImage(new Image(getClass().getResource("/org/example/btl/images/no-photo.png").toExternalForm()));
+                    thumbnail.setImage(new Image(getClass().getResource("/org/example/btl/images/ImageNotAvailable.jpg").toExternalForm()));
                 }
             }
         });

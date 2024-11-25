@@ -14,20 +14,6 @@ import java.util.List;
 public class BorrowDAO {
     private Session session;
 
-    public Borrow findByUserAndDocument(User user, Document document) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-
-        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user");
-        query.setParameter("user", user);
-        query.setParameter("document", document);
-        List<Borrow> borrows = query.getResultList();
-
-        session.close();
-        if (borrows.isEmpty()) return null;
-        return borrows.getFirst();
-    }
-
     public Borrow findByUserCurrentlyBorrowsDocument(User user, Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -44,6 +30,17 @@ public class BorrowDAO {
         return borrows.getFirst();
     }
 
+    public List<Borrow> findDocHasReturned(User user) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query = session.createQuery("FROM Borrow WHERE user = :user AND returnDate IS NOT NULL ORDER BY returnDate DESC");
+        query.setParameter("user", user);
+        List<Borrow> borrows = query.getResultList();
+
+        session.close();
+        return borrows;
+    }
+
     public List<Document> findDocCurrentBorrow(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -56,7 +53,7 @@ public class BorrowDAO {
         return documents;
     }
 
-    public void borrowDocument(User user, Document document) {
+    public User borrowDocument(User user, Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
@@ -71,9 +68,11 @@ public class BorrowDAO {
 
         session.getTransaction().commit();
         session.close();
+
+        return user;
     }
 
-    public void returnDocument(User user, Document document) {
+    public User returnDocument(User user, Document document) {
         Borrow borrow = findByUserCurrentlyBorrowsDocument(user, document);
 
         session = HibernateUtils.getSessionFactory().openSession();
@@ -81,10 +80,13 @@ public class BorrowDAO {
 
         document.increaseQuantity();
         borrow.setReturnDate(Date.valueOf(LocalDate.now()));
+
         session.merge(document);
         session.merge(borrow);
 
         session.getTransaction().commit();
         session.close();
+
+        return borrow.getUser();
     }
 }

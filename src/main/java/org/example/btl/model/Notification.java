@@ -14,6 +14,7 @@ public class Notification {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private String title;
     private String message;
     private boolean isRead;
 
@@ -23,10 +24,15 @@ public class Notification {
     public Notification() {
     }
 
-    public Notification(String message) {
+    public Notification(String title, String message) {
+        this.title = title;
         this.message = message;
         isRead = false;
         createdAt = LocalDateTime.now();
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setUser(User user) {
@@ -37,12 +43,12 @@ public class Notification {
         return user;
     }
 
-    public String getMessage() {
-        return message;
+    public String getTitle() {
+        return title;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public String getMessage() {
+        return message;
     }
 
     public boolean isRead() {

@@ -17,7 +17,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -102,16 +102,16 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="46.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToUpdateBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/fix.png" />
+                                    <Image url="@../../images/removeBookIcon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Update Book" textFill="WHITE">
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff;" text="Delete book" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -156,11 +156,11 @@
                   </AnchorPane>
                   <AnchorPane layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToUpdateBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../images/users.png" />
+                                    <Image url="@../../images/fix.png" />
                                  </image>
                                  <viewport>
                                     <Rectangle2D />
@@ -168,7 +168,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Manage User" textFill="WHITE">
+                        <Label layoutY="78.0" style="-fx-text-fill: #fff; -fx-alignment: center;" text="Update book" textFill="WHITE">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -177,7 +177,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button layoutX="306.0" layoutY="14.0" mnemonicParsing="false" style="-fx-background-color: #fff; -fx-text-fill: #466bb0; -fx-background-radius: 20px;" styleClass="button-logOut" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-view-order: -1;">

@@ -16,15 +16,19 @@ import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
+import org.example.btl.service.NotificationService;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class BookInfoController implements Initializable {
     private Document document;
+    private User user;
 
     private BorrowService borrowService = new BorrowService();
+    private NotificationService notificationService = new NotificationService();
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
@@ -49,8 +53,6 @@ public class BookInfoController implements Initializable {
     public void setDocument(Document document) {
         this.document = document;
     }
-
-    private User user;
 
     public User getUser() { return user; }
 
@@ -80,7 +82,12 @@ public class BookInfoController implements Initializable {
             alert.setContentText(validateMess);
             alert.show();
         } else {
-            borrowService.borrowDocument(user, document);
+            user = borrowService.borrowDocument(user, document);
+
+            user = notificationService.addNotification(user, "Document Borrowed Successfully",
+                    "You have successfully borrowed the document titled '" + document.getTitle() + "'.");
+
+            userSearchBookController.setUser(user);
             userSearchBookController.setUserInfo();
             userSearchBookController.refresh();
 
@@ -90,17 +97,13 @@ public class BookInfoController implements Initializable {
     }
 
     public void setBookInfo() {
-        String authors = "";
-        String genres = "";
-        for (Author author : document.getAuthors()) {
-            authors += author.getName();
-            authors += ", ";
-        }
+        String authors = document.getAuthors().stream()
+                .map(Author::getName)
+                .collect(Collectors.joining(", "));
 
-        for (Genre genre : document.getGenres()) {
-            genres += genre.getName();
-            genres += ", ";
-        }
+        String genres = document.getGenres().stream()
+                .map(Genre::getName)
+                .collect(Collectors.joining(", "));
 
         String imageLink = document.getImageLink();
 

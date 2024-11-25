@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,6 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.usercontrollers.UserNotificationController">
@@ -161,7 +161,7 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <TableView fx:id="tableView" layoutX="60.0" layoutY="254.0" prefHeight="348.0" prefWidth="771.0" stylesheets="@../../tableview.css">
+            <TableView fx:id="tableView" layoutX="60.0" layoutY="204.0" onMouseClicked="#handleTableClick" prefHeight="398.0" prefWidth="771.0" stylesheets="@../../tableview.css">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="durationCol" prefWidth="161.0" text="Time" />
@@ -179,7 +179,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <ToggleButtonGroup layoutX="699.0" layoutY="217.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
+            <ToggleButtonGroup layoutX="699.0" layoutY="164.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
                   <ToggleButton fx:id="returnButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="All">
                      <font>
@@ -193,23 +193,29 @@
                   </ToggleButton>
                </toggles>
             </ToggleButtonGroup>
-            <Label layoutX="61.0" layoutY="157.0" text="Search By Date: " textFill="#466bb0">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <TextField layoutX="187.0" layoutY="155.0" promptText="Date" styleClass="login-inputs" />
-            <Button layoutX="360.0" layoutY="154.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="57.0" styleClass="search-button" text="Search" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="670.0" layoutY="618.0" text="Mark all notifications is unread" textFill="#f20707">
+            <Label layoutX="670.0" layoutY="618.0" text="Mark all notifications is read" textFill="#f20707">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Label>
             <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
+            <Label layoutX="61.0" layoutY="169.0" text="Total:" textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="98.0" layoutY="169.0" text="100">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="209.0" layoutY="169.0" text="Unread:" textFill="#466bb0">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="260.0" layoutY="170.0" text="13" />
+            <Line endX="159.0" layoutX="150.0" layoutY="191.0" startX="-86.0" stroke="#466bb0d5" />
             </children>
         </AnchorPane>
     </children>

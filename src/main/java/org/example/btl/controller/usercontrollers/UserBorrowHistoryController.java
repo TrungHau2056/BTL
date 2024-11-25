@@ -50,10 +50,25 @@ public class UserBorrowHistoryController extends UserBaseController implements I
     public void initialize(URL url, ResourceBundle resourceBundle) {
         historyButton.setSelected(true);
 
-        idCol.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getDocument().getId()).asObject());
-        titleCol.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDocument().getTitle()));
+        idCol.setCellValueFactory(data ->
+                new SimpleIntegerProperty(
+                        data.getValue().getDocument() == null
+                                ? 0
+                                : data.getValue().getDocument().getId()
+                ).asObject()
+        );
+        titleCol.setCellValueFactory(data ->
+                new SimpleStringProperty(
+                        data.getValue().getDocument() == null
+                                ? "Not available"
+                                : data.getValue().getDocument().getTitle()
+                )
+        );
 
         authorsCol.setCellValueFactory(data -> {
+            if (data.getValue().getDocument() == null) {
+                return new SimpleStringProperty("Not available");
+            }
             Set<Author> authors = data.getValue().getDocument().getAuthors();
             String authorsString = authors.stream()
                     .map(Author::getName)

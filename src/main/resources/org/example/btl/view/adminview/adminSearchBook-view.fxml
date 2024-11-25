@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminSearchBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminSearchBookController">
     <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -176,7 +176,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button layoutX="313.0" layoutY="22.0" mnemonicParsing="false" style="-fx-border-color: #fff; -fx-text-fill: #fff;" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
+            <Button layoutX="313.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-border-color: #fff; -fx-text-fill: #fff;" stylesheets="@../../ButtonAdd-view.css" text="Log out" />
          </children>
       </AnchorPane>
         <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff; -fx-background-radius: 0 20 20 0;" stylesheets="@../../tableview.css">
@@ -235,12 +235,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Button layoutX="578.0" layoutY="234.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="70.0" style="-fx-text-fill: #466bb0; -fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px;" text="Delete">
+            <Button layoutX="578.0" layoutY="234.0" mnemonicParsing="false" onAction="#handleDelete" prefHeight="27.0" prefWidth="70.0" style="-fx-text-fill: #466bb0; -fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px;" text="Delete">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="667.0" layoutY="235.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="70.0" style="-fx-text-fill: #466bb0; -fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px;" text="Update">
+            <Button layoutX="667.0" layoutY="235.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="27.0" prefWidth="70.0" style="-fx-text-fill: #466bb0; -fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px;" text="Update">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

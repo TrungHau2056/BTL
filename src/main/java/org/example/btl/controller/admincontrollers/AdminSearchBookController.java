@@ -5,14 +5,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
+import org.example.btl.model.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -79,10 +81,8 @@ public class AdminSearchBookController extends AdminBaseController {
             return new SimpleStringProperty(genresString);
         });
 
-        publisherCol.setCellValueFactory(data -> {
-            return new SimpleStringProperty(
-                    data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available");
-        });
+        publisherCol.setCellValueFactory(data -> new SimpleStringProperty(
+                data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"));
     }
 
     public void handleAdminSearch(ActionEvent event) {
@@ -120,5 +120,61 @@ public class AdminSearchBookController extends AdminBaseController {
                 tableView.setItems(documentObservableList);
             }
         }
+    }
+
+    public void handleDelete() {
+        Document document = tableView.getSelectionModel().getSelectedItem();
+        if (document == null) {
+            return;
+        }
+
+        if (documentService.isCurrentlyBorrow(document)) {
+            alertComfirm.setTitle("Delete comfirmation");
+            alertComfirm.setHeaderText("Delete document comfirmation");
+            alertComfirm.setContentText("Someone is borrowing this document!" +
+                    " Do you still want to delete and send them a notification?");
+
+            alertComfirm.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    List<User> users = documentService.findUserCurrentlyBorrow(document);
+                    for (User user : users) {
+                        notificationService.addNotification(user, "Document Deleted",
+                                "The document you borrowed titled '" + document.getTitle() + "' has been deleted.");
+                    }
+
+                    documentService.deleteDocument(document);
+                }
+            });
+        } else {
+            alertComfirm.setTitle("Delete comfirmation");
+            alertComfirm.setHeaderText("Delete document comfirmation");
+            alertComfirm.setContentText("Are you sure?" +
+                    " All information about this document will be deleted from the database.");
+
+            alertComfirm.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    documentService.deleteDocument(document);
+                }
+            });
+        }
+    }
+
+    public void handleUpdate(ActionEvent event) throws IOException {
+        Document document = tableView.getSelectionModel().getSelectedItem();
+        if (document == null) {
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminUpdateBook-view.fxml"));
+        root = loader.load();
+        AdminUpdateBookController controller = loader.getController();
+        controller.setAdmin(admin);
+        controller.setDocument(document);
+        controller.setAdminInfo();
+
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 }

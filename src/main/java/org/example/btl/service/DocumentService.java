@@ -24,8 +24,12 @@ public class DocumentService {
         return documentDAO.findByTitle(title);
     }
 
-    public List<Document> findDocCurrentBorrow(User user) {
-        return borrowDAO.findDocCurrentBorrow(user);
+    public List<Document> findDocCurrentlyBorrow(User user) {
+        return borrowDAO.findDocCurrentlyBorrow(user);
+    }
+
+    public List<User> findUserCurrentlyBorrow(Document document) {
+        return borrowDAO.findUserCurrentlyBorrow(document);
     }
 
     public List<Document> searchByTitle(String keyword, User user, String status) {
@@ -184,5 +188,18 @@ public class DocumentService {
             return "This document has already been added";
         }
         return null;
+    }
+
+    public boolean isCurrentlyBorrow(Document document) {
+        for (Borrow borrow : document.getBorrows()) {
+            if (borrow.getReturnDate() == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void deleteDocument(Document document) {
+        documentDAO.deleteDocument(document);
     }
 }

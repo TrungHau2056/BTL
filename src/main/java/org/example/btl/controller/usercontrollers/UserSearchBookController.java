@@ -98,11 +98,9 @@ public class UserSearchBookController extends UserBaseController implements Init
             return new SimpleStringProperty(genresString);
         });
 
-        publisherCol.setCellValueFactory(data -> {
-            return new SimpleStringProperty(
-                    data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"
-            );
-        });
+        publisherCol.setCellValueFactory(data -> new SimpleStringProperty(
+                data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"
+        ));
 
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
@@ -149,8 +147,6 @@ public class UserSearchBookController extends UserBaseController implements Init
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            System.out.println("No item selected.");
         }
     }
 
@@ -188,7 +184,7 @@ public class UserSearchBookController extends UserBaseController implements Init
         } else {
             Task<List<Document>> searchDocTask = new Task<>() {
                 @Override
-                protected List<Document> call() throws Exception {
+                protected List<Document> call() {
                     switch (criterion) {
                         case "Title":
                             return documentService.searchByTitle(keyword, user, status);

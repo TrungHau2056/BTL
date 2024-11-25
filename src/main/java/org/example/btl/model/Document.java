@@ -1,6 +1,7 @@
 package org.example.btl.model;
 
 import jakarta.persistence.*;
+import org.hibernate.engine.spi.CascadeStyle;
 
 import java.sql.Date;
 import java.time.LocalDate;
@@ -21,29 +22,29 @@ public class Document {
     @Temporal(TemporalType.DATE)
     private Date addedDate;
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "document-author",
             joinColumns = {@JoinColumn(name = "document_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
     private Set<Author> authors = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "document-genre",
             joinColumns = {@JoinColumn(name = "document_id")},
             inverseJoinColumns = {@JoinColumn(name = "genre_id")}
     )
     private Set<Genre> genres  = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "document", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "document", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     private Set<Borrow> borrows = new HashSet<>();
 
     public Document() {
@@ -140,6 +141,10 @@ public class Document {
 
     public void increaseQuantity() {
         ++quantity;
+    }
+
+    public Set<Borrow> getBorrows() {
+        return borrows;
     }
 
     public void addBorrow(Borrow borrow) {

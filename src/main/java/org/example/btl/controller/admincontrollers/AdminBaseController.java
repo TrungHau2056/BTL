@@ -6,10 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import org.example.btl.model.Admin;
 import org.example.btl.service.AdminService;
 import org.example.btl.service.DocumentService;
+import org.example.btl.service.NotificationService;
 import org.example.btl.service.UserService;
 
 import java.io.IOException;
@@ -20,6 +22,7 @@ public abstract class AdminBaseController {
     protected AdminService adminService = new AdminService();
     protected UserService userService = new UserService();
     protected DocumentService documentService = new DocumentService();
+    protected NotificationService notificationService = new NotificationService();
 
     protected Alert alertErr = new Alert(Alert.AlertType.ERROR);
     protected Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
@@ -68,8 +71,9 @@ public abstract class AdminBaseController {
         switchScene(event, "/org/example/btl/view/adminview/adminAddBook-view.fxml");
     }
 
-    public void switchToUpdateBookScene(ActionEvent event) throws IOException {
-        switchScene(event, "/org/example/btl/view/adminview/adminUpdateBook-view.fxml");
+    public void switchToUpdateBookScene() {
+        alertInfo.setContentText("Please choose document to update in search function first!");
+        alertInfo.show();
     }
 
     public void switchToISBNScene(ActionEvent event) throws IOException {
@@ -78,5 +82,26 @@ public abstract class AdminBaseController {
 
     public void switchToManageUserScene(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/adminview/adminShowUser-view.fxml");
+    }
+
+    public void handleLogOut(ActionEvent event) {
+        alertComfirm.setTitle("Log out comfirmation");
+        alertComfirm.setHeaderText("Log out comfirmation");
+        alertComfirm.setContentText("Are you sure?");
+
+        alertComfirm.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
+                try {
+                    root = loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+            }
+        });
     }
 }

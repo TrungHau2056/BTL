@@ -4,6 +4,8 @@ import jakarta.persistence.Query;
 import org.example.btl.model.*;
 import org.hibernate.Session;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -158,6 +160,23 @@ public class DocumentDAO implements BaseDAO<Document> {
         }
 
         session.persist(document);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void deleteDocument(Document document) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        for (Borrow borrow : document.getBorrows()) {
+            borrow.setReturnDate(Date.valueOf(LocalDate.now()));
+            borrow.setDocument(null);
+            session.merge(borrow);
+        }
+
+        document = session.merge(document);
+        session.remove(document);
+
         session.getTransaction().commit();
         session.close();
     }

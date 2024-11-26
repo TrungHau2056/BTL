@@ -27,6 +27,10 @@ public class BookInfoController implements Initializable {
     private Document document;
     private User user;
 
+    private UserSearchBookController userSearchBookController;
+
+    private UserReturnBookController userReturnBookController;
+
     private BorrowService borrowService = new BorrowService();
     private NotificationService notificationService = new NotificationService();
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -57,10 +61,6 @@ public class BookInfoController implements Initializable {
     public User getUser() { return user; }
 
     public void setUser(User user) { this.user = user; }
-
-    private UserSearchBookController userSearchBookController;
-
-    private UserReturnBookController userReturnBookController;
 
     public void setUserSearchBookController(UserSearchBookController userSearchBookController) {
         this.userSearchBookController = userSearchBookController;

@@ -17,25 +17,24 @@
             <Image url="@../images/userIcon%20-%20Copy.png" />
          </image>
       </ImageView>
-      <Label layoutX="81.0" layoutY="28.0" text="User's name" textFill="#466bb0">
+      <Label fx:id="nameLabel" layoutX="83.0" layoutY="25.0" text="User's name" textFill="#466bb0">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="81.0" layoutY="46.0" text="3 hours" textFill="#e18abe" />
+      <Label fx:id="timeLabel" layoutX="81.0" layoutY="46.0" text="3 hours" textFill="#e18abe" />
       <StackPane layoutX="46.0" layoutY="70.0" prefHeight="38.0" prefWidth="509.0">
          <children>
-            <Label text="Notice of successful book borrowing" textFill="#3935ab">
+            <Label fx:id="titleLabel" text="Notice of successful book borrowing" textFill="#3935ab">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
          </children>
       </StackPane>
-      <TextArea editable="false" layoutX="34.0" layoutY="115.0" prefHeight="102.0" prefWidth="532.0" text="You have successfully borrowed the document titled 'Harry Potter and the Sorcerer's Stone'." wrapText="true" />
-      <Button layoutX="36.0" layoutY="225.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" styleClass="remove-button" />
-      <Button layoutX="74.0" layoutY="227.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="24.0" styleClass="note-button" />
-      <Button layoutX="511.0" layoutY="227.0" mnemonicParsing="false" text="Unread" />
+      <TextArea fx:id="messageText" editable="false" layoutX="34.0" layoutY="115.0" prefHeight="102.0" prefWidth="532.0" text="You have successfully borrowed the document titled 'Harry Potter and the Sorcerer's Stone'." wrapText="true" />
+      <Button layoutX="36.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="25.0" prefWidth="24.0" styleClass="remove-button" />
+      <Button layoutX="511.0" layoutY="227.0" mnemonicParsing="false" onAction="#handleUnread" text="Unread" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

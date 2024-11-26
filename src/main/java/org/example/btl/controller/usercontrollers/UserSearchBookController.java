@@ -138,6 +138,9 @@ public class UserSearchBookController extends UserBaseController implements Init
         new Thread(loadDocTask).start();
     }
 
+    public void refresh() {
+        tableView.refresh();
+    }
 
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
@@ -166,10 +169,6 @@ public class UserSearchBookController extends UserBaseController implements Init
         stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
-    }
-
-    public void refresh() {
-        tableView.refresh();
     }
 
     public void handleUserSearch(ActionEvent event) {

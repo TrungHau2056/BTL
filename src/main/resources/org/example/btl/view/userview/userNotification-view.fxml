@@ -174,7 +174,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="150.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleNote" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Note" textFill="WHITE">
+            <Button layoutX="150.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleInfo" prefHeight="40.0" prefWidth="73.0" styleClass="infoBook-button" text="Info" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -186,7 +186,7 @@
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton onAction="#switchToHistoryScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Unread">
+                  <ToggleButton onAction="#switchToUnreadScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Unread">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -198,13 +198,13 @@
                   <Font name="System Italic" size="12.0" />
                </font>
             </Label>
-            <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
+            <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleMarkAsRead" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
             <Label layoutX="61.0" layoutY="169.0" text="Total:" textFill="#466bb0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="98.0" layoutY="169.0" text="100">
+            <Label fx:id="totalLabel" layoutX="98.0" layoutY="169.0" text="100">
                <font>
                   <Font size="13.0" />
                </font>
@@ -214,7 +214,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label layoutX="260.0" layoutY="170.0" text="13" />
+            <Label fx:id="unreadLabel" layoutX="260.0" layoutY="170.0" text="13" />
             <Line endX="159.0" layoutX="150.0" layoutY="191.0" startX="-86.0" stroke="#466bb0d5" />
             </children>
         </AnchorPane>

@@ -18,6 +18,10 @@ public class NotificationService {
         return notificationDAO.deleteNotification(notification);
     }
 
+    public User switchNotificationStatus(Notification notification) {
+        return notificationDAO.switchNotificationStatus(notification);
+    }
+
     public String getDuration(LocalDateTime createdAt) {
         long seconds = Duration.between(createdAt, LocalDateTime.now()).getSeconds();
         if (seconds < 60) {

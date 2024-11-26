@@ -129,7 +129,7 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
+            alertErr.setContentText(loadDocTask.getException().getMessage());
             alertErr.show();
         });
 

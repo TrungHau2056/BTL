@@ -2,17 +2,18 @@ package org.example.btl.controller.admincontrollers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.btl.model.Document;
 import org.example.btl.model.User;
 
 import java.net.URL;
 import java.sql.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminShowUserController extends AdminBaseController implements Initializable {
@@ -48,8 +49,24 @@ public class AdminShowUserController extends AdminBaseController implements Init
 
     @Override
     public void setAdminInfo() {
-        userObservableList = FXCollections.observableArrayList(userService.findAll());
-        tableView.setItems(userObservableList);
+        Task<List<User>> loadUserTask = new Task<>() {
+            @Override
+            protected List<User> call() {
+                return userService.findAll();
+            }
+        };
+
+        loadUserTask.setOnSucceeded(e -> {
+            userObservableList = FXCollections.observableArrayList(loadUserTask.getValue());
+            tableView.setItems(userObservableList);
+        });
+
+        loadUserTask.setOnFailed(e -> {
+            alertErr.setContentText(loadUserTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(loadUserTask).start();
     }
 
     public void refresh() {
@@ -69,9 +86,25 @@ public class AdminShowUserController extends AdminBaseController implements Init
 
         alertComfirm.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                userService.deleteUser(user);
-                setAdminInfo();
-                refresh();
+                Task<Void> deleteUserTask = new Task<>() {
+                    @Override
+                    protected Void call() throws Exception {
+                        userService.deleteUser(user);
+                        return null;
+                    }
+                };
+
+                deleteUserTask.setOnSucceeded(e -> {
+                    setAdminInfo();
+                    refresh();
+                });
+
+                deleteUserTask.setOnFailed(e -> {
+                    alertErr.setContentText(deleteUserTask.getException().getMessage());
+                    alertErr.show();
+                });
+
+                new Thread(deleteUserTask).run();
             }
         });
     }

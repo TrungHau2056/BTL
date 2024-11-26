@@ -28,8 +28,6 @@ import java.util.stream.Collectors;
 public class UserSearchBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
-    @FXML
-    private ToggleButton searchButton;
 
     @FXML
     private ChoiceBox<String> criteria;
@@ -131,13 +129,16 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
+            alertErr.setContentText(loadDocTask.getException().getMessage());
             alertErr.show();
         });
 
         new Thread(loadDocTask).start();
     }
 
+    public void refresh() {
+        tableView.refresh();
+    }
 
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
@@ -166,10 +167,6 @@ public class UserSearchBookController extends UserBaseController implements Init
         stage.setTitle("Document");
         stage.setScene(new Scene(root));
         stage.show();
-    }
-
-    public void refresh() {
-        tableView.refresh();
     }
 
     public void handleUserSearch(ActionEvent event) {

@@ -69,8 +69,10 @@ public class AdminUpdateBookController extends AdminBaseController {
     }
 
     public void handleUpdateTitle() {
-        titleText.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            titleText.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdateQuantity() {
@@ -79,28 +81,38 @@ public class AdminUpdateBookController extends AdminBaseController {
     }
 
     public void handleUpdateGenre() {
-        genreList.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            genreList.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdateAuthor() {
-        authorList.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            authorList.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdateDescription() {
-        descriptionText.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            descriptionText.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdatePublisher() {
-        publisherText.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            publisherText.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdateImageLink() {
-        imageLinkText.setDisable(false);
-        updateButton.setDisable(false);
+        if (!document.isAddedByISBN()) {
+            imageLinkText.setDisable(false);
+            updateButton.setDisable(false);
+        }
     }
 
     public void handleUpdate() {

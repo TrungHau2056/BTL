@@ -25,7 +25,7 @@ public class NotificationDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        notification = session.get(Notification.class, notification.getId());
+        notification = session.merge(notification);
 
         User user = notification.getUser();
         user.getNotifications().remove(notification);
@@ -33,6 +33,20 @@ public class NotificationDAO {
 
         session.getTransaction().commit();
         session.close();
-        return user;
+
+        return notification.getUser();
+    }
+
+    public User switchNotificationStatus(Notification notification) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        notification.setRead(!notification.isRead());
+        notification = session.merge(notification);
+
+        session.getTransaction().commit();
+        session.close();
+
+        return notification.getUser();
     }
 }

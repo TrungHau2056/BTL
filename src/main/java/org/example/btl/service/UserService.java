@@ -80,4 +80,8 @@ public class UserService {
 
         return null;
     }
+
+    public void deleteUser(User user) {
+        userDAO.delete(user);
+    }
 }

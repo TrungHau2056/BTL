@@ -85,6 +85,10 @@ public class AdminSearchBookController extends AdminBaseController {
                 data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"));
     }
 
+    public void refresh() {
+        tableView.refresh();
+    }
+
     public void handleAdminSearch(ActionEvent event) {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
@@ -143,6 +147,8 @@ public class AdminSearchBookController extends AdminBaseController {
                     }
 
                     documentService.deleteDocument(document);
+                    setAdminInfo();
+                    refresh();
                 }
             });
         } else {
@@ -154,6 +160,8 @@ public class AdminSearchBookController extends AdminBaseController {
             alertComfirm.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
                     documentService.deleteDocument(document);
+                    setAdminInfo();
+                    refresh();
                 }
             });
         }

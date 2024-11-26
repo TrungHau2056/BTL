@@ -28,8 +28,6 @@ import java.util.stream.Collectors;
 public class UserSearchBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
-    @FXML
-    private ToggleButton searchButton;
 
     @FXML
     private ChoiceBox<String> criteria;

@@ -25,7 +25,6 @@ public abstract class Account {
     private byte[] avatar;
 
     public Account() {
-
     }
 
     public Account(String name, String email, String username, String password, Date birthday, String gender) {
@@ -35,12 +34,6 @@ public abstract class Account {
         this.username = username;
         this.password = password;
         this.gender = gender;
-    }
-
-    public Account(String name, String email, int id) {
-        this.name = name;
-        this.email = email;
-        this.id = id;
     }
 
     public int getId() {

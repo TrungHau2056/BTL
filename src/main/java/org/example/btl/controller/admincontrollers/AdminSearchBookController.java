@@ -3,6 +3,7 @@ package org.example.btl.controller.admincontrollers;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -98,31 +99,43 @@ public class AdminSearchBookController extends AdminBaseController {
             alertErr.setContentText(keyword);
             alertErr.show();
         } else {
-            List<Document> documents;
-            switch (criterion) {
-                case "Title":
-                    documents = documentService.searchByTitle(keyword, null, "All");
-                    break;
-                case "Author":
-                    documents = documentService.searchByAuthor(keyword, null, "All");
-                    break;
-                case "Genre":
-                    documents = documentService.searchByGenre(keyword, null, "All");
-                    break;
-                case "Publisher":
-                    documents = documentService.searchByPublisher(keyword, null, "All");
-                    break;
-                default:
-                    throw new IllegalArgumentException();
-            }
+            String status = "All";
 
-            if(documents.isEmpty()) {
-                alertErr.setContentText("No search results match the keyword.");
+            Task<List<Document>> searchDocTask = new Task<>() {
+                @Override
+                protected List<Document> call() {
+                    switch (criterion) {
+                        case "Title":
+                            return documentService.searchByTitle(keyword, null, status);
+                        case "Author":
+                            return documentService.searchByAuthor(keyword, null, status);
+                        case "Genre":
+                            return documentService.searchByGenre(keyword, null, status);
+                        case "Publisher":
+                            return documentService.searchByPublisher(keyword, null, status);
+                    }
+                    return null;
+                }
+            };
+
+            searchDocTask.setOnSucceeded(e -> {
+                List<Document> documents = searchDocTask.getValue();
+
+                if (documents.isEmpty()) {
+                    alertErr.setContentText("No search results match the keyword.");
+                    alertErr.show();
+                } else {
+                    documentObservableList = FXCollections.observableArrayList(documents);
+                    tableView.setItems(documentObservableList);
+                }
+            });
+
+            searchDocTask.setOnFailed(e -> {
+                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
                 alertErr.show();
-            } else {
-                documentObservableList = FXCollections.observableArrayList(documents);
-                tableView.setItems(documentObservableList);
-            }
+            });
+
+            new Thread(searchDocTask).start();
         }
     }
 

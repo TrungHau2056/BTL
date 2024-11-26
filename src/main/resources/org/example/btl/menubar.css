@@ -1,0 +1,16 @@
+
+/*.hbox {
+    -fx-border-color: transparent transparent #000000 transparent;
+}*/
+
+.button-menubar {
+    -fx-background-color: transparent;
+    -fx-text-fill: #466bb0;
+    -fx-cursor: hand;
+
+}
+
+.button-menubar: hover {
+    -fx-background-color: #7490c3;
+    -fx-text-fill: white;
+}

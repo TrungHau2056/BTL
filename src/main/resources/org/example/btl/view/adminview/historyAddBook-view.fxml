@@ -209,7 +209,7 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TableView layoutX="74.0" layoutY="173.0" prefHeight="450.0" prefWidth="651.0">
+            <TableView layoutX="74.0" layoutY="164.0" prefHeight="445.0" prefWidth="651.0">
               <columns>
                 <TableColumn prefWidth="65.60003662109375" text="Id" />
                 <TableColumn prefWidth="148.79998779296875" text="Title" />
@@ -219,6 +219,11 @@
                   <TableColumn prefWidth="123.20001220703125" text="Add Date" />
               </columns>
             </TableView>
+            <Button layoutX="354.0" layoutY="627.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="91.0" style="-fx-background-color: #466bb0; -fx-background-radius: 20px; -fx-text-fill: #fff;" text="Update">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

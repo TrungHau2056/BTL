@@ -19,7 +19,6 @@ import java.io.IOException;
 public abstract class AdminBaseController {
     protected Admin admin;
 
-    protected AdminService adminService = new AdminService();
     protected UserService userService = new UserService();
     protected DocumentService documentService = new DocumentService();
     protected NotificationService notificationService = new NotificationService();

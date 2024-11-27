@@ -236,7 +236,7 @@
                <font>
                   <Font size="15.0" />
                </font></Label>
-            <TextField layoutX="86.0" layoutY="512.0" prefHeight="67.0" prefWidth="642.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 10px;" />
+            <TextField fx:id="messageText" layoutX="86.0" layoutY="512.0" prefHeight="67.0" prefWidth="642.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 10px;" />
             <Button layoutX="378.0" layoutY="605.0" mnemonicParsing="false" onAction="#handleSendNotification" prefHeight="26.0" prefWidth="86.0" style="-fx-background-color: transparent; -fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-text-fill: #466bb0;" text="Send">
                <font>
                   <Font name="System Italic" size="12.0" />

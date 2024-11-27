@@ -155,7 +155,7 @@ public class AdminAddBookController extends AdminBaseController {
             imageLink = null;
         }
 
-        String validateMess = documentService.validateAdd(title, authorNames, genreNames, quantityStr, description);
+        String validateMess = documentService.validateAddDoc(title, authorNames, genreNames, quantityStr, description);
         if (validateMess != null) {
             alertErr.setContentText(validateMess);
             alertErr.show();

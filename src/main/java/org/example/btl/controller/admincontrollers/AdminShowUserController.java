@@ -8,7 +8,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import org.example.btl.model.Notification;
 import org.example.btl.model.User;
 
 import java.net.URL;
@@ -33,6 +35,9 @@ public class AdminShowUserController extends AdminBaseController implements Init
     private TableColumn<User, Date> birthdayCol;
     @FXML
     private TableColumn<User, String> genderCol;
+
+    @FXML
+    private TextField messageText;
 
     private ObservableList<User> userObservableList;
 
@@ -117,5 +122,10 @@ public class AdminShowUserController extends AdminBaseController implements Init
         }
 
         //
+        String title = "";
+        String message = messageText.getText();
+
+        notificationService.addNotification(user, title, message);
+        alertInfo.setContentText("Successfully sent a notification to '" + user.getName() + "'.");
     }
 }

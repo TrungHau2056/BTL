@@ -3,9 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,6 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.usercontrollers.UserHomeController">
@@ -109,7 +109,7 @@
                         </Stop>
                         <Stop offset="1.0">
                            <color>
-                              <Color red="0.9342105388641357" green="0.0173001941293478" blue="0.8272376656532288" />
+                              <Color red="0.9333333373069763" green="0.01568627543747425" blue="0.8274509906768799" />
                            </color>
                         </Stop>
                      </stops>
@@ -140,54 +140,11 @@
             </DropShadow>
          </effect>
         </AnchorPane>
-        <AnchorPane prefHeight="700.0" prefWidth="881.0" stylesheets="@../../style.css" HBox.hgrow="ALWAYS">
+        <AnchorPane prefHeight="700.0" prefWidth="881.0" HBox.hgrow="ALWAYS">
             <HBox.margin>
                 <Insets />
             </HBox.margin>
             <children>
-                <Button layoutX="14.0" layoutY="21.0" mnemonicParsing="false" onAction="#switchToUserHomeScreen" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: transparent;">
-                    <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@../../images/homescreen.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                </Button>
-                <Label layoutX="75.0" layoutY="27.0" text="Home screen" textFill="#466bb0">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Label>
-            <StackPane layoutX="94.0" layoutY="255.0" prefHeight="36.0" prefWidth="708.0" />
-            <Label layoutX="68.0" layoutY="633.0" text="Total:" textFill="#466bb0">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label layoutX="118.0" layoutY="633.0" text="123" textFill="#ae2094">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <TableView fx:id="tableView" layoutX="68.0" layoutY="255.0" prefHeight="375.0" prefWidth="761.0" stylesheets="@../../tableview.css">
-               <columns>
-                  <TableColumn fx:id="idCol" editable="false" prefWidth="74.0" text="Id Book" />
-                  <TableColumn prefWidth="89.0" text="Cover" />
-                  <TableColumn fx:id="titleCol" editable="false" prefWidth="359.0" text="Title" />
-                  <TableColumn editable="false" minWidth="9.0" prefWidth="70.0" text="Genre" />
-                  <TableColumn fx:id="authorsCol" editable="false" text="Author" />
-                  <TableColumn editable="false" prefWidth="83.0" text="Status" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-                <ImageView fx:id="avatar" fitHeight="157.0" fitWidth="323.0" layoutX="369.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="369.0" AnchorPane.rightAnchor="358.0">
-                    <image>
-                        <Image url="@../../images/userIcon.png" />
-                    </image>
-                </ImageView>
             <Button layoutX="755.0" layoutY="28.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: #466bb0; -fx-font-weight: 700; -fx-cursor: hand;" text="Log Out" textFill="WHITE">
                <effect>
                   <DropShadow>
@@ -197,6 +154,91 @@
                   </DropShadow>
                </effect>
             </Button>
+            <ImageView fitHeight="61.0" fitWidth="52.0" layoutX="37.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/logo.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="94.0" layoutY="34.0" maxWidth="160.0" text="Tran Trung Hai" textFill="#466bb0" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+               <effect>
+                  <Glow level="0.5" />
+               </effect>
+            </Label>
+            <Label layoutX="95.0" layoutY="58.0" text="Online Library">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Label>
+                <ImageView fx:id="avatar" fitHeight="208.0" fitWidth="320.0" layoutX="344.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../images/adminAvatar.jpg" />
+                    </image>
+                </ImageView>
+            <HBox layoutX="14.0" layoutY="93.0" prefHeight="45.0" prefWidth="867.0" styleClass="hbox" stylesheets="@../../menubar.css">
+               <children>
+                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="289.0" style="-fx-background-color: #7490c3;" text="Home" textFill="WHITE">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#switchToContact" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Contact">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#switchToReview" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Review">
+                     <font>
+                        <Font name="Berlin Sans FB Demi Bold" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Line endX="755.0" layoutX="120.0" layoutY="143.0" startX="-100.0" stroke="#979191" />
+            <HBox layoutX="98.0" layoutY="379.0" prefHeight="248.0" prefWidth="700.0">
+               <children>
+                  <AnchorPane prefHeight="248.0" prefWidth="350.0" style="-fx-border-color: transparent #979191 transparent transparent;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="49.0" text="ID: 10005">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="78.0" text="Email: goku012589@fdffvdf" />
+                        <StackPane layoutX="3.0" layoutY="6.0" prefHeight="28.0" prefWidth="340.0" style="-fx-background-color: #e3f2fd;">
+                           <children>
+                              <Label text="About user's name" textFill="#466bb0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane prefHeight="248.0" prefWidth="350.0">
+                     <children>
+                        <StackPane layoutX="5.0" layoutY="6.0" prefHeight="28.0" prefWidth="340.0" style="-fx-background-color: #e3f2fd;">
+                           <children>
+                              <Label text="Lastest notification" textFill="#466bb0">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </StackPane>
+                        <ImageView fitHeight="105.0" fitWidth="132.0" layoutX="20.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../images/no-photo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="157.0" layoutY="62.0" maxWidth="170.0" text="You have successfully borrowed the document titled 'Harry Potter and the Sorcerer's Stone'." wrapText="true" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
             </children>
         </AnchorPane>
     </children>

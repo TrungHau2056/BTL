@@ -164,6 +164,41 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.close();
     }
 
+    public void updateDocument(Document document,
+                               List<String> authorNames, String publisherName,
+                               List<String> genreNames) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        if (!Objects.equals(publisherName, "")) {
+            Publisher publisher = publisherDAO.findByName(publisherName);
+            if (publisher == null) {
+                publisher = new Publisher(publisherName);
+            } else publisher = session.merge(publisher);
+            publisher.addDocument(document);
+        }
+
+        for (String authorName : authorNames) {
+            Author author = authorDAO.findByName(authorName);
+            if (author == null) {
+                author = new Author(authorName);
+            } else author = session.merge(author);
+            author.addDocument(document);
+        }
+
+        for (String genreName : genreNames) {
+            Genre genre = genreDAO.findByName(genreName);
+            if (genre == null) {
+                genre = new Genre(genreName);
+            } else genre = session.merge(genre);
+            genre.addDocument(document);
+        }
+
+        session.merge(document);
+        session.getTransaction().commit();
+        session.close();
+    }
+
     public void deleteDocument(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

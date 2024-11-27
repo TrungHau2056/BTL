@@ -7,16 +7,24 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
+import org.example.btl.controller.BookInfoController;
+import org.example.btl.controller.NotificationController;
 import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.Notification;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
@@ -25,8 +33,12 @@ import java.util.ResourceBundle;
 
 public class UserNotificationController extends UserBaseController implements Initializable {
     @FXML
-    private TableView<Notification> tableView;
+    private Label totalLabel;
+    @FXML
+    private Label unreadLabel;
 
+    @FXML
+    private TableView<Notification> tableView;
     @FXML
     private TableColumn<Notification, Integer> idCol;
     @FXML
@@ -58,6 +70,15 @@ public class UserNotificationController extends UserBaseController implements In
 
     @Override
     public void setUserInfo() {
+        totalLabel.setText(String.valueOf(user.getNotifications().size()));
+        int unreadCnt = 0;
+        for (Notification notification : user.getNotifications()) {
+            if (!notification.isRead()) {
+                ++unreadCnt;
+            }
+        }
+        unreadLabel.setText(String.valueOf(unreadCnt));
+
         nameLabel.setText(user.getName());
         byte[] avatarData = user.getAvatar();
         if (avatarData != null) {
@@ -86,11 +107,37 @@ public class UserNotificationController extends UserBaseController implements In
         }
     }
 
-    public void handleNote() {
+    public void handleInfo() throws IOException {
+        Notification notification = tableView.getSelectionModel().getSelectedItem();
+        if (notification == null) {
+            return;
+        }
 
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/notification-view.fxml"));
+        Parent root = loader.load();
+
+        NotificationController controller = loader.getController();
+        controller.setUser(user);
+        controller.setNotification(notification);
+        controller.setUserNotificationController(this);
+        controller.setNotificationInfo();
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
-    public void switchToHistoryScene(ActionEvent event) {
+    public void handleMarkAsRead() {
+        for (Notification notification : user.getNotifications()) {
+            if (!notification.isRead()) {
+                user = notificationService.switchNotificationStatus(notification);
+            }
+        }
+        setUserInfo();
+        refresh();
+    }
+
+    public void switchToUnreadScene(ActionEvent event) {
 
     }
 

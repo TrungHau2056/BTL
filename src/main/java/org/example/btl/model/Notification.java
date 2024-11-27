@@ -10,7 +10,7 @@ public class Notification {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 
@@ -55,11 +55,11 @@ public class Notification {
         return isRead;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public void setRead(boolean read) {
+        isRead = read;
     }
 
-    public void setHasRead() {
-        isRead = true;
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
     }
 }

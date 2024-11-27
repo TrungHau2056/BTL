@@ -16,6 +16,10 @@ public class DocumentService {
     private PublisherDAO publisherDAO = new PublisherDAO();
     private BorrowDAO borrowDAO = new BorrowDAO();
 
+    public void deleteDocument(Document document) {
+        documentDAO.deleteDocument(document);
+    }
+
     public List<Document> findAll() {
         return documentDAO.findAll();
     }
@@ -157,7 +161,13 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public String validateAdd(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
+    public void updateDocument(Document document,
+                               List<String> authorNames, String publisherName,
+                               List<String> genreNames) {
+        documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
+    }
+
+    public String validateAddDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {
             return "Please enter all the information!";
@@ -197,9 +207,5 @@ public class DocumentService {
             }
         }
         return false;
-    }
-
-    public void deleteDocument(Document document) {
-        documentDAO.deleteDocument(document);
     }
 }

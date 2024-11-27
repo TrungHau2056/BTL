@@ -1,5 +1,6 @@
 package org.example.btl.controller.usercontrollers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -62,5 +63,14 @@ public class UserHomeController extends UserBaseController implements Initializa
 //                    new Document(user.getBorrowedDocuments().iterator().next().getId(), user.getBorrowedDocuments().iterator().next().getTitle())
 //            );
 //            tableview.setItems(documentlist);
+    }
+
+    public void switchToContact(ActionEvent event) {
+
+
+    }
+
+    public void switchToReview(ActionEvent event) {
+
     }
 }

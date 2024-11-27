@@ -184,12 +184,12 @@
                         <Font name="Berlin Sans FB Demi Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Contact">
+                  <Button mnemonicParsing="false" onAction="#switchToContact" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Contact">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Review">
+                  <Button mnemonicParsing="false" onAction="#switchToReview" prefHeight="45.0" prefWidth="289.0" styleClass="button-menubar" text="Review">
                      <font>
                         <Font name="Berlin Sans FB Demi Bold" size="25.0" />
                      </font>
@@ -216,16 +216,6 @@
                               </Label>
                            </children>
                         </StackPane>
-                        <Label layoutX="14.0" layoutY="135.0" text="You have not return 3 books!">
-                           <font>
-                              <Font name="System Bold Italic" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="14.0" layoutY="107.0" text="You have ever borrowed 40 books!">
-                           <font>
-                              <Font name="System Bold Italic" size="14.0" />
-                           </font>
-                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="248.0" prefWidth="350.0">

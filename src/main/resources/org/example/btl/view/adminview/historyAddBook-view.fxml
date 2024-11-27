@@ -197,7 +197,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="130.0" layoutY="59.0" style="-fx-font-weight: 700;" text="History add document" textFill="#466bb0">
+            <Label layoutX="110.0" layoutY="59.0" style="-fx-font-weight: 700;" text="Add document history" textFill="#466bb0">
                <font>
                   <Font size="55.0" />
                </font>
@@ -209,10 +209,14 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TableView layoutX="130.0" layoutY="198.0" prefHeight="327.0" prefWidth="579.0">
+            <TableView layoutX="74.0" layoutY="173.0" prefHeight="450.0" prefWidth="651.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn prefWidth="65.60003662109375" text="Id" />
+                <TableColumn prefWidth="148.79998779296875" text="Title" />
+                  <TableColumn prefWidth="116.79998779296875" text="Author" />
+                  <TableColumn prefWidth="102.4000244140625" text="Genre" />
+                  <TableColumn prefWidth="94.39996337890625" text="Publisher" />
+                  <TableColumn prefWidth="123.20001220703125" text="Add Date" />
               </columns>
             </TableView>
          </children>

@@ -53,7 +53,6 @@ public class NotificationController {
             user = notificationService.switchNotificationStatus(notification);
             userNotificationController.setUser(user);
             userNotificationController.setUserInfo();
-            userNotificationController.refresh();
         }
 
         nameLabel.setText(user.getName() );
@@ -66,7 +65,6 @@ public class NotificationController {
         user = notificationService.deleteNotification(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();
-        userNotificationController.refresh();
         // back to userNotification
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
@@ -76,7 +74,6 @@ public class NotificationController {
         user = notificationService.switchNotificationStatus(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();
-        userNotificationController.refresh();
         // back to userNotification
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();

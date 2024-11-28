@@ -134,7 +134,6 @@ public class UserNotificationController extends UserBaseController implements In
             }
         }
         setUserInfo();
-        refresh();
     }
 
     public void switchToUnreadScene(ActionEvent event) {

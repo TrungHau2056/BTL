@@ -99,7 +99,7 @@ public class UserReturnBookController extends UserBaseController implements Init
 
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
-            protected List<Document> call() throws Exception {
+            protected List<Document> call() {
                 return documentService.findDocCurrentlyBorrow(user);
             }
         };
@@ -110,7 +110,6 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            System.out.println("Failed");
             alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
             alertErr.show();
         });

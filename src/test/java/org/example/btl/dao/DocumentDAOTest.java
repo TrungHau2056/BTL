@@ -13,6 +13,7 @@ import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,10 +21,12 @@ import static org.junit.jupiter.api.Assertions.*;
 class DocumentDAOTest {
     private static SessionFactory sessionFactory;
     private Session session;
+
     private DocumentDAO documentDAO = new DocumentDAO();
     private AdminDAO adminDAO = new AdminDAO();
     private AuthorDAO authorDAO = new AuthorDAO();
     private GenreDAO genreDAO = new GenreDAO();
+
     @BeforeAll
     static void config() {
         sessionFactory = new Configuration()
@@ -31,14 +34,6 @@ class DocumentDAOTest {
                 .buildSessionFactory();
         MockedStatic<HibernateUtils> hibernateUtilMock = Mockito.mockStatic(HibernateUtils.class);
         hibernateUtilMock.when(HibernateUtils::getSessionFactory).thenReturn(sessionFactory);
-    }
-
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 
     @Test
@@ -50,7 +45,7 @@ class DocumentDAOTest {
         genreDAO.save(new Genre("action"));
 
 
-        Document document = new Document("dbz", "goood manga", 10, "");
+        Document document = new Document("dbz", "goood manga", 10, "", true);
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin,
                 List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
 
@@ -74,5 +69,38 @@ class DocumentDAOTest {
         assertEquals(1, genres.size());
         assertEquals(2, document.getAuthors().size());
         assertEquals(2, document.getGenres().size());
+    }
+
+    @Test
+    void updateDocTest() {
+        Admin admin = new Admin("nagfe", "@mfdd", "gdd8dft",
+                "0123ffg", Date.valueOf("2005-05-05"), "Male");
+        adminDAO.save(admin);
+
+        Document document = new Document("dbfdz", "gooodss manga", 10, "", true);
+        documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin,
+                List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
+
+        document = documentDAO.updateDocument(document, List.of("AK", "ABC", "abcd"), "newPublisher", List.of("action", "comedy"));
+
+
+        List<String> authors = new ArrayList<>();
+        for (Author author : document.getAuthors()) {
+            authors.add(author.getName());
+        }
+
+        List<String> genres = new ArrayList<>();
+        for (Genre genre : document.getGenres()) {
+            genres.add(genre.getName());
+        }
+
+        assertEquals(3, document.getAuthors().size());
+
+        assertFalse(authors.contains("Boichi"));
+        assertTrue(authors.contains("AK"));
+        assertTrue(authors.contains("ABC"));
+        assertFalse(genres.contains("fantasy"));
+        assertTrue(genres.contains("action"));
+        assertEquals("newPublisher", document.getPublisher().getName());
     }
 }

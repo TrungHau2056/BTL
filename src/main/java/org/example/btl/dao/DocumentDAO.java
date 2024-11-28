@@ -54,15 +54,6 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
-    @Override
-    public Document findById(int id) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        Document document = session.get(Document.class, id);
-        session.close();
-        return document;
-    }
-
     public Document findByTitle(String title) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -191,7 +182,7 @@ public class DocumentDAO implements BaseDAO<Document> {
         return document;
     }
 
-    public void updateDocument(Document document,
+    public Document updateDocument(Document document,
                                List<String> authorNames, String publisherName,
                                List<String> genreNames) {
         document = deleteAuthorGenre(document);
@@ -205,6 +196,7 @@ public class DocumentDAO implements BaseDAO<Document> {
             Publisher publisher = publisherDAO.findByName(publisherName);
             if (publisher == null) {
                 publisher = new Publisher(publisherName);
+                session.persist(publisher);
             }
             publisher.addDocument(document);
         }
@@ -213,6 +205,7 @@ public class DocumentDAO implements BaseDAO<Document> {
             Author author = authorDAO.findByName(authorName);
             if (author == null) {
                 author = new Author(authorName);
+                session.persist(author);
             }
             author.addDocument(document);
         }
@@ -221,14 +214,16 @@ public class DocumentDAO implements BaseDAO<Document> {
             Genre genre = genreDAO.findByName(genreName);
             if (genre == null) {
                 genre = new Genre(genreName);
+                session.persist(genre);
             }
             genre.addDocument(document);
-
-
-            session.merge(document);
-            session.getTransaction().commit();
-            session.close();
         }
+
+        session.merge(document);
+        session.getTransaction().commit();
+        session.close();
+
+        return document;
     }
 
     public void deleteDocument(Document document) {

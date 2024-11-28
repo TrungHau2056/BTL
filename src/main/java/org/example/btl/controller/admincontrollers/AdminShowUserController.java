@@ -5,12 +5,8 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.example.btl.model.Notification;
 import org.example.btl.model.User;
 
 import java.net.URL;
@@ -37,7 +33,9 @@ public class AdminShowUserController extends AdminBaseController implements Init
     private TableColumn<User, String> genderCol;
 
     @FXML
-    private TextField messageText;
+    private TextField titleText;
+    @FXML
+    private TextArea messageText;
 
     private ObservableList<User> userObservableList;
 
@@ -122,7 +120,7 @@ public class AdminShowUserController extends AdminBaseController implements Init
         }
 
         //
-        String title = "";
+        String title = titleText.getText();
         String message = messageText.getText();
 
         notificationService.addNotification(user, title, message);

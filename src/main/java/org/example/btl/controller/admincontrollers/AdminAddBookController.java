@@ -54,7 +54,11 @@ public class AdminAddBookController extends AdminBaseController {
 
     public void genreAdd() {
         String genre = genresText.getText();
-        if (Objects.equals(genre, "")) {
+
+        if (genreNames.contains(genre)) {
+            alertErr.setContentText("Genre already added.");
+            alertErr.show();
+        } else if (Objects.equals(genre, "")) {
             alertErr.setContentText("Please enter genre.");
             alertErr.show();
         } else {
@@ -96,7 +100,11 @@ public class AdminAddBookController extends AdminBaseController {
 
     public void authorAdd() {
         String author = authorsText.getText();
-        if (Objects.equals(author, "")) {
+
+        if (authorNames.contains(author)) {
+            alertErr.setContentText("Author already added.");
+            alertErr.show();
+        } else if (Objects.equals(author, "")) {
             alertErr.setContentText("Please enter author.");
             alertErr.show();
         } else {

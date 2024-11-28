@@ -6,8 +6,10 @@ import org.hibernate.Session;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class DocumentDAO implements BaseDAO<Document> {
     private Session session;
@@ -164,17 +166,46 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.close();
     }
 
-    public void updateDocument(Document document,
-                               List<String> authorNames, String publisherName,
-                               List<String> genreNames) {
+    public Document deleteAuthorGenre(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        if (!Objects.equals(publisherName, "")) {
+        document = session.merge(document);
+        Set<Author> oldAuthors = new HashSet<>(document.getAuthors());
+        Set<Genre> oldGenres = new HashSet<>(document.getGenres());
+
+        for (Author author : oldAuthors) {
+            author = session.merge(author);
+            author.deleteDocument(document);
+        }
+
+        for (Genre genre : oldGenres) {
+            genre = session.merge(genre);
+            genre.deleteDocument(document);
+        }
+
+        session.merge(document);
+        session.getTransaction().commit();
+        session.close();
+
+        return document;
+    }
+
+    public void updateDocument(Document document,
+                               List<String> authorNames, String publisherName,
+                               List<String> genreNames) {
+        document = deleteAuthorGenre(document);
+
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        if (!Objects.equals(publisherName, "")
+                && (document.getPublisher() == null
+                || !Objects.equals(publisherName, document.getPublisher().getName()))) {
             Publisher publisher = publisherDAO.findByName(publisherName);
             if (publisher == null) {
                 publisher = new Publisher(publisherName);
-            } else publisher = session.merge(publisher);
+            }
             publisher.addDocument(document);
         }
 
@@ -182,7 +213,7 @@ public class DocumentDAO implements BaseDAO<Document> {
             Author author = authorDAO.findByName(authorName);
             if (author == null) {
                 author = new Author(authorName);
-            } else author = session.merge(author);
+            }
             author.addDocument(document);
         }
 
@@ -190,13 +221,14 @@ public class DocumentDAO implements BaseDAO<Document> {
             Genre genre = genreDAO.findByName(genreName);
             if (genre == null) {
                 genre = new Genre(genreName);
-            } else genre = session.merge(genre);
+            }
             genre.addDocument(document);
-        }
 
-        session.merge(document);
-        session.getTransaction().commit();
-        session.close();
+
+            session.merge(document);
+            session.getTransaction().commit();
+            session.close();
+        }
     }
 
     public void deleteDocument(Document document) {

@@ -16,6 +16,10 @@ public class DocumentService {
     private PublisherDAO publisherDAO = new PublisherDAO();
     private BorrowDAO borrowDAO = new BorrowDAO();
 
+    public void update(Document document) {
+        documentDAO.update(document);
+    }
+
     public void deleteDocument(Document document) {
         documentDAO.deleteDocument(document);
     }
@@ -197,6 +201,37 @@ public class DocumentService {
         if (checkIfExist(authorNames, title, description)) {
             return "This document has already been added";
         }
+        return null;
+    }
+
+    public String validateUpdateDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
+        if (Objects.equals(title, "")
+                || Objects.equals(quantityStr, "")) {
+            return "Please enter all the information!";
+        }
+
+        if (authorNames.isEmpty() || genreNames.isEmpty()) {
+            return "Please enter all the information!";
+        }
+
+        for (String authorName : authorNames) {
+            if (Objects.equals(authorName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
+        for (String genreName : genreNames) {
+            if (Objects.equals(genreName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
+        try {
+            int quantity = Integer.parseInt(quantityStr);
+        } catch (NumberFormatException e) {
+            return "Quantity field must be a number!";
+        }
+
         return null;
     }
 

@@ -83,6 +83,11 @@ public abstract class AdminBaseController {
         switchScene(event, "/org/example/btl/view/adminview/adminShowUser-view.fxml");
     }
 
+    public void switchToAddedDocHistory(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/adminview/historyAddBook-view.fxml");
+    }
+
+
     public void handleLogOut(ActionEvent event) {
         alertComfirm.setTitle("Log out comfirmation");
         alertComfirm.setHeaderText("Log out comfirmation");

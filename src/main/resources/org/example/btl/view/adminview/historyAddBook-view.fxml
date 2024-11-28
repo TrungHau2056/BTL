@@ -15,7 +15,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminUpdateBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddDocHistoryController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -136,7 +136,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: ffb888;" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -209,17 +209,17 @@
                   </DropShadow>
                </effect>
             </Label>
-            <TableView layoutX="74.0" layoutY="164.0" prefHeight="445.0" prefWidth="651.0">
+            <TableView fx:id="tableView" layoutX="74.0" layoutY="164.0" prefHeight="445.0" prefWidth="651.0">
               <columns>
-                <TableColumn prefWidth="65.60003662109375" text="Id" />
-                <TableColumn prefWidth="148.79998779296875" text="Title" />
-                  <TableColumn prefWidth="116.79998779296875" text="Author" />
-                  <TableColumn prefWidth="102.4000244140625" text="Genre" />
-                  <TableColumn prefWidth="94.39996337890625" text="Publisher" />
-                  <TableColumn prefWidth="123.20001220703125" text="Add Date" />
+                <TableColumn fx:id="idCol" prefWidth="65.60003662109375" text="Id" />
+                <TableColumn fx:id="titleCol" prefWidth="148.79998779296875" text="Title" />
+                  <TableColumn fx:id="authorsCol" prefWidth="116.79998779296875" text="Author" />
+                  <TableColumn fx:id="genresCol" prefWidth="102.4000244140625" text="Genre" />
+                  <TableColumn fx:id="publisherCol" prefWidth="94.39996337890625" text="Publisher" />
+                  <TableColumn fx:id="addedDateCol" prefWidth="123.20001220703125" text="Added Date" />
               </columns>
             </TableView>
-            <Button layoutX="354.0" layoutY="627.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="91.0" style="-fx-background-color: #466bb0; -fx-background-radius: 20px; -fx-text-fill: #fff;" text="Update">
+            <Button layoutX="354.0" layoutY="627.0" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="38.0" prefWidth="91.0" style="-fx-background-color: #466bb0; -fx-background-radius: 20px; -fx-text-fill: #fff;" text="Update">
                <font>
                   <Font size="17.0" />
                </font>

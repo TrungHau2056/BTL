@@ -243,4 +243,8 @@ public class DocumentService {
         }
         return false;
     }
+
+    public List<Document> findDocAddedByAdmin(Admin admin) {
+        return documentDAO.findDocAddedByAdmin(admin);
+    }
 }

@@ -247,4 +247,16 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.getTransaction().commit();
         session.close();
     }
+
+    public List<Document> findDocAddedByAdmin(Admin admin) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Document WHERE admin = :admin");
+        query.setParameter("admin", admin);
+        List<Document> documents = query.getResultList();
+
+        session.close();
+        return documents;
+    }
 }

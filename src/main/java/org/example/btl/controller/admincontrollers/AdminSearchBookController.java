@@ -50,8 +50,8 @@ public class AdminSearchBookController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
-        ObservableList<Document> observableList = FXCollections.observableArrayList(documentService.findAll());
-        tableView.setItems(observableList);
+        documentObservableList = FXCollections.observableArrayList(documentService.findAll());
+        tableView.setItems(documentObservableList);
     }
 
     @FXML

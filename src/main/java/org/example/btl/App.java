@@ -31,20 +31,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        Document document = new DocumentService().findByTitle("Hello World");
-        Author author = new AuthorDAO().findByName("Hellozx");
-        Genre genre = new GenreDAO().findByName("Action");
-
-        Session session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-
-        author.addDocument(document);
-        genre.addDocument(document);
-        session.merge(document);
-
-        session.getTransaction().commit();
-        session.close();
-
+        HibernateUtils.getSessionFactory();
         launch(args);
         HibernateUtils.shutdown();
     }

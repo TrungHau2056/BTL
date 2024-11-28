@@ -103,6 +103,10 @@ public class Document {
         isAddedByISBN = addedByISBN;
     }
 
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
     public Set<Author> getAuthors() {
         return authors;
     }

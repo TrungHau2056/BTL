@@ -48,15 +48,6 @@ public class UserDAO implements BaseDAO<User> {
         return users;
     }
 
-    @Override
-    public User findById(int id) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        User user = session.get(User.class, id);
-        session.close();
-        return user;
-    }
-
     public User findByUsername(String username) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

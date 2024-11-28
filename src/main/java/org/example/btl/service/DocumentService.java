@@ -165,10 +165,10 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public void updateDocument(Document document,
+    public Document updateDocument(Document document,
                                List<String> authorNames, String publisherName,
                                List<String> genreNames) {
-        documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
+        return documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
     }
 
     public String validateAddDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {

@@ -14,5 +14,4 @@ public interface BaseDAO<T> {
 
     public List<T> findAll();
 
-    public T findById(int id);
 }

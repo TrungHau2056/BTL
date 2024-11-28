@@ -298,7 +298,7 @@ public class AdminUpdateBookController extends AdminBaseController {
                 document.setImageLink(imageLink);
                 document.setQuantity(Integer.parseInt(quantityStr));
 
-                documentService.updateDocument(document, authorNames, publisherName, genreNames);
+                document = documentService.updateDocument(document, authorNames, publisherName, genreNames);
 
                 alertInfo.setContentText("Document successfully updated!");
                 alertInfo.show();

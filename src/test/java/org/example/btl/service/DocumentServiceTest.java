@@ -33,10 +33,6 @@ class DocumentServiceTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void checkIfExistTrue() {
         String title = "Test manga";
@@ -91,5 +87,11 @@ class DocumentServiceTest {
         authorNames.add("Boichi");
         String result = documentService.validateAddDoc("title", authorNames, genreNames, "", "");
         assertEquals("Please enter all the information!", result);
+    }
+
+    @Test
+    void validateUpdate_success() {
+        assertNull(documentService.validateUpdateDoc("titlee", List.of("haha"),
+                List.of("Action", "Comedy"), "15", "Hay"));
     }
 }

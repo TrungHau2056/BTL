@@ -252,7 +252,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="676.0" layoutY="172.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px;" text="Search">
+            <Button layoutX="676.0" layoutY="172.0" mnemonicParsing="false" onAction="#handleAdminSearch" prefHeight="30.0" prefWidth="62.0" style="-fx-background-color: #466bb0; -fx-text-fill: #fff; -fx-background-radius: 20px;" text="Search">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>

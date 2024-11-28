@@ -65,7 +65,7 @@ public class NotificationController {
         user = notificationService.deleteNotification(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();
-        // back to userNotification
+
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
@@ -74,7 +74,7 @@ public class NotificationController {
         user = notificationService.switchNotificationStatus(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();
-        // back to userNotification
+
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }

@@ -41,27 +41,22 @@ public class AdminDAO implements BaseDAO<Admin> {
     public List<Admin> findAll() {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Admin", Admin.class);
         List<Admin> admins = query.getResultList();
+
         session.close();
         return admins;
-    }
-
-    @Override
-    public Admin findById(int id) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        Admin admin = session.get(Admin.class, id);
-        session.close();
-        return admin;
     }
 
     public Admin findByUsername(String username) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Admin WHERE username = :username");
         query.setParameter("username", username);
         List<Admin> admins = query.getResultList();
+
         session.close();
         if (admins.isEmpty()) return null;
         else return admins.getFirst();
@@ -70,10 +65,12 @@ public class AdminDAO implements BaseDAO<Admin> {
     public Admin findByPassAndUsername(String username, String password) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Admin WHERE username = :username and password = :password");
         query.setParameter("username", username);
         query.setParameter("password", password);
         List<Admin> admins = query.getResultList();
+
         session.close();
         if (admins.isEmpty()) return null;
         else return admins.getFirst();

@@ -128,13 +128,28 @@ public class UserNotificationController extends UserBaseController implements In
     }
 
     public void handleMarkAsRead() {
-        for (Notification notification : user.getNotifications()) {
-            if (!notification.isRead()) {
-                user = notificationService.switchNotificationStatus(notification);
+        Task<Void> markAsReadTask = new Task<>() {
+            @Override
+            protected Void call() {
+                for (Notification notification : user.getNotifications()) {
+                    if (!notification.isRead()) {
+                        user = notificationService.switchNotificationStatus(notification);
+                    }
+                }
+                return null;
             }
-        }
-        setUserInfo();
-        refresh();
+        };
+
+        markAsReadTask.setOnSucceeded(e -> {
+            setUserInfo();
+        });
+
+        markAsReadTask.setOnFailed(e -> {
+            alertErr.setContentText("Error: " + markAsReadTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(markAsReadTask).start();
     }
 
     public void switchToUnreadScene(ActionEvent event) {

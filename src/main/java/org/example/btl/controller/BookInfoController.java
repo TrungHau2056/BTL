@@ -3,11 +3,13 @@ package org.example.btl.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
 import org.example.btl.dao.BorrowDAO;
@@ -127,8 +129,16 @@ public class BookInfoController implements Initializable {
     }
 
     public void handleReturn(ActionEvent event) {
-        userReturnBookController.handleReturnBook(event);
+        user = borrowService.returnDocument(user, document);
+
+        user = notificationService.addNotification(user, "Document Returned Successfully",
+                "You have successfully returned the document titled '" + document.getTitle() + "'.");
         userReturnBookController.setUserInfo();
-        userReturnBookController.refresh();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        alert.setContentText("Return Successfully!");
+        alert.show();
     }
 }

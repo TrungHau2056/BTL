@@ -109,6 +109,20 @@
     -fx-cursor: hand;
 }
 
+.removeAll-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 10px;
+        -fx-border-color: #cccccc;
+        -fx-border-radius: 10px;
+        -fx-text-fill: #ff0000;
+        -fx-cursor: hand;
+}
+.removeAll-button: hover {
+    -fx-background-color: #ff0000;
+    -fx-text-fill: #fff;
+    -fx-border-color: transparent;
+}
+
 .remove-button {
     -fx-background-color: transparent;
     -fx-background-image: url("images/remove.png");

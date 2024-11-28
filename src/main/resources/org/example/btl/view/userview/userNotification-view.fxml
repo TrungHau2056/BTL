@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -168,6 +169,9 @@
                   <TableColumn fx:id="titleCol" prefWidth="456.0" text="Notification Title" />
                   <TableColumn fx:id="statusCol" prefWidth="77.0" text="Status" />
               </columns>
+               <effect>
+                  <GaussianBlur radius="0.0" />
+               </effect>
             </TableView>
             <Button layoutX="60.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
                <font>
@@ -199,23 +203,28 @@
                </font>
             </Label>
             <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleMarkAsRead" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
-            <Label layoutX="61.0" layoutY="169.0" text="Total:" textFill="#466bb0">
+            <Label layoutX="61.0" layoutY="141.0" text="Total:" textFill="#466bb0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="totalLabel" layoutX="98.0" layoutY="169.0" text="100">
+            <Label fx:id="totalLabel" layoutX="98.0" layoutY="141.0" text="100">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="209.0" layoutY="169.0" text="Unread:" textFill="#466bb0">
+            <Label layoutX="209.0" layoutY="141.0" text="Unread:" textFill="#466bb0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="unreadLabel" layoutX="260.0" layoutY="170.0" text="13" />
-            <Line endX="159.0" layoutX="150.0" layoutY="191.0" startX="-86.0" stroke="#466bb0d5" />
+            <Label fx:id="unreadLabel" layoutX="260.0" layoutY="142.0" text="13" />
+            <Line endX="159.0" layoutX="145.0" layoutY="163.0" startX="-86.0" stroke="#466bb0d5" />
+            <Button layoutX="59.0" layoutY="170.0" mnemonicParsing="false" styleClass="removeAll-button" text="Remove all">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </children>

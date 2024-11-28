@@ -129,16 +129,11 @@ public class BookInfoController implements Initializable {
     }
 
     public void handleReturn(ActionEvent event) {
-//        userReturnBookController.handleReturnBook(event);
-//        userReturnBookController.setUserInfo();
-//        userReturnBookController.refresh();
         user = borrowService.returnDocument(user, document);
 
         user = notificationService.addNotification(user, "Document Returned Successfully",
                 "You have successfully returned the document titled '" + document.getTitle() + "'.");
-
         userReturnBookController.setUserInfo();
-//            userReturnBookController.refresh();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();

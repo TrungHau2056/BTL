@@ -1,11 +1,9 @@
 package org.example.btl.controller.usercontrollers;
 
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,18 +15,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.example.btl.controller.BookInfoController;
 import org.example.btl.controller.NotificationController;
-import org.example.btl.model.Borrow;
-import org.example.btl.model.Document;
 import org.example.btl.model.Notification;
+import org.example.btl.model.User;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -93,17 +87,12 @@ public class UserNotificationController extends UserBaseController implements In
         tableView.setItems(notifObservableList);
     }
 
-    public void refresh() {
-        tableView.refresh();
-    }
-
     public void handleRemove() {
         Notification selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             user = notificationService.deleteNotification(selectedItem);
 
             setUserInfo();
-            refresh();
         } else {
             alertErr.setContentText("Please choose an item");
             alertErr.show();
@@ -200,6 +189,23 @@ public class UserNotificationController extends UserBaseController implements In
     }
 
     public void handleDeleteAll() {
-        user = notificationService.deleteAllNoti(user);
+        Task<User> deleteAllTask = new Task<>() {
+            @Override
+            protected User call() {
+                return notificationService.deleteAllNoti(user);
+            }
+        };
+
+        deleteAllTask.setOnSucceeded(e -> {
+            user = deleteAllTask.getValue();
+            setUserInfo();
+        });
+
+        deleteAllTask.setOnFailed(e -> {
+            alertErr.setContentText("Error: " + deleteAllTask.getException().getMessage());
+            alertErr.show();
+        });
+
+        new Thread(deleteAllTask).start();
     }
 }

@@ -158,7 +158,7 @@
                         <Image url="@../../images/logo.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="94.0" layoutY="34.0" maxWidth="160.0" text="Tran Trung Hai" textFill="#466bb0bd" wrapText="true">
+                <Label layoutX="94.0" layoutY="34.0" maxWidth="160.0" text="Tran Trung Hai" textFill="#466bb0" wrapText="true">
                     <font>
                         <Font name="System Bold" size="19.0" />
                     </font>

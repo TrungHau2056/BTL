@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import org.example.btl.model.User;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,12 +39,12 @@ public class UserHome_ContactController extends UserBaseController implements In
 
     }
 
-    public void switchToHome(ActionEvent event) {
-
+    public void switchToHome(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userview/userHome-view.fxml");
     }
 
-    public void switchToReview(ActionEvent event) {
-
+    public void switchToReview(ActionEvent event) throws IOException {
+        switchScene(event, "/org/example/btl/view/userview/userHome_Review-view.fxml");
     }
 
 }

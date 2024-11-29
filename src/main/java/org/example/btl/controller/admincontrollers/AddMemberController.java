@@ -31,7 +31,7 @@ public class AddMemberController extends AdminBaseController {
 
     }
 
-    public void handleAddMember (ActionEvent event) throws IOException {
+    public void handleAddMember () {
         String name = nameText.getText();
         String email = emailText.getText();
         String username = usernameText.getText();

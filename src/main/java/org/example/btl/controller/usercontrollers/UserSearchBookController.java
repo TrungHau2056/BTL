@@ -136,10 +136,6 @@ public class UserSearchBookController extends UserBaseController implements Init
         new Thread(loadDocTask).start();
     }
 
-    public void refresh() {
-        tableView.refresh();
-    }
-
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {

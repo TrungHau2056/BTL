@@ -35,7 +35,21 @@ public class LoginController {
     @FXML
     private PasswordField passwordText;
     @FXML
+    private TextField showPassText;
+    @FXML
     private ToggleGroup role;
+
+    public void handleShowHiddenPass() {
+        if (passwordText.isVisible()) {
+            showPassText.setText(passwordText.getText());
+            passwordText.setVisible(false);
+            showPassText.setVisible(true);
+        } else {
+            passwordText.setText(showPassText.getText());
+            showPassText.setVisible(false);
+            passwordText.setVisible(true);
+        }
+    }
 
     public void switchToSignUp(ActionEvent event) throws IOException {
         if (isProcessing) {
@@ -52,7 +66,7 @@ public class LoginController {
         stage.show();
     }
 
-    public void handleLogin(ActionEvent event) throws IOException {
+    public void handleLogin(ActionEvent event) {
         if (isProcessing) {
             alertErr.setContentText("Please wait");
             alertErr.show();
@@ -90,7 +104,6 @@ public class LoginController {
                         alertErr.show();
                         isProcessing = false;
                     } else {
-                        //change to user scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
                         try {
                             root = loader.load();
@@ -119,7 +132,7 @@ public class LoginController {
                 adminService = new AdminService();
                 Task<Admin> adminLoginTask = new Task<>() {
                     @Override
-                    protected Admin call() throws Exception {
+                    protected Admin call() {
                         return adminService.findByPassAndUsername(username, password);
                     }
                 };
@@ -131,7 +144,6 @@ public class LoginController {
                         alertErr.show();
                         isProcessing = false;
                     } else {
-                        //switch to admin scene
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
                         try {
                             root = loader.load();

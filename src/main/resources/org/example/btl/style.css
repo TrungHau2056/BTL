@@ -146,4 +146,10 @@
     -fx-background-color: #D3D3D3;
 }
 
+.eye-button{
+    -fx-background-color: transparent;
+    -fx-background-image: url("images/eye.png");
+    -fx-background-size: 100% 100%;
+    -fx-cursor: hand;
+}
 

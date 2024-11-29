@@ -40,6 +40,7 @@ public abstract class UserBaseController {
     private Scene scene;
     private Parent root;
 
+
     @FXML
     protected ImageView avatar;
     @FXML

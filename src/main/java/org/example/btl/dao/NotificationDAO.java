@@ -1,6 +1,7 @@
 package org.example.btl.dao;
 
 import jakarta.persistence.Query;
+import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
 import org.example.btl.model.Notification;
 import org.example.btl.model.User;
@@ -82,5 +83,17 @@ public class NotificationDAO {
         session.close();
 
         return user;
+    }
+
+    public List<Notification> getUnreadNoti(User user) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Notification WHERE user = :user AND isRead = false");
+        query.setParameter("user", user);
+        List<Notification> notifications = query.getResultList();
+
+        session.close();
+        return notifications;
     }
 }

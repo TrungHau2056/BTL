@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserNotificationController extends UserBaseController implements Initializable {
@@ -49,6 +50,8 @@ public class UserNotificationController extends UserBaseController implements In
     private TableColumn<Notification, String> statusCol;
 
     private ObservableList<Notification> notifObservableList;
+
+    private boolean isAllView = true;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -152,8 +155,36 @@ public class UserNotificationController extends UserBaseController implements In
         new Thread(markAsReadTask).start();
     }
 
-    public void switchToUnreadScene(ActionEvent event) {
+    public void switchToUnread() {
+        if (isAllView) {
+            Task<List<Notification>> loadUnreadNotiTask = new Task<>() {
+                @Override
+                protected List<Notification> call() {
+                    return notificationService.getUnreadNoti(user);
+                }
+            };
 
+            loadUnreadNotiTask.setOnSucceeded(e -> {
+                notifObservableList = FXCollections.observableArrayList(loadUnreadNotiTask.getValue());
+                tableView.setItems(notifObservableList);
+                isAllView = false;
+            });
+
+            loadUnreadNotiTask.setOnFailed(e -> {
+                alertErr.setContentText("Error: " + loadUnreadNotiTask.getException().getMessage());
+                alertErr.show();
+            });
+
+            new Thread(loadUnreadNotiTask).start();
+        }
+    }
+
+    public void switchToAll() {
+        if (!isAllView) {
+            notifObservableList = FXCollections.observableArrayList(user.getNotifications());
+            tableView.setItems(notifObservableList);
+            isAllView = true;
+        }
     }
 
     public void handleTableClick() {
@@ -166,5 +197,9 @@ public class UserNotificationController extends UserBaseController implements In
                 }
             }
         });
+    }
+
+    public void handleDeleteAll() {
+        user = notificationService.deleteAllNoti(user);
     }
 }

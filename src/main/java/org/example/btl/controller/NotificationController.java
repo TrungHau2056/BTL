@@ -78,4 +78,8 @@ public class NotificationController {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    public void handleDeleteAll() {
+        user = notificationService.deleteAllNoti(user);
+    }
 }

@@ -46,4 +46,8 @@ public class NotificationService {
         long months = days / 31;
         return months + (months == 1 ? " month ago" : " months ago");
     }
+
+    public User deleteAllNoti(User user) {
+        return notificationDAO.deleteAllNoti(user);
+    }
 }

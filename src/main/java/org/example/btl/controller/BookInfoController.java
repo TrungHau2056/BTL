@@ -78,7 +78,7 @@ public class BookInfoController implements Initializable {
     }
 
 
-    public void handleBorrow(ActionEvent event) {
+    public void handleBorrow() {
         String validateMess = borrowService.validateBorrow(user, document);
         if (validateMess != null) {
             alert.setContentText(validateMess);

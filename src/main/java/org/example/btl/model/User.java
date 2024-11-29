@@ -41,4 +41,8 @@ public class User extends Account {
         notifications.add(notification);
         notification.setUser(this);
     }
+
+    public void setNotifications(Set<Notification> notifications) {
+        this.notifications = notifications;
+    }
 }

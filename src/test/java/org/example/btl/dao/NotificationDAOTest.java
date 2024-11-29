@@ -1,26 +1,21 @@
 package org.example.btl.dao;
 
-import org.example.btl.model.Admin;
 import org.example.btl.model.HibernateUtils;
 import org.example.btl.model.Notification;
 import org.example.btl.model.User;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import org.mockito.Mockito;
 
 import java.sql.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NotificationDAOTest {
     private static SessionFactory sessionFactory;
-    private Session session;
 
     private NotificationDAO notificationDAO = new NotificationDAO();
     private UserDAO userDAO = new UserDAO();
@@ -52,5 +47,21 @@ class NotificationDAOTest {
         user = notificationDAO.deleteNotification(notification);
 
         assertEquals(0, user.getNotifications().size());
+    }
+
+    @Test
+    void deleteAllNotiTest() {
+        User user = new User("namfde", "@mjfd", "goku2dd34rt",
+                "0123rethfg", Date.valueOf("2005-05-05"), "Male");
+        userDAO.save(user);
+
+        user = notificationDAO.saveWithUser(new Notification("test", "testMess"), user);
+        user = notificationDAO.saveWithUser(new Notification("test1", "testMess1"), user);
+        user = notificationDAO.saveWithUser(new Notification("te2st", "tes2tMess"), user);
+
+        user = notificationDAO.deleteAllNoti(user);
+
+        assertEquals(0, user.getNotifications().size());
+        assertEquals(0, notificationDAO.findAll().size());
     }
 }

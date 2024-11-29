@@ -60,7 +60,7 @@ public class SignUpController {
 
         Task<String> signUpTask = new Task<>() {
             @Override
-            protected String call() throws Exception {
+            protected String call() {
                 String validationMess = adminService.validateRegistration(name, email, username, password, confirmedPassword, gender, birthday);
                 if (validationMess != null) {
                     return validationMess;

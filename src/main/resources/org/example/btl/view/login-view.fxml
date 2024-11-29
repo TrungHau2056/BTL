@@ -110,6 +110,11 @@
                   <Font size="17.0" />
                </font>
             </RadioButton>
+            <TextField fx:id="showPassText" layoutX="133.0" layoutY="229.0" prefHeight="42.0" prefWidth="295.0" promptText="Password" styleClass="login-inputs" visible="false">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
          </children>
          <HBox.margin>
             <Insets />

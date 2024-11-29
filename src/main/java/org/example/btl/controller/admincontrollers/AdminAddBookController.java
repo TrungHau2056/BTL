@@ -175,5 +175,4 @@ public class AdminAddBookController extends AdminBaseController {
             alertInfo.show();
         }
     }
-
 }

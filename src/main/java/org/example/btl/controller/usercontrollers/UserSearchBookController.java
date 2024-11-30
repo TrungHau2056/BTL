@@ -77,8 +77,6 @@ public class UserSearchBookController extends UserBaseController implements Init
                     setTooltip(null);
                 } else {
                     setText(item);
-
-                    // Thêm Tooltip để hiển thị nội dung đầy đủ
                     Tooltip tooltip = new Tooltip(item);
                     setTooltip(tooltip);
                 }

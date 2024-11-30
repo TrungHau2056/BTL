@@ -46,4 +46,9 @@ public class Genre {
         documents.add(document);
         document.getGenres().add(this);
     }
+
+    public void deleteDocument(Document document) {
+        documents.remove(document);
+        document.getGenres().remove(this);
+    }
 }

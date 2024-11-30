@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -76,11 +77,6 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="521.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="29.0">
-                    <image>
-                        <Image url="@../../images/userIcon - Copy.png" />
-                    </image>
-                </ImageView>
                 <Label layoutX="37.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
                     <font>
                         <Font name="System Italic" size="14.0" />
@@ -115,6 +111,15 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <StackPane layoutX="101.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                      <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../../images/userIcon - Copy.png" />
+                          </image>
+                      </ImageView>
+               </children>
+            </StackPane>
             </children>
             <effect>
                 <DropShadow height="13.98" width="28.02">
@@ -168,6 +173,9 @@
                   <TableColumn fx:id="titleCol" prefWidth="456.0" text="Notification Title" />
                   <TableColumn fx:id="statusCol" prefWidth="77.0" text="Status" />
               </columns>
+               <effect>
+                  <GaussianBlur radius="0.0" />
+               </effect>
             </TableView>
             <Button layoutX="60.0" layoutY="615.0" mnemonicParsing="false" onAction="#handleRemove" prefHeight="38.0" prefWidth="76.0" styleClass="search-button" text="Remove" textFill="WHITE">
                <font>
@@ -181,12 +189,12 @@
             </Button>
             <ToggleButtonGroup layoutX="699.0" layoutY="164.0" selectionType="SINGLE" style="-fx-border-color: #466bb0; -fx-border-radius: 20px;">
                <toggles>
-                  <ToggleButton fx:id="returnButton" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="All">
+                  <ToggleButton fx:id="returnButton" onAction="#switchToAll" prefHeight="25.0" prefWidth="57.0" selected="true" stylesheets="@../../ToggleButton.css" text="All">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </ToggleButton>
-                  <ToggleButton onAction="#switchToUnreadScene" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Unread">
+                  <ToggleButton onAction="#switchToUnread" prefHeight="31.0" prefWidth="59.0" stylesheets="@../../ToggleButton.css" text="Unread">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -199,23 +207,28 @@
                </font>
             </Label>
             <Button layoutX="631.0" layoutY="614.0" mnemonicParsing="false" onAction="#handleMarkAsRead" prefHeight="28.0" prefWidth="28.0" styleClass="unread-button" />
-            <Label layoutX="61.0" layoutY="169.0" text="Total:" textFill="#466bb0">
+            <Label layoutX="61.0" layoutY="141.0" text="Total:" textFill="#466bb0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="totalLabel" layoutX="98.0" layoutY="169.0" text="100">
+            <Label fx:id="totalLabel" layoutX="98.0" layoutY="141.0">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="209.0" layoutY="169.0" text="Unread:" textFill="#466bb0">
+            <Label layoutX="209.0" layoutY="141.0" text="Unread:" textFill="#466bb0">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="unreadLabel" layoutX="260.0" layoutY="170.0" text="13" />
-            <Line endX="159.0" layoutX="150.0" layoutY="191.0" startX="-86.0" stroke="#466bb0d5" />
+            <Label fx:id="unreadLabel" layoutX="260.0" layoutY="142.0" />
+            <Line endX="159.0" layoutX="145.0" layoutY="163.0" startX="-86.0" stroke="#466bb0d5" />
+            <Button layoutX="59.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleDeleteAll" styleClass="removeAll-button" text="Remove all">
+               <font>
+                  <Font name="System Bold" size="11.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </children>

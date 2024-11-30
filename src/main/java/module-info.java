@@ -21,6 +21,8 @@ module org.example.btl {
     requires com.google.api.client;
     requires com.google.api.client.json.jackson2;
     requires google.api.client;
+    requires org.apache.httpcomponents.httpclient;
+    requires org.checkerframework.checker.qual;
 
     opens org.example.btl to javafx.fxml, org.hibernate.orm.core;
     opens org.example.btl.model to org.hibernate.orm.core, javafx.base;

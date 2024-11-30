@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminUpdateBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminUpdateBookController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -102,7 +102,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="46.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToUpdateBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: ffb888;" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -138,7 +138,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddedDocHistory" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -234,7 +234,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="396.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleUpdateTitle" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
+            <Button fx:id="updateTitleBtn" layoutX="396.0" layoutY="130.0" mnemonicParsing="false" onAction="#handleUpdateTitle" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
@@ -282,22 +282,22 @@
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="340.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleUpdateGenre" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add">
+            <Button fx:id="genreAddBtn" disable="true" layoutX="340.0" layoutY="179.0" mnemonicParsing="false" onAction="#genreAdd" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="591.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleUpdateDescription" prefHeight="27.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
+            <Button fx:id="updateDescriptionBtn" layoutX="591.0" layoutY="354.0" mnemonicParsing="false" onAction="#handleUpdateDescription" prefHeight="27.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="340.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleUpdateAuthor" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add">
+            <Button fx:id="authorAddBtn" disable="true" layoutX="340.0" layoutY="246.0" mnemonicParsing="false" onAction="#authorAdd" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Add">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="299.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleUpdatePublisher" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
+            <Button fx:id="updatePublisherBtn" layoutX="299.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleUpdatePublisher" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
@@ -317,7 +317,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Button layoutX="658.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleUpdateImageLink" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
+            <Button fx:id="updateImagelinkBtn" layoutX="658.0" layoutY="519.0" mnemonicParsing="false" onAction="#handleUpdateImageLink" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
@@ -327,28 +327,40 @@
                   <Font size="14.0" />
                </font>
             </Text>
-            <Label fx:id="warnLabel" layoutX="232.0" layoutY="570.0" text="*This document was added by ISBN. You can only update its quantity" textFill="#c91414" />
-            <Text fill="#466bb0" layoutX="164.0" layoutY="298.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The genre you enter will be displayed here:" wrappingWidth="282.4">
+            <Label fx:id="warnLabel" layoutX="232.0" layoutY="570.0" text="*This document was added by ISBN. You can only update its quantity" textFill="#c91414" visible="false" />
+            <Text fill="#466bb0" layoutX="164.0" layoutY="297.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The authors you enter will be displayed here:" wrappingWidth="282.4">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <TextField fx:id="authorList" disable="true" layoutX="162.0" layoutY="244.0" prefHeight="30.0" prefWidth="162.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="authorsText" disable="true" layoutX="162.0" layoutY="244.0" prefHeight="30.0" prefWidth="162.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <TextField fx:id="genreList" disable="true" layoutX="162.0" layoutY="178.0" prefHeight="30.0" prefWidth="162.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+            <TextField fx:id="genresText" disable="true" layoutX="162.0" layoutY="178.0" prefHeight="30.0" prefWidth="162.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                <font>
                   <Font size="13.0" />
                </font>
             </TextField>
-            <Button layoutX="402.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleUpdateGenre" prefHeight="27.0" prefWidth="59.0" stylesheets="@../../ButtonAdd-view.css" text="Delete">
+            <Button fx:id="genreDeleteBtn" disable="true" layoutX="402.0" layoutY="179.0" mnemonicParsing="false" onAction="#genreDelete" prefHeight="27.0" prefWidth="59.0" stylesheets="@../../ButtonAdd-view.css" text="Delete">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="402.0" layoutY="246.0" mnemonicParsing="false" onAction="#handleUpdateAuthor" prefHeight="27.0" prefWidth="59.0" stylesheets="@../../ButtonAdd-view.css" text="Delete">
+            <Button fx:id="authorDeleteBtn" disable="true" layoutX="402.0" layoutY="246.0" mnemonicParsing="false" onAction="#authorDelete" prefHeight="27.0" prefWidth="59.0" stylesheets="@../../ButtonAdd-view.css" text="Delete">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="genreLabel" layoutX="446.0" layoutY="218.0" prefHeight="18.0" prefWidth="262.0" />
+            <Label fx:id="authorLabel" layoutX="459.0" layoutY="283.0" prefHeight="18.0" prefWidth="262.0" />
+            <Button fx:id="updateGenreBtn" layoutX="473.0" layoutY="179.0" mnemonicParsing="false" onAction="#handleUpdateGenre" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="updateAuthorBtn" layoutX="473.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleUpdateAuthor" prefHeight="26.0" prefWidth="50.0" stylesheets="@../../ButtonAdd-view.css" text="Edit">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

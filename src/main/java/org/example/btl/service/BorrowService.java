@@ -36,7 +36,6 @@ public class BorrowService {
         return borrowDAO.borrowDocument(user, document);
     }
 
-
     public User returnDocument(User user, Document document) {
         return borrowDAO.returnDocument(user, document);
     }

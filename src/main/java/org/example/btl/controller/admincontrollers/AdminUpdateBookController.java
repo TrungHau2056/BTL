@@ -1,9 +1,10 @@
 package org.example.btl.controller.admincontrollers;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
@@ -20,12 +21,22 @@ public class AdminUpdateBookController extends AdminBaseController {
     private TextField titleText;
     @FXML
     private TextField quantityText;
+
     @FXML
-    private ListView<String> genreList;
+    private TextField genresText;
     @FXML
-    private ListView<String> authorList;
+    private Label genreLabel;
+    List<String> genreNames = new ArrayList<>();
+
     @FXML
     private TextArea descriptionText;
+
+    @FXML
+    private TextField authorsText;
+    @FXML
+    private Label authorLabel;
+    private List<String> authorNames = new ArrayList<>();
+
     @FXML
     private TextField publisherText;
     @FXML
@@ -35,7 +46,26 @@ public class AdminUpdateBookController extends AdminBaseController {
     private Label warnLabel;
     @FXML
     private Button updateButton;
-
+    @FXML
+    private Button updateTitleBtn;
+    @FXML
+    private Button updateGenreBtn;
+    @FXML
+    private Button updateAuthorBtn;
+    @FXML
+    private Button updateDescriptionBtn;
+    @FXML
+    private Button updatePublisherBtn;
+    @FXML
+    private Button updateImagelinkBtn;
+    @FXML
+    private Button authorAddBtn;
+    @FXML
+    private Button authorDeleteBtn;
+    @FXML
+    private Button genreAddBtn;
+    @FXML
+    private Button genreDeleteBtn;
 
     public Document getDocument() {
         return document;
@@ -56,28 +86,45 @@ public class AdminUpdateBookController extends AdminBaseController {
             publisherText.setText(document.getPublisher().getName());
         }
 
-        ObservableList<String> authorObservableList = FXCollections.observableArrayList();
         for (Author author : document.getAuthors()) {
-            authorObservableList.add(author.getName());
+            authorNames.add(author.getName());
         }
-        authorList.setItems(authorObservableList);
+        String authors = "";
+        for (int i = 0; i < authorNames.size() - 1; i++) {
+            authors += authorNames.get(i);
+            authors += ", ";
+        }
+        authors += authorNames.getLast();
+        authors += ".";
+        authorLabel.setText(authors);
 
-        ObservableList<String> genreObservableList = FXCollections.observableArrayList();
         for (Genre genre : document.getGenres()) {
-            genreObservableList.add(genre.getName());
+            genreNames.add(genre.getName());
         }
-        genreList.setItems(genreObservableList);
+        String genres = "";
+        for (int i = 0; i < genreNames.size() - 1; i++) {
+            genres += genreNames.get(i);
+            genres += ", ";
+        }
+        genres += genreNames.getLast();
+        genres += ".";
+        genreLabel.setText(genres);
 
-        if (!document.isAddedByISBN()) {
-            warnLabel.setVisible(false);
+
+        if (document.isAddedByISBN()) {
+            warnLabel.setVisible(true);
+            updateTitleBtn.setDisable(true);
+            updateGenreBtn.setDisable(true);
+            updateAuthorBtn.setDisable(true);
+            updateDescriptionBtn.setDisable(true);
+            updatePublisherBtn.setDisable(true);
+            updateImagelinkBtn.setDisable(true);
         }
     }
 
     public void handleUpdateTitle() {
-        if (!document.isAddedByISBN()) {
-            titleText.setDisable(false);
-            updateButton.setDisable(false);
-        }
+        titleText.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     public void handleUpdateQuantity() {
@@ -86,76 +133,191 @@ public class AdminUpdateBookController extends AdminBaseController {
     }
 
     public void handleUpdateGenre() {
-        if (!document.isAddedByISBN()) {
-            genreList.setDisable(false);
-            updateButton.setDisable(false);
-        }
+        genresText.setDisable(false);
+        genreAddBtn.setDisable(false);
+        genreDeleteBtn.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     public void handleUpdateAuthor() {
-        if (!document.isAddedByISBN()) {
-            authorList.setDisable(false);
-            updateButton.setDisable(false);
-        }
+        authorsText.setDisable(false);
+        authorAddBtn.setDisable(false);
+        authorDeleteBtn.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     public void handleUpdateDescription() {
-        if (!document.isAddedByISBN()) {
-            descriptionText.setDisable(false);
-            updateButton.setDisable(false);
-        }
+        descriptionText.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     public void handleUpdatePublisher() {
-        if (!document.isAddedByISBN()) {
-            publisherText.setDisable(false);
-            updateButton.setDisable(false);
-        }
+        publisherText.setDisable(false);
+        updateButton.setDisable(false);
     }
 
     public void handleUpdateImageLink() {
-        if (!document.isAddedByISBN()) {
-            imageLinkText.setDisable(false);
-            updateButton.setDisable(false);
+        imageLinkText.setDisable(false);
+        updateButton.setDisable(false);
+    }
+
+    public void genreAdd() {
+        String genre = genresText.getText();
+
+        if (genreNames.contains(genre)) {
+            alertErr.setContentText("Genre already added.");
+            alertErr.show();
+        } else if (Objects.equals(genre, "")) {
+            alertErr.setContentText("Please enter genre.");
+            alertErr.show();
+        } else {
+            genreNames.add(genre);
+            String genres = "";
+            for (int i = 0; i < genreNames.size() - 1; i++) {
+                genres += genreNames.get(i);
+                genres += ", ";
+            }
+            genres += genreNames.getLast();
+            genres += ".";
+
+            genreLabel.setText(genres);
+            genresText.setText("");
         }
     }
 
-    public void handleUpdate() {
-        String title = titleText.getText();
-        String publisherName = publisherText.getText();
-        String description = Objects.equals(descriptionText.getText(), "") ? "Not available" : descriptionText.getText();
-        String imageLink = imageLinkText.getText();
-        String quantityStr = quantityText.getText();
+    public void genreDelete() {
+        if (genreNames.isEmpty()) {
+            return;
+        }
 
-        if (!Objects.equals(imageLink, "")) {
+        genreNames.removeLast();
+        if (genreNames.isEmpty()) {
+            genreLabel.setText("");
+            return;
+        }
+
+        String genres = "";
+        for (int i = 0; i < genreNames.size() - 1; i++) {
+            genres += genreNames.get(i);
+            genres += ", ";
+        }
+        genres += genreNames.getLast();
+        genres += ".";
+
+        genreLabel.setText(genres);
+    }
+
+    public void authorAdd() {
+        String author = authorsText.getText();
+
+        if (authorNames.contains(author)) {
+            alertErr.setContentText("Author already added.");
+            alertErr.show();
+        } else if (Objects.equals(author, "")) {
+            alertErr.setContentText("Please enter author.");
+            alertErr.show();
+        } else {
+            authorNames.add(author);
+            String authors = "";
+            for (int i = 0; i < authorNames.size() - 1; i++) {
+                authors += authorNames.get(i);
+                authors += ", ";
+            }
+            authors += authorNames.getLast();
+            authors += ".";
+
+            authorLabel.setText(authors);
+            authorsText.setText("");
+        }
+    }
+
+    public void authorDelete() {
+        if (authorNames.isEmpty()) {
+            return;
+        }
+
+        authorNames.removeLast();
+        if (authorNames.isEmpty()) {
+            authorLabel.setText("");
+            return;
+        }
+
+        String authors = "";
+        for (int i = 0; i < authorNames.size() - 1; i++) {
+            authors += authorNames.get(i);
+            authors += ", ";
+        }
+        authors += authorNames.getLast();
+        authors += ".";
+
+        authorLabel.setText(authors);
+    }
+
+    public void handleUpdate() {
+        if (document.isAddedByISBN()) {
+            String quantityStr = quantityText.getText();
+
             try {
-                Image image = new Image(imageLink);
-            } catch (Exception e) {
-                alertErr.setContentText("Invalid link! Please try again");
+                int quantity = Integer.parseInt(quantityStr);
+            } catch (NumberFormatException e) {
+                alertErr.setContentText("Quantity field must be a number!");
                 alertErr.show();
                 return;
             }
-        } else {
-            imageLink = null;
-        }
 
-        List<String> authorNames = new ArrayList<>();
-        List<String> genreNames = new ArrayList<>();
-
-        String validateMess = documentService.validateAddDoc(title, authorNames, genreNames, quantityStr, description);
-        if (validateMess != null) {
-            alertErr.setContentText(validateMess);
-            alertErr.show();
-        } else {
-            document.setTitle(title);
-            document.setDescription(description);
-            document.setImageLink(imageLink);
             document.setQuantity(Integer.parseInt(quantityStr));
-
-            documentService.updateDocument(document, authorNames, publisherName, genreNames);
+            documentService.update(document);
 
             alertInfo.setContentText("Document successfully updated!");
             alertInfo.show();
+        } else {
+            String title = titleText.getText();
+            String publisherName = publisherText.getText();
+            String description = Objects.equals(descriptionText.getText(), "") ? "Not available" : descriptionText.getText();
+            String imageLink = imageLinkText.getText();
+            String quantityStr = quantityText.getText();
+
+            if (imageLink != null && !Objects.equals(imageLink, "")) {
+                try {
+                    Image image = new Image(imageLink);
+                } catch (Exception e) {
+                    alertErr.setContentText("Invalid link! Please try again");
+                    alertErr.show();
+                    return;
+                }
+            } else {
+                imageLink = null;
+            }
+
+            String validateMess = documentService.validateUpdateDoc(title, authorNames, genreNames, quantityStr, description);
+            if (validateMess != null) {
+                alertErr.setContentText(validateMess);
+                alertErr.show();
+            } else {
+                document.setTitle(title);
+                document.setDescription(description);
+                document.setImageLink(imageLink);
+                document.setQuantity(Integer.parseInt(quantityStr));
+
+                document = documentService.updateDocument(document, authorNames, publisherName, genreNames);
+
+                alertInfo.setContentText("Document successfully updated!");
+                alertInfo.show();
+
+                titleText.setDisable(true);
+                quantityText.setDisable(true);
+                genresText.setDisable(true);
+                descriptionText.setDisable(true);
+                authorsText.setDisable(true);
+                authorLabel.setDisable(true);
+                publisherText.setDisable(true);
+                imageLinkText.setDisable(true);
+                updateButton.setDisable(true);
+                authorAddBtn.setDisable(true);
+                authorDeleteBtn.setDisable(true);
+                genreAddBtn.setDisable(true);
+                genreDeleteBtn.setDisable(true);
+            }
         }
     }
 }

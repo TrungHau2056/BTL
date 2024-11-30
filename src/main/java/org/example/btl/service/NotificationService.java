@@ -6,6 +6,7 @@ import org.example.btl.model.User;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class NotificationService {
     private NotificationDAO notificationDAO = new NotificationDAO();
@@ -45,5 +46,13 @@ public class NotificationService {
 
         long months = days / 31;
         return months + (months == 1 ? " month ago" : " months ago");
+    }
+
+    public User deleteAllNoti(User user) {
+        return notificationDAO.deleteAllNoti(user);
+    }
+
+    public List<Notification> getUnreadNoti(User user) {
+        return notificationDAO.getUnreadNoti(user);
     }
 }

@@ -3,11 +3,13 @@ package org.example.btl.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
 import org.example.btl.dao.BorrowDAO;
@@ -23,7 +25,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
-public class BookInfoController implements Initializable {
+public class BookInfoController {
     private Document document;
     private User user;
 
@@ -70,32 +72,6 @@ public class BookInfoController implements Initializable {
         this.userReturnBookController = userReturnBookController;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-
-    }
-
-
-    public void handleBorrow(ActionEvent event) {
-        String validateMess = borrowService.validateBorrow(user, document);
-        if (validateMess != null) {
-            alert.setContentText(validateMess);
-            alert.show();
-        } else {
-            user = borrowService.borrowDocument(user, document);
-
-            user = notificationService.addNotification(user, "Document Borrowed Successfully",
-                    "You have successfully borrowed the document titled '" + document.getTitle() + "'.");
-
-            userSearchBookController.setUser(user);
-            userSearchBookController.setUserInfo();
-            userSearchBookController.refresh();
-
-            alert.setContentText("Document borrowed successfully! Thank you for using our library.");
-            alert.show();
-        }
-    }
-
     public void setBookInfo() {
         String authors = document.getAuthors().stream()
                 .map(Author::getName)
@@ -126,9 +102,37 @@ public class BookInfoController implements Initializable {
         }
     }
 
+    public void handleBorrow() {
+        String validateMess = borrowService.validateBorrow(user, document);
+        if (validateMess != null) {
+            alert.setContentText(validateMess);
+            alert.show();
+        } else {
+            user = borrowService.borrowDocument(user, document);
+
+            user = notificationService.addNotification(user, "Document Borrowed Successfully",
+                    "You have successfully borrowed the document titled '" + document.getTitle() + "'.");
+
+            userSearchBookController.setUser(user);
+            userSearchBookController.setUserInfo();
+
+            alert.setContentText("Document borrowed successfully! Thank you for using our library.");
+            alert.show();
+        }
+    }
+
     public void handleReturn(ActionEvent event) {
-        userReturnBookController.handleReturnBook(event);
+        user = borrowService.returnDocument(user, document);
+
+        user = notificationService.addNotification(user, "Document Returned Successfully",
+                "You have successfully returned the document titled '" + document.getTitle() + "'.");
+        userReturnBookController.setUser(user);
         userReturnBookController.setUserInfo();
-        userReturnBookController.refresh();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+
+        alert.setContentText("Return Successfully!");
+        alert.show();
     }
 }

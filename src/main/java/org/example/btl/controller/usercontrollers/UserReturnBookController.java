@@ -99,7 +99,7 @@ public class UserReturnBookController extends UserBaseController implements Init
 
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
-            protected List<Document> call() throws Exception {
+            protected List<Document> call() {
                 return documentService.findDocCurrentlyBorrow(user);
             }
         };
@@ -110,16 +110,11 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            System.out.println("Failed");
             alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
             alertErr.show();
         });
 
         new Thread(loadDocTask).start();
-    }
-
-    public void refresh() {
-        tableView.refresh();
     }
 
     public void handleSearchBook(ActionEvent event) {
@@ -170,7 +165,7 @@ public class UserReturnBookController extends UserBaseController implements Init
         }
     }
 
-    public void handleReturnBook(ActionEvent event) {
+    public void handleReturnBook() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             user = borrowService.returnDocument(user, selectedItem);
@@ -179,7 +174,7 @@ public class UserReturnBookController extends UserBaseController implements Init
                     "You have successfully returned the document titled '" + selectedItem.getTitle() + "'.");
 
             setUserInfo();
-            refresh();
+
             alertInfo.setContentText("Return Successfully!");
             alertInfo.show();
         } else {
@@ -188,7 +183,7 @@ public class UserReturnBookController extends UserBaseController implements Init
         }
     }
 
-    public void handleShowBookInfo(ActionEvent event) {
+    public void handleShowBookInfo() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
@@ -196,8 +191,6 @@ public class UserReturnBookController extends UserBaseController implements Init
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else {
-            System.out.println("No item selected.");
         }
     }
 

@@ -16,6 +16,10 @@ public class DocumentService {
     private PublisherDAO publisherDAO = new PublisherDAO();
     private BorrowDAO borrowDAO = new BorrowDAO();
 
+    public void update(Document document) {
+        documentDAO.update(document);
+    }
+
     public void deleteDocument(Document document) {
         documentDAO.deleteDocument(document);
     }
@@ -161,10 +165,10 @@ public class DocumentService {
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin, authorNames, publisherName, genreNames);
     }
 
-    public void updateDocument(Document document,
+    public Document updateDocument(Document document,
                                List<String> authorNames, String publisherName,
                                List<String> genreNames) {
-        documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
+        return documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
     }
 
     public String validateAddDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
@@ -200,6 +204,37 @@ public class DocumentService {
         return null;
     }
 
+    public String validateUpdateDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
+        if (Objects.equals(title, "")
+                || Objects.equals(quantityStr, "")) {
+            return "Please enter all the information!";
+        }
+
+        if (authorNames.isEmpty() || genreNames.isEmpty()) {
+            return "Please enter all the information!";
+        }
+
+        for (String authorName : authorNames) {
+            if (Objects.equals(authorName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
+        for (String genreName : genreNames) {
+            if (Objects.equals(genreName, "")) {
+                return "Please enter all the information!";
+            }
+        }
+
+        try {
+            int quantity = Integer.parseInt(quantityStr);
+        } catch (NumberFormatException e) {
+            return "Quantity field must be a number!";
+        }
+
+        return null;
+    }
+
     public boolean isCurrentlyBorrow(Document document) {
         for (Borrow borrow : document.getBorrows()) {
             if (borrow.getReturnDate() == null) {
@@ -207,5 +242,9 @@ public class DocumentService {
             }
         }
         return false;
+    }
+
+    public List<Document> findDocAddedByAdmin(Admin admin) {
+        return documentDAO.findDocAddedByAdmin(admin);
     }
 }

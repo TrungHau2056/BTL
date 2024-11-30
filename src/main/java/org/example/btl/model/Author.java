@@ -46,4 +46,9 @@ public class Author {
         documents.add(document);
         document.getAuthors().add(this);
     }
+
+    public void deleteDocument(Document document) {
+        documents.remove(document);
+        document.getAuthors().remove(this);
+    }
 }

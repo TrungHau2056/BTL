@@ -77,11 +77,6 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-            <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="521.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="115.0" AnchorPane.topAnchor="29.0">
-               <image>
-                  <Image url="@../../images/userIcon - Copy.png" />
-               </image>
-            </ImageView>
             <Label layoutX="37.0" layoutY="284.0" maxWidth="300.0" text="Người đọc sách sống cả nghìn cuộc đời trước khi chết, còn kẻ không đọc chỉ sống một cuộc đời." textFill="WHITE" wrapText="true">
                <font>
                   <Font name="System Italic" size="14.0" />
@@ -116,6 +111,15 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
+            <StackPane layoutX="101.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                  <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/userIcon - Copy.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </StackPane>
             </children>
             <effect>
                 <DropShadow height="13.98" width="28.02">
@@ -210,6 +214,7 @@
                </cursor>
             </Button>
             <Button layoutX="807.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleChangeAvatar" styleClass="change-user-info" />
+            <Button layoutX="312.0" layoutY="344.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="20.0" styleClass="eye-button" />
             </children>
         </AnchorPane>
     </children>

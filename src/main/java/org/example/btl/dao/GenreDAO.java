@@ -14,9 +14,7 @@ public class GenreDAO {
     public void save(Genre item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-
         session.persist(item);
-
         session.getTransaction().commit();
         session.close();
     }

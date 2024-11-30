@@ -66,11 +66,6 @@
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font></Label>
-                <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../../images/userIcon - Copy.png" />
-                    </image>
-                </ImageView>
                 <Label layoutX="37.0" layoutY="225.0" text="Welcome back to the Library System" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="19.0" />
@@ -115,6 +110,15 @@
                </font>
             </Label>
             <Label layoutX="34.0" layoutY="669.0" text="Version: 12.10.2005" textFill="#e4d868" />
+            <StackPane layoutX="101.0" layoutY="25.0" prefHeight="150.0" prefWidth="200.0">
+               <children>
+                      <ImageView fx:id="avatar" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@../../images/userIcon - Copy.png" />
+                          </image>
+                      </ImageView>
+               </children>
+            </StackPane>
             </children>
             <effect>
                 <DropShadow height="13.98" width="28.02">

@@ -22,14 +22,14 @@ public class Document {
     @Temporal(TemporalType.DATE)
     private Date addedDate;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "document-author",
             joinColumns = {@JoinColumn(name = "document_id")},
             inverseJoinColumns = {@JoinColumn(name = "author_id")}
     )
     private Set<Author> authors = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "document-genre",
             joinColumns = {@JoinColumn(name = "document_id")},
             inverseJoinColumns = {@JoinColumn(name = "genre_id")}
@@ -40,7 +40,7 @@ public class Document {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
@@ -101,6 +101,10 @@ public class Document {
 
     public void setAddedByISBN(boolean addedByISBN) {
         isAddedByISBN = addedByISBN;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
     }
 
     public Set<Author> getAuthors() {

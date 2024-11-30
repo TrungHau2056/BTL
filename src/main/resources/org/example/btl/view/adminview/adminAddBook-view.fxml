@@ -87,7 +87,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="120.0" layoutY="46.0" prefHeight="98.0" prefWidth="78.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddBookScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: ffb888;" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -141,7 +141,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddedDocHistory" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -285,12 +285,12 @@
                </font>
             </Label>
             <Separator layoutX="468.0" layoutY="462.0" orientation="VERTICAL" prefHeight="33.0" prefWidth="23.0" />
-            <Text fill="#466bb0" layoutX="184.0" layoutY="229.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The genre you enter will be displayed here:" wrappingWidth="282.4">
+            <Text fill="#466bb0" layoutX="184.0" layoutY="229.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The genres you enter will be displayed here:" wrappingWidth="282.4">
                <font>
                   <Font size="14.0" />
                </font>
             </Text>
-            <Text fill="#466bb0" layoutX="184.0" layoutY="520.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The author you enter will be displayed here:" wrappingWidth="282.39999999999986">
+            <Text fill="#466bb0" layoutX="184.0" layoutY="520.0" opacity="0.8" strokeType="OUTSIDE" strokeWidth="0.0" text="The authors you enter will be displayed here:" wrappingWidth="282.39999999999986">
                <font>
                   <Font size="14.0" />
                </font>

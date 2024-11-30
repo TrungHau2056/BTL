@@ -1,6 +1,11 @@
 
 .table-view {
     -fx-border-color: #466bb0 ;
+    -fx-background-image: url("images/empty.png");
+    -fx-background-size: 100% 100%;
+
+
+
     /*-fx-background-color: transparent;*/
     /*-fx-border-color: #466bb0;*/
     /*-fx-border-radius: 20px;*/

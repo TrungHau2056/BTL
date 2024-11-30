@@ -45,7 +45,7 @@ public class AddByISBNController extends AdminBaseController {
 
     }
 
-    public void handleCheck() throws IOException {
+    public void handleCheck() {
         String isbn = isbnText.getText();
 
         Task<Volume.VolumeInfo> callAPITask = new Task<>() {

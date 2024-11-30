@@ -63,6 +63,9 @@ public class UserInfoController extends UserBaseController {
     public void setUser(User user) {
         this.user = user;
     }
+    /**
+     * set user info.
+     */
 
     @Override
     public void setUserInfo() {
@@ -90,6 +93,12 @@ public class UserInfoController extends UserBaseController {
                 break;
         }
     }
+
+    /**
+     * button update.
+     * @param event
+     * @throws IOException
+     */
 
     // button update
     public void handleUpdateUser(ActionEvent event) {
@@ -128,6 +137,12 @@ public class UserInfoController extends UserBaseController {
             alertInfo.show();
         }
     }
+
+    /**
+     * particular button change.
+     * @param event
+     * @throws IOException
+     */
 
     // pen that change user's name
     public void handleUpdateName(ActionEvent event) throws IOException {

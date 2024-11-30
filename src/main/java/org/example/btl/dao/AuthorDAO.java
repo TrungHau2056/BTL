@@ -7,6 +7,7 @@ import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Set;
 
 public class AuthorDAO {
     private Session session;
@@ -42,5 +43,17 @@ public class AuthorDAO {
 
         session.close();
         return authors;
+    }
+
+    public Set<Document> getDocuments(Author author) {
+        Set<Document> documents;
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        author = session.merge(author);
+        documents = author.getDocuments();
+
+        session.close();
+        return documents;
     }
 }

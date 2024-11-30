@@ -11,7 +11,7 @@ public class Publisher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "publisher", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "publisher")
     private Set<Document> documents = new HashSet<>();
 
     private String name;

@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 public class Admin extends Account {
-    @OneToMany(mappedBy = "admin", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "admin", cascade = CascadeType.MERGE)
     private Set<Document> addedDocuments = new HashSet<>();
 
     public Admin() {
@@ -15,14 +15,6 @@ public class Admin extends Account {
 
     public Admin(String name, String email, String username, String password, Date birthday, String gender) {
         super(name, email, username, password, birthday, gender);
-    }
-
-    public Set<Document> getDocuments() {
-        return addedDocuments;
-    }
-
-    public void setDocuments(Set<Document> documents) {
-        this.addedDocuments = documents;
     }
 
     public void addDocument(Document document) {

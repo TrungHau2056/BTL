@@ -132,7 +132,10 @@ public class DocumentDAO implements BaseDAO<Document> {
             Publisher publisher = publisherDAO.findByName(publisherName);
             if (publisher == null) {
                 publisher = new Publisher(publisherName);
-            } else publisher = session.merge(publisher);
+                session.persist(publisher);
+            } else {
+                publisher = session.merge(publisher);
+            }
             publisher.addDocument(document);
         }
 
@@ -140,7 +143,10 @@ public class DocumentDAO implements BaseDAO<Document> {
             Author author = authorDAO.findByName(authorName);
             if (author == null) {
                 author = new Author(authorName);
-            } else author = session.merge(author);
+                session.persist(author);
+            } else {
+                author = session.merge(author);
+            }
             author.addDocument(document);
         }
 
@@ -148,7 +154,10 @@ public class DocumentDAO implements BaseDAO<Document> {
             Genre genre = genreDAO.findByName(genreName);
             if (genre == null) {
                 genre = new Genre(genreName);
-            } else genre = session.merge(genre);
+                session.persist(genre);
+            } else {
+                genre = session.merge(genre);
+            }
             genre.addDocument(document);
         }
 
@@ -197,6 +206,8 @@ public class DocumentDAO implements BaseDAO<Document> {
             if (publisher == null) {
                 publisher = new Publisher(publisherName);
                 session.persist(publisher);
+            } else {
+                publisher = session.merge(publisher);
             }
             publisher.addDocument(document);
         }
@@ -206,6 +217,8 @@ public class DocumentDAO implements BaseDAO<Document> {
             if (author == null) {
                 author = new Author(authorName);
                 session.persist(author);
+            } else {
+                author = session.merge(author);
             }
             author.addDocument(document);
         }
@@ -215,6 +228,8 @@ public class DocumentDAO implements BaseDAO<Document> {
             if (genre == null) {
                 genre = new Genre(genreName);
                 session.persist(genre);
+            } else {
+                genre = session.merge(genre);
             }
             genre.addDocument(document);
         }
@@ -230,6 +245,7 @@ public class DocumentDAO implements BaseDAO<Document> {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
+        document = session.merge(document);
         for (Borrow borrow : document.getBorrows()) {
             borrow.setReturnDate(Date.valueOf(LocalDate.now()));
             borrow.setDocument(null);
@@ -241,6 +257,23 @@ public class DocumentDAO implements BaseDAO<Document> {
 
         session.getTransaction().commit();
         session.close();
+    }
+
+    public boolean isCurrentlyBorrow(Document document) {
+        boolean isBorrow = false;
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        document = session.merge(document);
+        for (Borrow borrow : document.getBorrows()) {
+            if (borrow.getReturnDate() == null) {
+                isBorrow = true;
+                break;
+            }
+        }
+
+        session.close();
+        return isBorrow;
     }
 
     public List<Document> findDocAddedByAdmin(Admin admin) {

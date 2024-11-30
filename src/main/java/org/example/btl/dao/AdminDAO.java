@@ -75,4 +75,14 @@ public class AdminDAO implements BaseDAO<Admin> {
         if (admins.isEmpty()) return null;
         else return admins.getFirst();
     }
+
+    public Admin updateAdmin(Admin item) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+        item = session.merge(item);
+        session.getTransaction().commit();
+        session.close();
+
+        return item;
+    }
 }

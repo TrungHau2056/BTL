@@ -10,6 +10,10 @@ import java.util.Objects;
 public class AdminService {
     private AdminDAO adminDAO = new AdminDAO();
 
+    public Admin updateAdmin(Admin admin) {
+        return adminDAO.updateAdmin(admin);
+    }
+
     public Admin findByUsername(String username) {
         return adminDAO.findByUsername(username);
     }

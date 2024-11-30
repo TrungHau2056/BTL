@@ -214,7 +214,8 @@
                </cursor>
             </Button>
             <Button layoutX="807.0" layoutY="429.0" mnemonicParsing="false" onAction="#handleChangeAvatar" styleClass="change-user-info" />
-            <Button layoutX="312.0" layoutY="344.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="20.0" styleClass="eye-button" />
+            <Button fx:id="eyeButton" layoutX="312.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleShowHiddenPass" prefHeight="25.0" prefWidth="20.0" styleClass="eye-button" />
+            <TextField fx:id="showPassText" disable="true" layoutX="65.0" layoutY="338.0" prefHeight="36.0" prefWidth="240.0" promptText="User's password" styleClass="login-inputs" visible="false" />
             </children>
         </AnchorPane>
     </children>

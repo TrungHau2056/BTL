@@ -25,6 +25,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class UserNotificationController extends UserBaseController implements Initializable {
     @FXML
@@ -77,9 +78,11 @@ public class UserNotificationController extends UserBaseController implements In
 
     @Override
     public void setUserInfo() {
-        totalLabel.setText(String.valueOf(user.getNotifications().size()));
+        Set<Notification> notifications = userService.getNotifications(user);
+
+        totalLabel.setText(String.valueOf(notifications.size()));
         int unreadCnt = 0;
-        for (Notification notification : user.getNotifications()) {
+        for (Notification notification : notifications) {
             if (!notification.isRead()) {
                 ++unreadCnt;
             }
@@ -93,7 +96,7 @@ public class UserNotificationController extends UserBaseController implements In
             avatar.setImage(new Image(inputStream));
         }
 
-        notifObservableList = FXCollections.observableArrayList(user.getNotifications());
+        notifObservableList = FXCollections.observableArrayList(notifications);
         tableView.setItems(notifObservableList);
     }
 
@@ -146,7 +149,7 @@ public class UserNotificationController extends UserBaseController implements In
         Task<Void> markAsReadTask = new Task<>() {
             @Override
             protected Void call() {
-                for (Notification notification : user.getNotifications()) {
+                for (Notification notification : userService.getNotifications(user)) {
                     if (!notification.isRead()) {
                         user = notificationService.switchNotificationStatus(notification);
                     }
@@ -201,7 +204,7 @@ public class UserNotificationController extends UserBaseController implements In
 
     public void switchToAll() {
         if (!isAllView) {
-            notifObservableList = FXCollections.observableArrayList(user.getNotifications());
+            notifObservableList = FXCollections.observableArrayList(userService.getNotifications(user));
             tableView.setItems(notifObservableList);
             isAllView = true;
         }

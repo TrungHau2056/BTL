@@ -58,7 +58,7 @@ public class DocumentService {
 
         List<Document> documentList = new ArrayList<>();
         for (Author author : authors) {
-            for (Document document : author.getDocuments()) {
+            for (Document document : authorDAO.getDocuments(author)) {
                 Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":
@@ -84,9 +84,10 @@ public class DocumentService {
 
     public List<Document> searchByGenre(String keyword, User user, String status) {
         List<Genre> genres = genreDAO.findByKeyword(keyword);
+
         List<Document> documentList = new ArrayList<>();
         for (Genre genre : genres) {
-            for (Document document : genre.getDocuments()) {
+            for (Document document : genreDAO.getDocuments(genre)) {
                 Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":
@@ -236,12 +237,7 @@ public class DocumentService {
     }
 
     public boolean isCurrentlyBorrow(Document document) {
-        for (Borrow borrow : document.getBorrows()) {
-            if (borrow.getReturnDate() == null) {
-                return true;
-            }
-        }
-        return false;
+        return documentDAO.isCurrentlyBorrow(document);
     }
 
     public List<Document> findDocAddedByAdmin(Admin admin) {

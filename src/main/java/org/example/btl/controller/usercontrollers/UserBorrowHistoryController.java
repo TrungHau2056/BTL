@@ -94,7 +94,7 @@ public class UserBorrowHistoryController extends UserBaseController implements I
             avatar.setImage(new Image(inputStream));
         }
 
-        borrowObservableList = FXCollections.observableArrayList(user.getBorrows());
+        borrowObservableList = FXCollections.observableArrayList(userService.getBorrows(user));
         tableView.setItems(borrowObservableList);
     }
 }

@@ -117,7 +117,7 @@ public abstract class AdminBaseController {
         controller.setAdminInfo();
 
         stage = new Stage();
-        scene = new Scene(root, 400, 200);
+        scene = new Scene(root, 400, 230);
         stage.setScene(scene);
         stage.show();
     }

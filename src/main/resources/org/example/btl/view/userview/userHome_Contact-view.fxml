@@ -220,9 +220,49 @@
                   </AnchorPane>
                   <AnchorPane prefHeight="501.0" prefWidth="526.0">
                      <children>
-                        <Label layoutX="171.0" layoutY="34.0" text="Instructions for use" textFill="#33485c">
+                        <Label layoutX="171.0" layoutY="34.0" text="Instructions for use" textFill="#ff00b7">
                            <font>
                               <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="68.0" text="- Search Books: " textFill="#0004ff82">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="147.0" layoutY="68.0" maxWidth="350.0" text="This feature allows you to find the book you need quickly without browsing through the entire collection" wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="140.0" text="- Return Books: " textFill="#0004ff82">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="147.0" layoutY="140.0" maxWidth="350.0" text="This feature allows you to return borrowed books efficiently. It also updates the library’s system to reflect the returned books and ensures proper tracking of borrowing records." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="240.0" text="- User Info: " textFill="#0004ff82">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="147.0" layoutY="240.0" maxWidth="350.0" text="This feature provides you with access to your personal information and account details in the library management application. It enhances your experience by giving you control and transparency over your profiles and borrowing activities." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="33.0" layoutY="353.0" text="- Notifications: " textFill="#0004ff82">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="147.0" layoutY="353.0" maxWidth="350.0" text="This feature keeps you informed about important updates and reminders related to your account and library activities. It ensures timely communication and helps you manage your tasks effectively." wrapText="true">
+                           <font>
+                              <Font size="15.0" />
                            </font>
                         </Label>
                      </children>

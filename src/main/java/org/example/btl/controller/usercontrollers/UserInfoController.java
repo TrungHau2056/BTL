@@ -21,6 +21,8 @@ public class UserInfoController extends UserBaseController {
     @FXML
     private PasswordField passwordText;
     @FXML
+    private TextField showPassText;
+    @FXML
     private DatePicker birthdayText;
     @FXML
     private ToggleGroup gender;
@@ -32,6 +34,27 @@ public class UserInfoController extends UserBaseController {
     private RadioButton otherRadioButton;
     @FXML
     private Button updateButton;
+
+    @FXML
+    private Button eyeButton;
+
+    public void handleShowHiddenPass() {
+        if (passwordText.isVisible()) {
+            showPassText.setText(passwordText.getText());
+            passwordText.setVisible(false);
+            showPassText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button");
+            eyeButton.getStyleClass().add("eye-button-hidden");
+        } else {
+            passwordText.setText(showPassText.getText());
+            showPassText.setVisible(false);
+            passwordText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button-hidden");
+            eyeButton.getStyleClass().add("eye-button");
+        }
+    }
 
     public User getUser() {
         return user;
@@ -69,11 +92,11 @@ public class UserInfoController extends UserBaseController {
     }
 
     // button update
-    public void handleUpdateUser(ActionEvent event) throws IOException {
+    public void handleUpdateUser(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();
         String username = usernameText.getText();
-        String password = passwordText.getText();
+        String password = passwordText.isVisible() ? passwordText.getText() : showPassText.getText();
         Date birthday = birthdayText.getValue() == null ? null : Date.valueOf(birthdayText.getValue());
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
         String gender = selectedGender == null ? "" : selectedGender.getText();
@@ -96,6 +119,7 @@ public class UserInfoController extends UserBaseController {
             emailText.setDisable(true);
             usernameText.setDisable(true);
             passwordText.setDisable(true);
+            showPassText.setDisable(true);
             birthdayText.setDisable(true);
             updateButton.setDisable(true);
 
@@ -126,6 +150,7 @@ public class UserInfoController extends UserBaseController {
     // pen that change user's password
     public void handleUpdatePassWord (ActionEvent event) throws IOException {
         passwordText.setDisable(false);
+        showPassText.setDisable(false);
         updateButton.setDisable(false);
     }
 

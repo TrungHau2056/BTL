@@ -16,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.SignUpController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="886.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.SignUpController">
     <children>
         <AnchorPane prefHeight="587.0" prefWidth="349.0" style="-fx-background-color: #bec4d0;" HBox.hgrow="ALWAYS">
             <children>
@@ -92,6 +92,8 @@
             <DatePicker fx:id="birthdayText" layoutX="310.0" layoutY="127.0" prefHeight="36.0" prefWidth="182.0" promptText="Choose your birthday" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="44.39999999999998" />
             <Label layoutX="193.0" layoutY="473.0" text="Already have an account?" textFill="#466bb0" />
             <Hyperlink layoutX="328.0" layoutY="470.0" onAction="#switchToLogin" text="Login" textFill="#d41ece" underline="true" />
+            <Button layoutX="346.0" layoutY="316.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" styleClass="eye-button" />
+            <Button layoutX="346.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="23.0" styleClass="eye-button" />
          </children></AnchorPane>
     </children>
 </HBox>

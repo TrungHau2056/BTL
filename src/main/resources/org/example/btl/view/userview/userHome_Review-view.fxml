@@ -199,7 +199,7 @@
             </Label>
             <ImageView fitHeight="309.0" fitWidth="411.0" layoutX="293.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/no-photo.png" />
+                  <Image url="@../../images/review_qr.png" />
                </image>
             </ImageView>
             <StackPane layoutX="660.0" layoutY="-4.0" prefHeight="89.0" prefWidth="95.0">

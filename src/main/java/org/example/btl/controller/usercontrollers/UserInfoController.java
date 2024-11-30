@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import org.example.btl.model.User;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -33,13 +32,9 @@ public class UserInfoController extends UserBaseController {
     @FXML
     private Button updateButton;
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
+    /**
+     * set user info.
+     */
 
     @Override
     public void setUserInfo() {
@@ -68,7 +63,12 @@ public class UserInfoController extends UserBaseController {
         }
     }
 
-    // button update
+    /**
+     * button update.
+     * @param event
+     * @throws IOException
+     */
+
     public void handleUpdateUser(ActionEvent event) throws IOException {
         String name = nameText.getText();
         String email = emailText.getText();
@@ -104,6 +104,12 @@ public class UserInfoController extends UserBaseController {
             alertInfo.show();
         }
     }
+
+    /**
+     * particular button change.
+     * @param event
+     * @throws IOException
+     */
 
     // pen that change user's name
     public void handleUpdateName(ActionEvent event) throws IOException {

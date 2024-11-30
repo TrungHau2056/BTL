@@ -4,8 +4,6 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -15,13 +13,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
-import org.example.btl.model.Document;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,7 +25,6 @@ import java.util.stream.Collectors;
 public class UserBorrowHistoryController extends UserBaseController implements Initializable {
     @FXML
     private ToggleButton historyButton;
-
     @FXML
     private TableView<Borrow> tableView;
 
@@ -45,6 +40,12 @@ public class UserBorrowHistoryController extends UserBaseController implements I
     private TableColumn<Borrow, Date> returnDateCol;
 
     private ObservableList<Borrow> borrowObservableList;
+
+    /**
+     * set data for table and historyButton.
+     * @param url
+     * @param resourceBundle
+     */
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,6 +80,10 @@ public class UserBorrowHistoryController extends UserBaseController implements I
         borrowDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         returnDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
+
+    /**
+     * set user info.
+     */
 
     @Override
     public void setUserInfo() {

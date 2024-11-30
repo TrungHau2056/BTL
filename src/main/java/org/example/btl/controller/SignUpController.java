@@ -38,6 +38,11 @@ public class SignUpController {
     @FXML
     private ToggleGroup gender;
 
+    /**
+     * switch to login scene.
+     * @param event
+     * @throws IOException
+     */
 
     public void switchToLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
@@ -47,6 +52,12 @@ public class SignUpController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * click sign up button.
+     * @param event
+     * @throws IOException
+     */
 
     public void handleSignUp(ActionEvent event) throws IOException {
         String name = nameText.getText();

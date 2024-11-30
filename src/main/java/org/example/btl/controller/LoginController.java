@@ -39,6 +39,10 @@ public class LoginController {
     @FXML
     private ToggleGroup role;
 
+    /**
+     * click eye to show password.
+     */
+
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
             showPassText.setText(passwordText.getText());
@@ -50,6 +54,12 @@ public class LoginController {
             passwordText.setVisible(true);
         }
     }
+
+    /**
+     * click sign up link to switch sign up scene.
+     * @param event
+     * @throws IOException
+     */
 
     public void switchToSignUp(ActionEvent event) throws IOException {
         if (isProcessing) {
@@ -65,6 +75,11 @@ public class LoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * click login button.
+     * @param event
+     */
 
     public void handleLogin(ActionEvent event) {
         if (isProcessing) {

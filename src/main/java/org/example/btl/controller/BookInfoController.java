@@ -72,6 +72,10 @@ public class BookInfoController {
         this.userReturnBookController = userReturnBookController;
     }
 
+    /**
+     * set user for scene.
+     */
+
     public void setBookInfo() {
         String authors = document.getAuthors().stream()
                 .map(Author::getName)
@@ -102,6 +106,10 @@ public class BookInfoController {
         }
     }
 
+    /**
+     * click button borrow.
+     */
+
     public void handleBorrow() {
         String validateMess = borrowService.validateBorrow(user, document);
         if (validateMess != null) {
@@ -120,6 +128,11 @@ public class BookInfoController {
             alert.show();
         }
     }
+
+    /**
+     * click return button.
+     * @param event
+     */
 
     public void handleReturn(ActionEvent event) {
         user = borrowService.returnDocument(user, document);

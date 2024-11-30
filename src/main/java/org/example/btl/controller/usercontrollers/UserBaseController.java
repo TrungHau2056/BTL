@@ -56,7 +56,18 @@ public abstract class UserBaseController {
         this.user = user;
     }
 
+    /**
+     * set info for userScenes.
+     */
+
     public abstract void setUserInfo();
+
+    /**
+     * general switchScene.
+     * @param event
+     * @param path
+     * @throws IOException
+     */
 
     public void switchScene(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
@@ -70,6 +81,12 @@ public abstract class UserBaseController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * switch particular scenes.
+     * @param event
+     * @throws IOException
+     */
 
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userHome-view.fxml");
@@ -99,6 +116,12 @@ public abstract class UserBaseController {
         switchScene(event, "/org/example/btl/view/userview/userNotification-view.fxml");
     }
 
+    /**
+     * button change avatar.
+     * @param event
+     * @throws IOException
+     */
+
     public void handleChangeAvatar(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.bmp"));
@@ -115,6 +138,11 @@ public abstract class UserBaseController {
             userService.update(user);
         }
     }
+
+    /**
+     * button logout.
+     * @param event
+     */
 
     public void handleLogOut(ActionEvent event) {
         alertComfirm.setTitle("Log out comfirmation");

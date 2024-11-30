@@ -32,12 +32,34 @@ public class SignUpController {
     @FXML
     private PasswordField passwordText;
     @FXML
+    private TextField showPassText;
+    @FXML
     private PasswordField confirmedPasswordText;
     @FXML
     private DatePicker birthdayText;
     @FXML
     private ToggleGroup gender;
 
+    @FXML
+    private Button eyeButton;
+
+    public void handleShowHiddenPass() {
+        if (passwordText.isVisible()) {
+            showPassText.setText(passwordText.getText());
+            passwordText.setVisible(false);
+            showPassText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button");
+            eyeButton.getStyleClass().add("eye-button-hidden");
+        } else {
+            passwordText.setText(showPassText.getText());
+            showPassText.setVisible(false);
+            passwordText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button-hidden");
+            eyeButton.getStyleClass().add("eye-button");
+        }
+    }
 
     public void switchToLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
@@ -52,7 +74,7 @@ public class SignUpController {
         String name = nameText.getText();
         String email = emailText.getText();
         String username = usernameText.getText();
-        String password = passwordText.getText();
+        String password = passwordText.isVisible() ? passwordText.getText() : showPassText.getText();
         String confirmedPassword = confirmedPasswordText.getText();
         Date birthday = birthdayText.getValue() == null ? null : Date.valueOf(birthdayText.getValue());
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();

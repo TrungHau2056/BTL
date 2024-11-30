@@ -19,7 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -181,8 +181,8 @@
             </AnchorPane>
             <MenuButton layoutX="285.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../../ButtonAccount.css" text="Account" textFill="#466bb0">
                <items>
-                  <MenuItem mnemonicParsing="false" onAction="#switchChangePasswordScene" text="Change Password" />
-                  <MenuItem mnemonicParsing="false" text="Log Out" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleChangePass" text="Change Password" />
+                  <MenuItem mnemonicParsing="false" onAction="#handleLogOut" text="Log Out" />
                </items>
                <font>
                   <Font name="System Bold" size="12.0" />

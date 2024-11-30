@@ -39,15 +39,24 @@ public class LoginController {
     @FXML
     private ToggleGroup role;
 
+    @FXML
+    private Button eyeButton;
+
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
             showPassText.setText(passwordText.getText());
             passwordText.setVisible(false);
             showPassText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button");
+            eyeButton.getStyleClass().add("eye-button-hidden");
         } else {
             passwordText.setText(showPassText.getText());
             showPassText.setVisible(false);
             passwordText.setVisible(true);
+
+            eyeButton.getStyleClass().remove("eye-button-hidden");
+            eyeButton.getStyleClass().add("eye-button");
         }
     }
 
@@ -75,7 +84,7 @@ public class LoginController {
 
         isProcessing = true;
         String username = usernameText.getText();
-        String password = passwordText.getText();
+        String password = passwordText.isVisible() ? passwordText.getText() : showPassText.getText();
 
         RadioButton selectedRole = (RadioButton) role.getSelectedToggle();
         String role = selectedRole == null ? "" : selectedRole.getText();

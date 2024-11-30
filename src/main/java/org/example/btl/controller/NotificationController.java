@@ -48,6 +48,10 @@ public class NotificationController {
         this.userNotificationController = userNotificationController;
     }
 
+    /**
+     * set notification for scene.
+     */
+
     public void setNotificationInfo() {
         if (!notification.isRead()) {
             user = notificationService.switchNotificationStatus(notification);
@@ -61,6 +65,11 @@ public class NotificationController {
         timeLabel.setText(notificationService.getDuration(notification.getCreatedAt()));
     }
 
+    /**
+     * click remove button.
+     * @param event
+     */
+
     public void handleRemove(ActionEvent event) {
         user = notificationService.deleteNotification(notification);
         userNotificationController.setUser(user);
@@ -69,6 +78,11 @@ public class NotificationController {
         Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         stage.close();
     }
+
+    /**
+     * click unread button.
+     * @param event
+     */
 
     public void handleUnread(ActionEvent event) {
         user = notificationService.switchNotificationStatus(notification);

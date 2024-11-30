@@ -108,4 +108,14 @@ public abstract class AdminBaseController {
             }
         });
     }
+
+    public void switchChangePasswordScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminChangePassword-view.fxml"));
+        root = loader.load();
+
+        stage = new Stage();
+        scene = new Scene(root, 400, 200);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

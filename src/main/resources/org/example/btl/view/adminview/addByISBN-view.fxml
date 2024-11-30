@@ -181,7 +181,7 @@
                 </AnchorPane>
             <MenuButton layoutX="285.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../../ButtonAccount.css" text="Account" textFill="#466bb0">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Change Password" />
+                  <MenuItem mnemonicParsing="false" onAction="#switchChangePasswordScene" text="Change Password" />
                   <MenuItem mnemonicParsing="false" text="Log Out" />
                </items>
                <font>

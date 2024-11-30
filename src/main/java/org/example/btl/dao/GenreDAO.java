@@ -2,11 +2,13 @@ package org.example.btl.dao;
 
 import jakarta.persistence.Query;
 import org.example.btl.model.Author;
+import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Set;
 
 public class GenreDAO {
     private Session session;
@@ -42,5 +44,17 @@ public class GenreDAO {
 
         session.close();
         return genres;
+    }
+
+    public Set<Document> getDocuments(Genre genre) {
+        Set<Document> documents;
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        genre = session.merge(genre);
+        documents = genre.getDocuments();
+
+        session.close();
+        return documents;
     }
 }

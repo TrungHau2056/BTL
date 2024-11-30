@@ -1,12 +1,11 @@
 package org.example.btl.dao;
 
 import jakarta.persistence.Query;
-import org.example.btl.model.Admin;
-import org.example.btl.model.HibernateUtils;
-import org.example.btl.model.User;
+import org.example.btl.model.*;
 import org.hibernate.Session;
 
 import java.util.List;
+import java.util.Set;
 
 public class UserDAO implements BaseDAO<User> {
     private Session session;
@@ -75,5 +74,29 @@ public class UserDAO implements BaseDAO<User> {
         session.close();
         if (users.isEmpty()) return null;
         else return users.getFirst();
+    }
+
+    public Set<Borrow> getBorrows(User user) {
+        Set<Borrow> borrows;
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        user = session.merge(user);
+        borrows = user.getBorrows();
+
+        session.close();
+        return borrows;
+    }
+
+    public Set<Notification> getNotification(User user) {
+        Set<Notification> notifications;
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        user = session.merge(user);
+        notifications = user.getNotifications();
+
+        session.close();
+        return notifications;
     }
 }

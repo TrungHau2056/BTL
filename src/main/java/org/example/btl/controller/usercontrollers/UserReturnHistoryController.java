@@ -1,6 +1,5 @@
 package org.example.btl.controller.usercontrollers;
 
-
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -57,6 +56,7 @@ public class UserReturnHistoryController extends UserBaseController implements I
                                 : data.getValue().getDocument().getId()
                 ).asObject()
         );
+
         titleCol.setCellValueFactory(data ->
                 new SimpleStringProperty(
                         data.getValue().getDocument() == null
@@ -92,7 +92,7 @@ public class UserReturnHistoryController extends UserBaseController implements I
 
         Task<List<Borrow>> loadDocTask = new Task<>() {
             @Override
-            protected List<Borrow> call() throws Exception {
+            protected List<Borrow> call() {
                 return borrowService.findDocHasReturned(user);
             }
         };

@@ -15,7 +15,7 @@ public class Borrow {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "document_id")
     private Document document;
 

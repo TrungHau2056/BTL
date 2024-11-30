@@ -36,7 +36,7 @@ public class Document {
     )
     private Set<Genre> genres  = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
@@ -44,7 +44,7 @@ public class Document {
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 
-    @OneToMany(mappedBy = "document", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "document", cascade = CascadeType.MERGE)
     private Set<Borrow> borrows = new HashSet<>();
 
     public Document() {
@@ -99,10 +99,6 @@ public class Document {
         return isAddedByISBN;
     }
 
-    public void setAddedByISBN(boolean addedByISBN) {
-        isAddedByISBN = addedByISBN;
-    }
-
     public Date getAddedDate() {
         return addedDate;
     }
@@ -121,10 +117,6 @@ public class Document {
 
     public void setGenres(Set<Genre> genres) {
         this.genres = genres;
-    }
-
-    public Admin getAdmin() {
-        return admin;
     }
 
     public void setAdmin(Admin admin) {

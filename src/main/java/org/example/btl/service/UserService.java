@@ -1,11 +1,14 @@
 package org.example.btl.service;
 
 import org.example.btl.dao.UserDAO;
+import org.example.btl.model.Borrow;
+import org.example.btl.model.Notification;
 import org.example.btl.model.User;
 
 import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class UserService {
     private UserDAO userDAO = new UserDAO();
@@ -83,5 +86,13 @@ public class UserService {
 
     public void deleteUser(User user) {
         userDAO.delete(user);
+    }
+
+    public Set<Borrow> getBorrows(User user) {
+        return userDAO.getBorrows(user);
+    }
+
+    public Set<Notification> getNotifications(User user) {
+        return userDAO.getNotification(user);
     }
 }

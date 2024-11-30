@@ -33,7 +33,6 @@ public class BorrowDAO {
     public List<Borrow> findDocHasReturned(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
-
         Query query = session.createQuery("FROM Borrow WHERE user = :user AND returnDate IS NOT NULL");
         query.setParameter("user", user);
         List<Borrow> borrows = query.getResultList();

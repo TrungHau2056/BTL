@@ -117,7 +117,7 @@ public class UserReturnBookController extends UserBaseController implements Init
         new Thread(loadDocTask).start();
     }
 
-    public void handleSearchBook(ActionEvent event) {
+    public void handleSearchBook() {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
         String status = "Borrowed";

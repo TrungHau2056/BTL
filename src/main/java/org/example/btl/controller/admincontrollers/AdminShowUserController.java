@@ -119,7 +119,6 @@ public class AdminShowUserController extends AdminBaseController implements Init
             return;
         }
 
-        //
         String title = titleText.getText();
         String message = messageText.getText();
 

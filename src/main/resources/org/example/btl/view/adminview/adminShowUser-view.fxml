@@ -19,7 +19,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminShowUserController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminShowUserController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -256,7 +256,7 @@
                   <Font name="System Italic" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="165.0" layoutY="495.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;" />
+            <TextField fx:id="titleText" layoutX="165.0" layoutY="495.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;" />
             <Label layoutX="86.0" layoutY="546.0" prefHeight="30.0" prefWidth="126.0" text="Content:">
                <font>
                   <Font size="15.0" />

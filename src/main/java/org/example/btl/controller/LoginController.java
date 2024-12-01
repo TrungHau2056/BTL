@@ -150,8 +150,10 @@ public class LoginController {
                 });
 
                 userLoginTask.setOnFailed(e -> {
-                    alertErr.setContentText("Error: " + userLoginTask.getException().getMessage());
-                    alertErr.show();
+                    Throwable exception = userLoginTask.getException();
+                    if (exception != null) {
+                        exception.printStackTrace();
+                    }
                     isProcessing = false;
                 });
 
@@ -190,8 +192,10 @@ public class LoginController {
                 });
 
                 adminLoginTask.setOnFailed(e -> {
-                    alertErr.setContentText("Error: " + adminLoginTask.getException().getMessage());
-                    alertErr.show();
+                    Throwable exception = adminLoginTask.getException();
+                    if (exception != null) {
+                        exception.printStackTrace();
+                    }
                     isProcessing = false;
                 });
 

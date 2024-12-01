@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -118,8 +120,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = loadDocTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(loadDocTask).start();
@@ -165,8 +169,10 @@ public class UserReturnBookController extends UserBaseController implements Init
             });
 
             searchDocTask.setOnFailed(e -> {
-                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
-                alertErr.show();
+                Throwable exception = searchDocTask.getException();
+                if (exception != null) {
+                    exception.printStackTrace();
+                }
             });
 
             new Thread(searchDocTask).start();
@@ -224,4 +230,5 @@ public class UserReturnBookController extends UserBaseController implements Init
         stage.setScene(new Scene(root));
         stage.show();
     }
+
 }

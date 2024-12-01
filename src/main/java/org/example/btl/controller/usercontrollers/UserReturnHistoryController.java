@@ -111,8 +111,10 @@ public class UserReturnHistoryController extends UserBaseController implements I
         });
 
         loadDocTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + loadDocTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = loadDocTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(loadDocTask).start();

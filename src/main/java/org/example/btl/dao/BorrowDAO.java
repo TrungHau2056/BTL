@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BorrowDAO {
     private Session session;
@@ -18,7 +19,7 @@ public class BorrowDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user  AND returnDate IS NULL");
+        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user AND returnDate IS NULL");
         query.setParameter("user", user);
         query.setParameter("document", document);
         List<Borrow> borrows = query.getResultList();
@@ -33,6 +34,7 @@ public class BorrowDAO {
     public List<Borrow> findDocHasReturned(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("FROM Borrow WHERE user = :user AND returnDate IS NOT NULL");
         query.setParameter("user", user);
         List<Borrow> borrows = query.getResultList();
@@ -56,6 +58,7 @@ public class BorrowDAO {
     public List<User> findUserCurrentlyBorrow(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
+
         Query query = session.createQuery("SELECT user FROM Borrow WHERE document = :document AND returnDate IS NOT NULL");
         query.setParameter("document", document);
         List<User> users = query.getResultList();
@@ -89,10 +92,9 @@ public class BorrowDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        document.increaseQuantity();
+        borrow.getDocument().increaseQuantity();
         borrow.setReturnDate(Date.valueOf(LocalDate.now()));
 
-        session.merge(document);
         session.merge(borrow);
 
         session.getTransaction().commit();

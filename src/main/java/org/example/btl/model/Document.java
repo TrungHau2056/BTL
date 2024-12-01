@@ -1,6 +1,8 @@
 package org.example.btl.model;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.engine.spi.CascadeStyle;
 
 import java.sql.Date;
@@ -36,7 +38,7 @@ public class Document {
     )
     private Set<Genre> genres  = new HashSet<>();
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_id")
     private Admin admin;
 

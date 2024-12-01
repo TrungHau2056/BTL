@@ -65,8 +65,10 @@ public class AdminShowUserController extends AdminBaseController implements Init
         });
 
         loadUserTask.setOnFailed(e -> {
-            alertErr.setContentText(loadUserTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = loadUserTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(loadUserTask).start();
@@ -119,7 +121,6 @@ public class AdminShowUserController extends AdminBaseController implements Init
             return;
         }
 
-        //
         String title = titleText.getText();
         String message = messageText.getText();
 

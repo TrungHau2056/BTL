@@ -131,8 +131,10 @@ public class AdminSearchBookController extends AdminBaseController {
             });
 
             searchDocTask.setOnFailed(e -> {
-                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
-                alertErr.show();
+                Throwable exception = searchDocTask.getException();
+                if (exception != null) {
+                    exception.printStackTrace();
+                }
             });
 
             new Thread(searchDocTask).start();

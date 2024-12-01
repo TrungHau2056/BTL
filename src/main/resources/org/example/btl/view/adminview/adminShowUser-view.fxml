@@ -181,7 +181,6 @@
             </AnchorPane>
             <MenuButton layoutX="285.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../../ButtonAccount.css" text="Account" textFill="#466bb0">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#switchChangePasswordScene" text="Change Password" />
                 <MenuItem mnemonicParsing="false" text="Log Out" />
               </items>
                <font>
@@ -256,7 +255,7 @@
                   <Font name="System Italic" size="15.0" />
                </font>
             </Label>
-            <TextField layoutX="165.0" layoutY="495.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;" />
+            <TextField fx:id="titleText" layoutX="165.0" layoutY="495.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;" />
             <Label layoutX="86.0" layoutY="546.0" prefHeight="30.0" prefWidth="126.0" text="Content:">
                <font>
                   <Font size="15.0" />

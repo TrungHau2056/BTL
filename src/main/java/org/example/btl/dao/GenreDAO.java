@@ -7,6 +7,7 @@ import org.example.btl.model.Genre;
 import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -52,7 +53,7 @@ public class GenreDAO {
         session.beginTransaction();
 
         genre = session.merge(genre);
-        documents = genre.getDocuments();
+        documents = new HashSet<>(genre.getDocuments());
 
         session.close();
         return documents;

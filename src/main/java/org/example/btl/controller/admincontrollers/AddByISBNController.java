@@ -83,8 +83,10 @@ public class AddByISBNController extends AdminBaseController {
         });
 
         callAPITask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + callAPITask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = callAPITask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(callAPITask).start();

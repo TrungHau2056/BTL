@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Set;
 
 public class UserNotificationController extends UserBaseController implements Initializable {
     @FXML

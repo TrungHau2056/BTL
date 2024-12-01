@@ -92,7 +92,7 @@ public class UserService {
         return userDAO.getBorrows(user);
     }
 
-    public Set<Notification> getNotifications(User user) {
+    public List<Notification> getNotifications(User user) {
         return userDAO.getNotification(user);
     }
 }

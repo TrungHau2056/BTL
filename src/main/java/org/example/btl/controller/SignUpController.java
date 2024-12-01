@@ -81,7 +81,7 @@ public class SignUpController {
      * @throws IOException
      */
 
-    public void handleSignUp(ActionEvent event) throws IOException {
+    public void handleSignUp(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();
         String username = usernameText.getText();

@@ -6,6 +6,7 @@ import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
+import javax.print.Doc;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

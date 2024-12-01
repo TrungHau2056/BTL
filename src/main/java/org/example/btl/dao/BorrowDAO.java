@@ -10,6 +10,7 @@ import org.hibernate.Session;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BorrowDAO {
     private Session session;
@@ -89,10 +90,9 @@ public class BorrowDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        document.increaseQuantity();
+        borrow.getDocument().increaseQuantity();
         borrow.setReturnDate(Date.valueOf(LocalDate.now()));
 
-        session.merge(document);
         session.merge(borrow);
 
         session.getTransaction().commit();

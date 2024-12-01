@@ -131,7 +131,6 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     /**
      * click search button.
-     * @param event
      */
 
     public void handleSearchBook() {
@@ -232,5 +231,4 @@ public class UserReturnBookController extends UserBaseController implements Init
             }
         }
     }
-
 }

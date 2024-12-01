@@ -13,7 +13,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.example.btl.model.Notification;
 import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
 import org.example.btl.service.DocumentService;
@@ -40,7 +39,6 @@ public abstract class UserBaseController {
     private Scene scene;
     private Parent root;
 
-
     @FXML
     protected ImageView avatar;
     @FXML
@@ -64,9 +62,9 @@ public abstract class UserBaseController {
 
     /**
      * general switchScene.
-     * @param event
-     * @param path
-     * @throws IOException
+     * @param event the action event triggered by the user.
+     * @param path the path to the FXML file of the new scene.
+     * @throws IOException if the FXML file cannot be loaded.
      */
 
     public void switchScene(ActionEvent event, String path) throws IOException {
@@ -84,8 +82,8 @@ public abstract class UserBaseController {
 
     /**
      * switch particular scenes.
-     * @param event
-     * @throws IOException
+     * @param event the action event triggered by the user.
+     * @throws IOException if the FXML file cannot be loaded.
      */
 
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
@@ -118,8 +116,8 @@ public abstract class UserBaseController {
 
     /**
      * button change avatar.
-     * @param event
-     * @throws IOException
+     * @param event the action event triggered by the user.
+     * @throws IOException if the FXML file cannot be loaded.
      */
 
     public void handleChangeAvatar(ActionEvent event) throws IOException {
@@ -141,7 +139,7 @@ public abstract class UserBaseController {
 
     /**
      * button logout.
-     * @param event
+     * @param event the action event triggered by the user.
      */
 
     public void handleLogOut(ActionEvent event) {
@@ -150,7 +148,8 @@ public abstract class UserBaseController {
         alertComfirm.setContentText("Are you sure?");
         alertComfirm.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
+                String fxmlFile = "/org/example/btl/view/login-view.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
                 try {
                     root = loader.load();
                 } catch (IOException e) {

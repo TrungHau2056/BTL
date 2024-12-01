@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,17 +15,16 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.example.btl.controller.BookInfoController;
-import org.example.btl.dao.AdminDAO;
 import org.example.btl.model.Author;
 import org.example.btl.model.Borrow;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -58,8 +56,8 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     /**
      * init.
-     * @param url
-     * @param resourceBundle
+     * @param url the location used to resolve relative paths for the root object.
+     * @param resourceBundle the resources used to localize the root object.
      */
 
     @Override
@@ -129,10 +127,9 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     /**
      * click search button.
-     * @param event
      */
 
-    public void handleSearchBook(ActionEvent event) {
+    public void handleSearchBook() {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
         String status = "Borrowed";
@@ -144,18 +141,14 @@ public class UserReturnBookController extends UserBaseController implements Init
         } else {
             Task<List<Document>> searchDocTask = new Task<>() {
                 @Override
-                protected List<Document> call() throws Exception {
-                    switch (criterion) {
-                        case "Title":
-                            return documentService.searchByTitle(keyword, user, status);
-                        case "Author":
-                            return documentService.searchByAuthor(keyword, user, status);
-                        case "Genre":
-                            return documentService.searchByGenre(keyword, user, status);
-                        case "Publisher":
-                            return documentService.searchByPublisher(keyword, user, status);
-                    }
-                    return null;
+                protected List<Document> call() {
+                    return switch (criterion) {
+                        case "Title" -> documentService.searchByTitle(keyword, user, status);
+                        case "Author" -> documentService.searchByAuthor(keyword, user, status);
+                        case "Genre" -> documentService.searchByGenre(keyword, user, status);
+                        case "Publisher" -> documentService.searchByPublisher(keyword, user, status);
+                        default -> null;
+                    };
                 }
             };
 
@@ -189,8 +182,12 @@ public class UserReturnBookController extends UserBaseController implements Init
         if (selectedItem != null) {
             user = borrowService.returnDocument(user, selectedItem);
 
-            user = notificationService.addNotification(user, "Document Returned Successfully",
-                    "You have successfully returned the document titled '" + selectedItem.getTitle() + "'.");
+            user = notificationService.addNotification(user,
+                    "Document Returned Successfully",
+                    "You have successfully returned the document titled '"
+                            + selectedItem.getTitle()
+                            + "'."
+            );
 
             setUserInfo();
 
@@ -206,27 +203,25 @@ public class UserReturnBookController extends UserBaseController implements Init
      * click info button.
      */
 
-    public void handleShowBookInfo() {
+    public void handleShowBookInfo() throws IOException {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
-                Parent root = loader.load();
-
-                BookInfoController controller = loader.getController();
-                controller.setDocument(selectedItem);
-                controller.setUser(user);
-                controller.setUserReturnBookController(this);
-                controller.setBookInfo();
-
-                Stage stage = new Stage();
-                stage.setTitle("Document");
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (selectedItem == null) {
+            return;
         }
-    }
 
+        String fxmlFile = "/org/example/btl/view/returnedBookInfo-view.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent root = loader.load();
+
+        BookInfoController controller = loader.getController();
+        controller.setDocument(selectedItem);
+        controller.setUser(user);
+        controller.setUserReturnBookController(this);
+        controller.setBookInfo();
+
+        Stage stage = new Stage();
+        stage.setTitle("Document");
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
 }

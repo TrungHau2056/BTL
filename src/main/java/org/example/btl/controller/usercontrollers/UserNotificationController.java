@@ -50,8 +50,8 @@ public class UserNotificationController extends UserBaseController implements In
 
     /**
      * set up tableview.
-     * @param url
-     * @param resourceBundle
+     * @param url the location used to resolve relative paths for the root object.
+     * @param resourceBundle the resources used to localize the root object.
      */
 
     @Override
@@ -61,7 +61,7 @@ public class UserNotificationController extends UserBaseController implements In
 
         statusCol.setCellValueFactory(
                 data -> new SimpleStringProperty(
-                        data.getValue().isRead() == true ? "Read" : "Unread"
+                        data.getValue().isRead() ? "Read" : "Unread"
                 )
         );
 
@@ -118,7 +118,7 @@ public class UserNotificationController extends UserBaseController implements In
 
     /**
      * click Info button.
-     * @throws IOException
+     * @throws IOException if the parent cannot load.
      */
 
     public void handleInfo() throws IOException {
@@ -127,7 +127,8 @@ public class UserNotificationController extends UserBaseController implements In
             return;
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/notification-view.fxml"));
+        String fxmlFile = "/org/example/btl/view/notification-view.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         Parent root = loader.load();
 
         NotificationController controller = loader.getController();

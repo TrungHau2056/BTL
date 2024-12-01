@@ -43,6 +43,10 @@ public class SignUpController {
     @FXML
     private Button eyeButton;
 
+    /**
+     * click eye button.
+     */
+
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
             showPassText.setText(passwordText.getText());
@@ -61,14 +65,16 @@ public class SignUpController {
         }
     }
     /**
-     * switch to login scene.
-     * @param event
-     * @throws IOException
+     * switch to log in scene.
+     * @param event the action event triggered by the user.
+     * @throws IOException if parent cannot load.
      */
 
     public void switchToLogin(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
+        String fxmlFile = "/org/example/btl/view/login-view.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         root = loader.load();
+
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -77,11 +83,10 @@ public class SignUpController {
 
     /**
      * click sign up button.
-     * @param event
-     * @throws IOException
+     * @param event the action event triggered by the user.
      */
 
-    public void handleSignUp(ActionEvent event) throws IOException {
+    public void handleSignUp(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();
         String username = usernameText.getText();
@@ -94,12 +99,21 @@ public class SignUpController {
         Task<String> signUpTask = new Task<>() {
             @Override
             protected String call() {
-                String validationMess = adminService.validateRegistration(name, email, username, password, confirmedPassword, gender, birthday);
+                String validationMess = adminService.validateRegistration(name,
+                        email,
+                        username,
+                        password,
+                        confirmedPassword,
+                        gender,
+                        birthday
+                );
                 if (validationMess != null) {
                     return validationMess;
                 }
+
                 Admin newAdmin = new Admin(name, email, username, password, birthday, gender);
                 adminService.save(newAdmin);
+
                 return null;
             }
         };
@@ -110,7 +124,8 @@ public class SignUpController {
                 alertErr.setContentText(validationMess);
                 alertErr.show();
             } else {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUpSuccess-view.fxml"));
+                String fxmlFile = "/org/example/btl/view/signUpSuccess-view.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
                     try {
                         root = loader.load();
                     } catch (IOException ex) {

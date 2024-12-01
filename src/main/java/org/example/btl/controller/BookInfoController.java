@@ -2,7 +2,6 @@ package org.example.btl.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
@@ -12,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
-import org.example.btl.dao.BorrowDAO;
 import org.example.btl.model.Author;
 import org.example.btl.model.Document;
 import org.example.btl.model.Genre;
@@ -20,9 +18,6 @@ import org.example.btl.model.User;
 import org.example.btl.service.BorrowService;
 import org.example.btl.service.NotificationService;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class BookInfoController {
@@ -90,7 +85,10 @@ public class BookInfoController {
         if (imageLink != null) {
             thumbnail.setImage(new Image(document.getImageLink()));
         } else {
-            thumbnail.setImage(new Image(getClass().getResource("/org/example/btl/images/no-photo.png").toExternalForm()));
+            thumbnail.setImage(
+                    new Image(getClass().getResource("/org/example/btl/images/no-photo.png")
+                            .toExternalForm())
+            );
         }
 
         titleText.setText(document.getTitle());
@@ -118,27 +116,35 @@ public class BookInfoController {
         } else {
             user = borrowService.borrowDocument(user, document);
 
-            user = notificationService.addNotification(user, "Document Borrowed Successfully",
-                    "You have successfully borrowed the document titled '" + document.getTitle() + "'.");
+            user = notificationService.addNotification(user,
+                    "Document Borrowed Successfully",
+                    "You have successfully borrowed the document titled '"
+                            + document.getTitle()
+                            + "'."
+            );
 
             userSearchBookController.setUser(user);
             userSearchBookController.setUserInfo();
 
-            alert.setContentText("Document borrowed successfully! Thank you for using our library.");
+            alert.setContentText("Document borrowed successfully!");
             alert.show();
         }
     }
 
     /**
      * click return button.
-     * @param event
+     * @param event the action event triggered by the user.
      */
 
     public void handleReturn(ActionEvent event) {
         user = borrowService.returnDocument(user, document);
 
-        user = notificationService.addNotification(user, "Document Returned Successfully",
-                "You have successfully returned the document titled '" + document.getTitle() + "'.");
+        user = notificationService.addNotification(user,
+                "Document Returned Successfully",
+                "You have successfully returned the document titled '"
+                        + document.getTitle()
+                        + "'."
+        );
         userReturnBookController.setUser(user);
         userReturnBookController.setUserInfo();
 

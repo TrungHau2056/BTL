@@ -67,8 +67,8 @@ public class LoginController {
 
     /**
      * click sign up link to switch sign up scene.
-     * @param event
-     * @throws IOException
+     * @param event the action event triggered by the user.
+     * @throws IOException if parent cannot load.
      */
 
     public void switchToSignUp(ActionEvent event) throws IOException {
@@ -78,8 +78,10 @@ public class LoginController {
             return;
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/signUp-view.fxml"));
+        String fxmlFile = "/org/example/btl/view/signUp-view.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
         root = loader.load();
+
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -88,7 +90,7 @@ public class LoginController {
 
     /**
      * click login button.
-     * @param event
+     * @param event the action event triggered by the user.
      */
 
     public void handleLogin(ActionEvent event) {
@@ -117,7 +119,7 @@ public class LoginController {
                 userService = new UserService();
                 Task<User> userLoginTask = new Task<>() {
                     @Override
-                    protected User call() throws Exception {
+                    protected User call() {
                         return userService.findByPassAndUsername(username, password);
                     }
                 };
@@ -129,7 +131,8 @@ public class LoginController {
                         alertErr.show();
                         isProcessing = false;
                     } else {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/userview/userHome-view.fxml"));
+                        String fxmlFile = "/org/example/btl/view/userview/userHome-view.fxml";
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
                         try {
                             root = loader.load();
                         } catch (IOException ex) {
@@ -169,7 +172,8 @@ public class LoginController {
                         alertErr.show();
                         isProcessing = false;
                     } else {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/adminview/adminHome-view.fxml"));
+                        String fxmlFile = "/org/example/btl/view/adminview/adminHome-view.fxml";
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
                         try {
                             root = loader.load();
                         } catch (IOException ex) {

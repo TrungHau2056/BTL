@@ -74,14 +74,43 @@ class BorrowDAOTest {
                 "0123ffsg", Date.valueOf("2005-05-05"), "Male");
         adminDAO.save(admin);
 
-        Document document = new Document("dbfdfdz", "gooodssf manga", 10, "", true);
+        Document document = new Document("doc", "gooodssf manga", 10, "", true);
         documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin,
                 List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
 
-        borrowDAO.borrowDocument(user, document);
-        borrowDAO.returnDocument(userDAO.findByUsername("gokurrs234rt"), documentDAO.findByTitle("dbfdfdz"));
+        user = borrowDAO.borrowDocument(user, document);
+        borrowDAO.returnDocument(user, documentDAO.findByTitle("doc"));
 
         assertEquals(1 , borrowDAO.findDocHasReturned(user).size());
-        assertEquals(10, documentDAO.findByTitle("dbfdfdz").getQuantity());
+        assertEquals(10, documentDAO.findByTitle("doc").getQuantity());
+    }
+
+    @Test
+    void findUserCurrentlyBorrowTest() {
+        User user = new User("user2", "@mjrfd", "username1",
+                "0123resthfg", Date.valueOf("2005-05-05"), "Male");
+        userDAO.save(user);
+
+        Admin admin = new Admin("nagrrfe", "@mfsdd", "adusername",
+                "0123ffsg", Date.valueOf("2005-05-05"), "Male");
+        adminDAO.save(admin);
+
+        Document document = new Document("doc", "gooodssf manga", 10, "", true);
+        documentDAO.saveWithAdminAuthorsPublisherGenre(document, admin,
+                List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
+        Document document1 = new Document("doc1", "gooodssf manga", 10, "", true);
+        documentDAO.saveWithAdminAuthorsPublisherGenre(document1, admin,
+                List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
+        Document document2 = new Document("doc2", "gooodssf manga", 10, "", true);
+        documentDAO.saveWithAdminAuthorsPublisherGenre(document2, admin,
+                List.of("AK", "Boichi"), "Kd", List.of("action", "fantasy"));
+
+        borrowDAO.borrowDocument(user, document);
+        borrowDAO.borrowDocument(user, document1);
+        borrowDAO.borrowDocument(user, document2);
+        borrowDAO.returnDocument(user, document);
+
+        List<Document> documents = borrowDAO.findDocCurrentlyBorrow(user);
+        assertEquals(2, documents.size());
     }
 }

@@ -46,8 +46,8 @@ public class UserReturnHistoryController extends UserBaseController implements I
 
     /**
      * init.
-     * @param url
-     * @param resourceBundle
+     * @param url the location used to resolve relative paths for the root object.
+     * @param resourceBundle the resources used to localize the root object.
      */
 
     @Override
@@ -88,7 +88,6 @@ public class UserReturnHistoryController extends UserBaseController implements I
     /**
      * set user for scene.
      */
-
 
     @Override
     public void setUserInfo() {

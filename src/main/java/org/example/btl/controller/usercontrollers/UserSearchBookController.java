@@ -4,7 +4,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +17,7 @@ import org.example.btl.controller.BookInfoController;
 import org.example.btl.model.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
@@ -55,8 +55,8 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     /**
      * init.
-     * @param url
-     * @param resourceBundle
+     * @param url the location used to resolve relative paths for the root object.
+     * @param resourceBundle the resources used to localize the root object.
      */
 
     @Override
@@ -68,7 +68,7 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-        titleCol.setCellFactory(column -> new TableCell<Document, String>() {
+        titleCol.setCellFactory(_ -> new TableCell<>() {
             @Override
             protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
@@ -102,18 +102,20 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         publisherCol.setCellValueFactory(data -> new SimpleStringProperty(
-                data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"
+                data.getValue().getPublisher() != null
+                        ? data.getValue().getPublisher().getName() : "Not available"
         ));
 
         statusCol.setCellValueFactory(data -> {
             Document document = data.getValue();
-            String status = borrowService.isCurrentlyBorrowing(user, document) ? "Borrowed" : "Not Borrowed";
+            String status = borrowService.isCurrentlyBorrowing(user, document)
+                    ? "Borrowed" : "Not Borrowed";
             return new SimpleStringProperty(status);
         });
     }
 
     /**
-     * set user for scene
+     * set user for scene.
      */
 
     @Override
@@ -127,7 +129,7 @@ public class UserSearchBookController extends UserBaseController implements Init
 
         Task<List<Document>> loadDocTask = new Task<>() {
             @Override
-            protected List<Document> call() throws Exception {
+            protected List<Document> call() {
                 return documentService.findAll();
             }
         };
@@ -151,36 +153,33 @@ public class UserSearchBookController extends UserBaseController implements Init
      * click document in table.
      */
 
-    public void handleTableClick() {
+    public void handleTableClick() throws IOException {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
-        if (selectedItem != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
-                Parent root = loader.load();
-
-                BookInfoController controller = loader.getController();
-                controller.setDocument(selectedItem);
-                controller.setUser(user);
-                controller.setUserSearchBookController(this);
-                controller.setBookInfo();
-
-
-                Stage stage = new Stage();
-                stage.setTitle("Document");
-                stage.setScene(new Scene(root));
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (selectedItem == null) {
+             return;
         }
+
+        String fxmlFile = "/org/example/btl/view/bookInfo-view.fxml";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent root = loader.load();
+
+        BookInfoController controller = loader.getController();
+        controller.setDocument(selectedItem);
+        controller.setUser(user);
+        controller.setUserSearchBookController(this);
+        controller.setBookInfo();
+
+        Stage stage = new Stage();
+        stage.setTitle("Document");
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 
     /**
      * click search button.
-     * @param event
      */
 
-    public void handleUserSearch(ActionEvent event) {
+    public void handleUserSearch() {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
         String status = statuses.getValue();
@@ -193,17 +192,13 @@ public class UserSearchBookController extends UserBaseController implements Init
             Task<List<Document>> searchDocTask = new Task<>() {
                 @Override
                 protected List<Document> call() {
-                    switch (criterion) {
-                        case "Title":
-                            return documentService.searchByTitle(keyword, user, status);
-                        case "Author":
-                            return documentService.searchByAuthor(keyword, user, status);
-                        case "Genre":
-                            return documentService.searchByGenre(keyword, user, status);
-                        case "Publisher":
-                            return documentService.searchByPublisher(keyword, user, status);
-                    }
-                    return null;
+                    return switch (criterion) {
+                        case "Title" -> documentService.searchByTitle(keyword, user, status);
+                        case "Author" -> documentService.searchByAuthor(keyword, user, status);
+                        case "Genre" -> documentService.searchByGenre(keyword, user, status);
+                        case "Publisher" -> documentService.searchByPublisher(keyword, user, status);
+                        default -> null;
+                    };
                 }
             };
 

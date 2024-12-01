@@ -4,10 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import org.example.btl.model.User;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Date;
 
@@ -24,6 +22,7 @@ public class UserInfoController extends UserBaseController {
     private TextField showPassText;
     @FXML
     private DatePicker birthdayText;
+
     @FXML
     private ToggleGroup gender;
     @FXML
@@ -32,9 +31,9 @@ public class UserInfoController extends UserBaseController {
     private RadioButton femaleRadioButton;
     @FXML
     private RadioButton otherRadioButton;
+
     @FXML
     private Button updateButton;
-
     @FXML
     private Button eyeButton;
 
@@ -56,15 +55,8 @@ public class UserInfoController extends UserBaseController {
         }
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
     /**
-     * set user info.
+     * set user for scene.
      */
 
     @Override
@@ -81,7 +73,7 @@ public class UserInfoController extends UserBaseController {
         usernameText.setText(user.getUsername());
         passwordText.setText(user.getPassword());
         birthdayText.setValue(user.getBirthday().toLocalDate());
-        switch(user.getGender()) {
+        switch (user.getGender()) {
             case "Male":
                 gender.selectToggle(maleRadioButton);
                 break;
@@ -96,11 +88,9 @@ public class UserInfoController extends UserBaseController {
 
     /**
      * button update.
-     * @param event
-     * @throws IOException
+     * @param event the action event triggered by the user
      */
 
-    // button update
     public void handleUpdateUser(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();
@@ -110,8 +100,16 @@ public class UserInfoController extends UserBaseController {
         RadioButton selectedGender = (RadioButton) gender.getSelectedToggle();
         String gender = selectedGender == null ? "" : selectedGender.getText();
 
-        String validationMess = userService.validateUpdate(name, email, username, user.getUsername(), password,  gender, birthday);
-        if(validationMess != null) {
+        String validationMess = userService.validateUpdate(
+                name,
+                email,
+                username,
+                user.getUsername(),
+                password,
+                gender,
+                birthday
+        );
+        if (validationMess != null) {
             alertErr.setContentText(validationMess);
             alertErr.show();
         } else {
@@ -132,7 +130,6 @@ public class UserInfoController extends UserBaseController {
             birthdayText.setDisable(true);
             updateButton.setDisable(true);
 
-            //update successful notification
             alertInfo.setContentText("Your information is successfully updated");
             alertInfo.show();
         }
@@ -140,43 +137,41 @@ public class UserInfoController extends UserBaseController {
 
     /**
      * particular button change.
-     * @param event
-     * @throws IOException
      */
 
     // pen that change user's name
-    public void handleUpdateName(ActionEvent event) throws IOException {
+    public void handleUpdateName() {
         nameText.setDisable(false);
         updateButton.setDisable(false);
     }
 
     // pen that change user's email
-    public void handleUpdateEmail(ActionEvent event) throws IOException {
+    public void handleUpdateEmail() {
         emailText.setDisable(false);
         updateButton.setDisable(false);
     }
 
     // pen that change user's username
-    public void handleUpdateUsername (ActionEvent event) throws IOException {
+    public void handleUpdateUsername () {
         usernameText.setDisable(false);
         updateButton.setDisable(false);
     }
 
     // pen that change user's password
-    public void handleUpdatePassWord (ActionEvent event) throws IOException {
+    public void handleUpdatePassWord () {
         passwordText.setDisable(false);
         showPassText.setDisable(false);
         updateButton.setDisable(false);
     }
 
     // pen that change user's birthday
-    public void handleUpdateBirthday (ActionEvent event) throws IOException {
+    public void handleUpdateBirthday () {
         birthdayText.setDisable(false);
         updateButton.setDisable(false);
     }
 
     // to change gender
-    public void handleUpdateGender (ActionEvent event) throws IOException {
+    public void handleUpdateGender () {
         maleRadioButton.setDisable(false);
         femaleRadioButton.setDisable(false);
         otherRadioButton.setDisable(false);

@@ -14,6 +14,12 @@ public class SignUpSuccessController {
     private Scene scene;
     private Parent root;
 
+    /**
+     * switch to login scene.
+     * @param event
+     * @throws IOException
+     */
+
     public void switchToLogin(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/login-view.fxml"));
         root = loader.load();

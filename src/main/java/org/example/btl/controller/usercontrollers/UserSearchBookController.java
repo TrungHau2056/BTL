@@ -53,6 +53,12 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
+    /**
+     * init.
+     * @param url
+     * @param resourceBundle
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
@@ -105,6 +111,10 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
     }
 
+    /**
+     * set user for scene
+     */
+
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());
@@ -136,34 +146,38 @@ public class UserSearchBookController extends UserBaseController implements Init
         new Thread(loadDocTask).start();
     }
 
+    /**
+     * click document in table.
+     */
+
     public void handleTableClick() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
-                showBookInfoView(selectedItem);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
+                Parent root = loader.load();
+
+                BookInfoController controller = loader.getController();
+                controller.setDocument(selectedItem);
+                controller.setUser(user);
+                controller.setUserSearchBookController(this);
+                controller.setBookInfo();
+
+
+                Stage stage = new Stage();
+                stage.setTitle("Document");
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-
-    private void showBookInfoView(Document selectedItem) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/bookInfo-view.fxml"));
-        Parent root = loader.load();
-
-        BookInfoController controller = loader.getController();
-        controller.setDocument(selectedItem);
-        controller.setUser(user);
-        controller.setUserSearchBookController(this);
-        controller.setBookInfo();
-
-
-        Stage stage = new Stage();
-        stage.setTitle("Document");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
+    /**
+     * click search button.
+     * @param event
+     */
 
     public void handleUserSearch(ActionEvent event) {
         String keyword = searchText.getText();

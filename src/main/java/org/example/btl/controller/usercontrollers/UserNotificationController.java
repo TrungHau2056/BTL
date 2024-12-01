@@ -48,6 +48,12 @@ public class UserNotificationController extends UserBaseController implements In
 
     private boolean isAllView = true;
 
+    /**
+     * set up tableview.
+     * @param url
+     * @param resourceBundle
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -65,6 +71,10 @@ public class UserNotificationController extends UserBaseController implements In
                 )
         );
     }
+
+    /**
+     * set user for scene.
+     */
 
     @Override
     public void setUserInfo() {
@@ -90,6 +100,10 @@ public class UserNotificationController extends UserBaseController implements In
         tableView.setItems(notifObservableList);
     }
 
+    /**
+     * click remove button.
+     */
+
     public void handleRemove() {
         Notification selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
@@ -101,6 +115,11 @@ public class UserNotificationController extends UserBaseController implements In
             alertErr.show();
         }
     }
+
+    /**
+     * click Info button.
+     * @throws IOException
+     */
 
     public void handleInfo() throws IOException {
         Notification notification = tableView.getSelectionModel().getSelectedItem();
@@ -121,6 +140,10 @@ public class UserNotificationController extends UserBaseController implements In
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+    /**
+     * click 'mark as read' button.
+     */
 
     public void handleMarkAsRead() {
         Task<Void> markAsReadTask = new Task<>() {
@@ -149,6 +172,10 @@ public class UserNotificationController extends UserBaseController implements In
         new Thread(markAsReadTask).start();
     }
 
+    /**
+     * switch table to unread.
+     */
+
     public void switchToUnread() {
         if (isAllView) {
             Task<List<Notification>> loadUnreadNotiTask = new Task<>() {
@@ -175,6 +202,10 @@ public class UserNotificationController extends UserBaseController implements In
         }
     }
 
+    /**
+     * switch table to all.
+     */
+
     public void switchToAll() {
         if (!isAllView) {
             notifObservableList = FXCollections.observableArrayList(userService.getNotifications(user));
@@ -183,17 +214,9 @@ public class UserNotificationController extends UserBaseController implements In
         }
     }
 
-    public void handleTableClick() {
-        tableView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                Notification selectedNotification = tableView.getSelectionModel().getSelectedItem();
-                if (selectedNotification != null) {
-                    System.out.println("okay");
-                    //showNotificationDetails(selectedNotification);
-                }
-            }
-        });
-    }
+    /**
+     * click remove all button.
+     */
 
     public void handleDeleteAll() {
         Task<User> deleteAllTask = new Task<>() {

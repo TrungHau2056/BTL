@@ -56,6 +56,12 @@ public class UserReturnBookController extends UserBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
+    /**
+     * init.
+     * @param url
+     * @param resourceBundle
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         returnButton.setSelected(true);
@@ -88,6 +94,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         });
     }
 
+    /**
+     * set user for scene.
+     */
+
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());
@@ -118,6 +128,11 @@ public class UserReturnBookController extends UserBaseController implements Init
 
         new Thread(loadDocTask).start();
     }
+
+    /**
+     * click search button.
+     * @param event
+     */
 
     public void handleSearchBook() {
         String keyword = searchText.getText();
@@ -169,6 +184,10 @@ public class UserReturnBookController extends UserBaseController implements Init
         }
     }
 
+    /**
+     * click remove button.
+     */
+
     public void handleReturnBook() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
@@ -187,31 +206,31 @@ public class UserReturnBookController extends UserBaseController implements Init
         }
     }
 
+    /**
+     * click info button.
+     */
+
     public void handleShowBookInfo() {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
-                showBookInfoView(selectedItem);
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
+                Parent root = loader.load();
+
+                BookInfoController controller = loader.getController();
+                controller.setDocument(selectedItem);
+                controller.setUser(user);
+                controller.setUserReturnBookController(this);
+                controller.setBookInfo();
+
+                Stage stage = new Stage();
+                stage.setTitle("Document");
+                stage.setScene(new Scene(root));
+                stage.show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    private void showBookInfoView(Document selectedItem) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/btl/view/returnedBookInfo-view.fxml"));
-        Parent root = loader.load();
-
-        BookInfoController controller = loader.getController();
-        controller.setDocument(selectedItem);
-        controller.setUser(user);
-        controller.setUserReturnBookController(this);
-        controller.setBookInfo();
-
-
-        Stage stage = new Stage();
-        stage.setTitle("Document");
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 }

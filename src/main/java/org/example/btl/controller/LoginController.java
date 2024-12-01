@@ -38,9 +38,14 @@ public class LoginController {
     private TextField showPassText;
     @FXML
     private ToggleGroup role;
-
     @FXML
     private Button eyeButton;
+
+    /**
+     * click eye to show password.
+     */
+
+
 
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
@@ -60,6 +65,12 @@ public class LoginController {
         }
     }
 
+    /**
+     * click sign up link to switch sign up scene.
+     * @param event
+     * @throws IOException
+     */
+
     public void switchToSignUp(ActionEvent event) throws IOException {
         if (isProcessing) {
             alertErr.setContentText("Please wait");
@@ -74,6 +85,11 @@ public class LoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     * click login button.
+     * @param event
+     */
 
     public void handleLogin(ActionEvent event) {
         if (isProcessing) {

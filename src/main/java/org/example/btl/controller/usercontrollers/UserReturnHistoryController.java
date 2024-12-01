@@ -5,7 +5,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
@@ -45,6 +44,12 @@ public class UserReturnHistoryController extends UserBaseController implements I
 
     private ObservableList<Borrow> borrowObservableList;
 
+    /**
+     * init.
+     * @param url
+     * @param resourceBundle
+     */
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         historyButton.setSelected(true);
@@ -79,6 +84,10 @@ public class UserReturnHistoryController extends UserBaseController implements I
         borrowDateCol.setCellValueFactory(new PropertyValueFactory<>("borrowDate"));
         returnDateCol.setCellValueFactory(new PropertyValueFactory<>("returnDate"));
     }
+
+    /**
+     * set user for scene.
+     */
 
 
     @Override

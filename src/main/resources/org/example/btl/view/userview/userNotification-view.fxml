@@ -166,7 +166,7 @@
                         </DropShadow>
                     </effect>
                 </Button>
-            <TableView fx:id="tableView" layoutX="60.0" layoutY="204.0" onMouseClicked="#handleTableClick" prefHeight="398.0" prefWidth="771.0" stylesheets="@../../tableview.css">
+            <TableView fx:id="tableView" layoutX="60.0" layoutY="204.0" prefHeight="398.0" prefWidth="771.0" stylesheets="@../../tableview.css">
               <columns>
                 <TableColumn fx:id="idCol" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="durationCol" prefWidth="161.0" text="Time" />

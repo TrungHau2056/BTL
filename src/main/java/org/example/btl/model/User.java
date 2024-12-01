@@ -18,11 +18,22 @@ public class User extends Account {
         super(name, email, username, password, birthday, gender);
     }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Borrow> borrows = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @Column(columnDefinition = "BLOB")
+    private byte[] avatar;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Notification> notifications = new HashSet<>();
+
+    public byte[] getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(byte[] avatar) {
+        this.avatar = avatar;
+    }
 
     public Set<Borrow> getBorrows() {
         return borrows;

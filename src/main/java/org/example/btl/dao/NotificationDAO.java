@@ -61,7 +61,6 @@ public class NotificationDAO {
 
         notification.setRead(!notification.isRead());
         notification = session.merge(notification);
-
         session.getTransaction().commit();
         session.close();
 

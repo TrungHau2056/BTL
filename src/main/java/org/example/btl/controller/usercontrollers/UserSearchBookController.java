@@ -82,6 +82,7 @@ public class UserSearchBookController extends UserBaseController implements Init
                 }
             }
         });
+
         descriptionCol.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         authorsCol.setCellValueFactory(data -> {

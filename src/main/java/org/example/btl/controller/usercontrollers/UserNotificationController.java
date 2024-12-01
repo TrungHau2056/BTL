@@ -78,7 +78,7 @@ public class UserNotificationController extends UserBaseController implements In
 
     @Override
     public void setUserInfo() {
-        Set<Notification> notifications = userService.getNotifications(user);
+        List<Notification> notifications = userService.getNotifications(user);
 
         totalLabel.setText(String.valueOf(notifications.size()));
         int unreadCnt = 0;

@@ -89,13 +89,13 @@ public class UserDAO implements BaseDAO<User> {
         return borrows;
     }
 
-    public Set<Notification> getNotification(User user) {
-        Set<Notification> notifications;
+    public List<Notification> getNotification(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        user = session.merge(user);
-        notifications = new HashSet<>(user.getNotifications());
+        Query query = session.createQuery("FROM Notification WHERE user = :user");
+        query.setParameter("user", user);
+        List<Notification> notifications = query.getResultList();
 
         session.close();
         return notifications;

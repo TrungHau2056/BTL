@@ -115,7 +115,7 @@ public class DocumentService {
         List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
         for (Publisher publisher : publishers) {
-            for (Document document : publisher.getDocuments()) {
+            for (Document document : publisherDAO.getDocuments(publisher)) {
                 Borrow borrow = borrowDAO.findByUserCurrentlyBorrowsDocument(user, document);
                 switch (status) {
                     case "All":

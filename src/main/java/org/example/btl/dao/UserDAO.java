@@ -4,6 +4,7 @@ import jakarta.persistence.Query;
 import org.example.btl.model.*;
 import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -94,7 +95,7 @@ public class UserDAO implements BaseDAO<User> {
         session.beginTransaction();
 
         user = session.merge(user);
-        notifications = user.getNotifications();
+        notifications = new HashSet<>(user.getNotifications());
 
         session.close();
         return notifications;

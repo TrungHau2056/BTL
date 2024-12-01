@@ -201,7 +201,7 @@
                   </ToggleButton>
                </toggles>
             </ToggleButtonGroup>
-            <Label layoutX="670.0" layoutY="618.0" text="Mark all notifications is read" textFill="#f20707">
+            <Label layoutX="670.0" layoutY="618.0" text="Mark all notifications as read" textFill="#f20707">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>

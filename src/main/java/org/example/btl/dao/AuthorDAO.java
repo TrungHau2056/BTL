@@ -6,6 +6,7 @@ import org.example.btl.model.Document;
 import org.example.btl.model.HibernateUtils;
 import org.hibernate.Session;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -51,7 +52,7 @@ public class AuthorDAO {
         session.beginTransaction();
 
         author = session.merge(author);
-        documents = author.getDocuments();
+        documents = new HashSet<>(author.getDocuments());
 
         session.close();
         return documents;

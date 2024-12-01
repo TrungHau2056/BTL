@@ -163,8 +163,10 @@ public class UserNotificationController extends UserBaseController implements In
         });
 
         markAsReadTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + markAsReadTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = markAsReadTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(markAsReadTask).start();
@@ -190,8 +192,10 @@ public class UserNotificationController extends UserBaseController implements In
             });
 
             loadUnreadNotiTask.setOnFailed(e -> {
-                alertErr.setContentText("Error: " + loadUnreadNotiTask.getException().getMessage());
-                alertErr.show();
+                Throwable exception = loadUnreadNotiTask.getException();
+                if (exception != null) {
+                    exception.printStackTrace();
+                }
             });
 
             new Thread(loadUnreadNotiTask).start();
@@ -228,8 +232,10 @@ public class UserNotificationController extends UserBaseController implements In
         });
 
         deleteAllTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + deleteAllTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = deleteAllTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(deleteAllTask).start();

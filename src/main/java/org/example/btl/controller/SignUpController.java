@@ -124,8 +124,10 @@ public class SignUpController {
         });
 
         signUpTask.setOnFailed(e -> {
-            alertErr.setContentText("Error: " + signUpTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = signUpTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(signUpTask).start();

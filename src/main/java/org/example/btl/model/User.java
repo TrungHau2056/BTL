@@ -21,7 +21,7 @@ public class User extends Account {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Borrow> borrows = new HashSet<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private Set<Notification> notifications = new HashSet<>();
 
     public Set<Borrow> getBorrows() {

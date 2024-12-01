@@ -137,8 +137,10 @@ public class UserSearchBookController extends UserBaseController implements Init
         });
 
         loadDocTask.setOnFailed(e -> {
-            alertErr.setContentText(loadDocTask.getException().getMessage());
-            alertErr.show();
+            Throwable exception = loadDocTask.getException();
+            if (exception != null) {
+                exception.printStackTrace();
+            }
         });
 
         new Thread(loadDocTask).start();
@@ -217,8 +219,10 @@ public class UserSearchBookController extends UserBaseController implements Init
             });
 
             searchDocTask.setOnFailed(e -> {
-                alertErr.setContentText("Error: " + searchDocTask.getException().getMessage());
-                alertErr.show();
+                Throwable exception = searchDocTask.getException();
+                if (exception != null) {
+                    exception.printStackTrace();
+                }
             });
 
             new Thread(searchDocTask).start();

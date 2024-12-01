@@ -18,7 +18,7 @@ public class BorrowDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user  AND returnDate IS NULL");
+        Query query = session.createQuery("FROM Borrow WHERE document =: document AND user =: user AND returnDate IS NULL");
         query.setParameter("user", user);
         query.setParameter("document", document);
         List<Borrow> borrows = query.getResultList();

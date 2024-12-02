@@ -42,16 +42,28 @@ public class AdminAddBookController extends AdminBaseController {
     @FXML
     private TextField imageLinkText;
 
+    /**
+     * Initializes the UI components.
+     * Sets the default state of the NormalButton to selected.
+     */
     @FXML
     public void initialize() {
         NormalButton.setSelected(true);
     }
 
+    /**
+     * Sets the admin's information on the UI by updating the name label with a greeting.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
     }
 
+    /**
+     * Adds a new genre to the list if it's not already present.
+     * Displays an error message if the genre is empty or already added.
+     * Updates the genre label with the new list of genres.
+     */
     public void genreAdd() {
         String genre = genresText.getText();
 
@@ -76,6 +88,11 @@ public class AdminAddBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Deletes the last genre from the list.
+     * Updates the genre label to reflect the remaining genres.
+     * If the genre list is empty after deletion, the label is cleared.
+     */
     public void genreDelete() {
         if (genreNames.isEmpty()) {
             return;
@@ -98,6 +115,11 @@ public class AdminAddBookController extends AdminBaseController {
         genreLabel.setText(genres);
     }
 
+    /**
+     * Adds a new author to the list if it's not already present.
+     * Displays an error message if the author is empty or already added.
+     * Updates the author label with the new list of authors.
+     */
     public void authorAdd() {
         String author = authorsText.getText();
 
@@ -122,6 +144,11 @@ public class AdminAddBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Deletes the last author from the list.
+     * Updates the author label to reflect the remaining authors.
+     * If the author list is empty after deletion, the label is cleared.
+     */
     public void authorDelete() {
         if (authorNames.isEmpty()) {
             return;
@@ -144,6 +171,13 @@ public class AdminAddBookController extends AdminBaseController {
         authorLabel.setText(authors);
     }
 
+    /**
+     * Handles the action of adding a new document.
+     * Validates the input data (title, authors, genres, quantity, description, and image link) and adds the document if valid.
+     * Displays an error message if any validation fails, including invalid image link, and a success message if the document is successfully saved.
+     *
+     * @param event The event that triggers the action.
+     */
     public void handleAdd(ActionEvent event) {
         String title = titleText.getText();
         String publisherName = publisherText.getText();

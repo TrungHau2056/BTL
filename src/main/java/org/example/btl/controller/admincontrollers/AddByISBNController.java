@@ -37,14 +37,28 @@ public class AddByISBNController extends AdminBaseController {
     @FXML
     private TextField publisherText;
 
+    /**
+     * Constructor for the AddByISBNController.
+     * Initializes the controller and handles any required security or I/O setup.
+     * @throws GeneralSecurityException if a security issue occurs during initialization
+     * @throws IOException if an I/O error occurs during initialization
+     */
     public AddByISBNController() throws GeneralSecurityException, IOException {
     }
 
+    /**
+     * Sets the admin's display information by updating the name label.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
     }
 
+    /**
+     * Handles the check action triggered by the user.
+     * Searches for book information by ISBN through the Google Books API and updates the UI with the results.
+     * Displays an error message if no document is found matching the ISBN.
+     */
     public void handleCheck() {
         String isbn = isbnText.getText();
 
@@ -92,6 +106,11 @@ public class AddByISBNController extends AdminBaseController {
         new Thread(callAPITask).start();
     }
 
+    /**
+     * Handles the add action triggered by the user.
+     * Validates the document data, checks for required fields (author, genre), and adds the document if valid.
+     * Displays error messages if any required field is missing or invalid, and success message if the document is successfully added.
+     */
     public void handleAdd() {
         if (volumeInfo == null) {
             alertErr.setContentText("Please check before add!");

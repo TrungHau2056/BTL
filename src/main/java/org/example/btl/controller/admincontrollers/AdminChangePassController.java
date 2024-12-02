@@ -29,10 +29,21 @@ public class AdminChangePassController extends AdminBaseController{
 
     private AdminHomeController adminHomeController;
 
+    /**
+     * Sets the reference to the AdminHomeController.
+     * This method allows the setting of the AdminHomeController instance.
+     *
+     * @param adminHomeController The AdminHomeController instance to be set.
+     */
     public void setAdminHomeController(AdminHomeController adminHomeController) {
         this.adminHomeController = adminHomeController;
     }
 
+    /**
+     * Toggles the visibility of the current password text.
+     * If the password is currently hidden, it shows the password and changes the eye button style.
+     * If the password is currently visible, it hides the password and changes the eye button style.
+     */
     public void handleShowHiddenPass() {
         if (curPassText.isVisible()) {
             showCurPassText.setText(curPassText.getText());
@@ -51,6 +62,11 @@ public class AdminChangePassController extends AdminBaseController{
         }
     }
 
+    /**
+     * Toggles the visibility of the new password text.
+     * If the new password is currently hidden, it shows the password and changes the eye button style.
+     * If the new password is currently visible, it hides the password and changes the eye button style.
+     */
     public void handleShowNewPass() {
         if (newPassText.isVisible()) {
             showNewPassText.setText(newPassText.getText());
@@ -69,11 +85,23 @@ public class AdminChangePassController extends AdminBaseController{
         }
     }
 
+    /**
+     * Sets the information for the admin.
+     * This method is intended to be implemented with functionality for setting admin-specific information.
+     * Currently, it does not perform any action.
+     */
     @Override
     public void setAdminInfo() {
-
     }
 
+    /**
+     * Handles the confirmation of password change.
+     * This method validates the current password, checks if the new password is entered and matches the confirmation password.
+     * If the validation passes, the password is updated for the admin.
+     * It also displays appropriate error or success messages.
+     *
+     * @param event The action event triggered by the user confirming the password change.
+     */
     public void handleConfirm(ActionEvent event) {
         String curPass = curPassText.isVisible() ? curPassText.getText() : showCurPassText.getText();
         String newPass = newPassText.isVisible() ? newPassText.getText() : showNewPassText.getText();

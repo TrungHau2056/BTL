@@ -48,6 +48,11 @@ public class AdminSearchBookController extends AdminBaseController {
 
     private ObservableList<Document> documentObservableList;
 
+    /**
+     * Sets the admin information and updates the document table.
+     * This method displays a personalized greeting with the admin's name
+     * and populates the document table with all documents retrieved from the document service.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
@@ -55,6 +60,13 @@ public class AdminSearchBookController extends AdminBaseController {
         tableView.setItems(documentObservableList);
     }
 
+    /**
+     * Initializes the controller by setting up the ChoiceBox for criteria selection and
+     * configuring the TableView columns to display document properties.
+     * This method sets the default criteria value to "Title" and binds the table columns
+     * to their respective document properties. Additionally, it formats the authors and genres
+     * columns to display a comma-separated list of author and genre names.
+     */
     @FXML
     public void initialize() {
         // Choice Box
@@ -87,10 +99,20 @@ public class AdminSearchBookController extends AdminBaseController {
                 data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"));
     }
 
+    /**
+     * Refreshes the TableView to update its content.
+     */
     public void refresh() {
         tableView.refresh();
     }
 
+    /**
+     * Handles the admin search action based on the selected criterion (Title, Author, Genre, Publisher).
+     * It validates the search keyword, performs the search, and updates the table view with the results.
+     * If no results are found, it shows an error message.
+     *
+     * @param event The action event triggered by the user.
+     */
     public void handleAdminSearch(ActionEvent event) {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();
@@ -142,6 +164,14 @@ public class AdminSearchBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Handles the deletion of a selected document from the table.
+     * If the document is currently borrowed, a confirmation prompt is shown,
+     * notifying the users who borrowed the document about its deletion.
+     * If the document is not borrowed, a standard confirmation prompt is shown.
+     *
+     * The document is deleted from the database upon confirmation, and the table view is refreshed.
+     */
     public void handleDelete() {
         Document document = tableView.getSelectionModel().getSelectedItem();
         if (document == null) {
@@ -183,6 +213,15 @@ public class AdminSearchBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Handles the update action for a selected document in the table view.
+     * If no document is selected, the method returns early.
+     * Otherwise, it opens a new scene where the document can be updated.
+     * The selected document is passed to the update controller for further processing.
+     *
+     * @param event The action event triggered by the update action (e.g., button click).
+     * @throws IOException If the FXML file for the update view cannot be loaded.
+     */
     public void handleUpdate(ActionEvent event) throws IOException {
         Document document = tableView.getSelectionModel().getSelectedItem();
         if (document == null) {

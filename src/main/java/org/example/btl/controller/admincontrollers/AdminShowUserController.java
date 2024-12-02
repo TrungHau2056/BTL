@@ -39,6 +39,14 @@ public class AdminShowUserController extends AdminBaseController implements Init
 
     private ObservableList<User> userObservableList;
 
+    /**
+     * Initializes the table columns by setting up their cell value factories.
+     * This method is called automatically when the view is loaded.
+     * It binds the columns to the properties of the User object.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resourceBundle The resources used to localize the root object, or null if not needed.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -50,6 +58,11 @@ public class AdminShowUserController extends AdminBaseController implements Init
         genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
     }
 
+    /**
+     * Sets the admin's information and loads the list of users asynchronously.
+     * This method updates the name label with the admin's name and populates
+     * the user table with a list of users fetched from the user service.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
@@ -75,10 +88,20 @@ public class AdminShowUserController extends AdminBaseController implements Init
         new Thread(loadUserTask).start();
     }
 
+    /**
+     * Refreshes the table view by reloading the data displayed.
+     * This method is used to update the content of the table view.
+     */
     public void refresh() {
         tableView.refresh();
     }
 
+    /**
+     * Handles the deletion of a selected user from the table view.
+     * This method shows a confirmation dialog asking the admin to confirm the deletion of a user.
+     * If confirmed, the selected user will be deleted from the database and the table view will be refreshed.
+     * If the deletion fails, an error message will be displayed.
+     */
     public void handleDeleteUser() {
         User user = tableView.getSelectionModel().getSelectedItem();
         if (user == null) {
@@ -115,6 +138,12 @@ public class AdminShowUserController extends AdminBaseController implements Init
         });
     }
 
+    /**
+     * Handles the process of sending a notification to a selected user.
+     * This method retrieves the selected user from the table view and sends a notification with the provided title and message.
+     * If no user is selected, an error message is displayed. After successfully sending the notification,
+     * a confirmation message is shown to the admin.
+     */
     public void handleSendNotification() {
         User user = tableView.getSelectionModel().getSelectedItem();
         if (user == null) {

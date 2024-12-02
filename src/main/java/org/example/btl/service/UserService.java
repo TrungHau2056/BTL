@@ -33,6 +33,17 @@ public class UserService {
         return userDAO.findByPassAndUsername(username, password);
     }
 
+    /**
+     * Validates the registration information provided by an admin.
+     *
+     * @param name
+     * @param email
+     * @param username
+     * @param password
+     * @param gender
+     * @param birthday
+     * @return null if the information is valid.
+     */
     public String validateRegistration(String name, String email, String username,
                                        String password, String gender, Date birthday) {
         if (Objects.equals(name, "")
@@ -57,6 +68,18 @@ public class UserService {
         return null;
     }
 
+    /**
+     * Validates the updated information provided by a user.
+     *
+     * @param name
+     * @param email
+     * @param username
+     * @param oldUsername
+     * @param password
+     * @param gender
+     * @param birthday
+     * @return null if the information is valid.
+     */
     public String validateUpdate(String name, String email, String username, String oldUsername,
                                        String password, String gender, Date birthday) {
         if (Objects.equals(name, "")

@@ -8,10 +8,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class UserDAO implements BaseDAO<User> {
+public class UserDAO {
     private Session session;
 
-    @Override
+    /**
+     * save new user.
+     *
+     * @param item
+     */
     public void save(User item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -20,7 +24,11 @@ public class UserDAO implements BaseDAO<User> {
         session.close();
     }
 
-    @Override
+    /**
+     * update a user.
+     *
+     * @param item
+     */
     public void update(User item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -29,7 +37,11 @@ public class UserDAO implements BaseDAO<User> {
         session.close();
     }
 
-    @Override
+    /**
+     * delete a user.
+     *
+     * @param item
+     */
     public void delete(User item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -38,7 +50,11 @@ public class UserDAO implements BaseDAO<User> {
         session.close();
     }
 
-    @Override
+    /**
+     * find all the users in the database.
+     *
+     * @return
+     */
     public List<User> findAll() {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -50,6 +66,12 @@ public class UserDAO implements BaseDAO<User> {
         return users;
     }
 
+    /**
+     * testing purpose.
+     *
+     * @param username
+     * @return
+     */
     public User findByUsername(String username) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -63,6 +85,13 @@ public class UserDAO implements BaseDAO<User> {
         else return users.getFirst();
     }
 
+    /**
+     * find with pass and username.
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public User findByPassAndUsername(String username, String password) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -77,6 +106,12 @@ public class UserDAO implements BaseDAO<User> {
         else return users.getFirst();
     }
 
+    /**
+     * get all the borrows of a user.
+     *
+     * @param user
+     * @return
+     */
     public List<Borrow> getBorrows(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -89,6 +124,12 @@ public class UserDAO implements BaseDAO<User> {
         return borrows;
     }
 
+    /**
+     * get all the notis of an user.
+     *
+     * @param user
+     * @return
+     */
     public List<Notification> getNotification(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

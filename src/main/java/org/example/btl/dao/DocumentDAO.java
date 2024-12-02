@@ -11,22 +11,17 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-public class DocumentDAO implements BaseDAO<Document> {
+public class DocumentDAO {
     private Session session;
     private PublisherDAO publisherDAO = new PublisherDAO();
     private AuthorDAO authorDAO = new AuthorDAO();
     private GenreDAO genreDAO = new GenreDAO();
 
-    @Override
-    public void save(Document item) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.persist(item);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @Override
+    /**
+     * uses for update added-by-ISBN docs.
+     *
+     * @param item
+     */
     public void update(Document item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -35,16 +30,11 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.close();
     }
 
-    @Override
-    public void delete(Document item) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.remove(item);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @Override
+    /**
+     * find all the docs.
+     *
+     * @return
+     */
     public List<Document> findAll() {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -54,6 +44,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
+    /**
+     * Mostly used for testing purpose.
+     *
+     * @param title
+     * @return
+     */
     public Document findByTitle(String title) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -67,6 +63,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         else return documents.getFirst();
     }
 
+    /**
+     * search by title.
+     *
+     * @param keyword
+     * @return a list of doc.
+     */
     public List<Document> searchByTitleKeyword(String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -79,6 +81,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
+    /**
+     * search by title but the status is borrowed.
+     *
+     * @param keyword
+     * @return a list of doc.
+     */
     public List<Document> searchByTitleBorrowed(User user, String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -95,6 +103,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
+    /**
+     * search by title but the status is not borrowed.
+     *
+     * @param keyword
+     * @return a list of doc.
+     */
     public List<Document> searchByTitleNotBorrowed(User user, String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -119,6 +133,15 @@ public class DocumentDAO implements BaseDAO<Document> {
         return documents;
     }
 
+    /**
+     * save the doc.
+     *
+     * @param document
+     * @param admin
+     * @param authorNames
+     * @param publisherName
+     * @param genreNames
+     */
     public void saveWithAdminAuthorsPublisherGenre(Document document, Admin admin,
                                                    List<String> authorNames, String publisherName,
                                                    List<String> genreNames) {
@@ -166,6 +189,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.close();
     }
 
+    /**
+     * delete all the authors and genres for update purpose.
+     *
+     * @param document
+     * @return
+     */
     public Document deleteAuthorGenre(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -191,6 +220,15 @@ public class DocumentDAO implements BaseDAO<Document> {
         return document;
     }
 
+    /**
+     * update a doc.
+     *
+     * @param document
+     * @param authorNames
+     * @param publisherName
+     * @param genreNames
+     * @return an updated doc.
+     */
     public Document updateDocument(Document document,
                                List<String> authorNames, String publisherName,
                                List<String> genreNames) {
@@ -240,6 +278,11 @@ public class DocumentDAO implements BaseDAO<Document> {
         return document;
     }
 
+    /**
+     * delete a doc.
+     *
+     * @param document
+     */
     public void deleteDocument(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -258,6 +301,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         session.close();
     }
 
+    /**
+     * if someone is borrowing this doc.
+     *
+     * @param document
+     * @return true if someone is borrowing this doc.
+     */
     public boolean isCurrentlyBorrow(Document document) {
         boolean isBorrow = false;
         session = HibernateUtils.getSessionFactory().openSession();
@@ -275,6 +324,12 @@ public class DocumentDAO implements BaseDAO<Document> {
         return isBorrow;
     }
 
+    /**
+     * find doc added by an admin.
+     *
+     * @param admin
+     * @return a list of doc.
+     */
     public List<Document> findDocAddedByAdmin(Admin admin) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

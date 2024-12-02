@@ -26,6 +26,17 @@ public class AdminService {
         adminDAO.save(item);
     }
 
+    /**
+     * Validates the registration information provided by an admin.
+     * @param name
+     * @param email
+     * @param username
+     * @param password
+     * @param confirmedPassword
+     * @param gender
+     * @param birthday
+     * @return null if the information is valid.
+     */
     public String validateRegistration(String name, String email, String username,
                                        String password, String confirmedPassword,
                                        String gender, Date birthday) {

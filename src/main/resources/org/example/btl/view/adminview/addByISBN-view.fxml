@@ -221,7 +221,7 @@
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="genreText" editable="false" layoutX="159.0" layoutY="282.0" prefHeight="27.0" prefWidth="191.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
+                <TextField fx:id="genreText" editable="false" layoutX="159.0" layoutY="282.0" prefHeight="30.0" prefWidth="247.0" style="-fx-border-color: #466bb0; -fx-border-radius: 20px; -fx-background-color: transparent;">
                     <font>
                         <Font size="13.0" />
                     </font>

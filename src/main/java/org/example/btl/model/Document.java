@@ -42,7 +42,7 @@ public class Document {
     @JoinColumn(name = "admin_id")
     private Admin admin;
 
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "publisher_id")
     private Publisher publisher;
 

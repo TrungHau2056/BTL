@@ -191,6 +191,7 @@ public class DocumentDAO implements BaseDAO<Document> {
         return document;
     }
 
+    //
     public Document updateDocument(Document document,
                                List<String> authorNames, String publisherName,
                                List<String> genreNames) {
@@ -231,10 +232,11 @@ public class DocumentDAO implements BaseDAO<Document> {
             } else {
                 genre = session.merge(genre);
             }
+            System.out.println("bruh");
             genre.addDocument(document);
         }
-
-        session.merge(document);
+        System.out.println("bruh2");
+        document = session.merge(document);
         session.getTransaction().commit();
         session.close();
 

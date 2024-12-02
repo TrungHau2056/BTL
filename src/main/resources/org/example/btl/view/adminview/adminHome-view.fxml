@@ -31,7 +31,7 @@
          <children>
             <AnchorPane layoutX="41.0" layoutY="150.0" prefHeight="129.0" prefWidth="324.0">
                <children>
-                  <Label style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
+                  <Label fx:id="nameLabel" style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="49.0" />
                      </font>

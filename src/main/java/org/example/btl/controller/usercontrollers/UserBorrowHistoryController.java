@@ -43,8 +43,8 @@ public class UserBorrowHistoryController extends UserBaseController implements I
 
     /**
      * set data for table and historyButton.
-     * @param url
-     * @param resourceBundle
+     * @param url the location used to resolve relative paths for the root object.
+     * @param resourceBundle the resources used to localize the root object.
      */
 
     @Override
@@ -65,7 +65,6 @@ public class UserBorrowHistoryController extends UserBaseController implements I
                                 : data.getValue().getDocument().getTitle()
                 )
         );
-
         authorsCol.setCellValueFactory(data -> {
             if (data.getValue().getDocument() == null) {
                 return new SimpleStringProperty("Not available");
@@ -82,12 +81,13 @@ public class UserBorrowHistoryController extends UserBaseController implements I
     }
 
     /**
-     * set user info.
+     * set user for scene.
      */
 
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());
+
         byte[] avatarData = user.getAvatar();
         if (avatarData != null) {
             InputStream inputStream = new ByteArrayInputStream(avatarData);

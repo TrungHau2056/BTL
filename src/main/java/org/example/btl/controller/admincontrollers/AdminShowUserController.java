@@ -52,6 +52,7 @@ public class AdminShowUserController extends AdminBaseController implements Init
 
     @Override
     public void setAdminInfo() {
+        nameLabel.setText("Hi " + admin.getName());
         Task<List<User>> loadUserTask = new Task<>() {
             @Override
             protected List<User> call() {

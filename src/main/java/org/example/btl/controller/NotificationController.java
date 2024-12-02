@@ -67,7 +67,7 @@ public class NotificationController {
 
     /**
      * click remove button.
-     * @param event
+     * @param event the action event triggered by the user.
      */
 
     public void handleRemove(ActionEvent event) {
@@ -81,7 +81,7 @@ public class NotificationController {
 
     /**
      * click unread button.
-     * @param event
+     * @param event the action event triggered by the user.
      */
 
     public void handleUnread(ActionEvent event) {

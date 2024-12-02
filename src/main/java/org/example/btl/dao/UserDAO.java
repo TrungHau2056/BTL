@@ -77,13 +77,13 @@ public class UserDAO implements BaseDAO<User> {
         else return users.getFirst();
     }
 
-    public Set<Borrow> getBorrows(User user) {
-        Set<Borrow> borrows;
+    public List<Borrow> getBorrows(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        user = session.merge(user);
-        borrows = user.getBorrows();
+        Query query = session.createQuery("FROM Borrow WHERE user = :user");
+        query.setParameter("user", user);
+        List<Borrow> borrows = query.getResultList();
 
         session.close();
         return borrows;

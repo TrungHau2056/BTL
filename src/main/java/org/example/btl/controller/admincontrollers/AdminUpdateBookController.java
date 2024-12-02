@@ -77,6 +77,7 @@ public class AdminUpdateBookController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
+        nameLabel.setText("Hi " + admin.getName());
         titleText.setText(document.getTitle());
         quantityText.setText(String.valueOf(document.getQuantity()));
         descriptionText.setText(document.getDescription());

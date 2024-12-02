@@ -11,7 +11,8 @@ public class Borrow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
+//            (cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 

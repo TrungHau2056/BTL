@@ -1,15 +1,9 @@
 package org.example.btl.controller.admincontrollers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import org.example.btl.model.User;
 
-import java.io.IOException;
 import java.sql.Date;
 
 public class AddMemberController extends AdminBaseController {
@@ -28,7 +22,7 @@ public class AddMemberController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
-
+        nameLabel.setText("Hi " + admin.getName());
     }
 
     public void handleAddMember () {

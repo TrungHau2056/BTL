@@ -42,7 +42,7 @@ public class AddByISBNController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
-
+        nameLabel.setText("Hi " + admin.getName());
     }
 
     public void handleCheck() {

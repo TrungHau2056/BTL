@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -18,7 +16,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddMemberController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AddMemberController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -29,7 +27,7 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane layoutX="41.0" layoutY="150.0" prefHeight="129.0" prefWidth="324.0">
+            <AnchorPane layoutX="41.0" layoutY="126.0" prefHeight="129.0" prefWidth="324.0">
                <children>
                   <Label fx:id="nameLabel" style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
@@ -169,17 +167,10 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <MenuButton layoutX="285.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../../ButtonAccount.css" text="Account" textFill="#466bb0">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Log Out" />
-               </items>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </MenuButton>
+            <Button layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-border-radius: 20px; -fx-border-color: #fff;" text="Log out" />
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="700.0" prefWidth="800.0" stylesheets="@../../style.css">
+      <AnchorPane prefHeight="700.0" prefWidth="800.0" style="-fx-background-color: #fff;" stylesheets="@../../style.css">
          <children>
             <Label layoutX="286.0" layoutY="27.0" style="-fx-font-weight: 700;" text="Add Member" textFill="#466bb0">
                <font>

@@ -4,8 +4,6 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminUpdateBookController">
+<HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminUpdateBookController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -28,7 +26,7 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane layoutX="41.0" layoutY="150.0" prefHeight="129.0" prefWidth="324.0">
+            <AnchorPane layoutX="41.0" layoutY="126.0" prefHeight="129.0" prefWidth="324.0">
                <children>
                   <Label fx:id="nameLabel" style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
@@ -168,14 +166,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <MenuButton layoutX="285.0" layoutY="27.0" mnemonicParsing="false" stylesheets="@../../ButtonAccount.css" text="Account" textFill="#466bb0">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Log Out" />
-               </items>
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </MenuButton>
+            <Button layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-border-radius: 20px; -fx-border-color: #fff;" text="Log out" />
          </children>
       </AnchorPane>
       <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #fff;" stylesheets="@../../tableview.css">

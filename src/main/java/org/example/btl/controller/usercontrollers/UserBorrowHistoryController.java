@@ -43,10 +43,10 @@ public class UserBorrowHistoryController extends UserBaseController implements I
 
     /**
      * set data for table and historyButton.
+     *
      * @param url the location used to resolve relative paths for the root object.
      * @param resourceBundle the resources used to localize the root object.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         historyButton.setSelected(true);
@@ -83,7 +83,6 @@ public class UserBorrowHistoryController extends UserBaseController implements I
     /**
      * set user for scene.
      */
-
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());

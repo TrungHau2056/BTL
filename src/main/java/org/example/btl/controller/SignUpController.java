@@ -46,7 +46,6 @@ public class SignUpController {
     /**
      * click eye button.
      */
-
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
             showPassText.setText(passwordText.getText());
@@ -64,12 +63,13 @@ public class SignUpController {
             eyeButton.getStyleClass().add("eye-button");
         }
     }
+
     /**
      * switch to log in scene.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if parent cannot load.
      */
-
     public void switchToLogin(ActionEvent event) throws IOException {
         String fxmlFile = "/org/example/btl/view/login-view.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
@@ -83,9 +83,9 @@ public class SignUpController {
 
     /**
      * click sign up button.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleSignUp(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();

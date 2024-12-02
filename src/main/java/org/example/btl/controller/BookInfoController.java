@@ -70,7 +70,6 @@ public class BookInfoController {
     /**
      * set user for scene.
      */
-
     public void setBookInfo() {
         String authors = document.getAuthors().stream()
                 .map(Author::getName)
@@ -107,7 +106,6 @@ public class BookInfoController {
     /**
      * click button borrow.
      */
-
     public void handleBorrow() {
         String validateMess = borrowService.validateBorrow(user, document);
         if (validateMess != null) {
@@ -133,9 +131,9 @@ public class BookInfoController {
 
     /**
      * click return button.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleReturn(ActionEvent event) {
         user = borrowService.returnDocument(user, document);
 

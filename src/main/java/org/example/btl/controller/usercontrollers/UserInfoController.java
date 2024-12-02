@@ -58,7 +58,6 @@ public class UserInfoController extends UserBaseController {
     /**
      * set user for scene.
      */
-
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());
@@ -88,9 +87,9 @@ public class UserInfoController extends UserBaseController {
 
     /**
      * button update.
+     *
      * @param event the action event triggered by the user
      */
-
     public void handleUpdateUser(ActionEvent event) {
         String name = nameText.getText();
         String email = emailText.getText();

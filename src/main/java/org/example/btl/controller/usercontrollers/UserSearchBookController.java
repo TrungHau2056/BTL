@@ -55,10 +55,10 @@ public class UserSearchBookController extends UserBaseController implements Init
 
     /**
      * init.
+     *
      * @param url the location used to resolve relative paths for the root object.
      * @param resourceBundle the resources used to localize the root object.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         criteria.getItems().addAll("Title", "Author", "Genre", "Publisher");
@@ -117,7 +117,6 @@ public class UserSearchBookController extends UserBaseController implements Init
     /**
      * set user for scene.
      */
-
     @Override
     public void setUserInfo() {
         nameLabel.setText(user.getName());
@@ -152,7 +151,6 @@ public class UserSearchBookController extends UserBaseController implements Init
     /**
      * click document in table.
      */
-
     public void handleTableClick() throws IOException {
         Document selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem == null) {
@@ -178,7 +176,6 @@ public class UserSearchBookController extends UserBaseController implements Init
     /**
      * click search button.
      */
-
     public void handleUserSearch() {
         String keyword = searchText.getText();
         String criterion = criteria.getValue();

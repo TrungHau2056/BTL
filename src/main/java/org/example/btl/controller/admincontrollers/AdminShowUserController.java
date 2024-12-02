@@ -127,5 +127,6 @@ public class AdminShowUserController extends AdminBaseController implements Init
 
         notificationService.addNotification(user, title, message);
         alertInfo.setContentText("Successfully sent a notification to '" + user.getName() + "'.");
+        alertInfo.show();
     }
 }

@@ -16,7 +16,6 @@ public class UserHomeController extends UserBaseController {
     /**
      * set user for scene.
      */
-
     @Override
     public void setUserInfo() {
         userinfo.setText(user.getName());
@@ -30,10 +29,10 @@ public class UserHomeController extends UserBaseController {
 
     /**
      * switch scene in userHome.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if the FXML file cannot be loaded.
      */
-
     public void switchToContact(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userHome_Contact-view.fxml");
     }

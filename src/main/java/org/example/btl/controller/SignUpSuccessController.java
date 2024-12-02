@@ -13,10 +13,10 @@ public class SignUpSuccessController {
 
     /**
      * switch to log in scene.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if parent cannot load.
      */
-
     public void switchToLogin(ActionEvent event) throws IOException {
         String fxmlFile = "/org/example/btl/view/login-view.fxml";
         FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));

@@ -57,16 +57,15 @@ public abstract class UserBaseController {
     /**
      * set info for userScenes.
      */
-
     public abstract void setUserInfo();
 
     /**
      * general switchScene.
+     *
      * @param event the action event triggered by the user.
      * @param path the path to the FXML file of the new scene.
      * @throws IOException if the FXML file cannot be loaded.
      */
-
     public void switchScene(ActionEvent event, String path) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         root = loader.load();
@@ -82,10 +81,10 @@ public abstract class UserBaseController {
 
     /**
      * switch particular scenes.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if the FXML file cannot be loaded.
      */
-
     public void switchToUserHomeScreen(ActionEvent event) throws IOException {
         switchScene(event, "/org/example/btl/view/userview/userHome-view.fxml");
     }
@@ -116,10 +115,10 @@ public abstract class UserBaseController {
 
     /**
      * button change avatar.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if the FXML file cannot be loaded.
      */
-
     public void handleChangeAvatar(ActionEvent event) throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.bmp"));
@@ -139,9 +138,9 @@ public abstract class UserBaseController {
 
     /**
      * button logout.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleLogOut(ActionEvent event) {
         alertComfirm.setTitle("Log out comfirmation");
         alertComfirm.setHeaderText("Log out comfirmation");

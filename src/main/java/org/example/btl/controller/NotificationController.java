@@ -51,7 +51,6 @@ public class NotificationController {
     /**
      * set notification for scene.
      */
-
     public void setNotificationInfo() {
         if (!notification.isRead()) {
             user = notificationService.switchNotificationStatus(notification);
@@ -67,9 +66,9 @@ public class NotificationController {
 
     /**
      * click remove button.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleRemove(ActionEvent event) {
         user = notificationService.deleteNotification(notification);
         userNotificationController.setUser(user);
@@ -81,9 +80,9 @@ public class NotificationController {
 
     /**
      * click unread button.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleUnread(ActionEvent event) {
         user = notificationService.switchNotificationStatus(notification);
         userNotificationController.setUser(user);

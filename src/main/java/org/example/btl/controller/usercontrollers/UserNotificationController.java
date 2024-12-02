@@ -49,10 +49,10 @@ public class UserNotificationController extends UserBaseController implements In
 
     /**
      * set up tableview.
+     *
      * @param url the location used to resolve relative paths for the root object.
      * @param resourceBundle the resources used to localize the root object.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -74,7 +74,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * set user for scene.
      */
-
     @Override
     public void setUserInfo() {
         List<Notification> notifications = userService.getNotifications(user);
@@ -102,7 +101,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * click remove button.
      */
-
     public void handleRemove() {
         Notification selectedItem = tableView.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
@@ -117,9 +115,9 @@ public class UserNotificationController extends UserBaseController implements In
 
     /**
      * click Info button.
+     *
      * @throws IOException if the parent cannot load.
      */
-
     public void handleInfo() throws IOException {
         Notification notification = tableView.getSelectionModel().getSelectedItem();
         if (notification == null) {
@@ -144,7 +142,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * click 'mark as read' button.
      */
-
     public void handleMarkAsRead() {
         Task<Void> markAsReadTask = new Task<>() {
             @Override
@@ -175,7 +172,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * switch table to unread.
      */
-
     public void switchToUnread() {
         if (isAllView) {
             Task<List<Notification>> loadUnreadNotiTask = new Task<>() {
@@ -205,7 +201,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * switch table to all.
      */
-
     public void switchToAll() {
         if (!isAllView) {
             notifObservableList = FXCollections.observableArrayList(userService.getNotifications(user));
@@ -217,7 +212,6 @@ public class UserNotificationController extends UserBaseController implements In
     /**
      * click remove all button.
      */
-
     public void handleDeleteAll() {
         Task<User> deleteAllTask = new Task<>() {
             @Override

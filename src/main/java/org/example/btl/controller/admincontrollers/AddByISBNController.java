@@ -66,14 +66,14 @@ public class AddByISBNController extends AdminBaseController {
                 publisherText.setText(volumeInfo.getPublisher());
 
                 List<String> authors = volumeInfo.getAuthors();
-                String authorsStr = String.join(", ", authors);
+                String authorsStr = authors == null ? "" : String.join(", ", authors);
 
                 List<String> genres = volumeInfo.getCategories();
-                String genresStr = String.join(", ", genres);
+                String genresStr = genres == null ? "" : String.join(", ", genres);
 
                 authorText.setText(authorsStr);
                 genreText.setText(genresStr);
-                if (volumeInfo.getImageLinks() != null ||
+                if (volumeInfo.getImageLinks() != null &&
                         volumeInfo.getImageLinks().getThumbnail() != null) {
                     thumbnail.setImage(new Image(volumeInfo.getImageLinks().getThumbnail()));
                 } else {
@@ -95,6 +95,12 @@ public class AddByISBNController extends AdminBaseController {
     public void handleAdd() {
         if (volumeInfo == null) {
             alertErr.setContentText("Please check before add!");
+            alertErr.show();
+        } else if (volumeInfo.getAuthors() == null) {
+            alertErr.setContentText("This document can't be added because it doesn't have an author!");
+            alertErr.show();
+        } else if (volumeInfo.getCategories() == null) {
+            alertErr.setContentText("This document can't be added because it doesn't have a genre!");
             alertErr.show();
         } else {
             String title = titleText.getText();

@@ -44,9 +44,6 @@ public class LoginController {
     /**
      * click eye to show password.
      */
-
-
-
     public void handleShowHiddenPass() {
         if (passwordText.isVisible()) {
             showPassText.setText(passwordText.getText());
@@ -67,10 +64,10 @@ public class LoginController {
 
     /**
      * click sign up link to switch sign up scene.
+     *
      * @param event the action event triggered by the user.
      * @throws IOException if parent cannot load.
      */
-
     public void switchToSignUp(ActionEvent event) throws IOException {
         if (isProcessing) {
             alertErr.setContentText("Please wait");
@@ -90,9 +87,9 @@ public class LoginController {
 
     /**
      * click login button.
+     *
      * @param event the action event triggered by the user.
      */
-
     public void handleLogin(ActionEvent event) {
         if (isProcessing) {
             alertErr.setContentText("Please wait");

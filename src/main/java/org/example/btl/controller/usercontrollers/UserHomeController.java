@@ -20,7 +20,8 @@ public class UserHomeController extends UserBaseController {
     private Label userid;
     @FXML
     private Label useremail;
-
+    @FXML
+    private Label notificationTitle;
     @FXML
     private Label notification;
 
@@ -35,6 +36,7 @@ public class UserHomeController extends UserBaseController {
         useremail.setText("Email: " + user.getEmail());
 
         List<Notification> notifications = userService.getNotifications(user);
+        notificationTitle.setText(notifications.getLast().getTitle());
         notification.setText(notifications.getLast().getMessage());
 
         byte[] avatarData = user.getAvatar();

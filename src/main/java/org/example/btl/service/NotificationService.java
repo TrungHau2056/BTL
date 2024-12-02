@@ -26,7 +26,7 @@ public class NotificationService {
     /**
      * Returns a duration since the given creation time.
      *
-     * @param createdAt
+     * @param createdAt the time when the event was created
      * @return a String of duration.
      */
     public String getDuration(LocalDateTime createdAt) {

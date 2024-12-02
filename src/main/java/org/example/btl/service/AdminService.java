@@ -28,13 +28,13 @@ public class AdminService {
 
     /**
      * Validates the registration information provided by an admin.
-     * @param name
-     * @param email
-     * @param username
-     * @param password
-     * @param confirmedPassword
-     * @param gender
-     * @param birthday
+     * @param name The name of the user.
+     * @param email The email of the user.
+     * @param username The username chosen by the user.
+     * @param password The password chosen by the user.
+     * @param confirmedPassword The confirmed password to ensure it matches the original password.
+     * @param gender The gender of the user.
+     * @param birthday The birthday of the user.
      * @return null if the information is valid.
      */
     public String validateRegistration(String name, String email, String username,

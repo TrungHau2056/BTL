@@ -36,12 +36,12 @@ public class UserService {
     /**
      * Validates the registration information provided by an admin.
      *
-     * @param name
-     * @param email
-     * @param username
-     * @param password
-     * @param gender
-     * @param birthday
+     * @param name the name of the user
+     * @param email the email of the user
+     * @param username the username of the user
+     * @param password the password of the user
+     * @param gender the gender of the user
+     * @param birthday the birthday of the user
      * @return null if the information is valid.
      */
     public String validateRegistration(String name, String email, String username,
@@ -71,13 +71,13 @@ public class UserService {
     /**
      * Validates the updated information provided by a user.
      *
-     * @param name
-     * @param email
-     * @param username
-     * @param oldUsername
-     * @param password
-     * @param gender
-     * @param birthday
+     * @param name the updated name of the user
+     * @param email the updated email of the user
+     * @param username the updated username of the user
+     * @param oldUsername the current (old) username of the user
+     * @param password the updated password of the user
+     * @param gender the updated gender of the user
+     * @param birthday the updated birthday of the user
      * @return null if the information is valid.
      */
     public String validateUpdate(String name, String email, String username, String oldUsername,

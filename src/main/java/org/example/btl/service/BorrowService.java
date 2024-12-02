@@ -25,8 +25,8 @@ public class BorrowService {
     /**
      * validates whether a user can borrow a document.
      *
-     * @param user
-     * @param document
+     * @param user The user attempting to borrow the document.
+     * @param document The document that the user wants to borrow.
      * @return null if the user can borrow the document.
      */
     public String validateBorrow(User user, Document document) {

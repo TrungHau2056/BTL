@@ -40,6 +40,14 @@ public class DocumentService {
         return borrowDAO.findUserCurrentlyBorrow(document);
     }
 
+    /**
+     * search Document by title keyword, borrower and status.
+     *
+     * @param keyword
+     * @param user
+     * @param status
+     * @return A list of Document.
+     */
     public List<Document> searchByTitle(String keyword, User user, String status) {
         switch (status) {
             case "All":
@@ -53,6 +61,14 @@ public class DocumentService {
         }
     }
 
+    /**
+     * search Document by author keyword, borrower and status.
+     *
+     * @param keyword
+     * @param user
+     * @param status
+     * @return A list of Document.
+     */
     public List<Document> searchByAuthor(String keyword, User user, String status) {
         List<Author> authors= authorDAO.findByKeyword(keyword);;
 
@@ -82,6 +98,14 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * search Document by genre keyword, borrower and status.
+     *
+     * @param keyword
+     * @param user
+     * @param status
+     * @return A list of Document.
+     */
     public List<Document> searchByGenre(String keyword, User user, String status) {
         List<Genre> genres = genreDAO.findByKeyword(keyword);
 
@@ -111,6 +135,14 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * search Document by publisher keyword, borrower and status.
+     *
+     * @param keyword
+     * @param user
+     * @param status
+     * @return A list of Document.
+     */
     public List<Document> searchByPublisher(String keyword, User user, String status) {
         List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
@@ -139,6 +171,12 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * validate search.
+     *
+     * @param keyword
+     * @return null if the keyword is valid.
+     */
     public String validateSearchByKeyword(String keyword) {
         if (Objects.equals(keyword, "")) {
             return "Please enter your search keyword";
@@ -146,6 +184,14 @@ public class DocumentService {
         return null;
     }
 
+    /**
+     * check if a document is already in the database.
+     *
+     * @param authorNames
+     * @param title
+     * @param description
+     * @return true, false.
+     */
     public boolean checkIfExist(List<String> authorNames, String title, String description) {
         Document document = findByTitle(title);
         if (document == null) {
@@ -172,6 +218,16 @@ public class DocumentService {
         return documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
     }
 
+    /**
+     * check if a doc can be added to the database.
+     *
+     * @param title
+     * @param authorNames
+     * @param genreNames
+     * @param quantityStr
+     * @param description
+     * @return null if a doc can be added.
+     */
     public String validateAddDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {
@@ -205,6 +261,16 @@ public class DocumentService {
         return null;
     }
 
+    /**
+     * check if a doc can be updated.
+     *
+     * @param title
+     * @param authorNames
+     * @param genreNames
+     * @param quantityStr
+     * @param description
+     * @return null if a doc can be updated.
+     */
     public String validateUpdateDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {

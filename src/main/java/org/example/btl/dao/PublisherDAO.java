@@ -14,6 +14,12 @@ import java.util.Set;
 public class PublisherDAO {
     private Session session;
 
+    /**
+     * for testing purpose.
+     *
+     * @param name
+     * @return
+     */
     public Publisher findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -27,6 +33,12 @@ public class PublisherDAO {
         else return publishers.getFirst();
     }
 
+    /**
+     * search by publisher keyword.
+     *
+     * @param keyword
+     * @return
+     */
     public List<Publisher> findByKeyword(String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -39,6 +51,12 @@ public class PublisherDAO {
         return publishers;
     }
 
+    /**
+     * find doc with this publisher.
+     *
+     * @param publisher
+     * @return
+     */
     public Set<Document> getDocuments(Publisher publisher) {
         Set<Document> documents;
         session = HibernateUtils.getSessionFactory().openSession();

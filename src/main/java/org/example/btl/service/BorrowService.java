@@ -22,6 +22,13 @@ public class BorrowService {
         return borrowDAO.findDocHasReturned(user);
     }
 
+    /**
+     * validates whether a user can borrow a document.
+     *
+     * @param user
+     * @param document
+     * @return null if the user can borrow the document.
+     */
     public String validateBorrow(User user, Document document) {
         if (isCurrentlyBorrowing(user, document)) {
             return "You are currently borrowing this document.";

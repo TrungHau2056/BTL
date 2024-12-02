@@ -25,6 +25,13 @@ public class NotificationDAO {
         return notifications;
     }
 
+    /**
+     * create a new notification.
+     *
+     * @param notification
+     * @param user
+     * @return user with a new notification.
+     */
     public User saveWithUser(Notification notification, User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -39,6 +46,12 @@ public class NotificationDAO {
         return notification.getUser();
     }
 
+    /**
+     * delete a notification.
+     *
+     * @param notification
+     * @return
+     */
     public User deleteNotification(Notification notification) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -55,6 +68,12 @@ public class NotificationDAO {
         return notification.getUser();
     }
 
+    /**
+     * switch status.
+     *
+     * @param notification
+     * @return
+     */
     public User switchNotificationStatus(Notification notification) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -67,6 +86,12 @@ public class NotificationDAO {
         return notification.getUser();
     }
 
+    /**
+     * delete all noti of a user.
+     *
+     * @param user
+     * @return
+     */
     public User deleteAllNoti(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -84,6 +109,12 @@ public class NotificationDAO {
         return user;
     }
 
+    /**
+     * find all unread notis of a user.
+     *
+     * @param user
+     * @return
+     */
     public List<Notification> getUnreadNoti(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

@@ -15,6 +15,13 @@ import java.util.stream.Collectors;
 public class BorrowDAO {
     private Session session;
 
+    /**
+     * find the borrow of a user and a doc, the user currently borrows this doc.
+     *
+     * @param user
+     * @param document
+     * @return
+     */
     public Borrow findByUserCurrentlyBorrowsDocument(User user, Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -31,6 +38,12 @@ public class BorrowDAO {
         return borrows.getFirst();
     }
 
+    /**
+     * all the borrows that the user has returned.
+     *
+     * @param user
+     * @return
+     */
     public List<Borrow> findDocHasReturned(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -43,6 +56,12 @@ public class BorrowDAO {
         return borrows;
     }
 
+    /**
+     * find all the doc that is currently borrowed by a user.
+     *
+     * @param user
+     * @return
+     */
     public List<Document> findDocCurrentlyBorrow(User user) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -55,6 +74,12 @@ public class BorrowDAO {
         return documents;
     }
 
+    /**
+     * find all the user that currently borrows the doc.
+     *
+     * @param document
+     * @return
+     */
     public List<User> findUserCurrentlyBorrow(Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -67,6 +92,13 @@ public class BorrowDAO {
         return users;
     }
 
+    /**
+     * borrow a doc.
+     *
+     * @param user
+     * @param document
+     * @return
+     */
     public User borrowDocument(User user, Document document) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -86,6 +118,13 @@ public class BorrowDAO {
         return user;
     }
 
+    /**
+     * return a doc.
+     *
+     * @param user
+     * @param document
+     * @return
+     */
     public User returnDocument(User user, Document document) {
         Borrow borrow = findByUserCurrentlyBorrowsDocument(user, document);
 

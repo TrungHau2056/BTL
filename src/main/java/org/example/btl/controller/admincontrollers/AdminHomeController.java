@@ -22,7 +22,6 @@ public class AdminHomeController extends AdminBaseController {
         controller.setAdminHomeController(this);
         controller.setAdminInfo();
 
-
         Stage stage = new Stage();
         stage.setTitle("Change Password");
         stage.setScene(new Scene(root));

@@ -131,7 +131,7 @@
                   </AnchorPane>
                   <AnchorPane layoutX="238.0" layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToAddedDocHistory" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -149,7 +149,7 @@
                   </AnchorPane>
                   <AnchorPane layoutY="160.0">
                      <children>
-                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToShowUserScene" prefHeight="67.0" prefWidth="73.0" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
+                        <Button layoutX="4.0" mnemonicParsing="false" onAction="#switchToShowUserScene" prefHeight="67.0" prefWidth="73.0" style="-fx-background-color: ffb888;" styleClass="admin-button-functions" AnchorPane.leftAnchor="6.0">
                            <graphic>
                               <ImageView fitHeight="58.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
                                  <image>

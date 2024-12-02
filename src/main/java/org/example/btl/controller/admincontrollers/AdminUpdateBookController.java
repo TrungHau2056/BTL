@@ -259,7 +259,7 @@ public class AdminUpdateBookController extends AdminBaseController {
             String quantityStr = quantityText.getText();
 
             try {
-                int quantity = Integer.parseInt(quantityStr);
+                Integer.parseInt(quantityStr);
             } catch (NumberFormatException e) {
                 alertErr.setContentText("Quantity field must be a number!");
                 alertErr.show();
@@ -280,7 +280,7 @@ public class AdminUpdateBookController extends AdminBaseController {
 
             if (imageLink != null && !Objects.equals(imageLink, "")) {
                 try {
-                    Image image = new Image(imageLink);
+                    new Image(imageLink);
                 } catch (Exception e) {
                     alertErr.setContentText("Invalid link! Please try again");
                     alertErr.show();
@@ -310,7 +310,6 @@ public class AdminUpdateBookController extends AdminBaseController {
                 genresText.setDisable(true);
                 descriptionText.setDisable(true);
                 authorsText.setDisable(true);
-                authorLabel.setDisable(true);
                 publisherText.setDisable(true);
                 imageLinkText.setDisable(true);
                 updateButton.setDisable(true);

@@ -153,7 +153,7 @@ public class AdminAddBookController extends AdminBaseController {
 
         if (!Objects.equals(imageLink, "")) {
             try {
-                Image image = new Image(imageLink);
+                new Image(imageLink);
             } catch (Exception e) {
                 alertErr.setContentText("Invalid link! Please try again");
                 alertErr.show();

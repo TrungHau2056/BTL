@@ -195,7 +195,7 @@ public class DocumentService {
         }
 
         try {
-            int quantity = Integer.parseInt(quantityStr);
+            Integer.parseInt(quantityStr);
         } catch (NumberFormatException e) {
             return "Quantity field must be a number!";
         }

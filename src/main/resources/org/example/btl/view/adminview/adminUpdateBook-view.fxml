@@ -166,7 +166,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <Button layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-border-radius: 20px; -fx-border-color: #fff;" text="Log out" />
+            <Button layoutX="41.0" layoutY="277.0" mnemonicParsing="false" onAction="#handleLogOut" style="-fx-background-color: transparent; -fx-text-fill: #fff; -fx-border-radius: 20px; -fx-border-color: #fff;" stylesheets="@../../ButtonAccount.css" text="Log out" />
          </children>
       </AnchorPane>
       <AnchorPane accessibleRole="TEXT" focusTraversable="true" prefHeight="700.0" prefWidth="800.0" style="-fx-background-radius: 0 20 20 0; -fx-background-color: #fff;" stylesheets="@../../tableview.css">

@@ -6,7 +6,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Light.Distant?>
@@ -19,7 +18,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminHomeController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
          <effect>
@@ -30,7 +29,7 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane layoutX="41.0" layoutY="110.0">
+            <AnchorPane layoutX="41.0" layoutY="150.0" prefHeight="129.0" prefWidth="324.0">
                <children>
                   <Label style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
@@ -47,16 +46,6 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane layoutX="41.0" layoutY="267.0" prefHeight="36.0" prefWidth="318.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/searchIcon.png" />
-                     </image>
-                  </ImageView>
-                  <TextField layoutX="35.0" prefHeight="36.0" prefWidth="269.0" promptText="Search books" style="-fx-background-color: transparent;" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="41.0" layoutY="375.0" prefHeight="277.0" prefWidth="318.0">

@@ -31,7 +31,7 @@
             </DropShadow>
          </effect>
          <children>
-            <AnchorPane layoutX="41.0" layoutY="110.0">
+            <AnchorPane layoutX="41.0" layoutY="150.0" prefHeight="129.0" prefWidth="324.0">
                <children>
                   <Label style="-fx-text-fill: #fff;" text="Hi " textFill="WHITE">
                      <font>
@@ -50,16 +50,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="41.0" layoutY="267.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="4.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../images/searchIcon.png" />
-                     </image>
-                  </ImageView>
-                  <TextField layoutX="35.0" prefHeight="40.0" prefWidth="282.0" promptText="Search books" style="-fx-background-color: transparent;" />
-               </children>
-            </AnchorPane>
+            <AnchorPane layoutX="41.0" layoutY="267.0" style="-fx-background-color: #fff; -fx-background-radius: 0 10px 10px 10px;" />
             <AnchorPane layoutX="41.0" layoutY="384.0" prefHeight="274.0" prefWidth="318.0">
                <children>
                   <Label style="-fx-text-fill: #fff;" text="Functions (6)" textFill="WHITE">

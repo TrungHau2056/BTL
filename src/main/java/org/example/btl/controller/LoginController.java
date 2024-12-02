@@ -183,6 +183,7 @@ public class LoginController {
                         }
                         AdminHomeController controller = loader.getController();
                         controller.setAdmin(admin);
+                        controller.setAdminInfo();
 
                         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         scene = new Scene(root);

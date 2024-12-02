@@ -49,7 +49,7 @@ public class AdminAddBookController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
-
+        nameLabel.setText("Hi " + admin.getName());
     }
 
     public void genreAdd() {

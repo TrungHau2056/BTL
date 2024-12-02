@@ -50,6 +50,7 @@ public class AdminSearchBookController extends AdminBaseController {
 
     @Override
     public void setAdminInfo() {
+        nameLabel.setText("Hi " + admin.getName());
         documentObservableList = FXCollections.observableArrayList(documentService.findAll());
         tableView.setItems(documentObservableList);
     }

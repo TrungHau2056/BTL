@@ -30,7 +30,6 @@ import java.util.ResourceBundle;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 public class UserReturnBookController extends UserBaseController implements Initializable {
     @FXML
     private TextField searchText;
@@ -228,5 +227,4 @@ public class UserReturnBookController extends UserBaseController implements Init
         stage.setScene(new Scene(root));
         stage.show();
     }
-
 }

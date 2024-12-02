@@ -10,7 +10,7 @@ import java.io.IOException;
 public class AdminHomeController extends AdminBaseController {
     @Override
     public void setAdminInfo() {
-
+        nameLabel.setText("Hi " + admin.getName());
     }
 
     public void handleChangePass() throws IOException {

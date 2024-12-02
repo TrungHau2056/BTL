@@ -88,7 +88,7 @@ public class UserService {
         userDAO.delete(user);
     }
 
-    public Set<Borrow> getBorrows(User user) {
+    public List<Borrow> getBorrows(User user) {
         return userDAO.getBorrows(user);
     }
 

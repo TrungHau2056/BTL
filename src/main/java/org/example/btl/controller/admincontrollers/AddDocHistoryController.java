@@ -45,6 +45,7 @@ public class AddDocHistoryController extends AdminBaseController implements Init
 
     @Override
     public void setAdminInfo() {
+        nameLabel.setText("Hi " + admin.getName());
         documentObservableList = FXCollections.observableArrayList(documentService.findDocAddedByAdmin(admin));
         tableView.setItems(documentObservableList);
     }

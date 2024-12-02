@@ -1,12 +1,14 @@
 package org.example.btl.controller.admincontrollers;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.example.btl.model.Admin;
 import org.example.btl.service.AdminService;
@@ -31,6 +33,9 @@ public abstract class AdminBaseController {
     protected Stage stage;
     protected Parent root;
     protected Scene scene;
+
+    @FXML
+    protected Label nameLabel;
 
     public Admin getAdmin() {
         return admin;

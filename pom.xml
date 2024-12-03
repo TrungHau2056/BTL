@@ -175,6 +175,13 @@
             <artifactId>google-api-services-books</artifactId>
             <version>v1-rev20240214-2.0.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.controlsfx</groupId>
+            <artifactId>controlsfx</artifactId>
+            <version>11.1.2</version> <!-- Phiên bản hiện tại -->
+        </dependency>
+
     </dependencies>
 
     <repositories>

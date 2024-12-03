@@ -22,6 +22,12 @@ public class GenreDAO {
         session.close();
     }
 
+    /**
+     * Mostly used for testing purpose.
+     *
+     * @param name
+     * @return
+     */
     public Genre findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -35,6 +41,12 @@ public class GenreDAO {
         else return genres.getFirst();
     }
 
+    /**
+     * search by genre name.
+     *
+     * @param keyword
+     * @return a list of genres.
+     */
     public List<Genre> findByKeyword(String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -47,6 +59,12 @@ public class GenreDAO {
         return genres;
     }
 
+    /**
+     * find all the doc with this genre.
+     *
+     * @param genre
+     * @return
+     */
     public Set<Document> getDocuments(Genre genre) {
         Set<Document> documents;
         session = HibernateUtils.getSessionFactory().openSession();

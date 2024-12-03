@@ -23,6 +23,12 @@ public class NotificationService {
         return notificationDAO.switchNotificationStatus(notification);
     }
 
+    /**
+     * Returns a duration since the given creation time.
+     *
+     * @param createdAt the time when the event was created
+     * @return a String of duration.
+     */
     public String getDuration(LocalDateTime createdAt) {
         long seconds = Duration.between(createdAt, LocalDateTime.now()).getSeconds();
         if (seconds < 60) {

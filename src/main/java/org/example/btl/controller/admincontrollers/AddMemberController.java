@@ -20,11 +20,19 @@ public class AddMemberController extends AdminBaseController {
     @FXML
     private ToggleGroup gender;
 
+    /**
+     * Sets the admin's information on the UI by updating the name label.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
     }
 
+    /**
+     * Handles the action of adding a new member.
+     * Validates the input data (name, email, username, password, gender, birthday) and registers the user if valid.
+     * Displays error messages for invalid input and a success message when the user is successfully registered.
+     */
     public void handleAddMember () {
         String name = nameText.getText();
         String email = emailText.getText();

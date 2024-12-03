@@ -43,6 +43,10 @@ public class AddDocHistoryController extends AdminBaseController implements Init
 
     private ObservableList<Document> documentObservableList;
 
+    /**
+     * Sets the admin's display information.
+     * Updates the admin's name and the list of documents added by the admin.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
@@ -50,6 +54,18 @@ public class AddDocHistoryController extends AdminBaseController implements Init
         tableView.setItems(documentObservableList);
     }
 
+    /**
+     * Initializes the table view with column data.
+     * Sets up cell value factories for each column to map document properties.
+     *
+     * @param url the location used to resolve relative paths, or null if not available
+     * The location used to resolve relative paths for the root object, or
+     * {@code null} if the location is not known.
+     *
+     * @param resourceBundle the resources used to localize the UI, or null if not available
+     * The resources used to localize the root object, or {@code null} if
+     * the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -75,6 +91,13 @@ public class AddDocHistoryController extends AdminBaseController implements Init
         publisherCol.setCellValueFactory(data -> new SimpleStringProperty(
                 data.getValue().getPublisher() != null ? data.getValue().getPublisher().getName() : "Not available"));
     }
+
+    /**
+     * Handles the update action triggered by the user.
+     * Opens the update book view and passes the selected document and admin information to the controller.
+     * @param event the action event triggered by the update button
+     * @throws IOException if an error occurs while loading the update view
+     */
 
     public void handleUpdate(ActionEvent event) throws IOException {
         Document document = tableView.getSelectionModel().getSelectedItem();

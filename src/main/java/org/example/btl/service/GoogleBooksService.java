@@ -18,6 +18,12 @@ public class GoogleBooksService {
     private static final String APPLICATION_NAME = "Library";
     private JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
 
+    /**
+     * constructor.
+     *
+     * @throws GeneralSecurityException If there is a security issue when setting up the HTTP transport.
+     * @throws IOException If there is an error in reading the JSON factory or initializing the API client.
+     */
     private GoogleBooksService() throws GeneralSecurityException, IOException {
         books = new Books.Builder(GoogleNetHttpTransport.newTrustedTransport(), jsonFactory, null)
                 .setGoogleClientRequestInitializer(new BooksRequestInitializer(API_KEY))
@@ -25,6 +31,13 @@ public class GoogleBooksService {
                 .build();
     }
 
+    /**
+     * get instance.
+     *
+     * @return a GoogleBooksService instance.
+     * @throws GeneralSecurityException if a security error occurs.
+     * @throws IOException if an I/O error occurs.
+     */
     public static GoogleBooksService getInstance() throws GeneralSecurityException, IOException {
         if (instance == null) {
             instance = new GoogleBooksService();
@@ -32,6 +45,13 @@ public class GoogleBooksService {
         return instance;
     }
 
+    /**
+     * perform a search by ISBN.
+     *
+     * @param isbn the ISBN of the book to search for
+     * @return the VolumeInfo of the first book matching the ISBN, or null if no match is found
+     * @throws IOException if an I/O error occurs during the search
+     */
     public Volume.VolumeInfo searchByISBN(String isbn) throws IOException {
         Books.Volumes.List volumesList = books.volumes().list("isbn:" + isbn);
         Volumes volumes = volumesList.execute();

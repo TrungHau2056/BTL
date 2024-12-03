@@ -7,10 +7,14 @@ import org.hibernate.Session;
 
 import java.util.List;
 
-public class AdminDAO implements BaseDAO<Admin> {
+public class AdminDAO {
     private Session session;
 
-    @Override
+    /**
+     * save an admin.
+     *
+     * @param item
+     */
     public void save(Admin item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -19,36 +23,12 @@ public class AdminDAO implements BaseDAO<Admin> {
         session.close();
     }
 
-    @Override
-    public void update(Admin item) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.merge(item);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @Override
-    public void delete(Admin item) {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.remove(item);
-        session.getTransaction().commit();
-        session.close();
-    }
-
-    @Override
-    public List<Admin> findAll() {
-        session = HibernateUtils.getSessionFactory().openSession();
-        session.beginTransaction();
-
-        Query query = session.createQuery("FROM Admin", Admin.class);
-        List<Admin> admins = query.getResultList();
-
-        session.close();
-        return admins;
-    }
-
+    /**
+     * testing purpose.
+     *
+     * @param username
+     * @return
+     */
     public Admin findByUsername(String username) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -62,6 +42,13 @@ public class AdminDAO implements BaseDAO<Admin> {
         else return admins.getFirst();
     }
 
+    /**
+     * find with pass and username for validate purpose.
+     *
+     * @param username
+     * @param password
+     * @return
+     */
     public Admin findByPassAndUsername(String username, String password) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -76,6 +63,12 @@ public class AdminDAO implements BaseDAO<Admin> {
         else return admins.getFirst();
     }
 
+    /**
+     * update an admin for change pass func.
+     *
+     * @param item
+     * @return
+     */
     public Admin updateAdmin(Admin item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();

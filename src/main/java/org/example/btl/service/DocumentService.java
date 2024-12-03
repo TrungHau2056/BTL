@@ -40,6 +40,18 @@ public class DocumentService {
         return borrowDAO.findUserCurrentlyBorrow(document);
     }
 
+    /**
+     * search Document by title keyword, borrower and status.
+     *
+     * @param keyword The keyword to search for in the title of the documents.
+     * @param user The user performing the search, used to filter documents based on borrowing status.
+     * @param status The status of the documents to be searched. It can be:
+     *               - "All": Searches for all documents matching the keyword.
+     *               - "Borrowed": Searches for documents that are borrowed by the user.
+     *               - "Not Borrowed": Searches for documents that are not borrowed by the user.
+     * @return A list of Document that match the search criteria.
+     * @throws IllegalArgumentException If an invalid status is provided.
+     */
     public List<Document> searchByTitle(String keyword, User user, String status) {
         switch (status) {
             case "All":
@@ -53,6 +65,18 @@ public class DocumentService {
         }
     }
 
+    /**
+     * search Document by author keyword, borrower and status.
+     *
+     * @param keyword The keyword to search for in the author's name.
+     * @param user The user performing the search, used to filter documents based on borrowing status.
+     * @param status The status of the documents to be searched. It can be:
+     *               - "All": Searches for all documents by authors matching the keyword.
+     *               - "Borrowed": Searches for documents borrowed by the user.
+     *               - "Not Borrowed": Searches for documents not borrowed by the user.
+     * @return A list of Document that match the search criteria.
+     * @throws IllegalArgumentException If an invalid status is provided.
+     */
     public List<Document> searchByAuthor(String keyword, User user, String status) {
         List<Author> authors= authorDAO.findByKeyword(keyword);;
 
@@ -82,6 +106,18 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * search Document by genre keyword, borrower and status.
+     *
+     * @param keyword The keyword to search for in the genre's name.
+     * @param user The user performing the search, used to filter documents based on borrowing status.
+     * @param status The status of the documents to be searched. It can be:
+     *               - "All": Searches for all documents by genres matching the keyword.
+     *               - "Borrowed": Searches for documents borrowed by the user.
+     *               - "Not Borrowed": Searches for documents not borrowed by the user.
+     * @return A list of Document that match the search criteria.
+     * @throws IllegalArgumentException If an invalid status is provided.
+     */
     public List<Document> searchByGenre(String keyword, User user, String status) {
         List<Genre> genres = genreDAO.findByKeyword(keyword);
 
@@ -111,6 +147,18 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * search Document by publisher keyword, borrower and status.
+     *
+     * @param keyword The keyword to search for in the publisher's name.
+     * @param user The user performing the search, used to filter documents based on borrowing status.
+     * @param status The status of the documents to be searched. It can be:
+     *               - "All": Searches for all documents by publishers matching the keyword.
+     *               - "Borrowed": Searches for documents borrowed by the user.
+     *               - "Not Borrowed": Searches for documents not borrowed by the user.
+     * @return A list of Document that match the search criteria.
+     * @throws IllegalArgumentException If an invalid status is provided.
+     */
     public List<Document> searchByPublisher(String keyword, User user, String status) {
         List<Publisher> publishers = publisherDAO.findByKeyword(keyword);
         List<Document> documentList = new ArrayList<>();
@@ -139,6 +187,12 @@ public class DocumentService {
         return documentList;
     }
 
+    /**
+     * validate search.
+     *
+     * @param keyword The search keyword entered by the user.
+     * @return null if the keyword is valid.
+     */
     public String validateSearchByKeyword(String keyword) {
         if (Objects.equals(keyword, "")) {
             return "Please enter your search keyword";
@@ -146,6 +200,14 @@ public class DocumentService {
         return null;
     }
 
+    /**
+     * check if a document is already in the database.
+     *
+     * @param authorNames The list of author names to be checked against the document's authors.
+     * @param title The title of the document to search for.
+     * @param description The description of the document to compare with the found document's description.
+     * @return true, false.
+     */
     public boolean checkIfExist(List<String> authorNames, String title, String description) {
         Document document = findByTitle(title);
         if (document == null) {
@@ -172,6 +234,16 @@ public class DocumentService {
         return documentDAO.updateDocument(document, authorNames, publisherName, genreNames);
     }
 
+    /**
+     * check if a doc can be added to the database.
+     *
+     * @param title
+     * @param authorNames
+     * @param genreNames
+     * @param quantityStr
+     * @param description
+     * @return null if a doc can be added.
+     */
     public String validateAddDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {
@@ -205,6 +277,16 @@ public class DocumentService {
         return null;
     }
 
+    /**
+     * check if a doc can be updated.
+     *
+     * @param title The title of the document.
+     * @param authorNames A list of author names associated with the document.
+     * @param genreNames A list of genre names associated with the document.
+     * @param quantityStr The quantity of the document.
+     * @param description The description of the document.
+     * @return null if a doc can be updated.
+     */
     public String validateUpdateDoc(String title, List<String> authorNames, List<String> genreNames, String quantityStr, String description) {
         if (Objects.equals(title, "")
                 || Objects.equals(quantityStr, "")) {

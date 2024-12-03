@@ -67,6 +67,7 @@ public class AdminUpdateBookController extends AdminBaseController {
     @FXML
     private Button genreDeleteBtn;
 
+
     public Document getDocument() {
         return document;
     }
@@ -75,6 +76,15 @@ public class AdminUpdateBookController extends AdminBaseController {
         this.document = document;
     }
 
+    /**
+     * Sets the information for the admin to view and edit the details of a document.
+     * This method populates various text fields and labels with the document's data,
+     * including title, quantity, description, image link, publisher, authors, and genres.
+     * If the document has an associated publisher, its name is displayed.
+     * The authors and genres are displayed as comma-separated lists.
+     * If the document was added by ISBN, the method disables the editing buttons
+     * and displays a warning label to prevent further updates.
+     */
     @Override
     public void setAdminInfo() {
         nameLabel.setText("Hi " + admin.getName());
@@ -123,16 +133,31 @@ public class AdminUpdateBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Enables the title text field and the update button to allow the admin to edit
+     * the title of the document. This method is called when the admin wants to update
+     * the title of the document.
+     */
     public void handleUpdateTitle() {
         titleText.setDisable(false);
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the quantity text field and the update button to allow the admin to edit
+     * the quantity of the document. This method is called when the admin wants to update
+     * the quantity of the document.
+     */
     public void handleUpdateQuantity() {
         quantityText.setDisable(false);
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the genre text field, genre add button, genre delete button,
+     * and the update button to allow the admin to edit the genres of the document.
+     * This method is called when the admin wants to update the genres of the document.
+     */
     public void handleUpdateGenre() {
         genresText.setDisable(false);
         genreAddBtn.setDisable(false);
@@ -140,6 +165,11 @@ public class AdminUpdateBookController extends AdminBaseController {
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the author text field, author add button, author delete button,
+     * and the update button to allow the admin to edit the authors of the document.
+     * This method is called when the admin wants to update the authors of the document.
+     */
     public void handleUpdateAuthor() {
         authorsText.setDisable(false);
         authorAddBtn.setDisable(false);
@@ -147,21 +177,43 @@ public class AdminUpdateBookController extends AdminBaseController {
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the description text field and the update button to allow the admin
+     * to edit the description of the document. This method is called when the admin
+     * wants to update the description of the document.
+     */
     public void handleUpdateDescription() {
         descriptionText.setDisable(false);
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the publisher text field and the update button to allow the admin
+     * to edit the publisher of the document. This method is called when the admin
+     * wants to update the publisher of the document.
+     */
     public void handleUpdatePublisher() {
         publisherText.setDisable(false);
         updateButton.setDisable(false);
     }
 
+    /**
+     * Enables the image link text field and the update button to allow the admin
+     * to edit the image link of the document. This method is called when the admin
+     * wants to update the image link of the document.
+     */
     public void handleUpdateImageLink() {
         imageLinkText.setDisable(false);
         updateButton.setDisable(false);
     }
 
+    /**
+     * Adds a new genre to the list of genres for the document. If the genre is
+     * already added, or if the genre input field is empty, an error message is shown.
+     * Otherwise, the genre is added to the list and displayed in the genre label.
+     *
+     * @throws IllegalArgumentException if the genre is already in the list or empty.
+     */
     public void genreAdd() {
         String genre = genresText.getText();
 
@@ -186,6 +238,10 @@ public class AdminUpdateBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Deletes the last genre from the list of genres for the document. If there are no genres,
+     * the method does nothing. After deleting, the genre list is updated and displayed in the genre label.
+     */
     public void genreDelete() {
         if (genreNames.isEmpty()) {
             return;
@@ -208,6 +264,12 @@ public class AdminUpdateBookController extends AdminBaseController {
         genreLabel.setText(genres);
     }
 
+    /**
+     * Adds a new author to the list of authors for the document.
+     * If the author is already in the list, an error message is shown.
+     * If the input is empty, the user is prompted to enter an author.
+     * After adding the author, the list is updated and displayed in the author label.
+     */
     public void authorAdd() {
         String author = authorsText.getText();
 
@@ -232,6 +294,11 @@ public class AdminUpdateBookController extends AdminBaseController {
         }
     }
 
+    /**
+     * Deletes the last author from the list of authors for the document.
+     * If there are no authors in the list, the method does nothing.
+     * After deleting an author, the list is updated and displayed in the author label.
+     */
     public void authorDelete() {
         if (authorNames.isEmpty()) {
             return;
@@ -254,6 +321,16 @@ public class AdminUpdateBookController extends AdminBaseController {
         authorLabel.setText(authors);
     }
 
+    /**
+     * Handles the update operation for the document.
+     * If the document is added by ISBN, only the quantity can be updated.
+     * The quantity field must be a valid integer.
+     * If the document is not added by ISBN, it allows updating the title, publisher, description, image link, quantity, authors, and genres.
+     * The method validates the input and updates the document accordingly.
+     *
+     * If the input is valid, the document is updated and a success message is shown.
+     * If there are any issues with the input, an error message is displayed.
+     */
     public void handleUpdate() {
         if (document.isAddedByISBN()) {
             String quantityStr = quantityText.getText();

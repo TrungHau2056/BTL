@@ -14,6 +14,12 @@ import java.util.Set;
 public class AuthorDAO {
     private Session session;
 
+    /**
+     * testing purpose.
+     *
+     * @param item
+     * @return
+     */
     public void save(Author item) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -22,6 +28,12 @@ public class AuthorDAO {
         session.close();
     }
 
+    /**
+     * testing purpose.
+     *
+     * @param name
+     * @return
+     */
     public Author findByName(String name) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -35,6 +47,12 @@ public class AuthorDAO {
         else return authors.getFirst();
     }
 
+    /**
+     * search all the authors by keyword.
+     *
+     * @param keyword
+     * @return
+     */
     public List<Author> findByKeyword(String keyword) {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
@@ -47,6 +65,12 @@ public class AuthorDAO {
         return authors;
     }
 
+    /**
+     * get all the doc of an author.
+     *
+     * @param author
+     * @return
+     */
     public Set<Document> getDocuments(Author author) {
         Set<Document> documents;
         session = HibernateUtils.getSessionFactory().openSession();

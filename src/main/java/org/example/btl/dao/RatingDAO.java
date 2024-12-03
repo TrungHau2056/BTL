@@ -32,6 +32,14 @@ public class RatingDAO {
         return ratings.getFirst();
     }
 
+    /**
+     * update if have already rated, add if haven't rated.
+     *
+     * @param user
+     * @param document
+     * @param score
+     * @return the updated user.
+     */
     public User updateOrAddRating(User user, Document document, int score) {
         Rating rating = getUserRatingOnDoc(user, document);
 

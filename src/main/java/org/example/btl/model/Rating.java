@@ -9,12 +9,10 @@ public class Rating {
     private int id;
 
     @ManyToOne
-//            (cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-//            (cascade = CascadeType.MERGE)
     @JoinColumn(name = "document_id")
     private Document document;
 

@@ -19,7 +19,7 @@
 Ứng dụng được phát triển bởi 3 thành viên: 
  | Họ và tên |  MSV  |
  |----------|--------|
- |Trương Văn Hải | 23020058 |
+ | Trương Văn Hải | 23020058 |
  | Trần Trung Hậu | 23020061 |
  | Trần Quang Đỉnh | 23020043 |
  - Lớp học phần: INT2204 7 - UET.
@@ -37,6 +37,7 @@
   ![](readme_image/userHome.png)
 #### 2.2 Chức năng <a name="use"></a>
 - Đăng nhập/kí: gồm 2 vai trò
+  
   ![](readme_image/login.png)  ![](readme_image/signUp.png)
 
 - Admin
@@ -74,4 +75,25 @@
  - Thiết kế giao diện với Javafx, css.
  - Sử dụng tài liệu hình ảnh trên các trang web miễn phí: Freepik,..
 #### 2.5 Cấu trúc <a name="structure"></a>
-![](readme_image/diagram.png)
+- main
+  - java
+    
+  ![](readme_image/javaFolder.png)
+  ![](readme_image/diagram.png)
+
+    -- controller: liên kết với các file FXML, chịu trách nhiệm xử lí sự kiện và logic giao diện.
+  
+    -- dao: quản lý và thao tác dữ liệu trong cơ sở dữ liệu.
+  
+    -- model: chịu trách nhiệm việc quản lí và logic xử lí liên quan đến dữ liệu.
+  
+    -- service: lớp trung gian chịu trách nhiệm xử lý logic nghiệp vụ và kết nối giữa Controller và DAO.
+
+  - resources
+  
+  ![](readme_image/resourcesFolder.png)
+
+- test
+  
+  ![](readme_image/testFolder.png)
+

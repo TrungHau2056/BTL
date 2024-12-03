@@ -36,8 +36,13 @@ public class UserHomeController extends UserBaseController {
         useremail.setText("Email: " + user.getEmail());
 
         List<Notification> notifications = userService.getNotifications(user);
-        notificationTitle.setText(notifications.getLast().getTitle());
-        notification.setText(notifications.getLast().getMessage());
+        if (!notifications.isEmpty()) {
+            notificationTitle.setText(notifications.getLast().getTitle());
+            notification.setText(notifications.getLast().getMessage());
+        } else {
+            notificationTitle.setText("None");
+            notification.setText("None");
+        }
 
         byte[] avatarData = user.getAvatar();
         if (avatarData != null) {

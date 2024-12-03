@@ -106,7 +106,15 @@ public class BookInfoController {
     /**
      * click button borrow.
      */
-    public void handleBorrow() {
+    public void handleBorrow(ActionEvent event) {
+        if (user != userSearchBookController.getUser()) {
+            alert.setContentText("You have already borrowed this document");
+            alert.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            return;
+        }
+
         String validateMess = borrowService.validateBorrow(user, document);
         if (validateMess != null) {
             alert.setContentText(validateMess);
@@ -120,6 +128,8 @@ public class BookInfoController {
                             + document.getTitle()
                             + "'."
             );
+
+            quantityText.setText(String.valueOf(Integer.parseInt(quantityText.getText()) - 1));
 
             userSearchBookController.setUser(user);
             userSearchBookController.setUserInfo();
@@ -135,6 +145,14 @@ public class BookInfoController {
      * @param event the action event triggered by the user.
      */
     public void handleReturn(ActionEvent event) {
+        if (user != userReturnBookController.getUser()) {
+            alert.setContentText("You have already returned this document");
+            alert.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            return;
+        }
+
         user = borrowService.returnDocument(user, document);
 
         user = notificationService.addNotification(user,

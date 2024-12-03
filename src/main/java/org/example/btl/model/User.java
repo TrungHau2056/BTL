@@ -27,6 +27,9 @@ public class User extends Account {
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Set<Notification> notifications = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private Set<Rating> ratings = new HashSet<>();
+
     public byte[] getAvatar() {
         return avatar;
     }
@@ -51,6 +54,11 @@ public class User extends Account {
     public void addNotification(Notification notification) {
         notifications.add(notification);
         notification.setUser(this);
+    }
+
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+        rating.setUser(this);
     }
 
     public void setNotifications(Set<Notification> notifications) {

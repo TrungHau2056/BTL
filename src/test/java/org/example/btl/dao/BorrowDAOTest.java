@@ -33,14 +33,6 @@ class BorrowDAOTest {
         hibernateUtilMock.when(HibernateUtils::getSessionFactory).thenReturn(sessionFactory);
     }
 
-    @BeforeEach
-    void setUp() {
-    }
-
-    @AfterEach
-    void tearDown() {
-    }
-
     @Test
     void borrowDocument() {
         User user = new User("name", "@mjfd", "goku234rt",

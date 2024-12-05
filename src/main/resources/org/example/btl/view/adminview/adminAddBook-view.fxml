@@ -21,13 +21,6 @@
 <HBox fx:id="hbox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="360.0" minWidth="640.0" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.btl.controller.admincontrollers.AdminAddBookController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="400.0" style="-fx-background-color: #466bb0;" stylesheets="@../../style.css">
-         <effect>
-            <DropShadow height="13.98" width="28.02">
-               <color>
-                  <Color red="0.27450981736183167" green="0.2549019753932953" blue="0.2549019753932953" />
-               </color>
-            </DropShadow>
-         </effect>
          <children>
             <AnchorPane layoutX="41.0" layoutY="126.0" prefHeight="129.0" prefWidth="324.0">
                <children>

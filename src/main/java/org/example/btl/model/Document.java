@@ -49,6 +49,9 @@ public class Document {
     @OneToMany(mappedBy = "document", cascade = CascadeType.MERGE)
     private Set<Borrow> borrows = new HashSet<>();
 
+    @OneToMany(mappedBy = "document")
+    private Set<Rating> ratings = new HashSet<>();
+
     public Document() {
     }
 
@@ -148,5 +151,10 @@ public class Document {
     public void addBorrow(Borrow borrow) {
         borrows.add(borrow);
         borrow.setDocument(this);
+    }
+
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+        rating.setDocument(this);
     }
 }

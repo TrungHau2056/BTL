@@ -11,13 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
-import org.example.btl.model.Author;
-import org.example.btl.model.Document;
-import org.example.btl.model.Genre;
-import org.example.btl.model.User;
+import org.example.btl.model.*;
 import org.example.btl.service.BorrowService;
+import org.example.btl.service.DocumentService;
 import org.example.btl.service.NotificationService;
+import org.example.btl.service.RatingService;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookInfoController {
@@ -29,7 +29,9 @@ public class BookInfoController {
     private UserReturnBookController userReturnBookController;
 
     private BorrowService borrowService = new BorrowService();
+    private RatingService ratingService = new RatingService();
     private NotificationService notificationService = new NotificationService();
+    private DocumentService documentService = new DocumentService();
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
@@ -45,7 +47,13 @@ public class BookInfoController {
     @FXML
     private Label quantityText;
     @FXML
+    private Label countRating;
+    @FXML
+    private Label star;
+    @FXML
     private TextArea descriptionText;
+    @FXML
+    private org.controlsfx.control.Rating rating;
 
     public Document getDocument() {
         return document;
@@ -100,6 +108,28 @@ public class BookInfoController {
             publisherText.setText(document.getPublisher().getName());
         } else {
             publisherText.setText("Not available");
+        }
+
+        List<Rating> ratings = documentService.getRatings(document);
+
+        countRating.setText("(" + ratings.size() + " Rating)");
+        if (ratings.isEmpty()) {
+            rating.setRating(0);
+            star.setText("0/5");
+        } else {
+            double avg = 0;
+            for (Rating x : ratings) {
+                avg = avg + x.getScore();
+            }
+            avg = avg / ratings.size();
+            star.setText((int) avg + "/5");
+
+            Rating ownRating = ratingService.getUserRatingOnDoc(user, document);
+            if (ownRating != null) {
+                rating.setRating(ownRating.getScore());
+            } else {
+                rating.setRating(0);
+            }
         }
     }
 
@@ -170,4 +200,28 @@ public class BookInfoController {
         alert.setContentText("Return Successfully!");
         alert.show();
     }
+
+    /**
+     * user rate.
+     */
+    public void handleRate() {
+        int score = (int) rating.getRating();
+        document = ratingService.updateOrAddRating(user, document, score);
+
+        alert.setContentText("You rated " + score + " stars successfully!");
+        alert.show();
+
+        List<Rating> ratings = documentService.getRatings(document);
+
+        countRating.setText("(" + ratings.size() + " Rating)");
+
+        double avg = 0;
+        for (Rating x : ratings) {
+            avg = avg + x.getScore();
+        }
+        avg = avg / ratings.size();
+        star.setText((int) avg + "/5");
+        rating.setRating(ratingService.getUserRatingOnDoc(user, document).getScore());
+    }
+
 }

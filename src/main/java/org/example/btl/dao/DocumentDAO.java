@@ -199,21 +199,10 @@ public class DocumentDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
+        document.getAuthors().clear();
+        document.getGenres().clear();
         document = session.merge(document);
-        Set<Author> oldAuthors = new HashSet<>(document.getAuthors());
-        Set<Genre> oldGenres = new HashSet<>(document.getGenres());
 
-        for (Author author : oldAuthors) {
-            author = session.merge(author);
-            author.deleteDocument(document);
-        }
-
-        for (Genre genre : oldGenres) {
-            genre = session.merge(genre);
-            genre.deleteDocument(document);
-        }
-
-        session.merge(document);
         session.getTransaction().commit();
         session.close();
 
@@ -340,5 +329,17 @@ public class DocumentDAO {
 
         session.close();
         return documents;
+    }
+
+    public List<Rating> getRating(Document document) {
+        session = HibernateUtils.getSessionFactory().openSession();
+        session.beginTransaction();
+
+        Query query = session.createQuery("FROM Rating WHERE document = :document");
+        query.setParameter("document", document);
+        List<Rating> ratings = query.getResultList();
+
+        session.close();
+        return ratings;
     }
 }

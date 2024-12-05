@@ -310,7 +310,7 @@ public class DocumentService {
         }
 
         try {
-            int quantity = Integer.parseInt(quantityStr);
+            Integer.parseInt(quantityStr);
         } catch (NumberFormatException e) {
             return "Quantity field must be a number!";
         }
@@ -324,5 +324,9 @@ public class DocumentService {
 
     public List<Document> findDocAddedByAdmin(Admin admin) {
         return documentDAO.findDocAddedByAdmin(admin);
+    }
+
+    public List<Rating> getRatings(Document document) {
+        return documentDAO.getRating(document);
     }
 }

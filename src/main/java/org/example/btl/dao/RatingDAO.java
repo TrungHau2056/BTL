@@ -40,7 +40,7 @@ public class RatingDAO {
      * @param score
      * @return the updated user.
      */
-    public User updateOrAddRating(User user, Document document, int score) {
+    public Document updateOrAddRating(User user, Document document, int score) {
         Rating rating = getUserRatingOnDoc(user, document);
 
         session = HibernateUtils.getSessionFactory().openSession();
@@ -63,6 +63,6 @@ public class RatingDAO {
         session.getTransaction().commit();
         session.close();
 
-        return rating.getUser();
+        return rating.getDocument();
     }
 }

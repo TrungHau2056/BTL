@@ -11,13 +11,13 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.example.btl.controller.usercontrollers.UserReturnBookController;
 import org.example.btl.controller.usercontrollers.UserSearchBookController;
-import org.example.btl.model.Author;
-import org.example.btl.model.Document;
-import org.example.btl.model.Genre;
-import org.example.btl.model.User;
+import org.example.btl.model.*;
 import org.example.btl.service.BorrowService;
+import org.example.btl.service.DocumentService;
 import org.example.btl.service.NotificationService;
+import org.example.btl.service.RatingService;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class BookInfoController {
@@ -29,7 +29,9 @@ public class BookInfoController {
     private UserReturnBookController userReturnBookController;
 
     private BorrowService borrowService = new BorrowService();
+    private RatingService ratingService = new RatingService();
     private NotificationService notificationService = new NotificationService();
+    private DocumentService documentService = new DocumentService();
     private Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
     @FXML
@@ -101,6 +103,10 @@ public class BookInfoController {
         } else {
             publisherText.setText("Not available");
         }
+
+        List<Rating> ratings = documentService.getRatings(document);
+
+        //calculate avg + update numOfRating
     }
 
     /**
@@ -169,5 +175,19 @@ public class BookInfoController {
 
         alert.setContentText("Return Successfully!");
         alert.show();
+    }
+
+    public void handleRate() {
+        // score
+        int score = 10000;
+
+        document = ratingService.updateOrAddRating(user, document, score);
+
+        alert.setContentText("Successfully rated");
+        alert.show();
+
+        List<Rating> ratings = documentService.getRatings(document);
+
+        //calculate avg + update numOfRating
     }
 }

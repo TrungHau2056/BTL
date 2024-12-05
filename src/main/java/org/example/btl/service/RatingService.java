@@ -12,7 +12,7 @@ public class RatingService {
         return ratingDAO.getUserRatingOnDoc(user, document);
     }
 
-    public User updateOrAddRating(User user, Document document, int score) {
+    public Document updateOrAddRating(User user, Document document, int score) {
         return ratingDAO.updateOrAddRating(user, document, score);
     }
 }

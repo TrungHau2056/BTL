@@ -47,7 +47,13 @@ public class BookInfoController {
     @FXML
     private Label quantityText;
     @FXML
+    private Label countRating;
+    @FXML
+    private Label star;
+    @FXML
     private TextArea descriptionText;
+    @FXML
+    private org.controlsfx.control.Rating rating;
 
     public Document getDocument() {
         return document;
@@ -106,7 +112,25 @@ public class BookInfoController {
 
         List<Rating> ratings = documentService.getRatings(document);
 
-        //calculate avg + update numOfRating
+        countRating.setText("(" + ratings.size() + " Rating)");
+        if (ratings.isEmpty()) {
+            rating.setRating(0);
+            star.setText("0/5");
+        } else {
+            double avg = 0;
+            for (Rating x : ratings) {
+                avg = avg + x.getScore();
+            }
+            avg = avg / ratings.size();
+            star.setText((int) avg + "/5");
+
+            Rating ownRating = ratingService.getUserRatingOnDoc(user, document);
+            if (ownRating != null) {
+                rating.setRating(ownRating.getScore());
+            } else {
+                rating.setRating(0);
+            }
+        }
     }
 
     /**
@@ -177,17 +201,27 @@ public class BookInfoController {
         alert.show();
     }
 
+    /**
+     * user rate.
+     */
     public void handleRate() {
-        // score
-        int score = 10000;
-
+        int score = (int) rating.getRating();
         document = ratingService.updateOrAddRating(user, document, score);
 
-        alert.setContentText("Successfully rated");
+        alert.setContentText("You rated " + score + " stars successfully!");
         alert.show();
 
         List<Rating> ratings = documentService.getRatings(document);
 
-        //calculate avg + update numOfRating
+        countRating.setText("(" + ratings.size() + " Rating)");
+
+        double avg = 0;
+        for (Rating x : ratings) {
+            avg = avg + x.getScore();
+        }
+        avg = avg / ratings.size();
+        star.setText((int) avg + "/5");
+        rating.setRating(ratingService.getUserRatingOnDoc(user, document).getScore());
     }
+
 }

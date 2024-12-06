@@ -112,17 +112,17 @@ public class BookInfoController {
 
         List<Rating> ratings = documentService.getRatings(document);
 
-        countRating.setText("(" + ratings.size() + " Rating)");
+        countRating.setText("(" + ratings.size() + " Ratings)");
         if (ratings.isEmpty()) {
             rating.setRating(0);
             star.setText("0/5");
         } else {
             double avg = 0;
             for (Rating x : ratings) {
-                avg = avg + x.getScore();
+                avg += x.getScore();
             }
-            avg = avg / ratings.size();
-            star.setText((int) avg + "/5");
+            avg /= ratings.size();
+            star.setText(String.format("%.2f", avg) + "/5");
 
             Rating ownRating = ratingService.getUserRatingOnDoc(user, document);
             if (ownRating != null) {
@@ -213,14 +213,14 @@ public class BookInfoController {
 
         List<Rating> ratings = documentService.getRatings(document);
 
-        countRating.setText("(" + ratings.size() + " Rating)");
+        countRating.setText("(" + ratings.size() + " Ratings)");
 
         double avg = 0;
         for (Rating x : ratings) {
-            avg = avg + x.getScore();
+            avg += x.getScore();
         }
-        avg = avg / ratings.size();
-        star.setText((int) avg + "/5");
+        avg /= ratings.size();
+        star.setText(String.format("%.2f", avg) + "/5");
         rating.setRating(ratingService.getUserRatingOnDoc(user, document).getScore());
     }
 

@@ -67,8 +67,13 @@
             </font>
         </Button>
         <TextArea fx:id="descriptionText" editable="false" layoutX="157.0" layoutY="399.0" prefHeight="79.0" prefWidth="475.0" stylesheets="@../bookInfo.css" text="Harry Potter và Hòn đá Phù thủy là ấn phẩm đầu tay và là phần đầu tiên của bộ tiểu thuyết Harry Potter của nhà văn người Anh J. K. Rowling, được Bloomsbury xuất bản lần đầu tại Anh vào năm 1997. Harry Potter và Hòn đá Phù thủy là ấn phẩm đầu tay và là phần đầu tiên của bộ tiểu thuyết Harry Potter của nhà văn người Anh J. K. Rowling, được Bloomsbury xuất bản lần đầu tại Anh vào năm 1997. " wrapText="true" />
-      <Label fx:id="countRating" layoutX="119.0" layoutY="523.0" text="(0 Rating)" />
-      <Label fx:id="star" layoutX="86.0" layoutY="516.0" text="5/5" textFill="RED">
+      <Rating fx:id="rating" layoutX="461.0" layoutY="515.0" onMouseClicked="#handleRate" rating="0.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rating>
+      <Label fx:id="countRating" layoutX="90.0" layoutY="542.0" text="(0 Rating)" />
+      <Label fx:id="star" layoutX="90.0" layoutY="518.0" text="5/5" textFill="RED">
          <font>
             <Font size="20.0" />
          </font>
@@ -78,10 +83,5 @@
             <Image url="@../images/star.png" />
          </image>
       </ImageView>
-      <Rating fx:id="rating" layoutX="461.0" layoutY="515.0" onMouseClicked="#handleRate" rating="0.0">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Rating>
     </children>
 </AnchorPane>

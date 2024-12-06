@@ -17,6 +17,7 @@ import org.example.btl.service.DocumentService;
 import org.example.btl.service.NotificationService;
 import org.example.btl.service.RatingService;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -122,7 +123,8 @@ public class BookInfoController {
                 avg += x.getScore();
             }
             avg /= ratings.size();
-            star.setText(String.format("%.2f", avg) + "/5");
+            DecimalFormat df = new DecimalFormat("#.##");
+            star.setText(df.format(avg) + "/5");
 
             Rating ownRating = ratingService.getUserRatingOnDoc(user, document);
             if (ownRating != null) {
@@ -220,7 +222,9 @@ public class BookInfoController {
             avg += x.getScore();
         }
         avg /= ratings.size();
-        star.setText(String.format("%.2f", avg) + "/5");
+        DecimalFormat df = new DecimalFormat("#.##");
+        star.setText(df.format(avg) + "/5");
+
         rating.setRating(ratingService.getUserRatingOnDoc(user, document).getScore());
     }
 

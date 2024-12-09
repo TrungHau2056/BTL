@@ -139,13 +139,7 @@ public class BookInfoController {
      * click button borrow.
      */
     public void handleBorrow(ActionEvent event) {
-        if (user != userSearchBookController.getUser()) {
-            alert.setContentText("Data is not synchronized");
-            alert.show();
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.close();
-            return;
-        }
+        user = userSearchBookController.getUser();
 
         String validateMess = borrowService.validateBorrow(user, document);
         if (validateMess != null) {

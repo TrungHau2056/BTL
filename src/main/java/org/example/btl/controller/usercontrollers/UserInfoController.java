@@ -132,6 +132,8 @@ public class UserInfoController extends UserBaseController {
             alertInfo.setContentText("Your information is successfully updated");
             alertInfo.show();
         }
+
+        setUserInfo();
     }
 
     /**

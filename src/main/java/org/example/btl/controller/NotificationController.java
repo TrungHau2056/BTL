@@ -3,6 +3,7 @@ package org.example.btl.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ public class NotificationController {
     private NotificationService notificationService = new NotificationService();
 
     private UserNotificationController userNotificationController;
+    private Alert alert = new Alert(Alert.AlertType.ERROR);
 
     @FXML
     private Label nameLabel;
@@ -70,6 +72,14 @@ public class NotificationController {
      * @param event the action event triggered by the user.
      */
     public void handleRemove(ActionEvent event) {
+        if (user != userNotificationController.getUser()) {
+            alert.setContentText("Data is not synchronized");
+            alert.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            return;
+        }
+
         user = notificationService.deleteNotification(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();
@@ -84,6 +94,14 @@ public class NotificationController {
      * @param event the action event triggered by the user.
      */
     public void handleUnread(ActionEvent event) {
+        if (user != userNotificationController.getUser()) {
+            alert.setContentText("Data is not synchronized");
+            alert.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            return;
+        }
+
         user = notificationService.switchNotificationStatus(notification);
         userNotificationController.setUser(user);
         userNotificationController.setUserInfo();

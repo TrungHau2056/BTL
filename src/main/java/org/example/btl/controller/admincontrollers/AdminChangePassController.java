@@ -122,6 +122,7 @@ public class AdminChangePassController extends AdminBaseController{
             adminHomeController.setAdmin(admin);
 
             alertInfo.setContentText("Password successfully changed");
+            alertInfo.show();
 
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.close();

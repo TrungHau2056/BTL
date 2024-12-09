@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class AdminChangePassController extends AdminBaseController{
+public class AdminChangePassController extends AdminBaseController {
     @FXML
     private PasswordField curPassText;
     @FXML
@@ -103,6 +103,14 @@ public class AdminChangePassController extends AdminBaseController{
      * @param event The action event triggered by the user confirming the password change.
      */
     public void handleConfirm(ActionEvent event) {
+        if (admin != adminHomeController.getAdmin()) {
+            alertErr.setContentText("Data is not synchronized");
+            alertErr.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            return;
+        }
+
         String curPass = curPassText.isVisible() ? curPassText.getText() : showCurPassText.getText();
         String newPass = newPassText.isVisible() ? newPassText.getText() : showNewPassText.getText();
         String confirmedPass = confirmedPassText.getText();

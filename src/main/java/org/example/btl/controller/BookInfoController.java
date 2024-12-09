@@ -140,7 +140,7 @@ public class BookInfoController {
      */
     public void handleBorrow(ActionEvent event) {
         if (user != userSearchBookController.getUser()) {
-            alert.setContentText("You have already borrowed this document");
+            alert.setContentText("Data is not synchronized");
             alert.show();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
@@ -181,7 +181,7 @@ public class BookInfoController {
      */
     public void handleReturn(ActionEvent event) {
         if (user != userReturnBookController.getUser()) {
-            alert.setContentText("You have already returned this document");
+            alert.setContentText("Data is not synchronized");
             alert.show();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.close();
@@ -230,5 +230,4 @@ public class BookInfoController {
 
         rating.setRating(ratingService.getUserRatingOnDoc(user, document).getScore());
     }
-
 }

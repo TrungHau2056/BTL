@@ -40,8 +40,9 @@ public class AddByISBNController extends AdminBaseController {
     /**
      * Constructor for the AddByISBNController.
      * Initializes the controller and handles any required security or I/O setup.
-     * @throws GeneralSecurityException if a security issue occurs during initialization
-     * @throws IOException if an I/O error occurs during initialization
+     *
+     * @throws GeneralSecurityException if a security issue occurs
+     * @throws IOException if an I/O error occurs
      */
     public AddByISBNController() throws GeneralSecurityException, IOException {
     }

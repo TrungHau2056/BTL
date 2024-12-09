@@ -100,13 +100,6 @@ public class AdminSearchBookController extends AdminBaseController {
     }
 
     /**
-     * Refreshes the TableView to update its content.
-     */
-    public void refresh() {
-        tableView.refresh();
-    }
-
-    /**
      * Handles the admin search action based on the selected criterion (Title, Author, Genre, Publisher).
      * It validates the search keyword, performs the search, and updates the table view with the results.
      * If no results are found, it shows an error message.
@@ -165,12 +158,11 @@ public class AdminSearchBookController extends AdminBaseController {
     }
 
     /**
-     * Handles the deletion of a selected document from the table.
-     * If the document is currently borrowed, a confirmation prompt is shown,
-     * notifying the users who borrowed the document about its deletion.
-     * If the document is not borrowed, a standard confirmation prompt is shown.
+     * Handles the deletion of a document from the table.
+     * If the document is currently borrowed, a confirmation alert is shown.
+     * If the document is not borrowed, a confirmation alert is shown.
      *
-     * The document is deleted from the database upon confirmation, and the table view is refreshed.
+     * The document is deleted from the database, and the table view is refreshed.
      */
     public void handleDelete() {
         Document document = tableView.getSelectionModel().getSelectedItem();
@@ -194,7 +186,6 @@ public class AdminSearchBookController extends AdminBaseController {
 
                     documentService.deleteDocument(document);
                     setAdminInfo();
-                    refresh();
                 }
             });
         } else {
@@ -207,7 +198,6 @@ public class AdminSearchBookController extends AdminBaseController {
                 if (response == ButtonType.OK) {
                     documentService.deleteDocument(document);
                     setAdminInfo();
-                    refresh();
                 }
             });
         }

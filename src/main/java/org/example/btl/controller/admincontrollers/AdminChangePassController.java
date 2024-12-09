@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.util.Objects;
 
-public class AdminChangePassController extends AdminBaseController{
+public class AdminChangePassController extends AdminBaseController {
     @FXML
     private PasswordField curPassText;
     @FXML

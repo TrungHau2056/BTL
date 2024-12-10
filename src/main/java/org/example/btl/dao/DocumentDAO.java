@@ -113,16 +113,10 @@ public class DocumentDAO {
         session = HibernateUtils.getSessionFactory().openSession();
         session.beginTransaction();
 
-        Query query = session.createQuery("FROM Document d WHERE d.title LIKE :keyword" +
-                " AND (" +
-                " d NOT IN (" +
-                "        SELECT document FROM Borrow " +
-                "        WHERE user = :user AND returnDate IS NULL" +
-                "          )" +
-                "  OR d IN (" +
-                "        SELECT document FROM Borrow " +
-                "        WHERE user = :user AND returnDate IS NOT NULL" +
-                "          )" +
+        Query query = session.createQuery("FROM Document d WHERE d.title LIKE :keyword " +
+                "AND d NOT IN (" +
+                "    SELECT b.document FROM Borrow b " +
+                "    WHERE b.user = :user AND b.returnDate IS NULL" +
                 ")");
 
         query.setParameter("user", user);
